@@ -14,9 +14,11 @@ public class LevelManagerInspector : Editor
 
         if (GUILayout.Button("AddLine"))
         {
+            
             LineController newLine = GameObject.Instantiate<LineController>(levelManager.LinePrefab);
 
             levelManager.AddNewLine(newLine);
+            EditorUtility.SetDirty(target);
         }
     }
 }
