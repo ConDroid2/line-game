@@ -67,4 +67,16 @@ public class LineControllerEditor : Editor
             }
         }
     }
+
+    [DrawGizmo(GizmoType.NonSelected | GizmoType.Pickable)]
+    static void DrawGizmo(LineController line, GizmoType gizmoType)
+    {
+        if (Application.isEditor)
+        {
+            Gizmos.color = Color.white;
+            Vector3 pos = line.CalculateMidpoint();
+            float handleSize = HandleUtility.GetHandleSize(pos) * 0.2f;
+            Gizmos.DrawSphere(line.CalculateMidpoint(), handleSize);
+        }
+    }
 }
