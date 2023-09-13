@@ -75,7 +75,7 @@ public class LineControllerEditor : Editor
         {
             Gizmos.color = Color.white;
             Vector3 pos = line.CalculateMidpoint();
-            float handleSize = HandleUtility.GetHandleSize(pos) * 0.2f;
+            float handleSize = HandleUtility.GetHandleSize(pos) * 0.1f;
             Gizmos.DrawSphere(line.CalculateMidpoint(), handleSize);
         }
     }
