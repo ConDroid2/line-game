@@ -12,4 +12,6 @@ public class Enums : MonoBehaviour
     public enum SlopeType { Horizontal, Vertical, Ascending, Descending, None};
 
     public enum LineType { Static, Shifting, Rotating };
+
+    public enum LinePoints { A, B };
 }

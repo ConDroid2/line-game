@@ -7,7 +7,7 @@ public class LineShifter
 {
     /**Settings**/
     public Vector3 MovementVector;
-    public float TimeToMove;
+    public float TimeToMove = 1f;
 
     /**Controlling Variables**/
     private Vector3 _aStartPoint;
