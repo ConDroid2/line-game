@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class BeatManager : MonoBehaviour
 {
+    [SerializeField] private TrackAsset _trackAsset;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private int _bpm;
     [SerializeField] private float _secondsPerBeat;
@@ -22,7 +23,7 @@ public class BeatManager : MonoBehaviour
     void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        _secondsPerBeat = 60f / (_bpm);
+        SetTrackAsset(_trackAsset);
     }
 
     // Update is called once per frame
@@ -63,5 +64,17 @@ public class BeatManager : MonoBehaviour
         }
 
 
+    }
+
+    public void SetTrackAsset(TrackAsset _newTrack)
+    {
+        _trackAsset = _newTrack;
+
+        // Set up audio source
+        _audioSource.clip = _trackAsset.AudioClip;
+
+        // Set up manager
+        _bpm = _trackAsset.BPM;
+        _secondsPerBeat = 60f / _bpm;
     }
 }

@@ -16,11 +16,14 @@ public class DangerZone : MonoBehaviour
         }
 
         SetUpSprite();
+
+        Debug.Log("Scale: " + transform.localScale);
     }
 
     private void SetUpSprite()
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.enabled = true;
 
         sprite.size = Trigger.size;
     }
