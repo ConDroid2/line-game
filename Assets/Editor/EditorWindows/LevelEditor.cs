@@ -6,6 +6,7 @@ using UnityEditor;
 public class LevelEditor : EditorWindow
 {
     LevelManager _levelManager;
+    Player _player;
     LineController _selectedLine;
 
     bool _isNewLevel;
@@ -85,7 +86,7 @@ public class LevelEditor : EditorWindow
 
     private void Awake()
     {
-        Debug.Log("Editor window awakes");
+        _player = FindObjectOfType<Player>();
     }
 
     private void OnSelectionChange()
@@ -102,7 +103,29 @@ public class LevelEditor : EditorWindow
         }
     }
 
+    private void OnEnable()
+    {
+        EditorApplication.playModeStateChanged -= FindAndSetUpLevel;
+        EditorApplication.playModeStateChanged += FindAndSetUpLevel;
+    }
+
+    private void OnDisable()
+    {
+        EditorApplication.playModeStateChanged -= FindAndSetUpLevel;
+    }
+
     /** UTILITY METHODS **/
+
+    private void FindAndSetUpLevel(PlayModeStateChange state)
+    {
+        if (state == PlayModeStateChange.EnteredEditMode)
+        {
+            _levelManager = FindObjectOfType<LevelManager>();
+            _player = FindObjectOfType<Player>();
+
+            _levelManager.SetPlayer(_player);
+        }
+    }
 
     private void SaveNewLevel()
     {
@@ -143,6 +166,7 @@ public class LevelEditor : EditorWindow
         GameObject levelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(updatedAssetPath);
         _levelManager = Instantiate(levelPrefab).GetComponentInChildren<LevelManager>();
         _levelManager.transform.parent.name = _levelManager.transform.parent.name.Replace("(Clone)", "");
+        _levelManager.SetPlayer(_player);
 
         // Set Class Variables
         _originalName = _levelManager.transform.parent.name;
@@ -156,6 +180,7 @@ public class LevelEditor : EditorWindow
 
         _levelManager = Instantiate(levelPrefab).GetComponentInChildren<LevelManager>();
         _levelManager.transform.parent.name = _levelManager.transform.parent.name.Replace("(Clone)", "");
+        _levelManager.SetPlayer(_player);
         _isNewLevel = true;
     }
 
@@ -179,6 +204,6 @@ public class LevelEditor : EditorWindow
     {
         DangerZone dangerZonePrefab = AssetDatabase.LoadAssetAtPath<DangerZone>("Assets/Prefabs/LevelComponents/DangerZone.prefab");
 
-        DangerZone newZone = Instantiate(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
+        Instantiate(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
     }
 }

@@ -53,7 +53,7 @@ public class BeatManager : MonoBehaviour
 
 
 
-            int newBeat = (Mathf.FloorToInt(SongPositionInBeats) % 4) + 1;
+            int newBeat = (Mathf.FloorToInt(SongPositionInBeats) % _trackAsset.TimeSignature) + 1;
 
             if (_currentBeat != newBeat)
             {
