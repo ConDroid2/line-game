@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3126619937473309836}
+  - component: {fileID: 1829404865011725948}
   - component: {fileID: 3126619937473309832}
   - component: {fileID: 3126619937473309837}
   - component: {fileID: 3126619937473309838}
   - component: {fileID: 3126619937473309839}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PushableBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,6 +36,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1829404865011725948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3126619937473309833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b5a82f08a718c47978f886077ca4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementController: {fileID: 3126619937473309832}
 --- !u!114 &3126619937473309832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,7 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccdd1a994de392448857892a7d9dab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentLine: {fileID: 0}
   _setUpInfoOnAwake: 1
+  DistanceAlongLine: 0
   CheckForIntersectionsDistance: 0.15
   Speed: 0
 --- !u!212 &3126619937473309837

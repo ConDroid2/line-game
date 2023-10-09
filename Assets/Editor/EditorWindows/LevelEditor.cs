@@ -216,7 +216,7 @@ public class LevelEditor : EditorWindow
     {
         LineMovementController pushableBlockPrefab = AssetDatabase.LoadAssetAtPath<LineMovementController>("Assets/Prefabs/LevelComponents/PushableBlock.prefab");
 
-        LineMovementController newBlock = Instantiate(pushableBlockPrefab, _levelManager.transform.parent);
+        LineMovementController newBlock = Instantiate(pushableBlockPrefab, _levelManager.MiscLevelComponentsParent.transform);
 
         newBlock.SetNewLine(_selectedLine, 0f);
     }

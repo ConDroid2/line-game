@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     [Header("Public References")]
     public GameObject LineParent;
     public GameObject DangerZoneParent;
+    public GameObject MiscLevelComponentsParent;
 
     [Header("Likely to be made private")]
     [SerializeField] private Player _player;
