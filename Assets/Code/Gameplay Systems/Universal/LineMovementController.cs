@@ -23,7 +23,7 @@ public class LineMovementController : MonoBehaviour
         }
     }
 
-    public void MoveAlongLine(float horizontalInput, float verticalInput)
+    public bool MoveAlongLine(float horizontalInput, float verticalInput)
     {
         Enums.SlopeType inputSlopeType = Utilities.DetermineSlopeType(horizontalInput, verticalInput);
 
@@ -62,7 +62,10 @@ public class LineMovementController : MonoBehaviour
             DistanceAlongLine = Mathf.Clamp(DistanceAlongLine - (GetModifiedSpeed() * Time.deltaTime), 0f, 1f);
         }
 
+        bool willMove = Vector3.Lerp(_currentLine.A, _currentLine.B, DistanceAlongLine) != transform.position;
         transform.position = Vector3.Lerp(_currentLine.A, _currentLine.B, DistanceAlongLine);
+
+        return willMove;
     }
 
     private float GetModifiedSpeed()

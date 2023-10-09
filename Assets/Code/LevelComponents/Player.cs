@@ -62,12 +62,9 @@ public class Player : MonoBehaviour
             pushable.SetLevelManager(_movementController.LevelManager);
             pushable.RecalculateLineInfo();
 
-            pushable.MoveAlongLine(_horizontalInput, _verticalInput);
-
-            if (pushable.DistanceAlongLine == 1 || pushable.DistanceAlongLine == 0)
-            {
-                playerCanMove = false;
-            }
+            // Don't want to move if the pushable didn't for some reason
+            bool pushableMoved = pushable.MoveAlongLine(_horizontalInput, _verticalInput);
+            playerCanMove = pushableMoved;
         }
 
         return playerCanMove;
