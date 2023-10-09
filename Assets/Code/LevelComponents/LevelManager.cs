@@ -55,7 +55,7 @@ public class LevelManager : MonoBehaviour
     public void SetPlayer(Player player)
     {
         _player = player;
-        _player.LevelManager = this;
+        _player.SetLevelManager(this);
         ResetPlayer();
         _player.OnPlayerDeath += ResetPlayer;
     }

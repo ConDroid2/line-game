@@ -38,7 +38,6 @@ public class LineControllerEditor : Editor
                         Vector3 changeVector = newBPos - controller.B;
                         newAPos = controller.A + changeVector;
                     }
-                    
                 }
 
                 Undo.RecordObject(controller, "Change endpoints");

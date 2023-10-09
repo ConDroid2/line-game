@@ -68,12 +68,17 @@ public class LevelEditor : EditorWindow
                 }
             GUILayout.EndHorizontal();
 
+            // Menu for if we have a selected line
             if(_selectedLine != null)
             {
                 GUILayout.Label("Selected Line", EditorStyles.boldLabel);
                 if(GUILayout.Button("Set as Start"))
                 {
                     _levelManager.StartingLine = _selectedLine;
+                }
+                if(GUILayout.Button("Add Pushable Block"))
+                {
+                    AddPushableBlock();
                 }
                 if(GUILayout.Button("Delete Line"))
                 {
@@ -205,5 +210,14 @@ public class LevelEditor : EditorWindow
         DangerZone dangerZonePrefab = AssetDatabase.LoadAssetAtPath<DangerZone>("Assets/Prefabs/LevelComponents/DangerZone.prefab");
 
         Instantiate(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
+    }
+
+    private void AddPushableBlock()
+    {
+        LineMovementController pushableBlockPrefab = AssetDatabase.LoadAssetAtPath<LineMovementController>("Assets/Prefabs/LevelComponents/PushableBlock.prefab");
+
+        LineMovementController newBlock = Instantiate(pushableBlockPrefab, _levelManager.transform.parent);
+
+        newBlock.SetNewLine(_selectedLine, 0f);
     }
 }
