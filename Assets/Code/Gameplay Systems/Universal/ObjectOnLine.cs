@@ -2,13 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LineMovementController))]
 public class ObjectOnLine : MonoBehaviour
 {
-    public LineMovementController MovementController;
+    public LineController CurrentLine;
+
+    public Enums.ObjectType ObjectType;
+
+    [SerializeField] private bool _fixDistanceOnAwake;
+
+    private float _distanceOnLine;
+    public float DistanceOnLine
+    {
+        get { return _distanceOnLine; }
+        set { SetDistanceOnLine(value); }
+    }
 
     private void Awake()
     {
-        MovementController = GetComponent<LineMovementController>();
+        if (_fixDistanceOnAwake)
+        {
+            Vector3 ab = CurrentLine.B - CurrentLine.A;
+            Vector3 av = transform.position - CurrentLine.A;
+
+            DistanceOnLine = Vector3.Dot(av, ab) / Vector3.Dot(ab, ab);
+        }
+        Debug.Log(gameObject.name + "'s DistanceOnLine: " + DistanceOnLine);
+    }
+
+    private void SetDistanceOnLine(float newDistance)
+    {
+        _distanceOnLine = Mathf.Clamp(newDistance, 0f, 1f);
+        transform.position = Vector3.Lerp(CurrentLine.A, CurrentLine.B, DistanceOnLine);
+    }
+
+    public Vector3 CheckNewPosition(float newDistance)
+    {
+        newDistance = Mathf.Clamp(newDistance, 0f, 1f);
+        return Vector3.Lerp(CurrentLine.A, CurrentLine.B, newDistance);
+    }
+
+    public void SetLine(LineController newLine, float distanceOnLine = 0)
+    {
+        CurrentLine = newLine;
+        SetDistanceOnLine(distanceOnLine);
     }
 }

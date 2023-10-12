@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private ContactFilter2D _filter;
     [SerializeField] private float _pushableDistanceCheck;
-    [SerializeField] private LineMovementController _pushable;
 
     public System.Action OnPlayerDeath;
 
