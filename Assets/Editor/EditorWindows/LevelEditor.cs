@@ -134,6 +134,12 @@ public class LevelEditor : EditorWindow
 
     private void SaveNewLevel()
     {
+        if (Application.isPlaying)
+        {
+            EditorUtility.DisplayDialog("Can't Save", "You can't save a level in Play Mode, please exit Play Mode and try again.", "Ok");
+            return;
+        }
+
         GameObject root = _levelManager.transform.parent.gameObject;
 
         // By default, we are good to save level
