@@ -11,8 +11,7 @@ public class Player : MonoBehaviour
     float _horizontalInput = 0f;
     float _verticalInput = 0f;
 
-    [SerializeField] private ContactFilter2D _filter;
-    [SerializeField] private float _pushableDistanceCheck;
+    Vector2 _inputSlope = Vector2.zero;
 
     public System.Action OnPlayerDeath;
 
@@ -30,43 +29,14 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow)) _verticalInput = 1f;
         else if (Input.GetKey(KeyCode.DownArrow)) _verticalInput = -1f;
 
+        _inputSlope = new Vector2(_horizontalInput, _verticalInput);
+
         if (_horizontalInput != 0 || _verticalInput != 0)
         {
-            // Push moveable things and check if play can move
-            bool canMove = HandlePushables();
 
             // Move player
-            if (canMove)
-            {
-                _movementController.MoveAlongLine(_horizontalInput, _verticalInput);
-            }
+            _movementController.MoveAlongLine(_inputSlope);
         }
-    }
-
-
-    private bool HandlePushables()
-    {
-        bool playerCanMove = true;
-        RaycastHit2D[] hits = new RaycastHit2D[2];
-
-        Vector3 raycastDistance = new Vector3(_horizontalInput, _verticalInput).normalized * _pushableDistanceCheck;
-
-        int numberOfHits = Physics2D.Linecast(transform.position, transform.position + raycastDistance, _filter, hits);
-
-        for (int i = 0; i < numberOfHits; i++)
-        {
-            LineMovementController pushable = hits[i].collider.gameObject.GetComponent<LineMovementController>();
-
-            pushable.Speed = _movementController.Speed;
-            pushable.SetLevelManager(_movementController.LevelManager);
-            pushable.RecalculateLineInfo();
-
-            // Don't want to move if the pushable didn't for some reason
-            bool pushableMoved = pushable.MoveAlongLine(_horizontalInput, _verticalInput);
-            playerCanMove = pushableMoved;
-        }
-
-        return playerCanMove;
     }
 
     public void SetLevelManager(LevelManager newLevelManager)
@@ -85,4 +55,10 @@ public class Player : MonoBehaviour
         Debug.Log("Player has died");
         OnPlayerDeath.Invoke();
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(_inputSlope.x, _inputSlope.y, 0f).normalized);
+    } 
 }

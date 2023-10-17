@@ -17,4 +17,12 @@ public static class ExtensionMethods
     {
         return (v / size).Round() * size;
     }
+
+    public static Vector2 AbsoluteValue(this Vector2 v)
+    {
+        v.x = Mathf.Abs(v.x);
+        v.y = Mathf.Abs(v.y);
+
+        return v;
+    }
 }

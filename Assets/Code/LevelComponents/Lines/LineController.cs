@@ -91,7 +91,10 @@ public class LineController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(A, B);
+        if (Application.isPlaying == false)
+        {
+            Gizmos.DrawLine(A, B);
+        }
     }
 
 

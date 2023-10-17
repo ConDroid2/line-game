@@ -33,8 +33,6 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        Debug.Log(Lines.Count);
-
         foreach (LineController line in Lines)
         {
             line.ConfigureInformation();

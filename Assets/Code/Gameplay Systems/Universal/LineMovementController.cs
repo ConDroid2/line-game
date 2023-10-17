@@ -9,17 +9,23 @@ public class LineMovementController : MonoBehaviour
     public ObjectOnLine OnLineController;
     public LevelManager LevelManager { get; private set; }
 
-    // Controlling Variables
-    [SerializeField] bool _setUpInfoOnAwake = false;
-    // public float DistanceAlongLine;
     public float LineDirectionModifier { get; private set; } // Makes it so we can move correctly regardless of slope sign
     public float CheckForIntersectionsDistance; // The distance we check for intersections
     public float Speed;
+    [SerializeField] private bool _canPush;
+    [SerializeField] private ContactFilter2D _filter;
+    [SerializeField] private float _pushableDistanceCheck;
 
-    public bool MoveAlongLine(float horizontalInput, float verticalInput)
+    // privates
+    private float _angleBetweenInputAndSlope;
+
+    /*
+     * @author Connor Davis
+     * @description Attempt to move along the line. Return false if didn't move, true if did
+     */
+    public bool MoveAlongLine(Vector2 inputVector)
     {
         LineController currentLine = OnLineController.CurrentLine;
-        Enums.SlopeType inputSlopeType = Utilities.DetermineSlopeType(horizontalInput, verticalInput);
 
         // Check if there are any intersection points in range   
         List<IntersectionData> intersections = LevelManager.GetIntersectionPointsAroundPos(currentLine, transform.position, CheckForIntersectionsDistance);
@@ -27,7 +33,7 @@ public class LineMovementController : MonoBehaviour
         foreach (IntersectionData intersection in intersections)
         {
             // Check if the input would allow movment along the intersecting line
-            bool canMoveToNewLine = inputSlopeType == intersection.Line.SlopeType;
+            bool canMoveToNewLine = Vector3.Angle(inputVector.normalized.AbsoluteValue(), intersection.Line.Slope.AbsoluteValue()) < 20f;
 
             // Set new line using Intersection Data
             if (canMoveToNewLine)
@@ -39,28 +45,30 @@ public class LineMovementController : MonoBehaviour
 
         float newDistanceOnLine = OnLineController.DistanceOnLine;
 
+        _angleBetweenInputAndSlope = Vector3.Angle(inputVector.normalized, currentLine.Slope * LineDirectionModifier);
+
+
         // Actually move the object along the line
         // If holding in the positive direction
-        if ((currentLine.SlopeType == Enums.SlopeType.Horizontal && horizontalInput == 1) ||
-            (currentLine.SlopeType == Enums.SlopeType.Vertical && verticalInput == 1) ||
-            (currentLine.SlopeType == Enums.SlopeType.Ascending && horizontalInput == 1 && verticalInput == 1) ||
-            (currentLine.SlopeType == Enums.SlopeType.Descending && horizontalInput == 1 && verticalInput == -1))
+        if (_angleBetweenInputAndSlope < 90f)
         {
-           
             newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine + (GetModifiedSpeed() * Time.deltaTime), 0f, 1f);
         }
         // If holding int he negative direction
-        else if ((currentLine.SlopeType == Enums.SlopeType.Horizontal && horizontalInput == -1) ||
-                 (currentLine.SlopeType == Enums.SlopeType.Vertical && verticalInput == -1) ||
-                 (currentLine.SlopeType == Enums.SlopeType.Ascending && horizontalInput == -1 && verticalInput == -1) ||
-                 (currentLine.SlopeType == Enums.SlopeType.Descending && horizontalInput == -1 && verticalInput == 1))
+        else if (_angleBetweenInputAndSlope > 90f)
         {
             newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine - (GetModifiedSpeed() * Time.deltaTime), 0f, 1f);
         }
 
+        // Check what our new position will be
         Vector3 attemptedNewPosition = OnLineController.CheckNewPosition(newDistanceOnLine);
 
         bool willMove = attemptedNewPosition != transform.position;
+
+        if (_canPush)
+        {
+            willMove &= HandleCollisions(inputVector);
+        }
 
         if (willMove)
         {
@@ -68,13 +76,6 @@ public class LineMovementController : MonoBehaviour
         }
 
         return willMove;
-    }
-
-    public bool HandleCollisions()
-    {
-        bool objectCanMove = true;
-
-        return objectCanMove;
     }
 
     private float GetModifiedSpeed()
@@ -87,6 +88,7 @@ public class LineMovementController : MonoBehaviour
     // Public Setters
     public void SetNewLine(LineController newLine, float distanceOnLine = 0)
     {
+        // Feel like the direction modifier should be on the line itself, not the line movement controller
         // Figure out Line Direction Modifier
         if (newLine.SlopeType == Enums.SlopeType.Horizontal)
         {
@@ -104,6 +106,37 @@ public class LineMovementController : MonoBehaviour
         OnLineController.SetLine(newLine, distanceOnLine);
     }
 
+    private bool HandleCollisions(Vector2 direction)
+    {
+        bool canMove = true;
+        RaycastHit2D[] hits = new RaycastHit2D[2];
+
+        Vector3 raycastDistance = (Vector3)direction.normalized * _pushableDistanceCheck;
+
+        int numberOfHits = Physics2D.Linecast(transform.position, transform.position + raycastDistance, _filter, hits);
+
+        for (int i = 0; i < numberOfHits; i++)
+        {
+            LineMovementController pushable = hits[i].collider.gameObject.GetComponent<LineMovementController>();
+
+            // Ignore if hit self
+            if(pushable == this)
+            {
+                continue;
+            }
+
+            pushable.Speed = Speed;
+            pushable.SetLevelManager(LevelManager);
+            pushable.RecalculateLineInfo();
+
+            // Try to move the pushable
+            bool pushableMoved = pushable.MoveAlongLine(direction);
+            canMove = pushableMoved;
+        }
+
+        return canMove;
+    }
+
     public void RecalculateLineInfo()
     {
         SetNewLine(OnLineController.CurrentLine, OnLineController.DistanceOnLine);
@@ -112,5 +145,17 @@ public class LineMovementController : MonoBehaviour
     public void SetLevelManager(LevelManager newLevelManager)
     {
         LevelManager = newLevelManager;
+    }
+
+    private void OnGUI()
+    {
+        if (gameObject.name == "Player")
+        {
+            GUI.skin.label.fontSize = 24;
+            GUILayout.Label("Current Line Slope: " + OnLineController.CurrentLine.Slope);
+            GUILayout.Label("Angle Between Input and Slope: " + _angleBetweenInputAndSlope);
+        }
+
+
     }
 }

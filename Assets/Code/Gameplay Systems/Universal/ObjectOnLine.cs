@@ -26,7 +26,6 @@ public class ObjectOnLine : MonoBehaviour
 
             DistanceOnLine = Vector3.Dot(av, ab) / Vector3.Dot(ab, ab);
         }
-        Debug.Log(gameObject.name + "'s DistanceOnLine: " + DistanceOnLine);
     }
 
     private void SetDistanceOnLine(float newDistance)
