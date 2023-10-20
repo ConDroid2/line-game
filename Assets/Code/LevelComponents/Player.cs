@@ -8,30 +8,26 @@ public class Player : MonoBehaviour
     [SerializeField] private LineMovementController _movementController;
     
     // Private variables
-    float _horizontalInput = 0f;
-    float _verticalInput = 0f;
+    BaseControls _baseControls;
 
     Vector2 _inputSlope = Vector2.zero;
 
     public System.Action OnPlayerDeath;
 
+    private void Awake()
+    {
+        _baseControls = new BaseControls();
+        _baseControls.PlayerMap.Enable();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        // Get current horizontal and vertical input
-        _horizontalInput = 0f;
-        _verticalInput = 0f;
 
-        if (Input.GetKey(KeyCode.RightArrow)) _horizontalInput = 1f;
-        else if (Input.GetKey(KeyCode.LeftArrow)) _horizontalInput = -1f;
+        _inputSlope = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
 
-        if (Input.GetKey(KeyCode.UpArrow)) _verticalInput = 1f;
-        else if (Input.GetKey(KeyCode.DownArrow)) _verticalInput = -1f;
-
-        _inputSlope = new Vector2(_horizontalInput, _verticalInput);
-
-        if (_horizontalInput != 0 || _verticalInput != 0)
+        if (_inputSlope != Vector2.zero)
         {
 
             // Move player
