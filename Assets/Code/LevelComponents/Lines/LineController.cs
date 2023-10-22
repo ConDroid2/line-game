@@ -28,7 +28,7 @@ public class LineController : MonoBehaviour
         {
             foreach (LineShifter lineShifter in LineShifters)
             {
-                lineShifter.Move(Time.deltaTime);
+                lineShifter.Shift(Time.deltaTime);
             }
         }
     }
