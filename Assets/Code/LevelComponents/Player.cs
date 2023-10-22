@@ -27,12 +27,8 @@ public class Player : MonoBehaviour
 
         _inputSlope = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
 
-        if (_inputSlope != Vector2.zero)
-        {
-
-            // Move player
-            _movementController.MoveAlongLine(_inputSlope);
-        }
+        // Move player
+        _movementController.MoveAlongLine(_inputSlope);
     }
 
     public void SetLevelManager(LevelManager newLevelManager)

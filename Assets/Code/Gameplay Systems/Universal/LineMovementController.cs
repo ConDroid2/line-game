@@ -27,6 +27,15 @@ public class LineMovementController : MonoBehaviour
     {
         LineController currentLine = OnLineController.CurrentLine;
 
+        // If we get sent a zero vector fory trying to move, set position as same
+        if (inputVector == Vector2.zero)
+        {
+            Debug.Log("Staying still");
+            OnLineController.DistanceOnLine = OnLineController.DistanceOnLine;
+
+            return false;
+        }
+
         // Check if there are any intersection points in range   
         List<IntersectionData> intersections = LevelManager.GetIntersectionPointsAroundPos(currentLine, transform.position, CheckForIntersectionsDistance);
 
