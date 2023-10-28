@@ -6,12 +6,11 @@ public class LineMovementController : MonoBehaviour
 {
     // External References
     // public LineController _currentLine;
-    public ObjectOnLine OnLineController;
+    public OnLineController OnLineController;
     public LevelManager LevelManager { get; private set; }
 
     public float LineDirectionModifier { get; private set; } // Makes it so we can move correctly regardless of slope sign
     public float CheckForIntersectionsDistance; // The distance we check for intersections
-    public float Speed;
     [SerializeField] private bool _canPush;
     [SerializeField] private ContactFilter2D _filter;
     [SerializeField] private float _pushableDistanceCheck;
@@ -23,7 +22,7 @@ public class LineMovementController : MonoBehaviour
      * @author Connor Davis
      * @description Attempt to move along the line. Return false if didn't move, true if did
      */
-    public bool MoveAlongLine(Vector2 inputVector)
+    public bool MoveAlongLine(Vector2 inputVector, float distanceToMove)
     {
         LineController currentLine = OnLineController.CurrentLine;
 
@@ -53,7 +52,7 @@ public class LineMovementController : MonoBehaviour
         }
 
         float newDistanceOnLine = OnLineController.DistanceOnLine;
-
+        float positionDelta = distanceToMove * LineDirectionModifier;
         _angleBetweenInputAndSlope = Vector3.Angle(inputVector.normalized, currentLine.Slope * LineDirectionModifier);
 
 
@@ -61,12 +60,12 @@ public class LineMovementController : MonoBehaviour
         // If holding in the positive direction
         if (_angleBetweenInputAndSlope < 90f)
         {
-            newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine + (GetModifiedSpeed() * Time.deltaTime), 0f, 1f);
+            newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine + positionDelta, 0f, 1f);
         }
         // If holding int he negative direction
         else if (_angleBetweenInputAndSlope > 90f)
         {
-            newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine - (GetModifiedSpeed() * Time.deltaTime), 0f, 1f);
+            newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine - positionDelta, 0f, 1f);
         }
 
         // Check what our new position will be
@@ -76,7 +75,7 @@ public class LineMovementController : MonoBehaviour
 
         if (_canPush)
         {
-            willMove &= HandleCollisions(inputVector);
+            willMove &= HandleCollisions(inputVector, distanceToMove);
         }
 
         if (willMove)
@@ -85,12 +84,6 @@ public class LineMovementController : MonoBehaviour
         }
 
         return willMove;
-    }
-
-    private float GetModifiedSpeed()
-    {
-        // I think this really only needs to be calculated once when line switcheds
-        return (Speed / OnLineController.CurrentLine.Length) * LineDirectionModifier;
     }
 
 
@@ -115,7 +108,7 @@ public class LineMovementController : MonoBehaviour
         OnLineController.SetLine(newLine, distanceOnLine);
     }
 
-    private bool HandleCollisions(Vector2 direction)
+    private bool HandleCollisions(Vector2 direction, float distanceToMove)
     {
         bool canMove = true;
         RaycastHit2D[] hits = new RaycastHit2D[2];
@@ -134,12 +127,11 @@ public class LineMovementController : MonoBehaviour
                 continue;
             }
 
-            pushable.Speed = Speed;
             pushable.SetLevelManager(LevelManager);
             pushable.RecalculateLineInfo();
 
             // Try to move the pushable
-            bool pushableMoved = pushable.MoveAlongLine(direction);
+            bool pushableMoved = pushable.MoveAlongLine(direction, distanceToMove);
             canMove = pushableMoved;
         }
 

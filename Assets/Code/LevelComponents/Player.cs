@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] private LineMovementController _movementController;
+
+    public float Speed;
+    private bool _allowInput = true;
     
     // Private variables
     BaseControls _baseControls;
@@ -25,10 +28,16 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        _inputSlope = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
+        if (_allowInput)
+        {
+            _inputSlope = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
 
-        // Move player
-        _movementController.MoveAlongLine(_inputSlope);
+            float modifiedSpeed = Speed / _movementController.OnLineController.CurrentLine.Length;
+            float distanceThisFrame = modifiedSpeed * Time.deltaTime;
+
+            // Move player
+            _movementController.MoveAlongLine(_inputSlope, distanceThisFrame);
+        }
     }
 
     public void SetLevelManager(LevelManager newLevelManager)

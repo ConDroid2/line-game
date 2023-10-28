@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectOnLine : MonoBehaviour
+public class OnLineController : MonoBehaviour
 {
     public LineController CurrentLine;
 
