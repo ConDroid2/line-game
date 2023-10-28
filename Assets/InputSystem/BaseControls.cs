@@ -32,7 +32,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""d58270cc-77d1-4764-9051-9f8d81b13ff1"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }
@@ -160,6 +160,34 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TestMap"",
+            ""id"": ""c98d2327-78fe-457b-8284-2eac118f7720"",
+            ""actions"": [
+                {
+                    ""name"": ""Vector2"",
+                    ""type"": ""Value"",
+                    ""id"": ""97b62e99-a235-4af0-a2f7-7f354e70173c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a7b0cd6c-6fc0-4fe2-a99e-c60a2bb4e334"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": """",
+                    ""action"": ""Vector2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -167,6 +195,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         // PlayerMap
         m_PlayerMap = asset.FindActionMap("PlayerMap", throwIfNotFound: true);
         m_PlayerMap_Move = m_PlayerMap.FindAction("Move", throwIfNotFound: true);
+        // TestMap
+        m_TestMap = asset.FindActionMap("TestMap", throwIfNotFound: true);
+        m_TestMap_Vector2 = m_TestMap.FindAction("Vector2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -255,8 +286,45 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         }
     }
     public PlayerMapActions @PlayerMap => new PlayerMapActions(this);
+
+    // TestMap
+    private readonly InputActionMap m_TestMap;
+    private ITestMapActions m_TestMapActionsCallbackInterface;
+    private readonly InputAction m_TestMap_Vector2;
+    public struct TestMapActions
+    {
+        private @BaseControls m_Wrapper;
+        public TestMapActions(@BaseControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Vector2 => m_Wrapper.m_TestMap_Vector2;
+        public InputActionMap Get() { return m_Wrapper.m_TestMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TestMapActions set) { return set.Get(); }
+        public void SetCallbacks(ITestMapActions instance)
+        {
+            if (m_Wrapper.m_TestMapActionsCallbackInterface != null)
+            {
+                @Vector2.started -= m_Wrapper.m_TestMapActionsCallbackInterface.OnVector2;
+                @Vector2.performed -= m_Wrapper.m_TestMapActionsCallbackInterface.OnVector2;
+                @Vector2.canceled -= m_Wrapper.m_TestMapActionsCallbackInterface.OnVector2;
+            }
+            m_Wrapper.m_TestMapActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Vector2.started += instance.OnVector2;
+                @Vector2.performed += instance.OnVector2;
+                @Vector2.canceled += instance.OnVector2;
+            }
+        }
+    }
+    public TestMapActions @TestMap => new TestMapActions(this);
     public interface IPlayerMapActions
     {
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface ITestMapActions
+    {
+        void OnVector2(InputAction.CallbackContext context);
     }
 }

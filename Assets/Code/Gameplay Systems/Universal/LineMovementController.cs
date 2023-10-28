@@ -26,30 +26,15 @@ public class LineMovementController : MonoBehaviour
     {
         LineController currentLine = OnLineController.CurrentLine;
 
-        // If we get sent a zero vector fory trying to move, set position as same
+        // If we get sent a zero vector for trying to move, set position as same
         if (inputVector == Vector2.zero)
         {
-            Debug.Log("Staying still");
             OnLineController.DistanceOnLine = OnLineController.DistanceOnLine;
 
             return false;
         }
 
-        // Check if there are any intersection points in range   
-        List<IntersectionData> intersections = LevelManager.GetIntersectionPointsAroundPos(currentLine, transform.position, CheckForIntersectionsDistance);
-
-        foreach (IntersectionData intersection in intersections)
-        {
-            // Check if the input would allow movment along the intersecting line
-            bool canMoveToNewLine = Vector3.Angle(inputVector.normalized.AbsoluteValue(), intersection.Line.Slope.AbsoluteValue()) < 20f;
-
-            // Set new line using Intersection Data
-            if (canMoveToNewLine)
-            {
-                SetNewLine(intersection.Line, intersection.DistanceAlongLine);
-                break;
-            }
-        }
+        HandleSwappingLines(inputVector, currentLine);
 
         float newDistanceOnLine = OnLineController.DistanceOnLine;
         float positionDelta = distanceToMove * LineDirectionModifier;
@@ -87,7 +72,10 @@ public class LineMovementController : MonoBehaviour
     }
 
 
-    // Public Setters
+    /**
+     * @author Connor Davis
+     * @description Set a new line and calculate the LineDirectionModifierFor It
+     */
     public void SetNewLine(LineController newLine, float distanceOnLine = 0)
     {
         // Feel like the direction modifier should be on the line itself, not the line movement controller
@@ -106,6 +94,31 @@ public class LineMovementController : MonoBehaviour
         }
 
         OnLineController.SetLine(newLine, distanceOnLine);
+    }
+
+    /**
+     * @author Connor Davis
+     * @description Check if we should be moving to a new line based on input, then move to it
+     */
+    private void HandleSwappingLines(Vector2 inputVector, LineController currentLine)
+    {
+        // Check if there are any intersection points in range   
+        List<IntersectionData> intersections = LevelManager.GetIntersectionPointsAroundPos(currentLine, transform.position, CheckForIntersectionsDistance);
+
+        foreach (IntersectionData intersection in intersections)
+        {
+            // Check if the input would allow movment along the intersecting line
+            float toleranceAngle = 20f;
+            bool canMoveToNewLine = Vector3.Angle(inputVector.normalized, intersection.Line.Slope) < toleranceAngle;
+            canMoveToNewLine |= Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1) < toleranceAngle;
+
+            // Set new line using Intersection Data
+            if (canMoveToNewLine)
+            {
+                SetNewLine(intersection.Line, intersection.DistanceAlongLine);
+                break;
+            }
+        }
     }
 
     private bool HandleCollisions(Vector2 direction, float distanceToMove)

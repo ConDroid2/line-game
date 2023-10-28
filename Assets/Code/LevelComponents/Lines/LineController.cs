@@ -11,6 +11,8 @@ public class LineController : MonoBehaviour
     public Enums.SlopeType SlopeType { get; private set; }
     public Enums.LineType LineType = Enums.LineType.Static;
 
+    public float DirectionModifier = 1;
+
 
     public Rectangle Area { get; private set; }
 
@@ -48,7 +50,9 @@ public class LineController : MonoBehaviour
                 lineShifter.SetUp(this);
             }
         }
-        // Area = CreateRectangle();
+
+        // Caluclate Direction Modifier
+        CalculateDirectionModifier();
     }
 
     private Vector2 CalculateSlope()
@@ -73,21 +77,21 @@ public class LineController : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    //private Rectangle CreateRectangle()
-    //{
-    //    Vector2 normal = Vector2.Perpendicular(Slope).normalized;
-
-    //    float distance = 1f;
-    //    Vector2 pointAPos = _pointA.transform.position;
-    //    Vector2 pointBPos = _pointB.transform.position;
-
-    //    Vector2 a = pointAPos + (normal * distance);
-    //    Vector2 b = pointAPos + (normal * distance * -1);
-    //    Vector2 c = pointBPos + (normal * distance * -1);
-    //    Vector2 d = pointBPos + (normal * distance);
-
-    //    return new Rectangle(a, b, c, d);
-    //}
+    private void CalculateDirectionModifier()
+    {
+        if (SlopeType == Enums.SlopeType.Horizontal)
+        {
+            DirectionModifier = Slope.x;
+        }
+        else if (SlopeType == Enums.SlopeType.Vertical)
+        {
+            DirectionModifier = Slope.y;
+        }
+        else if (SlopeType == Enums.SlopeType.Ascending || SlopeType == Enums.SlopeType.Descending)
+        {
+            DirectionModifier = Slope.x > 0 ? 1 : -1; // Doesn't matter if we use x or y here since they should be the same
+        }
+    }
 
     private void OnDrawGizmos()
     {

@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         if (_allowInput)
         {
             _inputSlope = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
+            // Debug.Log(_inputSlope);
 
             float modifiedSpeed = Speed / _movementController.OnLineController.CurrentLine.Length;
             float distanceThisFrame = modifiedSpeed * Time.deltaTime;
@@ -60,6 +61,6 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(_inputSlope.x, _inputSlope.y, 0f).normalized);
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(_inputSlope.x, _inputSlope.y, 0f));
     } 
 }
