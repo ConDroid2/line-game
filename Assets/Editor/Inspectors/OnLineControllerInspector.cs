@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(OnLineController))]
-public class ObjectOnLineInspeector : Editor
+public class OnLineControllerInspector : Editor
 {
     public override void OnInspectorGUI()
     {
