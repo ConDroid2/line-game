@@ -18,5 +18,7 @@ public class ObjectOnLineInspeector : Editor
         {
             objectOnLine.DistanceOnLine = newDistance;
         }
+
+        
     }
 }

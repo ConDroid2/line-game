@@ -15,7 +15,7 @@ public class InputTesting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 newPos = controls.TestMap.Vector2.ReadValue<Vector2>();
+        Vector2 newPos = controls.PlayerMap.Move.ReadValue<Vector2>();
         transform.position = newPos;
     }
 }

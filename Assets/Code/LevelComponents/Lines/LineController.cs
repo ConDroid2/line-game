@@ -23,7 +23,6 @@ public class LineController : MonoBehaviour
     public LineShifter[] LineShifters = new LineShifter[1];
 
 
-
     private void Update()
     {
         if(LineShifters.Length > 0)

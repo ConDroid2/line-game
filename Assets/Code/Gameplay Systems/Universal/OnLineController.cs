@@ -32,6 +32,13 @@ public class OnLineController : MonoBehaviour
     {
         _distanceOnLine = Mathf.Clamp(newDistance, 0f, 1f);
         transform.position = Vector3.Lerp(CurrentLine.A, CurrentLine.B, DistanceOnLine);
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            transform.position = transform.position.Round(0.5f);
+        }
+#endif
     }
 
     public Vector3 CheckNewPosition(float newDistance)

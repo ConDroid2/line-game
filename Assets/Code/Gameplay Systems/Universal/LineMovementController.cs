@@ -17,6 +17,15 @@ public class LineMovementController : MonoBehaviour
 
     // privates
     private float _angleBetweenInputAndSlope;
+    private Collider2D _collider;
+
+    private void Awake()
+    {
+        if (_canPush)
+        {
+            _collider = GetComponent<Collider2D>();
+        }
+    }
 
     /*
      * @author Connor Davis
@@ -37,8 +46,8 @@ public class LineMovementController : MonoBehaviour
         HandleSwappingLines(inputVector, currentLine);
 
         float newDistanceOnLine = OnLineController.DistanceOnLine;
-        float positionDelta = distanceToMove * LineDirectionModifier;
-        _angleBetweenInputAndSlope = Vector3.Angle(inputVector.normalized, currentLine.Slope * LineDirectionModifier);
+        float positionDelta = distanceToMove * currentLine.DirectionModifier;
+        _angleBetweenInputAndSlope = Vector3.Angle(inputVector.normalized, currentLine.Slope * currentLine.DirectionModifier);
 
 
         // Actually move the object along the line
@@ -56,13 +65,16 @@ public class LineMovementController : MonoBehaviour
         // Check what our new position will be
         Vector3 attemptedNewPosition = OnLineController.CheckNewPosition(newDistanceOnLine);
 
+        // Keep of track of if we are actually moving
         bool willMove = attemptedNewPosition != transform.position;
 
         if (_canPush)
         {
+            // Handle colslisions if need to
             willMove &= HandleCollisions(inputVector, distanceToMove);
         }
 
+        // If we are moving/can move, do it and return that
         if (willMove)
         {
             OnLineController.DistanceOnLine = newDistanceOnLine;
@@ -74,25 +86,10 @@ public class LineMovementController : MonoBehaviour
 
     /**
      * @author Connor Davis
-     * @description Set a new line and calculate the LineDirectionModifierFor It
+     * @description Set a new line
      */
     public void SetNewLine(LineController newLine, float distanceOnLine = 0)
     {
-        // Feel like the direction modifier should be on the line itself, not the line movement controller
-        // Figure out Line Direction Modifier
-        if (newLine.SlopeType == Enums.SlopeType.Horizontal)
-        {
-            LineDirectionModifier = newLine.Slope.x;
-        }
-        else if (newLine.SlopeType == Enums.SlopeType.Vertical)
-        {
-            LineDirectionModifier = newLine.Slope.y;
-        }
-        else if (newLine.SlopeType == Enums.SlopeType.Ascending || newLine.SlopeType == Enums.SlopeType.Descending)
-        {
-            LineDirectionModifier = newLine.Slope.x > 0 ? 1 : -1; // Doesn't matter if we use x or y here since they should be the same
-        }
-
         OnLineController.SetLine(newLine, distanceOnLine);
     }
 
@@ -126,9 +123,7 @@ public class LineMovementController : MonoBehaviour
         bool canMove = true;
         RaycastHit2D[] hits = new RaycastHit2D[2];
 
-        Vector3 raycastDistance = (Vector3)direction.normalized * _pushableDistanceCheck;
-
-        int numberOfHits = Physics2D.Linecast(transform.position, transform.position + raycastDistance, _filter, hits);
+        int numberOfHits = _collider.Cast(direction, _filter, hits, _pushableDistanceCheck);
 
         for (int i = 0; i < numberOfHits; i++)
         {
