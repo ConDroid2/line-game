@@ -71,7 +71,9 @@ public class LineMovementController : MonoBehaviour
         if (_canPush)
         {
             // Handle colslisions if need to
-            willMove &= HandleCollisions(inputVector, distanceToMove);
+            // Should be the movement vector, not the input vector because they could be different
+            Vector3 movementVector = (attemptedNewPosition - transform.position).normalized;
+            willMove &= HandleCollisions(movementVector, distanceToMove);
         }
 
         // If we are moving/can move, do it and return that
@@ -127,20 +129,36 @@ public class LineMovementController : MonoBehaviour
 
         for (int i = 0; i < numberOfHits; i++)
         {
-            LineMovementController pushable = hits[i].collider.gameObject.GetComponent<LineMovementController>();
+            hits[i].collider.gameObject.TryGetComponent(out LineMovementController pushable);
+            hits[i].collider.gameObject.TryGetComponent(out OnLineController onLineController);
 
-            // Ignore if hit self
-            if(pushable == this)
+            if(onLineController == null)
+            {
+                continue;
+            }
+            else if(direction != (Vector2)(onLineController.transform.position - transform.position).normalized)
             {
                 continue;
             }
 
-            pushable.SetLevelManager(LevelManager);
-            pushable.RecalculateLineInfo();
+            if (pushable != null)
+            {
 
-            // Try to move the pushable
-            bool pushableMoved = pushable.MoveAlongLine(direction, distanceToMove);
-            canMove = pushableMoved;
+                pushable.SetLevelManager(LevelManager);
+                pushable.RecalculateLineInfo();
+
+                // Try to move the pushable
+                bool pushableMoved = pushable.MoveAlongLine(direction, distanceToMove);
+                canMove = pushableMoved;
+            }
+            if (onLineController.ObjectType == Enums.ObjectType.UniversalObstacle)
+            {
+                canMove = false;
+            }
+            else if (onLineController.ObjectType == Enums.ObjectType.BlockObstacle && OnLineController.ObjectType != Enums.ObjectType.Player)
+            {
+                canMove = false; 
+            }
         }
 
         return canMove;

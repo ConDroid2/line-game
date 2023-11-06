@@ -54,7 +54,7 @@ public class LineController : MonoBehaviour
         CalculateDirectionModifier();
     }
 
-    private Vector2 CalculateSlope()
+    public Vector2 CalculateSlope()
     {
         float slopeX = B.x - A.x;
         float slopeY = B.y - A.y;

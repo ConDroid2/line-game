@@ -76,9 +76,9 @@ public class LevelEditor : EditorWindow
                 {
                     _levelManager.StartingLine = _selectedLine;
                 }
-                if(GUILayout.Button("Add Pushable Block"))
+                if(GUILayout.Button("Add Object to Line"))
                 {
-                    AddPushableBlock();
+                    AddObjectToLine();
                 }
                 if(GUILayout.Button("Delete Line"))
                 {
@@ -203,11 +203,12 @@ public class LevelEditor : EditorWindow
         }
     }
 
+    /** ADD TO LEVEL**/
     private void SpawnLine()
     {
         LineController linePrefab = AssetDatabase.LoadAssetAtPath<LineController>("Assets/Prefabs/LevelComponents/Line.prefab");
 
-        LineController newLine = Instantiate(linePrefab, _levelManager.LineParent.transform);
+        LineController newLine = (LineController)PrefabUtility.InstantiatePrefab(linePrefab, _levelManager.LineParent.transform);
         _levelManager.AddNewLine(newLine);
     }
 
@@ -215,15 +216,22 @@ public class LevelEditor : EditorWindow
     {
         DangerZone dangerZonePrefab = AssetDatabase.LoadAssetAtPath<DangerZone>("Assets/Prefabs/LevelComponents/DangerZone.prefab");
 
-        Instantiate(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
+        // Instantiate(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
+        PrefabUtility.InstantiatePrefab(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
     }
 
-    private void AddPushableBlock()
+
+    private void AddObjectToLine()
     {
-        LineMovementController pushableBlockPrefab = AssetDatabase.LoadAssetAtPath<LineMovementController>("Assets/Prefabs/LevelComponents/PushableBlock.prefab");
+        string fullAssetPath = EditorUtility.OpenFilePanel("Select type of object", "Assets/Prefabs/LevelComponents/OnLineComponents", "prefab");
 
-        LineMovementController newBlock = Instantiate(pushableBlockPrefab, _levelManager.MiscLevelComponentsParent.transform);
+        // Trim the path up untill "Asset"
+        int beginningOfAssetPath = fullAssetPath.IndexOf("Asset");
+        string updatedAssetPath = fullAssetPath.Substring(beginningOfAssetPath);
 
-        newBlock.SetNewLine(_selectedLine, 0f);
+        OnLineController prefab = AssetDatabase.LoadAssetAtPath<OnLineController>(updatedAssetPath);
+
+        OnLineController newObject = (OnLineController)PrefabUtility.InstantiatePrefab(prefab, _levelManager.MiscLevelComponentsParent.transform);
+        newObject.SetLine(_selectedLine, 0f);
     }
 }

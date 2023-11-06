@@ -32,6 +32,8 @@ public class OnLineController : MonoBehaviour
     {
         _distanceOnLine = Mathf.Clamp(newDistance, 0f, 1f);
         transform.position = Vector3.Lerp(CurrentLine.A, CurrentLine.B, DistanceOnLine);
+        // Not sure how I feel about this, but it works for now
+        transform.right = CurrentLine.CalculateSlope();
 
 #if UNITY_EDITOR
         if (!Application.isPlaying)
