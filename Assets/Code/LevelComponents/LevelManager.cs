@@ -61,7 +61,6 @@ public class LevelManager : MonoBehaviour
 
     public void ResetPlayer()
     {
-        Debug.Log("Setting player position");
         float startingPos = _startingPoint == Enums.LinePoints.A ? 0 : 1;
         _player.SetNewLine(StartingLine, startingPos);
     }

@@ -78,6 +78,9 @@ public class DangerZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<Player>().GetKilled();
+        if(collision.gameObject.TryGetComponent<Player>(out Player player))
+        {
+            player.GetKilled();
+        }
     }
 }

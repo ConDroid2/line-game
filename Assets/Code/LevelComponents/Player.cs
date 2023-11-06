@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
     public void GetKilled()
     {
         // Need to send event so level manager can spawn properly
-        Debug.Log("Player has died");
         OnPlayerDeath.Invoke();
     }
 
