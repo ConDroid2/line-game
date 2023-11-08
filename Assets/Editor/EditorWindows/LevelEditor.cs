@@ -80,11 +80,6 @@ public class LevelEditor : EditorWindow
                 {
                     AddObjectToLine();
                 }
-                if(GUILayout.Button("Delete Line"))
-                {
-                    _levelManager.Lines.Remove(_selectedLine);
-                    DestroyImmediate(_selectedLine.gameObject);
-                }
             }
         }
     }
@@ -128,7 +123,7 @@ public class LevelEditor : EditorWindow
             _levelManager = FindObjectOfType<LevelManager>();
             _player = FindObjectOfType<Player>();
 
-            _levelManager.SetPlayer(_player);
+            // _levelManager.SetPlayer(_player);
         }
     }
 
@@ -209,14 +204,13 @@ public class LevelEditor : EditorWindow
         LineController linePrefab = AssetDatabase.LoadAssetAtPath<LineController>("Assets/Prefabs/LevelComponents/Line.prefab");
 
         LineController newLine = (LineController)PrefabUtility.InstantiatePrefab(linePrefab, _levelManager.LineParent.transform);
-        _levelManager.AddNewLine(newLine);
+        // _levelManager.AddNewLine(newLine);
     }
 
     private void SpawnDangerZone()
     {
         DangerZone dangerZonePrefab = AssetDatabase.LoadAssetAtPath<DangerZone>("Assets/Prefabs/LevelComponents/DangerZone.prefab");
 
-        // Instantiate(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
         PrefabUtility.InstantiatePrefab(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
     }
 

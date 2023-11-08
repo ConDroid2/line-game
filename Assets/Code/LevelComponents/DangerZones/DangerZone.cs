@@ -16,8 +16,6 @@ public class DangerZone : MonoBehaviour
         }
 
         SetUpSprite();
-
-        Debug.Log("Scale: " + transform.localScale);
     }
 
     private void SetUpSprite()

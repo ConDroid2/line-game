@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 
     [Header("Likely to be made private")]
     [SerializeField] private Player _player;
-    public List<LineController> Lines = new List<LineController>();
+    public LineController[] Lines;
 
     
 
@@ -26,8 +26,9 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        Lines = LineParent.GetComponentsInChildren<LineController>();
         // Eventually everything in this function will be in something like "On Player Enter" or something and will be called by the world manager
-        if(Lines.Count == 0)
+        if (Lines.Length == 0)
         {
             Debug.LogError("There are no lines");
             return;
@@ -39,6 +40,11 @@ public class LevelManager : MonoBehaviour
         }
 
         _intersections = CalculateIntersections();
+
+        if(StartingLine == null)
+        {
+            StartingLine = Lines[0];
+        }
 
         if(_player != null)
         {
@@ -85,11 +91,6 @@ public class LevelManager : MonoBehaviour
         }
 
         return intersectionsData;
-    }
-
-    public void AddNewLine(LineController newLine)
-    {
-        Lines.Add(newLine);
     }
 
     /** PRIVATE METHODS**/
