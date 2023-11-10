@@ -27,8 +27,8 @@ public class LineShifter
     {
         _lineController = lineController;
 
-        _aStartPoint = _lineController.A;
-        _bStartPoint = _lineController.B;
+        _aStartPoint = _lineController.InitialA;
+        _bStartPoint = _lineController.InitialB;
 
         _aEndPoint = _aStartPoint + MovementVector;
         _bEndPoint = _bStartPoint + MovementVector;
@@ -101,7 +101,7 @@ public class LineShifter
 
     public void MovePoints(float distance)
     {
-        _lineController.A = Vector3.Lerp(_aStartPoint, _aEndPoint, distance);
-        _lineController.B = Vector3.Lerp(_bStartPoint, _bEndPoint, distance);
+        _lineController.InitialA = Vector3.Lerp(_aStartPoint, _aEndPoint, distance);
+        _lineController.InitialB = Vector3.Lerp(_bStartPoint, _bEndPoint, distance);
     }
 }

@@ -4,51 +4,57 @@ using UnityEngine;
 
 public class LineController : MonoBehaviour
 {
-    public Vector3 A = new Vector3(1, 1, 0);
-    public Vector3 B = new Vector3(1, 0, 0);
-    public Vector3 Midpoint => new Vector3((A.x + B.x) / 2,(A.y + B.y) / 2);
+    public Vector3 InitialA = new Vector3(1, 1, 0);
+    public Vector3 InitialB = new Vector3(1, 0, 0);
+    public Vector3 InitialMidpoint => new Vector3((InitialA.x + InitialB.x) / 2, (InitialA.y + InitialB.y) / 2);
+    
+    [SerializeField] private Transform _transformA;
+    [SerializeField] private Transform _transformB;
+    public Vector3 CurrentA => _transformA.position;
+    public Vector3 CurrentB => _transformB.position;
+    public Vector3 CurrentMidpoint => new Vector3((CurrentA.x + CurrentB.x) / 2, (CurrentA.y + CurrentB.y) / 2);
 
     public Enums.SlopeType SlopeType { get; private set; }
     public Enums.LineType LineType = Enums.LineType.Static;
 
     public float DirectionModifier = 1;
 
-
-    public Rectangle Area { get; private set; }
-
     public Vector2 Slope = new Vector2();
     public float Length => CalculateLength();
 
-    [Header("Moving line stuff")]
-    public LineShifter[] LineShifters = new LineShifter[1];
+    //[Header("Moving line stuff")]
+    //public LineShifter[] LineShifters = new LineShifter[1];
 
-
-    private void Update()
+    private void Awake()
     {
-        if(LineShifters.Length > 0)
+        _transformA.position = InitialA;
+        _transformB.position = InitialB;
+    }
+
+    private void Start()
+    {
+        if(GetComponent<FreeObjectShifter>() != null)
         {
-            foreach (LineShifter lineShifter in LineShifters)
-            {
-                lineShifter.Shift(Time.deltaTime);
-            }
+            LineType = Enums.LineType.Shifting;
         }
     }
+
 
     public void ConfigureInformation()
     {
         Slope = CalculateSlope();
         SlopeType = Utilities.DetermineSlopeType(Slope.x, Slope.y);
 
-        if(LineShifters.Length > 0)
-        {
-            Debug.Log("Setting up line shifter");
-            LineType = Enums.LineType.Shifting;
+        //if(LineShifters.Length > 0)
+        //{
+        //    Debug.Log("Setting up line shifter");
+        //    LineType = Enums.LineType.Shifting;
 
-            foreach (LineShifter lineShifter in LineShifters)
-            {
-                lineShifter.SetUp(this);
-            }
-        }
+        //    foreach (LineShifter lineShifter in LineShifters)
+        //    {
+        //        lineShifter.SetUp(this);
+        //    }
+        //}
 
         // Caluclate Direction Modifier
         CalculateDirectionModifier();
@@ -56,22 +62,22 @@ public class LineController : MonoBehaviour
 
     public Vector2 CalculateSlope()
     {
-        float slopeX = B.x - A.x;
-        float slopeY = B.y - A.y;
+        float slopeX = CurrentB.x - CurrentA.x;
+        float slopeY = CurrentB.y - CurrentA.y;
 
         return new Vector2(slopeX, slopeY).normalized;
     }
 
     private float CalculateLength()
     {
-        return Vector3.Distance(A, B);
+        return Vector3.Distance(InitialA, InitialB);
     }
 
     public Vector3 CalculateMidpoint()
     {
-        float x = (A.x + B.x) / 2;
-        float y = (A.y + B.y) / 2;
-        float z = (A.z + B.z) / 2;
+        float x = (InitialA.x + InitialB.x) / 2;
+        float y = (InitialA.y + InitialB.y) / 2;
+        float z = (InitialA.z + InitialB.z) / 2;
 
         return new Vector3(x, y, z);
     }
@@ -96,30 +102,27 @@ public class LineController : MonoBehaviour
     {
         if (Application.isPlaying == false)
         {
-            Gizmos.DrawLine(A, B);
+            Gizmos.DrawLine(InitialA, InitialB);
         }
     }
 
 
 
-    private void OnDrawGizmosSelected()
-    {
-        if (LineShifters.Length > 0)
-        {
-            Gizmos.color = Color.green;
+    //private void OnDrawGizmosSelected()
+    //{
+    //    if (LineShifters.Length > 0)
+    //    {
+    //        Gizmos.color = Color.green;
 
-            foreach (LineShifter lineShifter in LineShifters)
-            {
-                Vector3 newA = A + lineShifter.MovementVector;
-                Vector3 newB = B + lineShifter.MovementVector;
+    //        foreach (LineShifter lineShifter in LineShifters)
+    //        {
+    //            Vector3 newA = InitialA + lineShifter.MovementVector;
+    //            Vector3 newB = InitialB + lineShifter.MovementVector;
 
-                Gizmos.DrawLine(newA, newB);
-                Gizmos.DrawLine(Midpoint, Midpoint + lineShifter.MovementVector);
-            }    
-        }
+    //            Gizmos.DrawLine(newA, newB);
+    //            Gizmos.DrawLine(Midpoint, Midpoint + lineShifter.MovementVector);
+    //        }    
+    //    }
 
-    }
-
-
-
+    //}
 }

@@ -170,7 +170,8 @@ public class LevelEditor : EditorWindow
 
         // Grab asset, instantiate, remove clone from name
         GameObject levelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(updatedAssetPath);
-        _levelManager = Instantiate(levelPrefab).GetComponentInChildren<LevelManager>();
+        _levelManager = (PrefabUtility.InstantiatePrefab(levelPrefab) as GameObject).GetComponentInChildren<LevelManager>();
+
         _levelManager.transform.parent.name = _levelManager.transform.parent.name.Replace("(Clone)", "");
         _levelManager.SetPlayer(_player);
 

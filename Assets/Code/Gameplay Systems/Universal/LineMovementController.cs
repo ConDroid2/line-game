@@ -12,7 +12,6 @@ public class LineMovementController : MonoBehaviour
     public float LineDirectionModifier { get; private set; } // Makes it so we can move correctly regardless of slope sign
     public float CheckForIntersectionsDistance; // The distance we check for intersections
     [SerializeField] private bool _canPush;
-    [SerializeField] private ContactFilter2D _filter;
     [SerializeField] private float _pushableDistanceCheck;
 
     // privates
@@ -125,24 +124,29 @@ public class LineMovementController : MonoBehaviour
         bool canMove = true;
         RaycastHit2D[] hits = new RaycastHit2D[2];
 
-        int numberOfHits = _collider.Cast(direction, _filter, hits, _pushableDistanceCheck);
+        int numberOfHits = _collider.Cast(direction, hits, _pushableDistanceCheck);
 
         for (int i = 0; i < numberOfHits; i++)
         {
+            Debug.Log("hit something");
             hits[i].collider.gameObject.TryGetComponent(out LineMovementController pushable);
             hits[i].collider.gameObject.TryGetComponent(out OnLineController onLineController);
 
-            if(onLineController == null)
+            Vector2 positionDifference = (Vector2)(onLineController.transform.position - transform.position).normalized;
+
+            if (onLineController == null)
             {
                 continue;
             }
-            else if(direction != (Vector2)(onLineController.transform.position - transform.position).normalized)
-            {
-                continue;
-            }
+            //else if(direction != positionDifference)
+            //{
+                
+            //    continue;
+            //}
 
             if (pushable != null)
             {
+                Debug.Log("Hit pushable block");
 
                 pushable.SetLevelManager(LevelManager);
                 pushable.RecalculateLineInfo();

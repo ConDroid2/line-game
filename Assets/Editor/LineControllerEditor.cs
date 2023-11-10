@@ -16,55 +16,56 @@ public class LineControllerEditor : Editor
 
         EditorGUI.BeginChangeCheck();
 
-        Vector3 newAPos = Handles.FreeMoveHandle(controller.A, Quaternion.identity, handleSize, Vector3.one, Handles.SphereHandleCap).Round(gridSize);
-        Handles.Label(controller.A + Vector3.down / 3, "A");
+        Vector3 newAPos = Handles.FreeMoveHandle(controller.InitialA, Quaternion.identity, handleSize, Vector3.one, Handles.SphereHandleCap).Round(gridSize);
+        Handles.Label(controller.InitialA + Vector3.down / 3, "A");
 
-        Vector3 newBPos = Handles.FreeMoveHandle(controller.B, Quaternion.identity, handleSize, Vector3.one, Handles.SphereHandleCap).Round(gridSize);
-        Handles.Label(controller.B + Vector3.down / 3, "B");
+        Vector3 newBPos = Handles.FreeMoveHandle(controller.InitialB, Quaternion.identity, handleSize, Vector3.one, Handles.SphereHandleCap).Round(gridSize);
+        Handles.Label(controller.InitialB + Vector3.down / 3, "B");
 
         if (EditorGUI.EndChangeCheck())
         {
-            if (controller.A != newAPos || controller.B != newBPos)
+            if (controller.InitialA != newAPos || controller.InitialB != newBPos)
             {
                 if (Event.current.shift)
                 {
-                    if(controller.A != newAPos)
+                    if(controller.InitialA != newAPos)
                     {
-                        Vector3 changeVector = newAPos - controller.A;
-                        newBPos = controller.B + changeVector;
+                        Vector3 changeVector = newAPos - controller.InitialA;
+                        newBPos = controller.InitialB + changeVector;
                     }
-                    else if(controller.B != newBPos)
+                    else if(controller.InitialB != newBPos)
                     {
-                        Vector3 changeVector = newBPos - controller.B;
-                        newAPos = controller.A + changeVector;
+                        Vector3 changeVector = newBPos - controller.InitialB;
+                        newAPos = controller.InitialA + changeVector;
                     }
                 }
 
                 Undo.RecordObject(controller, "Change endpoints");
-                controller.A = newAPos;
-                controller.B = newBPos;
+                controller.InitialA = newAPos;
+                controller.InitialB = newBPos;
+                controller.transform.position = controller.InitialMidpoint;
             }
         }
 
-        if (controller.LineShifters.Length > 0)
-        {
-            Vector3 moveTarget = controller.Midpoint + controller.LineShifters[0].MovementVector;
+        //if (controller.LineShifters.Length > 0)
+        //{
+        //    Vector3 moveTarget = controller.Midpoint + controller.LineShifters[0].MovementVector;
 
-            Handles.color = Color.green;
+        //    Handles.color = Color.green;
 
-            EditorGUI.BeginChangeCheck();
+        //    EditorGUI.BeginChangeCheck();
 
-            Vector3 newTarget = Handles.FreeMoveHandle(moveTarget, Quaternion.identity, handleSize, Vector3.one, Handles.SphereHandleCap).Round(gridSize);
+        //    Vector3 newTarget = Handles.FreeMoveHandle(moveTarget, Quaternion.identity, handleSize, Vector3.one, Handles.SphereHandleCap).Round(gridSize);
 
-            if (EditorGUI.EndChangeCheck())
-            {
-                Vector3 newMoveVector = newTarget - controller.Midpoint;
+        //    if (EditorGUI.EndChangeCheck())
+        //    {
+        //        Vector3 newMoveVector = newTarget - controller.Midpoint;
 
-                Undo.RecordObject(controller, "Change shifter");
-                controller.LineShifters[0].MovementVector = newMoveVector;
+        //        Undo.RecordObject(controller, "Change shifter");
+        //        controller.LineShifters[0].MovementVector = newMoveVector;
                 
-            }
-        }
+        //    }
+        //}
     }
 
     [DrawGizmo(GizmoType.NonSelected | GizmoType.Pickable)]
@@ -73,9 +74,9 @@ public class LineControllerEditor : Editor
         if (Application.isEditor)
         {
             Gizmos.color = Color.white;
-            Vector3 pos = line.CalculateMidpoint();
+            Vector3 pos = line.InitialMidpoint;
             float handleSize = HandleUtility.GetHandleSize(pos) * 0.1f;
-            Gizmos.DrawSphere(line.CalculateMidpoint(), handleSize);
+            Gizmos.DrawSphere(line.InitialMidpoint, handleSize);
         }
     }
 }

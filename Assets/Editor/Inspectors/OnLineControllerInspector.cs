@@ -16,7 +16,7 @@ public class OnLineControllerInspector : Editor
 
         if (newDistance != objectOnLine.DistanceOnLine)
         {
-            objectOnLine.DistanceOnLine = newDistance;
+            objectOnLine.SetDistanceOnLineInEditor(newDistance);
         }
 
         

@@ -110,18 +110,18 @@ public class LevelManager : MonoBehaviour
                 // Make sure we're not comparing a line to itself
                 if (currentLine != otherLine)
                 {
-                    Vector3 intersectionPoint = Utilities.FindIntersectionPoint(currentLine.A, currentLine.B, otherLine.A, otherLine.B);
+                    Vector3 intersectionPoint = Utilities.FindIntersectionPoint(currentLine.CurrentA, currentLine.CurrentB, otherLine.CurrentA, otherLine.CurrentB);
 
                     // Make sure we actually have an intersection point (using the x component is enough since we can't actually compare Vector3.infinity with itself)
                     if (intersectionPoint.x != Vector3.positiveInfinity.x)
                     {
                         // Use the X values to find how far along the line we are from 0 to 1
-                        float tValue = Mathf.InverseLerp(otherLine.A.x, otherLine.B.x, intersectionPoint.x);
+                        float tValue = Mathf.InverseLerp(otherLine.CurrentA.x, otherLine.CurrentB.x, intersectionPoint.x);
 
                         // If we got 0 using X, try Y
                         if (tValue == 0)
                         {
-                            tValue = Mathf.InverseLerp(otherLine.A.y, otherLine.B.y, intersectionPoint.y);
+                            tValue = Mathf.InverseLerp(otherLine.CurrentA.y, otherLine.CurrentB.y, intersectionPoint.y);
                         }
 
                         // Create intersection data and add it to the dictionary
@@ -150,21 +150,21 @@ public class LevelManager : MonoBehaviour
     }
 
     /** VISUAL DEBUGGING **/
-    private void OnDrawGizmosSelected()
-    {
-        HashSet<Vector3> intersectionPoints = new HashSet<Vector3>();
+    //private void OnDrawGizmosSelected()
+    //{
+    //    HashSet<Vector3> intersectionPoints = new HashSet<Vector3>();
 
-        foreach(LineController line in Lines)
-        {
-            foreach(LineController otherLine in Lines)
-            {
-                intersectionPoints.Add(Utilities.FindIntersectionPoint(line.A, line.B, otherLine.A, otherLine.B));
-            }
-        }
+    //    foreach(LineController line in Lines)
+    //    {
+    //        foreach(LineController otherLine in Lines)
+    //        {
+    //            // intersectionPoints.Add(Utilities.FindIntersectionPoint(line.InitialA, line.InitialB, otherLine.InitialA, otherLine.InitialB));
+    //        }
+    //    }
 
-        foreach(Vector3 intersection in intersectionPoints)
-        {
-            Gizmos.DrawSphere(intersection, 0.1f);
-        }
-    }
+    //    foreach(Vector3 intersection in intersectionPoints)
+    //    {
+    //        Gizmos.DrawSphere(intersection, 0.1f);
+    //    }
+    //}
 }

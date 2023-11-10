@@ -17,36 +17,37 @@ public class OnLineController : MonoBehaviour
         set { SetDistanceOnLine(value); }
     }
 
-    private void Awake()
+    private void Start()
     {
         if (_fixDistanceOnAwake)
         {
-            Vector3 ab = CurrentLine.B - CurrentLine.A;
-            Vector3 av = transform.position - CurrentLine.A;
+            Vector3 ab = CurrentLine.CurrentB - CurrentLine.CurrentA;
+            Vector3 av = transform.position - CurrentLine.CurrentA;
 
             DistanceOnLine = Vector3.Dot(av, ab) / Vector3.Dot(ab, ab);
+        }
+    }
+
+    private void Update()
+    {
+        if(CurrentLine.LineType == Enums.LineType.Shifting)
+        {
+            DistanceOnLine = DistanceOnLine;
         }
     }
 
     private void SetDistanceOnLine(float newDistance)
     {
         _distanceOnLine = Mathf.Clamp(newDistance, 0f, 1f);
-        transform.position = Vector3.Lerp(CurrentLine.A, CurrentLine.B, DistanceOnLine);
+        transform.position = Vector3.Lerp(CurrentLine.CurrentA, CurrentLine.CurrentB, DistanceOnLine);
         // Not sure how I feel about this, but it works for now
         transform.right = CurrentLine.CalculateSlope();
-
-#if UNITY_EDITOR
-        if (!Application.isPlaying)
-        {
-            transform.position = transform.position.Round(0.5f);
-        }
-#endif
     }
 
     public Vector3 CheckNewPosition(float newDistance)
     {
         newDistance = Mathf.Clamp(newDistance, 0f, 1f);
-        return Vector3.Lerp(CurrentLine.A, CurrentLine.B, newDistance);
+        return Vector3.Lerp(CurrentLine.CurrentA, CurrentLine.CurrentB, newDistance);
     }
 
     public void SetLine(LineController newLine, float distanceOnLine = 0)
@@ -54,4 +55,16 @@ public class OnLineController : MonoBehaviour
         CurrentLine = newLine;
         SetDistanceOnLine(distanceOnLine);
     }
+
+#if UNITY_EDITOR
+    public void SetDistanceOnLineInEditor(float newDistance)
+    {
+        _distanceOnLine = Mathf.Clamp(newDistance, 0f, 1f);
+        transform.position = Vector3.Lerp(CurrentLine.InitialA, CurrentLine.InitialB, DistanceOnLine);
+        // Not sure how I feel about this, but it works for now
+        transform.right = CurrentLine.CalculateSlope();
+
+        transform.position = transform.position.Round(0.5f);
+    }
+#endif
 }

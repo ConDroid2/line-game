@@ -15,8 +15,8 @@ public class LineDrawer : MonoBehaviour
     {
         if (_renderer != null)
         {
-            _renderer.SetPosition(0, _controller.A);
-            _renderer.SetPosition(1, _controller.B);
+            _renderer.SetPosition(0, _controller.InitialA);
+            _renderer.SetPosition(1, _controller.InitialB);
         }
         else
         {
@@ -24,12 +24,22 @@ public class LineDrawer : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UpdateLinePositions();
+    }
+
     private void Update()
     {
-        if (_controller.LineShifters.Length > 0 && _renderer != null)
+        if(_controller.LineType == Enums.LineType.Shifting)
         {
-            _renderer.SetPosition(0, _controller.A);
-            _renderer.SetPosition(1, _controller.B);
+            UpdateLinePositions();
         }
+    }
+
+    private void UpdateLinePositions()
+    {
+        _renderer.SetPosition(0, _controller.CurrentA);
+        _renderer.SetPosition(1, _controller.CurrentB);
     }
 }

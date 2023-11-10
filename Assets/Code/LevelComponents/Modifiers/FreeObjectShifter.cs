@@ -10,7 +10,7 @@ public class FreeObjectShifter : MonoBehaviour
     public float TimeToWait = 0f;
     public bool WaitAtStart = false;
     [Range(0f, 2f)] public float StartingPointAlongPath = 0f;
-    [SerializeField] private AnimationCurve _pathCurve = AnimationCurve.Linear(0, 0, 1, 1);
+    [SerializeField] private AnimationCurve _timingCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
     /**Controlling Variables**/
     private Vector3 _startPoint;
@@ -96,7 +96,7 @@ public class FreeObjectShifter : MonoBehaviour
 
     public void MovePoint(float distance)
     {
-        float adjustedDistance = _pathCurve.Evaluate(distance);
+        float adjustedDistance = _timingCurve.Evaluate(distance);
         transform.position = Vector3.Lerp(_startPoint, _endPoint, adjustedDistance);
     }
 }
