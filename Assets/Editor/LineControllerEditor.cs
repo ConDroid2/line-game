@@ -26,46 +26,39 @@ public class LineControllerEditor : Editor
         {
             if (controller.InitialA != newAPos || controller.InitialB != newBPos)
             {
+                bool movePoints = false;
+
                 if (Event.current.shift)
                 {
-                    if(controller.InitialA != newAPos)
+                    if (controller.InitialA != newAPos)
                     {
                         Vector3 changeVector = newAPos - controller.InitialA;
                         newBPos = controller.InitialB + changeVector;
                     }
-                    else if(controller.InitialB != newBPos)
+                    else if (controller.InitialB != newBPos)
                     {
                         Vector3 changeVector = newBPos - controller.InitialB;
                         newAPos = controller.InitialA + changeVector;
                     }
+
+                    movePoints = true;
                 }
 
-                Undo.RecordObject(controller, "Change endpoints");
-                controller.InitialA = newAPos;
-                controller.InitialB = newBPos;
-                controller.transform.position = controller.InitialMidpoint;
+                else if (newAPos.x < newBPos.x || (newAPos.x - newBPos.x == 0 && newAPos.y < newBPos.y))
+                {
+                    movePoints = true;
+                    
+                }
+
+                if (movePoints)
+                {
+                    Undo.RecordObject(controller, "Change endpoints");
+                    controller.InitialA = newAPos;
+                    controller.InitialB = newBPos;
+                    controller.transform.position = controller.InitialMidpoint;
+                }
             }
         }
-
-        //if (controller.LineShifters.Length > 0)
-        //{
-        //    Vector3 moveTarget = controller.Midpoint + controller.LineShifters[0].MovementVector;
-
-        //    Handles.color = Color.green;
-
-        //    EditorGUI.BeginChangeCheck();
-
-        //    Vector3 newTarget = Handles.FreeMoveHandle(moveTarget, Quaternion.identity, handleSize, Vector3.one, Handles.SphereHandleCap).Round(gridSize);
-
-        //    if (EditorGUI.EndChangeCheck())
-        //    {
-        //        Vector3 newMoveVector = newTarget - controller.Midpoint;
-
-        //        Undo.RecordObject(controller, "Change shifter");
-        //        controller.LineShifters[0].MovementVector = newMoveVector;
-                
-        //    }
-        //}
     }
 
     [DrawGizmo(GizmoType.NonSelected | GizmoType.Pickable)]

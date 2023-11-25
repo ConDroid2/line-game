@@ -22,8 +22,11 @@ public class LineController : MonoBehaviour
     public Vector2 Slope = new Vector2();
     public float Length => CalculateLength();
 
+    private List<OnLineController> _onLineControllers = new List<OnLineController>();
+
     //[Header("Moving line stuff")]
     //public LineShifter[] LineShifters = new LineShifter[1];
+    private bool _needsSlopeUpdates = false;
 
     private void Awake()
     {
@@ -33,28 +36,39 @@ public class LineController : MonoBehaviour
 
     private void Start()
     {
-        if(GetComponent<FreeObjectShifter>() != null)
+        bool hasFreeObjectShifter = GetComponent<FreeObjectShifter>() != null;
+        bool hasFreeObjectRotator = GetComponent<FreeObjectRotator>() != null;
+        if (hasFreeObjectRotator || hasFreeObjectShifter)
         {
             LineType = Enums.LineType.Shifting;
+        }
+
+        if (hasFreeObjectRotator)
+        {
+            _needsSlopeUpdates = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (_needsSlopeUpdates)
+        {
+            FixPointOrientation();
+        }
+        Slope = CalculateSlope();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FixPointOrientation();
         }
     }
 
 
     public void ConfigureInformation()
     {
+        // FixPointOrientation();
         Slope = CalculateSlope();
         SlopeType = Utilities.DetermineSlopeType(Slope.x, Slope.y);
-
-        //if(LineShifters.Length > 0)
-        //{
-        //    Debug.Log("Setting up line shifter");
-        //    LineType = Enums.LineType.Shifting;
-
-        //    foreach (LineShifter lineShifter in LineShifters)
-        //    {
-        //        lineShifter.SetUp(this);
-        //    }
-        //}
 
         // Caluclate Direction Modifier
         CalculateDirectionModifier();
@@ -64,6 +78,9 @@ public class LineController : MonoBehaviour
     {
         float slopeX = CurrentB.x - CurrentA.x;
         float slopeY = CurrentB.y - CurrentA.y;
+
+        //Debug.Log(slopeX);
+        //Debug.Log(slopeY);
 
         return new Vector2(slopeX, slopeY).normalized;
     }
@@ -95,6 +112,41 @@ public class LineController : MonoBehaviour
         else if (SlopeType == Enums.SlopeType.Ascending || SlopeType == Enums.SlopeType.Descending)
         {
             DirectionModifier = Slope.x > 0 ? 1 : -1; // Doesn't matter if we use x or y here since they should be the same
+        }
+    }
+
+    // Make it so moving from A -> B is always "positive"
+    private void FixPointOrientation()
+    {
+        if(CurrentB.x < CurrentA.x || (CurrentB.x - CurrentA.x == 0 && CurrentB.y < CurrentA.y))
+        {
+            Debug.Log("Fixing orientation");
+            Vector3 temp = _transformB.position;
+            _transformB.position = _transformA.position;
+            _transformA.position = temp;
+
+            Debug.Log(_onLineControllers.Count);
+            foreach (OnLineController onLine in _onLineControllers)
+            {
+                float newDistanceOnLine = 1 - onLine.DistanceOnLine;
+                onLine.DistanceOnLine = newDistanceOnLine;
+            }
+        }
+    }
+
+    public void AddOnLine(OnLineController newObject)
+    {
+        if(_onLineControllers.Contains(newObject) == false)
+        {
+            _onLineControllers.Add(newObject);
+        }
+    }
+
+    public void RemoveFromLine(OnLineController objectOnLine)
+    {
+        if (_onLineControllers.Contains(objectOnLine))
+        {
+            _onLineControllers.Remove(objectOnLine);
         }
     }
 

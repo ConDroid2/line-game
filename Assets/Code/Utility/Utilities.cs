@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Utilities
 {
-    public static Vector3 FindIntersectionPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
+    public static IntersectionPoint FindIntersectionPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
     {
         float a1 = b.y - a.y;
         float b1 = a.x - b.x;
@@ -16,7 +16,22 @@ public static class Utilities
 
         float determinant = a1 * b2 - a2 * b1;
 
-        if (determinant == 0) return Vector3.positiveInfinity;
+        // If determinant is 0, lines are parallel, need to check if also touching
+        if (determinant == 0)
+        {
+            // If any point on line ab is the same as a point on cd, then that is an intersection, otherwise they are not touching
+            float tolerance = 0.005f;
+            Vector3 point = Vector3.zero;
+
+            if (Vector3.Distance(c, a) < tolerance) point = a;
+            else if (Vector3.Distance(d, a) < tolerance) point = a;
+            else if (Vector3.Distance(c, b) < tolerance) point = b;
+            else if (Vector3.Distance(d, b) < tolerance) point = b;
+            else point = Vector3.positiveInfinity;
+
+            return new IntersectionPoint(point, true);
+        }
+        
 
         float x = (b2 * c1 - b1 * c2) / determinant;
         float y = (a1 * c2 - a2 * c1) / determinant;
@@ -40,11 +55,12 @@ public static class Utilities
 
         if (pointIsOnLine1 && pointIsOnLine2)
         {
-            return new Vector3(x, y);
+            Vector3 point = new Vector3(x, y);
+            return new IntersectionPoint(point, false);
         }
         else
         {
-            return Vector3.positiveInfinity;
+            return new IntersectionPoint(Vector3.positiveInfinity, false);
         }
     }
 
@@ -78,5 +94,17 @@ public static class Utilities
 
         a = b;
         b = temp;
+    }
+
+    public class IntersectionPoint
+    {
+        public Vector3 Point;
+        public bool IsParallel;
+
+        public IntersectionPoint(Vector3 newPoint, bool isParallel)
+        {
+            Point = newPoint;
+            IsParallel = isParallel;
+        }
     }
 }

@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     // A Dictonary of Line -> Dictionary of Vector3 -> Intersection Data
     private Dictionary<LineController, Dictionary<Vector3, List<IntersectionData>>> _intersections;
 
-    private void Awake()
+    private void Start()
     {
         Lines = LineParent.GetComponentsInChildren<LineController>();
         // Eventually everything in this function will be in something like "On Player Enter" or something and will be called by the world manager
@@ -110,30 +110,31 @@ public class LevelManager : MonoBehaviour
                 // Make sure we're not comparing a line to itself
                 if (currentLine != otherLine)
                 {
-                    Vector3 intersectionPoint = Utilities.FindIntersectionPoint(currentLine.CurrentA, currentLine.CurrentB, otherLine.CurrentA, otherLine.CurrentB);
+                    Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(currentLine.CurrentA, currentLine.CurrentB, otherLine.CurrentA, otherLine.CurrentB);
+                    Vector3 point = intersectionPoint.Point;
 
                     // Make sure we actually have an intersection point (using the x component is enough since we can't actually compare Vector3.infinity with itself)
-                    if (intersectionPoint.x != Vector3.positiveInfinity.x)
+                    if (point.x != Vector3.positiveInfinity.x)
                     {
                         // Use the X values to find how far along the line we are from 0 to 1
-                        float tValue = Mathf.InverseLerp(otherLine.CurrentA.x, otherLine.CurrentB.x, intersectionPoint.x);
+                        float tValue = Mathf.InverseLerp(otherLine.CurrentA.x, otherLine.CurrentB.x, point.x);
 
                         // If we got 0 using X, try Y
                         if (tValue == 0)
                         {
-                            tValue = Mathf.InverseLerp(otherLine.CurrentA.y, otherLine.CurrentB.y, intersectionPoint.y);
+                            tValue = Mathf.InverseLerp(otherLine.CurrentA.y, otherLine.CurrentB.y, point.y);
                         }
 
                         // Create intersection data and add it to the dictionary
-                        IntersectionData data = new IntersectionData(otherLine, tValue);
+                        IntersectionData data = new IntersectionData(otherLine, tValue, intersectionPoint.IsParallel);
 
-                        if (innerDictionary.ContainsKey(intersectionPoint))
+                        if (innerDictionary.ContainsKey(point))
                         {
-                            innerDictionary[intersectionPoint].Add(data);
+                            innerDictionary[point].Add(data);
                         }
                         else
                         {
-                            innerDictionary.Add(intersectionPoint, new List<IntersectionData>() { data });
+                            innerDictionary.Add(point, new List<IntersectionData>() { data });
                         }
 
                         //Debug.Log("Added intersection between: " + currentLine.name + " and " + otherLine.name);

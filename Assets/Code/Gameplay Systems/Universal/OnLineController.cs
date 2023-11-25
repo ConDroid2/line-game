@@ -52,7 +52,13 @@ public class OnLineController : MonoBehaviour
 
     public void SetLine(LineController newLine, float distanceOnLine = 0)
     {
+        if (CurrentLine != null)
+        {
+            CurrentLine.RemoveFromLine(this);
+        }
+
         CurrentLine = newLine;
+        CurrentLine.AddOnLine(this);
         SetDistanceOnLine(distanceOnLine);
     }
 

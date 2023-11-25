@@ -107,12 +107,20 @@ public class LineMovementController : MonoBehaviour
         {
             // Check if the input would allow movment along the intersecting line
             float toleranceAngle = 20f;
+
+            
             bool canMoveToNewLine = Vector3.Angle(inputVector.normalized, intersection.Line.Slope) < toleranceAngle;
             canMoveToNewLine |= Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1) < toleranceAngle;
+
+            if (intersection.IsParallel)
+            {
+                canMoveToNewLine &= OnLineController.DistanceOnLine == 0 || OnLineController.DistanceOnLine == 1;
+            }
 
             // Set new line using Intersection Data
             if (canMoveToNewLine)
             {
+                Debug.Log("Trying to move to new line : " + intersection.Line.name);
                 SetNewLine(intersection.Line, intersection.DistanceAlongLine);
                 break;
             }
@@ -128,25 +136,23 @@ public class LineMovementController : MonoBehaviour
 
         for (int i = 0; i < numberOfHits; i++)
         {
-            Debug.Log("hit something");
             hits[i].collider.gameObject.TryGetComponent(out LineMovementController pushable);
             hits[i].collider.gameObject.TryGetComponent(out OnLineController onLineController);
-
-            Vector2 positionDifference = (Vector2)(onLineController.transform.position - transform.position).normalized;
 
             if (onLineController == null)
             {
                 continue;
             }
-            //else if(direction != positionDifference)
-            //{
-                
-            //    continue;
-            //}
 
             if (pushable != null)
             {
-                Debug.Log("Hit pushable block");
+
+                Vector2 positionDifference = (Vector2)(onLineController.transform.position - transform.position).normalized;
+
+                if(positionDifference != direction.normalized)
+                {
+                    continue;
+                }
 
                 pushable.SetLevelManager(LevelManager);
                 pushable.RecalculateLineInfo();
