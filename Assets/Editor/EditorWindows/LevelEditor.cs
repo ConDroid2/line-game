@@ -9,9 +9,6 @@ public class LevelEditor : EditorWindow
     Player _player;
     LineController _selectedLine;
 
-    bool _isNewLevel;
-    string _originalName;
-
 
     /** WINDOW FUNCTIONS **/
 
@@ -23,63 +20,52 @@ public class LevelEditor : EditorWindow
 
     private void OnGUI()
     {
-        // If there is no level manager
-        if (_levelManager == null)
+        GUILayout.Label("Utilities", EditorStyles.boldLabel);
+        if (GUILayout.Button("Create New Level"))
         {
-            if(GUILayout.Button("Find Current Level"))
-            {
-                _levelManager = FindObjectOfType<LevelManager>();
-            }
-            if (GUILayout.Button("Create New Level"))
-            {
-                SpawnLevelPrefab();
-            }
-            if(GUILayout.Button("Load Existing Level"))
-            {
-                LoadExistingLevel();
-            }
+            SpawnLevelPrefab();
         }
-        else
+
+        if(GUILayout.Button("Load Existing Level"))
         {
-            GUILayout.BeginHorizontal();
-                GUILayout.Label("Level Name", EditorStyles.boldLabel);
-                _levelManager.transform.parent.name = GUILayout.TextField(_levelManager.transform.parent.name, GUILayout.Width(150));
-                GUILayout.FlexibleSpace();
-            GUILayout.EndHorizontal();
+            LoadExistingLevel();
+        }
 
-            if(GUILayout.Button("Add Line"))
+        GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Save Level"))
             {
-                SpawnLine();
-            }
-            if(GUILayout.Button("Add Danger Zone"))
-            {
-                SpawnDangerZone();
+                SaveNewLevel();
             }
 
-            GUILayout.BeginHorizontal();
-                if (GUILayout.Button("Save Level"))
-                {
-                    SaveNewLevel();
-                }
-
-                if (GUILayout.Button("Close Level"))
-                {
-                    CloseLevel();
-                }
-            GUILayout.EndHorizontal();
-
-            // Menu for if we have a selected line
-            if(_selectedLine != null)
+            if (GUILayout.Button("Close Level"))
             {
-                GUILayout.Label("Selected Line", EditorStyles.boldLabel);
-                if(GUILayout.Button("Set as Start"))
-                {
-                    _levelManager.StartingLine = _selectedLine;
-                }
-                if(GUILayout.Button("Add Object to Line"))
-                {
-                    AddObjectToLine();
-                }
+                CloseLevel();
+            }
+        GUILayout.EndHorizontal();
+
+        GUILayout.Label("Level Building", EditorStyles.boldLabel);
+        if(GUILayout.Button("Add Line"))
+        {
+            SpawnLine();
+        }
+        if(GUILayout.Button("Add Danger Zone"))
+        {
+            SpawnDangerZone();
+        }
+
+        
+
+        // Menu for if we have a selected line
+        if(_selectedLine != null)
+        {
+            GUILayout.Label("Selected Line", EditorStyles.boldLabel);
+            if(GUILayout.Button("Set as Start"))
+            {
+                _levelManager.StartingLine = _selectedLine;
+            }
+            if(GUILayout.Button("Add Object to Line"))
+            {
+                AddObjectToLine();
             }
         }
     }
@@ -103,17 +89,6 @@ public class LevelEditor : EditorWindow
         }
     }
 
-    private void OnEnable()
-    {
-        EditorApplication.playModeStateChanged -= FindAndSetUpLevel;
-        EditorApplication.playModeStateChanged += FindAndSetUpLevel;
-    }
-
-    private void OnDisable()
-    {
-        EditorApplication.playModeStateChanged -= FindAndSetUpLevel;
-    }
-
     /** UTILITY METHODS **/
 
     private void FindAndSetUpLevel(PlayModeStateChange state)
@@ -129,34 +104,9 @@ public class LevelEditor : EditorWindow
 
     private void SaveNewLevel()
     {
-        if (Application.isPlaying)
+        if (CheckForLevelPrefab())
         {
-            EditorUtility.DisplayDialog("Can't Save", "You can't save a level in Play Mode, please exit Play Mode and try again.", "Ok");
-            return;
-        }
-
-        GameObject root = _levelManager.transform.parent.gameObject;
-
-        // By default, we are good to save level
-        bool save = true;
-
-        // If level is new, make sure they know to add a unique name (add unique name check later)
-        if(_isNewLevel == true)
-        {
-            save = EditorUtility.DisplayDialog("Trying to Save New Level", "Looks like this level is new, make sure you gave it a unique name", "I did, let's save", "Cancel");
-        }
-        // If level is old and has a new name, make sure they know this will make a new asset
-        else if(_isNewLevel == false && _originalName != _levelManager.transform.parent.name)
-        {
-            save = EditorUtility.DisplayDialog("New Name", "This level's name was " + _originalName + " and is now " + _levelManager.transform.parent.name + ", this will create a new asset.", "That's OK", "Cancel");
-        }
-
-        // If we're good to save, save
-        if (save)
-        {
-            string saveFolder = EditorUtility.OpenFolderPanel("Select a Level Directory", "Assets/Levels", "");
-            PrefabUtility.SaveAsPrefabAsset(root, saveFolder + "/" + root.name.Replace("(clone)", "") + ".prefab");
-            _isNewLevel = false;
+            GetWindow<SaveLevelWindow>();
         }
     }
 
@@ -170,25 +120,22 @@ public class LevelEditor : EditorWindow
 
         // Grab asset, instantiate, remove clone from name
         GameObject levelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(updatedAssetPath);
-        _levelManager = (PrefabUtility.InstantiatePrefab(levelPrefab) as GameObject).GetComponentInChildren<LevelManager>();
+        _levelManager = Instantiate(levelPrefab).GetComponentInChildren<LevelManager>();
 
         _levelManager.transform.parent.name = _levelManager.transform.parent.name.Replace("(Clone)", "");
-        _levelManager.SetPlayer(_player);
-
-        // Set Class Variables
-        _originalName = _levelManager.transform.parent.name;
-        _isNewLevel = false;
     }
 
 
     private void SpawnLevelPrefab()
     {
-        GameObject levelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Level Prefab.prefab");
+        if (CheckForPlayer())
+        {
+            GameObject levelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Level Prefab.prefab");
 
-        _levelManager = Instantiate(levelPrefab).GetComponentInChildren<LevelManager>();
-        _levelManager.transform.parent.name = _levelManager.transform.parent.name.Replace("(Clone)", "");
-        _levelManager.SetPlayer(_player);
-        _isNewLevel = true;
+            _levelManager = Instantiate(levelPrefab).GetComponentInChildren<LevelManager>();
+            _levelManager.transform.parent.name = _levelManager.transform.parent.name.Replace("(Clone)", "");
+            _levelManager.SetPlayer(_player);
+        }
     }
 
     private void CloseLevel()
@@ -202,17 +149,22 @@ public class LevelEditor : EditorWindow
     /** ADD TO LEVEL**/
     private void SpawnLine()
     {
-        LineController linePrefab = AssetDatabase.LoadAssetAtPath<LineController>("Assets/Prefabs/LevelComponents/Line.prefab");
+        if (CheckForLevelPrefab())
+        {
+            LineController linePrefab = AssetDatabase.LoadAssetAtPath<LineController>("Assets/Prefabs/LevelComponents/Line.prefab");
 
-        LineController newLine = (LineController)PrefabUtility.InstantiatePrefab(linePrefab, _levelManager.LineParent.transform);
-        // _levelManager.AddNewLine(newLine);
+            PrefabUtility.InstantiatePrefab(linePrefab, _levelManager.LineParent.transform);
+        }
     }
 
     private void SpawnDangerZone()
     {
-        DangerZone dangerZonePrefab = AssetDatabase.LoadAssetAtPath<DangerZone>("Assets/Prefabs/LevelComponents/DangerZone.prefab");
+        if (CheckForLevelPrefab())
+        {
+            DangerZone dangerZonePrefab = AssetDatabase.LoadAssetAtPath<DangerZone>("Assets/Prefabs/LevelComponents/DangerZone.prefab");
 
-        PrefabUtility.InstantiatePrefab(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
+            PrefabUtility.InstantiatePrefab(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
+        }
     }
 
 
@@ -228,5 +180,45 @@ public class LevelEditor : EditorWindow
 
         OnLineController newObject = (OnLineController)PrefabUtility.InstantiatePrefab(prefab, _levelManager.MiscLevelComponentsParent.transform);
         newObject.SetLine(_selectedLine, 0f);
+    }
+
+    private bool CheckForLevelPrefab()
+    {
+        if (_levelManager == null)
+        {
+            _levelManager = FindObjectOfType<LevelManager>();
+
+            if(_levelManager == null)
+            {
+                EditorUtility.DisplayDialog("Looking For Level", "No Level found.\nThe action you're trying perform needs a Level", "Ok", "Cancel");
+                return false;
+            }
+
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    private bool CheckForPlayer()
+    {
+        if (_player == null)
+        {
+            _player = FindObjectOfType<Player>();
+
+            if (_player == null)
+            {
+                EditorUtility.DisplayDialog("Looking For Player", "No Player found.\nThe action you're trying perform needs a Player", "Ok", "Cancel");
+                return false;
+            }
+
+            return true;
+        }
+        else
+        {
+            return true;
+        }
     }
 }

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementController: {fileID: 4758419547639542450}
-  Speed: 0
+  Speed: 2.5
 --- !u!114 &4758419547639542450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,22 +65,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnLineController: {fileID: 6479525402138951201}
   CheckForIntersectionsDistance: 0.1641447
-  _canPush: 0
-  _filter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  _pushableDistanceCheck: 0
+  _canPush: 1
+  _pushableDistanceCheck: 0.01
 --- !u!114 &6479525402138951201
 MonoBehaviour:
   m_ObjectHideFlags: 0

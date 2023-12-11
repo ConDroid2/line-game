@@ -85,6 +85,14 @@ public class LineController : MonoBehaviour
         return new Vector2(slopeX, slopeY).normalized;
     }
 
+    public Vector2 CalculateInitialSlope()
+    {
+        float slopeX = InitialB.x - InitialA.x;
+        float slopeY = InitialB.y - InitialA.y;
+
+        return new Vector2(slopeX, slopeY).normalized;
+    }
+
     private float CalculateLength()
     {
         return Vector3.Distance(InitialA, InitialB);

@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         if (_allowInput)
         {
             _inputSlope = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
+            
             if(_inputSlope == Vector2.zero)
             {
                 return;

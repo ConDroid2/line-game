@@ -120,7 +120,6 @@ public class LineMovementController : MonoBehaviour
             // Set new line using Intersection Data
             if (canMoveToNewLine)
             {
-                Debug.Log("Trying to move to new line : " + intersection.Line.name);
                 SetNewLine(intersection.Line, intersection.DistanceAlongLine);
                 break;
             }

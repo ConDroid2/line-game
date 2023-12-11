@@ -10,7 +10,8 @@ public class LevelManager : MonoBehaviour
     public GameObject MiscLevelComponentsParent;
 
     [Header("Likely to be made private")]
-    [SerializeField] private Player _player;
+    [SerializeField] Player _playerPrefab;
+    private Player _player;
     public LineController[] Lines;
 
     
@@ -46,6 +47,16 @@ public class LevelManager : MonoBehaviour
             StartingLine = Lines[0];
         }
 
+
+        if(_player == null)
+        {
+            _player = FindObjectOfType<Player>();
+
+            if(_player == null)
+            {
+                SetPlayer(Instantiate(_playerPrefab));
+            }
+        }
         if(_player != null)
         {
             SetPlayer(_player);
