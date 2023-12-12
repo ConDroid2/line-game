@@ -161,22 +161,8 @@ public class LevelManager : MonoBehaviour
         return intersections;
     }
 
-    /** VISUAL DEBUGGING **/
-    //private void OnDrawGizmosSelected()
-    //{
-    //    HashSet<Vector3> intersectionPoints = new HashSet<Vector3>();
-
-    //    foreach(LineController line in Lines)
-    //    {
-    //        foreach(LineController otherLine in Lines)
-    //        {
-    //            // intersectionPoints.Add(Utilities.FindIntersectionPoint(line.InitialA, line.InitialB, otherLine.InitialA, otherLine.InitialB));
-    //        }
-    //    }
-
-    //    foreach(Vector3 intersection in intersectionPoints)
-    //    {
-    //        Gizmos.DrawSphere(intersection, 0.1f);
-    //    }
-    //}
+    public RoomData CreateRoomData()
+    {
+        return new RoomData(LineParent.GetComponentsInChildren<LineController>());
+    }
 }

@@ -135,7 +135,17 @@ public class NewLevelEditor : EditorWindow
 
     private void SaveRoom()
     {
-        EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
+        UnityEngine.SceneManagement.Scene scene = EditorSceneManager.GetActiveScene();
+        EditorSceneManager.SaveScene(scene);
+
+        JsonUtilities utils = new JsonUtilities(Application.dataPath + "/Levels/LevelMetadata");
+
+        if (CheckForLevelPrefab())
+        {
+            RoomData roomData = _levelManager.CreateRoomData();
+
+            utils.SaveData("/" + scene.name + "-metadata.txt", roomData);
+        }
     }
     private bool CheckForLevelPrefab(bool displayMessage = true)
     {

@@ -107,6 +107,8 @@ public class LevelEditor : EditorWindow
         if (CheckForLevelPrefab())
         {
             GetWindow<SaveLevelWindow>();
+
+            
         }
     }
 
