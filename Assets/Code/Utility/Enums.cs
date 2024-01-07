@@ -13,7 +13,9 @@ public class Enums : MonoBehaviour
 
     public enum LineType { Static, Shifting, Rotating };
 
-    public enum LinePoints { A, B };
+    public enum LinePoints { A, B, Default };
+
+    public enum RoomSides { Left, Top, Right, Bottom, Default };
 
     public enum ObjectType { Player, Pushable, BlockObstacle, UniversalObstacle, Default}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] private LineMovementController _movementController;
+    public LineMovementController MovementController;
 
     public float Speed;
     private bool _allowInput = true;
@@ -38,22 +38,22 @@ public class Player : MonoBehaviour
             }
             // Debug.Log(_inputSlope);
 
-            float modifiedSpeed = Speed / _movementController.OnLineController.CurrentLine.Length;
+            float modifiedSpeed = Speed / MovementController.OnLineController.CurrentLine.Length;
             float distanceThisFrame = modifiedSpeed * Time.deltaTime;
 
             // Move player
-            _movementController.MoveAlongLine(_inputSlope, distanceThisFrame);
+            MovementController.MoveAlongLine(_inputSlope, distanceThisFrame);
         }
     }
 
     public void SetLevelManager(LevelManager newLevelManager)
     {
-        _movementController.SetLevelManager(newLevelManager);
+        MovementController.SetLevelManager(newLevelManager);
     }
 
     public void SetNewLine(LineController newLine, float distanceAlongNewLine)
     {
-        _movementController.SetNewLine(newLine, distanceAlongNewLine);
+        MovementController.SetNewLine(newLine, distanceAlongNewLine);
     }
 
     public void GetKilled()

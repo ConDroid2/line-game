@@ -61,7 +61,11 @@ public class LevelEditor : EditorWindow
             GUILayout.Label("Selected Line", EditorStyles.boldLabel);
             if(GUILayout.Button("Set as Start"))
             {
-                _levelManager.StartingLine = _selectedLine;
+                if (CheckForLevelPrefab())
+                {
+                    _levelManager.StartingLine = _selectedLine;
+                    EditorUtility.SetDirty(_levelManager);
+                }
             }
             if(GUILayout.Button("Add Object to Line"))
             {

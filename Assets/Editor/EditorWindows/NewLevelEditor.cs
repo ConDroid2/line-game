@@ -139,18 +139,40 @@ public class NewLevelEditor : EditorWindow
 
     private void SaveRoom()
     {
+        // Get current scene
         UnityEngine.SceneManagement.Scene scene = EditorSceneManager.GetActiveScene();
         EditorSceneManager.SaveScene(scene);
 
         JsonUtilities utils = new JsonUtilities(Application.dataPath + "/Levels/LevelMetadata");
 
+        // Create and save room data for the room
         if (CheckForLevelPrefab())
         {
             RoomData roomData = _levelManager.CreateRoomData();
 
             utils.SaveData("/" + scene.name + "-metadata.txt", roomData);
         }
+        
+        // Add scene to build settings, if it's not already there
+        List<EditorBuildSettingsScene> buildScenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+
+        foreach(EditorBuildSettingsScene buildScene in buildScenes)
+        {
+            if(buildScene.path == scene.path)
+            {
+                return;
+            }
+        }
+
+        EditorBuildSettingsScene newBuildScene = new EditorBuildSettingsScene();
+        newBuildScene.path = scene.path;
+        newBuildScene.enabled = true;
+
+        buildScenes.Add(newBuildScene);
+
+        EditorBuildSettings.scenes = buildScenes.ToArray();
     }
+
     private bool CheckForLevelPrefab(bool displayMessage = true)
     {
         if (_levelManager == null)

@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+
 
 public class SerializeableVector3
 {
@@ -8,16 +6,42 @@ public class SerializeableVector3
     public float y;
     public float z;
 
-    public SerializeableVector3(Vector3 vector)
+    public SerializeableVector3(UnityEngine.Vector3 vector)
     {
         x = vector.x;
         y = vector.y;
         z = vector.z;
     }
 
-    public Vector3 ConvertToVector3()
+    public UnityEngine.Vector3 ConvertToVector3()
     {
-        return new Vector3(x, y, z);
+        return new UnityEngine.Vector3(x, y, z);
+    }
+
+    public static bool operator ==(SerializeableVector3 vectorA, SerializeableVector3 vectorB)
+    {
+        return vectorA.x == vectorB.x &&
+            vectorA.y == vectorB.y &&
+            vectorA.z == vectorB.z;
+    }
+
+    public static bool operator !=(SerializeableVector3 vectorA, SerializeableVector3 vectorB)
+    {
+        return vectorA.x != vectorB.x ||
+            vectorA.y != vectorB.y |
+            vectorA.z != vectorB.z;
+    }
+
+    public override bool Equals(object obj)
+    {
+        try
+        {
+            return (SerializeableVector3)obj == this;
+        }
+        catch (System.Exception e)
+        {
+            return false;
+        }
     }
 
     public override string ToString()

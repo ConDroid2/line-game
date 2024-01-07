@@ -14,6 +14,8 @@ public class LineMovementController : MonoBehaviour
     [SerializeField] private bool _canPush;
     [SerializeField] private float _pushableDistanceCheck;
 
+    public System.Action<Vector3> OnReachedEdgeOfLine;
+
     // privates
     private float _angleBetweenInputAndSlope;
     private Collider2D _collider;
@@ -79,6 +81,12 @@ public class LineMovementController : MonoBehaviour
         if (willMove)
         {
             OnLineController.DistanceOnLine = newDistanceOnLine;
+
+            if(OnLineController.DistanceOnLine == 0 || OnLineController.DistanceOnLine == 1)
+            {
+                OnReachedEdgeOfLine?.Invoke(transform.position);
+                
+            }
         }
 
         return willMove;

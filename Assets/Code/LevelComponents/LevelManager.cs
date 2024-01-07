@@ -9,6 +9,11 @@ public class LevelManager : MonoBehaviour
     public GameObject DangerZoneParent;
     public GameObject MiscLevelComponentsParent;
 
+    [Header("Room Settings")]
+    [Tooltip("Height of room in Room Units")] public int RoomHeight = 1;
+    [Tooltip("Width of Room in Room Units")] public int RoomWidth = 1;
+    
+
     [Header("Likely to be made private")]
     [SerializeField] Player _playerPrefab;
     private Player _player;
@@ -16,11 +21,18 @@ public class LevelManager : MonoBehaviour
 
     
 
-    [HideInInspector] public LineController StartingLine;
-    [SerializeField] private Enums.LinePoints _startingPoint = Enums.LinePoints.A;
+    public LineController StartingLine;
+    public float _startingDistance;
+    public Enums.LinePoints StartingPoint = Enums.LinePoints.A;
 
     // Shouldn't need this
     public LineController LinePrefab;
+
+    // PUBLIC ACCESSORS // 
+    public float RoomLeftSide => -10 * RoomWidth;
+    public float RoomRightSide => 10 * RoomWidth;
+    public float RoomTopSide => 5.5f * RoomHeight;
+    public float RoomBottomSide => -5.5f * RoomHeight;
 
     // A Dictonary of Line -> Dictionary of Vector3 -> Intersection Data
     private Dictionary<LineController, Dictionary<Vector3, List<IntersectionData>>> _intersections;
@@ -44,20 +56,21 @@ public class LevelManager : MonoBehaviour
 
         if(StartingLine == null)
         {
+            Debug.Log("No start line, picking first line");
             StartingLine = Lines[0];
         }
 
 
-        if(_player == null)
+        if (_player == null)
         {
             _player = FindObjectOfType<Player>();
 
-            if(_player == null)
+            if (_player == null)
             {
                 SetPlayer(Instantiate(_playerPrefab));
             }
         }
-        if(_player != null)
+        if (_player != null)
         {
             SetPlayer(_player);
         }
@@ -78,8 +91,13 @@ public class LevelManager : MonoBehaviour
 
     public void ResetPlayer()
     {
-        float startingPos = _startingPoint == Enums.LinePoints.A ? 0 : 1;
-        _player.SetNewLine(StartingLine, startingPos);
+        // float startingPos = StartingPoint == Enums.LinePoints.A ? 0 : 1;
+        _player.SetNewLine(StartingLine, _startingDistance);
+    }
+
+    public void SetStartingDistance(float startingDistance)
+    {
+        _startingDistance = startingDistance;
     }
 
     public List<IntersectionData> GetIntersectionPointsAroundPos(LineController currentLine, Vector3 position, float range)
@@ -163,6 +181,6 @@ public class LevelManager : MonoBehaviour
 
     public RoomData CreateRoomData()
     {
-        return new RoomData(LineParent.GetComponentsInChildren<LineController>());
+        return new RoomData(LineParent.GetComponentsInChildren<LineController>(), this);
     }
 }
