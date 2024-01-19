@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(DangerZone))]
+[CustomEditor(typeof(DangerZoneVisuals))]
 public class DangerZoneEditor : Editor
 {
 
     private void OnSceneGUI()
     {
-        DangerZone zone = (DangerZone)target;
+        DangerZoneVisuals zone = (DangerZoneVisuals)target;
         float handleSize = HandleUtility.GetHandleSize(zone.transform.position) * 0.2f;
 
         Vector3 handlePos = new Vector3(zone.Trigger.bounds.center.x + zone.Trigger.bounds.extents.x, zone.Trigger.bounds.center.y + zone.Trigger.bounds.extents.y, 0f);
@@ -38,7 +38,7 @@ public class DangerZoneEditor : Editor
 
 
     [DrawGizmo(GizmoType.NonSelected | GizmoType.Pickable)]
-    static void DrawGizmo(DangerZone zone, GizmoType gizmoType)
+    static void DrawGizmo(DangerZoneVisuals zone, GizmoType gizmoType)
     {
         if (Application.isEditor)
         {

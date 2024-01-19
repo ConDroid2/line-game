@@ -112,7 +112,7 @@ public class NewLevelEditor : EditorWindow
     {
         if (CheckForLevelPrefab())
         {
-            DangerZone dangerZonePrefab = AssetDatabase.LoadAssetAtPath<DangerZone>("Assets/Prefabs/LevelComponents/DangerZone.prefab");
+            DangerZoneVisuals dangerZonePrefab = AssetDatabase.LoadAssetAtPath<DangerZoneVisuals>("Assets/Prefabs/LevelComponents/DangerZone.prefab");
 
             PrefabUtility.InstantiatePrefab(dangerZonePrefab, _levelManager.DangerZoneParent.transform);
         }

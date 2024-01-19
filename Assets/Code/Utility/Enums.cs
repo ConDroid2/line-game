@@ -17,5 +17,7 @@ public class Enums : MonoBehaviour
 
     public enum RoomSides { Left, Top, Right, Bottom, Default };
 
-    public enum ObjectType { Player, Pushable, BlockObstacle, UniversalObstacle, Default}
+    public enum ObjectType { Player, Pushable, BlockObstacle, UniversalObstacle, Default };
+
+    public enum ShiftMode { Rebound, Restart };
 }

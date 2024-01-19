@@ -6,6 +6,7 @@ public class FreeObjectShifter : MonoBehaviour
 {
     /** Settings **/
     [HideInInspector] public Vector3 MovementVector;
+    public Enums.ShiftMode Mode = Enums.ShiftMode.Rebound;
     public float TimeToMove = 1f;
     public float TimeToWait = 0f;
     public bool WaitAtStart = false;
@@ -59,7 +60,7 @@ public class FreeObjectShifter : MonoBehaviour
             if (_timeMoving >= TimeToMove)
             {
                 _timeMoving = 0f;
-                SwapEndpoints();
+                if(Mode == Enums.ShiftMode.Rebound) SwapEndpoints();
 
                 if (TimeToWait > 0)
                 {
