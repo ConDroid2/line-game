@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     public float Speed;
     private bool _allowInput = true;
+
+    [SerializeField] private Transform _visuals;
     
     // Private variables
     BaseControls _baseControls;
@@ -21,6 +23,16 @@ public class Player : MonoBehaviour
     {
         _baseControls = new BaseControls();
         _baseControls.PlayerMap.Enable();
+    }
+
+    private void Start()
+    {
+        MovementController.OnTryToMoveInDirection += HandleTryToMoveInDirection;
+    }
+
+    private void OnDisable()
+    {
+        MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
     }
 
 
@@ -60,6 +72,11 @@ public class Player : MonoBehaviour
     {
         // Need to send event so level manager can spawn properly
         OnPlayerDeath.Invoke();
+    }
+
+    public void HandleTryToMoveInDirection(int direction)
+    {
+        _visuals.localScale = new Vector3(direction, _visuals.localScale.y, _visuals.localScale.z);
     }
 
     private void OnDrawGizmos()

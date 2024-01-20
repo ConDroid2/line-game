@@ -15,6 +15,7 @@ public class LineMovementController : MonoBehaviour
     [SerializeField] private float _pushableDistanceCheck;
 
     public System.Action<Vector3> OnReachedEdgeOfLine;
+    public System.Action<int> OnTryToMoveInDirection;
 
     // privates
     private float _angleBetweenInputAndSlope;
@@ -56,11 +57,13 @@ public class LineMovementController : MonoBehaviour
         if (_angleBetweenInputAndSlope < 90f)
         {
             newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine + positionDelta, 0f, 1f);
+            OnTryToMoveInDirection.Invoke(1);
         }
-        // If holding int he negative direction
+        // If holding in the negative direction
         else if (_angleBetweenInputAndSlope > 90f)
         {
             newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine - positionDelta, 0f, 1f);
+            OnTryToMoveInDirection.Invoke(-1);
         }
 
         // Check what our new position will be
