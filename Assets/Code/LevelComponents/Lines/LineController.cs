@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LineController : MonoBehaviour
 {
+    // Leaving these here just for now in case the editor bug wasn't fixed
+    //public SerializeableVector3 TestA = new SerializeableVector3(1, 1, 0);
+    //public SerializeableVector3 TestB = new SerializeableVector3(1, 0, 0);
     public Vector3 InitialA = new Vector3(1, 1, 0);
     public Vector3 InitialB = new Vector3(1, 0, 0);
     public Vector3 InitialMidpoint => new Vector3((InitialA.x + InitialB.x) / 2, (InitialA.y + InitialB.y) / 2);

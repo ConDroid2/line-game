@@ -1,5 +1,5 @@
 
-
+[System.Serializable]
 public class SerializeableVector3
 {
     public float x;
@@ -11,6 +11,13 @@ public class SerializeableVector3
         x = vector.x;
         y = vector.y;
         z = vector.z;
+    }
+
+    public SerializeableVector3(float x, float y, float z)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     public UnityEngine.Vector3 ConvertToVector3()

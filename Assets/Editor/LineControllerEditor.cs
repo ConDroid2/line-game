@@ -55,7 +55,10 @@ public class LineControllerEditor : Editor
                     Undo.RecordObject(controller, "Change endpoints");
                     controller.InitialA = newAPos;
                     controller.InitialB = newBPos;
+                    //controller.TestA = new SerializeableVector3(newAPos);
+                    //controller.TestB = new SerializeableVector3(newBPos);
                     controller.transform.position = controller.InitialMidpoint;
+                    EditorUtility.SetDirty(controller);
                 }
             }
         }
