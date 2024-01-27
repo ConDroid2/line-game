@@ -35,6 +35,42 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""740b8332-5c64-46e6-868c-3c0e78a7ca0d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AimMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""0256b432-7b75-44df-9c31-628e8bdecf33"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FireProjectile"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f878c0f-e1b7-49fd-80ab-4e8948c707ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Grapple"",
+                    ""type"": ""Button"",
+                    ""id"": ""aca5162f-9a33-4e41-b9ec-0a5f40ec61c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -158,6 +194,94 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2eba869f-c807-4e07-924c-d3fdb0204370"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3039bf0c-e243-4f1c-b830-f1fff9015699"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3f91004-fc5d-4395-8c99-adda1bed039f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e78e9ce-8c4d-4a3d-8b0d-cea9d472e63d"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4cf6abc-a3ff-43c7-b94b-62a21f003085"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireProjectile"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b90cd4e7-80a1-4f20-9e05-4ef53568bf76"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireProjectile"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9ab4152-2c01-45b5-a79a-59cf93121b4c"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grapple"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a53f87c-fb86-4cd3-9fa2-3bc3c4dda3f0"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grapple"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -195,6 +319,10 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         // PlayerMap
         m_PlayerMap = asset.FindActionMap("PlayerMap", throwIfNotFound: true);
         m_PlayerMap_Move = m_PlayerMap.FindAction("Move", throwIfNotFound: true);
+        m_PlayerMap_Sprint = m_PlayerMap.FindAction("Sprint", throwIfNotFound: true);
+        m_PlayerMap_AimMode = m_PlayerMap.FindAction("AimMode", throwIfNotFound: true);
+        m_PlayerMap_FireProjectile = m_PlayerMap.FindAction("FireProjectile", throwIfNotFound: true);
+        m_PlayerMap_Grapple = m_PlayerMap.FindAction("Grapple", throwIfNotFound: true);
         // TestMap
         m_TestMap = asset.FindActionMap("TestMap", throwIfNotFound: true);
         m_TestMap_Vector2 = m_TestMap.FindAction("Vector2", throwIfNotFound: true);
@@ -258,11 +386,19 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerMap;
     private IPlayerMapActions m_PlayerMapActionsCallbackInterface;
     private readonly InputAction m_PlayerMap_Move;
+    private readonly InputAction m_PlayerMap_Sprint;
+    private readonly InputAction m_PlayerMap_AimMode;
+    private readonly InputAction m_PlayerMap_FireProjectile;
+    private readonly InputAction m_PlayerMap_Grapple;
     public struct PlayerMapActions
     {
         private @BaseControls m_Wrapper;
         public PlayerMapActions(@BaseControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMap_Move;
+        public InputAction @Sprint => m_Wrapper.m_PlayerMap_Sprint;
+        public InputAction @AimMode => m_Wrapper.m_PlayerMap_AimMode;
+        public InputAction @FireProjectile => m_Wrapper.m_PlayerMap_FireProjectile;
+        public InputAction @Grapple => m_Wrapper.m_PlayerMap_Grapple;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -275,6 +411,18 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnMove;
+                @Sprint.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
+                @AimMode.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAimMode;
+                @AimMode.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAimMode;
+                @AimMode.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAimMode;
+                @FireProjectile.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFireProjectile;
+                @FireProjectile.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFireProjectile;
+                @FireProjectile.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFireProjectile;
+                @Grapple.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGrapple;
+                @Grapple.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGrapple;
+                @Grapple.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGrapple;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -282,6 +430,18 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+                @AimMode.started += instance.OnAimMode;
+                @AimMode.performed += instance.OnAimMode;
+                @AimMode.canceled += instance.OnAimMode;
+                @FireProjectile.started += instance.OnFireProjectile;
+                @FireProjectile.performed += instance.OnFireProjectile;
+                @FireProjectile.canceled += instance.OnFireProjectile;
+                @Grapple.started += instance.OnGrapple;
+                @Grapple.performed += instance.OnGrapple;
+                @Grapple.canceled += instance.OnGrapple;
             }
         }
     }
@@ -322,6 +482,10 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     public interface IPlayerMapActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnAimMode(InputAction.CallbackContext context);
+        void OnFireProjectile(InputAction.CallbackContext context);
+        void OnGrapple(InputAction.CallbackContext context);
     }
     public interface ITestMapActions
     {

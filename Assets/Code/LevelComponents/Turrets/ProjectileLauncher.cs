@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    [Range(0, 1)]
-    [SerializeField] private float projectileStartDistance = 1f;
     [SerializeField] private ProjectileMover _projectilePrefab;
+
+    [Header("Settings")]
+    [SerializeField] private bool _automatic = true;
 
     [SerializeField] private bool _fireOnAwake = false;
     [SerializeField] private float _fireInterval = 1;
     [SerializeField] private ProjectileData _projectileData;
 
     private float _timeSinceLastFire = 0f;
-    private Vector3 _projectileStartPosition => transform.position + (-1 * transform.up * projectileStartDistance);
+    private bool _canFire = true;
+
     private void Awake()
     {
-        _projectileData.Direction = -1 * transform.up;
         if (_fireOnAwake)
         {
             Fire();
@@ -25,29 +26,40 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void Update()
     {
-        // Needed for if turret has a mover or rotater
-        _projectileData.Direction = -1 * transform.up;
-
-
-        if(_timeSinceLastFire >= _fireInterval)
+        if(_canFire == false)
         {
-            Fire();
-            _timeSinceLastFire = 0f;
+            _timeSinceLastFire += Time.deltaTime;
+
+            if(_timeSinceLastFire >= _fireInterval)
+            {
+                _canFire = true;
+            }
         }
 
-        _timeSinceLastFire += Time.deltaTime;
+        if (_automatic)
+        {
+            Fire();
+        }
     }
 
-    private void Fire()
+    public void Fire()
     {
-        ProjectileMover newProjectile = Instantiate(_projectilePrefab, _projectileStartPosition, transform.rotation);
-        // This is passing by reference
-        newProjectile.Fire(_projectileData);
+        if (_canFire == true)
+        {
+            _projectileData.Direction = transform.up;
+
+            ProjectileMover newProjectile = Instantiate(_projectilePrefab, transform.position, transform.rotation);
+            newProjectile.Fire(new ProjectileData(_projectileData));
+
+            _canFire = false;
+            _timeSinceLastFire = 0f;
+        }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(_projectileStartPosition, 0.1f);
+        Gizmos.DrawSphere(transform.position, 0.05f);
+        Gizmos.DrawLine(transform.position, transform.position + (transform.up * 0.1f));
     }
 }

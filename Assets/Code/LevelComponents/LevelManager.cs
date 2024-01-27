@@ -122,6 +122,45 @@ public class LevelManager : MonoBehaviour
         return intersectionsData;
     }
 
+    public IntersectionData FindClosestIntersectionFromLine(Vector3 lineStart, Vector3 lineEnd)
+    {
+        List<IntersectionData> intersections = new List<IntersectionData>();
+
+        foreach(LineController line in Lines)
+        {
+            Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(line.CurrentA, line.CurrentB, lineStart, lineEnd);
+            Vector3 point = intersectionPoint.Point;
+
+            if(point.x != Vector3.positiveInfinity.x)
+            {
+                // Use the X values to find how far along the line we are from 0 to 1
+                float tValue = Mathf.InverseLerp(line.CurrentA.x, line.CurrentB.x, point.x);
+
+                // If we got 0 using X, try Y
+                if (tValue == 0)
+                {
+                    tValue = Mathf.InverseLerp(line.CurrentA.y, line.CurrentB.y, point.y);
+                }
+
+                intersections.Add(new IntersectionData(line, tValue, point, intersectionPoint.IsParallel));
+            }
+        }
+
+        IntersectionData closestIntersection = null;
+        float closestDistance = float.PositiveInfinity;
+
+        foreach(IntersectionData intersection in intersections)
+        {
+            float distance = Vector3.Distance(lineStart, intersection.IntersectionWorldSpace);
+            if(distance < closestDistance)
+            {
+                closestIntersection = intersection;
+            }
+        }
+
+        return closestIntersection;
+    }
+
     /** PRIVATE METHODS**/
     // Would be smart to split this into one dictionary that has only static lines, and one that deals with only moving line stuff
     private Dictionary<LineController, Dictionary<Vector3, List<IntersectionData>>> CalculateIntersections()
@@ -155,7 +194,7 @@ public class LevelManager : MonoBehaviour
                         }
 
                         // Create intersection data and add it to the dictionary
-                        IntersectionData data = new IntersectionData(otherLine, tValue, intersectionPoint.IsParallel);
+                        IntersectionData data = new IntersectionData(otherLine, tValue, point, intersectionPoint.IsParallel);
 
                         if (innerDictionary.ContainsKey(point))
                         {

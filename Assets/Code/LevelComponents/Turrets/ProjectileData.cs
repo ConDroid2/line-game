@@ -11,4 +11,11 @@ public class ProjectileData
         LifeSpan = lifeSpan;
         Direction = direction;
     }
+
+    public ProjectileData(ProjectileData data)
+    {
+        Speed = data.Speed;
+        LifeSpan = data.LifeSpan;
+        Direction = data.Direction;
+    }
 }
