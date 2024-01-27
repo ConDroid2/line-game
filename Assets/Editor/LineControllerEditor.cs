@@ -44,13 +44,13 @@ public class LineControllerEditor : Editor
                     movePoints = true;
                 }
 
-                else if (newAPos.x < newBPos.x || (newAPos.x - newBPos.x == 0 && newAPos.y < newBPos.y))
-                {
-                    movePoints = true;
+                //else if (newAPos.x < newBPos.x || (newAPos.x - newBPos.x == 0 && newAPos.y < newBPos.y))
+                //{
+                //    movePoints = true;
                     
-                }
+                //}
 
-                if (movePoints)
+                // if (movePoints)
                 {
                     Undo.RecordObject(controller, "Change endpoints");
                     controller.InitialA = newAPos;

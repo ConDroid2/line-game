@@ -104,7 +104,9 @@ public class NewLevelEditor : EditorWindow
         {
             LineController linePrefab = AssetDatabase.LoadAssetAtPath<LineController>("Assets/Prefabs/LevelComponents/Line.prefab");
 
-            PrefabUtility.InstantiatePrefab(linePrefab, _levelManager.LineParent.transform);
+            LineController lineObject = (LineController)PrefabUtility.InstantiatePrefab(linePrefab, _levelManager.LineParent.transform);
+
+            Selection.activeGameObject = lineObject.gameObject;
         }
     }
 
@@ -139,6 +141,11 @@ public class NewLevelEditor : EditorWindow
 
     private void SaveRoom()
     {
+        // Do things before saving
+        foreach (LineController line in FindObjectsOfType<LineController>())
+        {
+            line.FixInitialPointOrientation();
+        }
         // Get current scene
         UnityEngine.SceneManagement.Scene scene = EditorSceneManager.GetActiveScene();
         EditorSceneManager.SaveScene(scene);

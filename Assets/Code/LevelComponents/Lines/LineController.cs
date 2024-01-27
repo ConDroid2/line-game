@@ -69,7 +69,8 @@ public class LineController : MonoBehaviour
 
     public void ConfigureInformation()
     {
-        // FixPointOrientation();
+        FixInitialPointOrientation();
+        FixPointOrientation();
         Slope = CalculateSlope();
         SlopeType = Utilities.DetermineSlopeType(Slope.x, Slope.y);
 
@@ -127,7 +128,7 @@ public class LineController : MonoBehaviour
     }
 
     // Make it so moving from A -> B is always "positive"
-    private void FixPointOrientation()
+    public void FixPointOrientation()
     {
         if(CurrentB.x < CurrentA.x || (CurrentB.x - CurrentA.x == 0 && CurrentB.y < CurrentA.y))
         {
@@ -138,6 +139,22 @@ public class LineController : MonoBehaviour
 
             Debug.Log(_onLineControllers.Count);
             foreach (OnLineController onLine in _onLineControllers)
+            {
+                float newDistanceOnLine = 1 - onLine.DistanceOnLine;
+                onLine.DistanceOnLine = newDistanceOnLine;
+            }
+        }
+    }
+
+    public void FixInitialPointOrientation()
+    {
+        if(InitialB.x < InitialA.x || (InitialB.x - InitialA.x == 0 && InitialB.y < InitialA.y))
+        {
+            Vector3 temp = InitialB;
+            InitialB = InitialA;
+            InitialA = temp;
+
+            foreach(OnLineController onLine in _onLineControllers)
             {
                 float newDistanceOnLine = 1 - onLine.DistanceOnLine;
                 onLine.DistanceOnLine = newDistanceOnLine;
