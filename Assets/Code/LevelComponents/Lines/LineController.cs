@@ -132,12 +132,10 @@ public class LineController : MonoBehaviour
     {
         if(CurrentB.x < CurrentA.x || (CurrentB.x - CurrentA.x == 0 && CurrentB.y < CurrentA.y))
         {
-            Debug.Log("Fixing orientation");
             Vector3 temp = _transformB.position;
             _transformB.position = _transformA.position;
             _transformA.position = temp;
 
-            Debug.Log(_onLineControllers.Count);
             foreach (OnLineController onLine in _onLineControllers)
             {
                 float newDistanceOnLine = 1 - onLine.DistanceOnLine;

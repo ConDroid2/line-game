@@ -55,8 +55,12 @@ public class GrapplingHook : MonoBehaviour
         {
             Debug.Log("Drawing line");
             _timeDrawingLine += Time.deltaTime;
+            float journeyRatio = _timeDrawingLine / _grappleShootTime;
 
             // draw line based on lerp between transform.position and intersection world position
+            Vector3 grapplePosition = Vector3.Lerp(_startPosition, _moveTo.IntersectionWorldSpace, _grappleShootCurve.Evaluate(journeyRatio));
+            _lineRenderer.SetPosition(0, _startPosition);
+            _lineRenderer.SetPosition(1, grapplePosition);
 
             if(_timeDrawingLine >= _grappleShootTime)
             {
@@ -82,6 +86,7 @@ public class GrapplingHook : MonoBehaviour
             float journeyRatio = _timeMovingPlayer / _grapplePullTime;
 
             Player.Instance.transform.position = Vector3.Lerp(_startPosition, _moveTo.IntersectionWorldSpace, _grapplePullCurve.Evaluate(journeyRatio));
+            _lineRenderer.SetPosition(0, Player.Instance.transform.position);
 
             if(_timeMovingPlayer >= _grapplePullTime)
             {
@@ -100,6 +105,8 @@ public class GrapplingHook : MonoBehaviour
         _timeMovingPlayer = 0f;
         _movingPlayer = false;
         _performGrapple = false;
+        _lineRenderer.SetPosition(0, transform.position);
+        _lineRenderer.SetPosition(1, transform.position);
     }
 
 

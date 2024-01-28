@@ -155,6 +155,7 @@ public class LevelManager : MonoBehaviour
             if(distance < closestDistance)
             {
                 closestIntersection = intersection;
+                closestDistance = distance;
             }
         }
 
