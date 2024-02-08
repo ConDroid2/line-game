@@ -20,4 +20,5 @@ public class Enums : MonoBehaviour
     public enum ObjectType { Player, Pushable, BlockObstacle, UniversalObstacle, Default };
 
     public enum ShiftMode { Rebound, Restart };
+    public enum KillType { DangerZone, Projectile, Darkness, Default };
 }

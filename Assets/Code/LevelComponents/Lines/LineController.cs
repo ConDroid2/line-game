@@ -25,7 +25,7 @@ public class LineController : MonoBehaviour
     public Vector2 Slope = new Vector2();
     public float Length => CalculateLength();
 
-    private List<OnLineController> _onLineControllers = new List<OnLineController>();
+    public List<OnLineController> OnLineControllers = new List<OnLineController>();
 
     //[Header("Moving line stuff")]
     //public LineShifter[] LineShifters = new LineShifter[1];
@@ -35,6 +35,8 @@ public class LineController : MonoBehaviour
     {
         _transformA.position = InitialA;
         _transformB.position = InitialB;
+
+        OnLineControllers = new List<OnLineController>();
     }
 
     private void Start()
@@ -111,6 +113,7 @@ public class LineController : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
+    // I think this is useless now
     private void CalculateDirectionModifier()
     {
         if (SlopeType == Enums.SlopeType.Horizontal)
@@ -136,7 +139,7 @@ public class LineController : MonoBehaviour
             _transformB.position = _transformA.position;
             _transformA.position = temp;
 
-            foreach (OnLineController onLine in _onLineControllers)
+            foreach (OnLineController onLine in OnLineControllers)
             {
                 float newDistanceOnLine = 1 - onLine.DistanceOnLine;
                 onLine.DistanceOnLine = newDistanceOnLine;
@@ -152,7 +155,7 @@ public class LineController : MonoBehaviour
             InitialB = InitialA;
             InitialA = temp;
 
-            foreach(OnLineController onLine in _onLineControllers)
+            foreach(OnLineController onLine in OnLineControllers)
             {
                 float newDistanceOnLine = 1 - onLine.DistanceOnLine;
                 onLine.DistanceOnLine = newDistanceOnLine;
@@ -162,17 +165,17 @@ public class LineController : MonoBehaviour
 
     public void AddOnLine(OnLineController newObject)
     {
-        if(_onLineControllers.Contains(newObject) == false)
+        if(OnLineControllers.Contains(newObject) == false)
         {
-            _onLineControllers.Add(newObject);
+            OnLineControllers.Add(newObject);
         }
     }
 
     public void RemoveFromLine(OnLineController objectOnLine)
     {
-        if (_onLineControllers.Contains(objectOnLine))
+        if (OnLineControllers.Contains(objectOnLine))
         {
-            _onLineControllers.Remove(objectOnLine);
+            OnLineControllers.Remove(objectOnLine);
         }
     }
 

@@ -5,110 +5,122 @@ using UnityEngine;
 public class LineMovementController : MonoBehaviour
 {
     // External References
-    // public LineController _currentLine;
     public OnLineController OnLineController;
     public LevelManager LevelManager { get; private set; }
 
-    public float LineDirectionModifier { get; private set; } // Makes it so we can move correctly regardless of slope sign
+    // Settings
     public float CheckForIntersectionsDistance; // The distance we check for intersections
     [SerializeField] private bool _canPush;
-    [SerializeField] private float _pushableDistanceCheck;
 
+    // Force Variabls
+    private List<Force> _activeForces = new List<Force>();
+    private bool _ignoreForces = false;
+
+
+    // Collision Variabls
+    private Collider2D _collider;
+    private LineMovementController _objectBeingPushed = null;
+
+    // Utilities
+    private DebugLogger _logger;
+
+    // Events
     public System.Action<Vector3> OnReachedEdgeOfLine;
     public System.Action<int> OnTryToMoveInDirection;
 
-    // privates
-    private float _angleBetweenInputAndSlope;
-    private Collider2D _collider;
-
     private void Awake()
     {
-        if (_canPush)
+        _collider = GetComponent<Collider2D>();
+        _logger = GetComponent<DebugLogger>();
+    }
+
+    private void FixedUpdate()
+    {
+        if(_activeForces.Count != 0 && _ignoreForces == false)
         {
-            _collider = GetComponent<Collider2D>();
+            MoveFromActiveForces();
         }
     }
 
-    /*
-     * @author Connor Davis
-     * @description Attempt to move along the line. Return false if didn't move, true if did
-     */
-    public bool MoveAlongLine(Vector2 inputVector, float distanceToMove)
+
+
+    /** GENERAL MOVE STUFF **/
+
+    // Actually LERP along a line based on passed in distance to try to move. Return whether we actually moved
+    private bool Move(float distanceToMove)
     {
-        LineController currentLine = OnLineController.CurrentLine;
+        // Keep track of if we are actually going to move
+        bool willMove = true;
 
-        // If we get sent a zero vector for trying to move, set position as same
-        if (inputVector == Vector2.zero)
-        {
-            OnLineController.DistanceOnLine = OnLineController.DistanceOnLine;
-
-            return false;
-        }
-
-        HandleSwappingLines(inputVector, currentLine);
-
-        float newDistanceOnLine = OnLineController.DistanceOnLine;
-        float positionDelta = distanceToMove * currentLine.DirectionModifier;
-        _angleBetweenInputAndSlope = Vector3.Angle(inputVector.normalized, currentLine.Slope * currentLine.DirectionModifier);
-
-
-        // Actually move the object along the line
-        // If holding in the positive direction
-        if (_angleBetweenInputAndSlope < 90f)
-        {
-            newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine + positionDelta, 0f, 1f);
-            OnTryToMoveInDirection.Invoke(1);
-        }
-        // If holding in the negative direction
-        else if (_angleBetweenInputAndSlope > 90f)
-        {
-            newDistanceOnLine = Mathf.Clamp(OnLineController.DistanceOnLine - positionDelta, 0f, 1f);
-            OnTryToMoveInDirection.Invoke(-1);
-        }
-
-        // Check what our new position will be
+        // Calculate the new distance on line
+        float newDistanceOnLine = Mathf.Clamp01(OnLineController.DistanceOnLine + distanceToMove);
         Vector3 attemptedNewPosition = OnLineController.CheckNewPosition(newDistanceOnLine);
 
-        // Keep of track of if we are actually moving
-        bool willMove = attemptedNewPosition != transform.position;
+        // Check if our new position is actually new
+        willMove &= transform.position != attemptedNewPosition;
 
+        // The vector we're actually moving along
+        Vector3 movementVector = (attemptedNewPosition - transform.position).normalized;
+
+        // Do an OverlapBox to check if we'll hit anything at our new position
+        Collider2D[] results = new Collider2D[10];
+        ContactFilter2D filter = new ContactFilter2D(); // Can put this in a variable eventually
+
+        int numberOfHits = Physics2D.OverlapBox(attemptedNewPosition, _collider.bounds.size, transform.eulerAngles.z, filter, results);
+
+        // Check if any collisions will stop us
+        willMove &= HandleCollisions(results);
+
+        // If we can push, deal with any potential pushables
         if (_canPush)
         {
-            // Handle colslisions if need to
-            // Should be the movement vector, not the input vector because they could be different
-            Vector3 movementVector = (attemptedNewPosition - transform.position).normalized;
-            willMove &= HandleCollisions(movementVector, distanceToMove);
+            willMove &= HandlePushables(results, movementVector, distanceToMove);
         }
 
-        // If we are moving/can move, do it and return that
+        // If we meet all criteria, set our new position
         if (willMove)
         {
             OnLineController.DistanceOnLine = newDistanceOnLine;
 
-            if(OnLineController.DistanceOnLine == 0 || OnLineController.DistanceOnLine == 1)
+            if (OnLineController.DistanceOnLine == 0 || OnLineController.DistanceOnLine == 1)
             {
                 OnReachedEdgeOfLine?.Invoke(transform.position);
-                
             }
         }
 
+       //  _logger.DebugLog($"{gameObject.name} returning {willMove}");
         return willMove;
     }
 
 
-    /**
-     * @author Connor Davis
-     * @description Set a new line
-     */
-    public void SetNewLine(LineController newLine, float distanceOnLine = 0)
+    // Attempt to move based on direct input
+    public bool MoveDirectly(Vector2 direction, float moveAmount)
     {
-        OnLineController.SetLine(newLine, distanceOnLine);
+        
+        LineController currentLine = OnLineController.CurrentLine;
+
+        HandleSwappingLines(direction, currentLine);
+
+        // Figure out which direction along the line we're trying to move based on angles
+        float angleBetweenDirectionAndSlope = Vector3.Angle(direction, currentLine.Slope);
+        float distanceToMove = 0f;
+
+        if (angleBetweenDirectionAndSlope < 90f)
+        {
+            distanceToMove = moveAmount;
+            OnTryToMoveInDirection?.Invoke(1);
+        }
+        else if (angleBetweenDirectionAndSlope > 90f)
+        {
+            distanceToMove = moveAmount * -1;
+            OnTryToMoveInDirection?.Invoke(-1);
+        }
+
+        return Move(distanceToMove);
     }
 
-    /**
-     * @author Connor Davis
-     * @description Check if we should be moving to a new line based on input, then move to it
-     */
+
+    //Check if we should be moving to a new line based on input, then move to it
     private void HandleSwappingLines(Vector2 inputVector, LineController currentLine)
     {
         // Check if there are any intersection points in range   
@@ -119,7 +131,7 @@ public class LineMovementController : MonoBehaviour
             // Check if the input would allow movment along the intersecting line
             float toleranceAngle = 20f;
 
-            
+
             bool canMoveToNewLine = Vector3.Angle(inputVector.normalized, intersection.Line.Slope) < toleranceAngle;
             canMoveToNewLine |= Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1) < toleranceAngle;
 
@@ -137,72 +149,251 @@ public class LineMovementController : MonoBehaviour
         }
     }
 
-    private bool HandleCollisions(Vector2 direction, float distanceToMove)
+
+
+    /** COLLISION PARSERS/HANLDERS **/
+
+    // Determin whether or not something we're hitting should be stopping us (and return if it is)
+    private bool HandleCollisions(Collider2D[] colliders)
     {
         bool canMove = true;
-        RaycastHit2D[] hits = new RaycastHit2D[2];
 
-        int numberOfHits = _collider.Cast(direction, hits, _pushableDistanceCheck);
-
-        for (int i = 0; i < numberOfHits; i++)
+        foreach(Collider2D collider in colliders)
         {
-            hits[i].collider.gameObject.TryGetComponent(out LineMovementController pushable);
-            hits[i].collider.gameObject.TryGetComponent(out OnLineController onLineController);
+            // If there is no collider in this element, or it's ourself: skip this iteration
+            if (collider == null || collider.gameObject == gameObject) continue;
 
+            // _logger.DebugLog($"{gameObject.name} hit {collider.gameObject.name}");
+            collider.gameObject.TryGetComponent(out LineMovementController pushable);
+            collider.gameObject.TryGetComponent(out OnLineController onLineController);
+
+            // Not sure if this check is required
             if (onLineController == null)
             {
                 continue;
             }
 
-            if (pushable != null)
+            // If we can't push, but hit a pushable
+            if (pushable != null && _canPush == false)
             {
-
-                Vector2 positionDifference = (Vector2)(onLineController.transform.position - transform.position).normalized;
-
-                if(positionDifference != direction.normalized)
-                {
-                    continue;
-                }
-
-                pushable.SetLevelManager(LevelManager);
-                pushable.RecalculateLineInfo();
-
-                // Try to move the pushable
-                bool pushableMoved = pushable.MoveAlongLine(direction, distanceToMove);
-                canMove = pushableMoved;
+                canMove = false;
             }
+
+            // If we hit a universal obstacle
             if (onLineController.ObjectType == Enums.ObjectType.UniversalObstacle)
             {
                 canMove = false;
             }
+            // If we hit a BlockObstacle, and we're not the Player
             else if (onLineController.ObjectType == Enums.ObjectType.BlockObstacle && OnLineController.ObjectType != Enums.ObjectType.Player)
             {
                 canMove = false; 
             }
         }
 
+        // Clear out all forces if we hit something
+        if(canMove == false)
+        {
+            _activeForces.Clear();
+        }
+
+        // _logger.DebugLog($"Collisions = {canMove}");
         return canMove;
     }
 
-    public void RecalculateLineInfo()
+
+    // Push anything we should be pushing
+    private bool HandlePushables(Collider2D[] colliders, Vector2 direction, float distanceToMove)
     {
-        SetNewLine(OnLineController.CurrentLine, OnLineController.DistanceOnLine);
+        // _logger.DebugLog($"Pushing in {direction}");
+        distanceToMove = Mathf.Abs(distanceToMove);
+        // Go through each collision until we find one pushable
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider == null ||collider.gameObject == gameObject) continue;
+
+            if (collider.CompareTag("Pushable"))
+            {
+                // Keep track that we're pushing this object and return whether or not we moved it
+                collider.gameObject.TryGetComponent(out LineMovementController otherController);
+
+                // If we're pushing a new thing for some reason, let the thing we were pushing know
+                if(_objectBeingPushed != null && _objectBeingPushed != otherController)
+                {
+                    _objectBeingPushed.SetIgnoreForces(false);
+                }
+
+                _objectBeingPushed = otherController;
+
+                otherController.SetIgnoreForces(true);
+
+                // Try to move pushable
+                _logger.DebugLog($"Would be pushing {collider.gameObject.name}");
+                return otherController.MoveDirectly(direction, distanceToMove);
+            }
+        }
+
+        // If we don't find any pushables, reset if needed, then we can move
+        if(_objectBeingPushed != null)
+        {
+            _logger.DebugLog($"Stopped pushing {_objectBeingPushed.gameObject.name}");
+            _objectBeingPushed.SetIgnoreForces(false);
+            _objectBeingPushed = null;
+        }
+
+        return true;
     }
 
+   
+
+    /** FORCES STUFF **/
+
+    // Add a new force to our active forces list
+    public bool AddForce(Force newForce, bool validateForce = false)
+    {
+        // If the source of this force isn't already acting on this object
+        if (_activeForces.Find(force => force.Source == newForce.Source) == null)
+        {
+            if(validateForce == true)
+            {
+                _logger.DebugLog($"Is new force valid? {ValidateForce(newForce)}");
+                if (ValidateForce(newForce) == false) return false;
+            }
+
+            _logger.DebugLog($"Adding new force");
+            _activeForces.Add(newForce);
+            return true;
+        }
+
+        return false;
+    }
+
+
+    // Move this object based on the forces acting upon it
+    public void MoveFromActiveForces()
+    {
+        LineController currentLine = OnLineController.CurrentLine;
+
+        // Figure out what direction all forces combined are pushing
+        Vector2 combinedDirection = Vector2.zero;
+
+        foreach (Force force in _activeForces)
+        {
+            combinedDirection += (force.Direction * force.Magnitude);
+        }
+
+        combinedDirection.Normalize();
+
+        _logger.DebugLog($"Combined direcetion: {combinedDirection}");
+
+        if (combinedDirection == Vector2.zero)
+        {
+            OnLineController.DistanceOnLine = OnLineController.DistanceOnLine;
+            return;
+        }
+
+        // Swap lines based on the combined direction
+        HandleSwappingLines(combinedDirection, currentLine);
+
+        float distanceToMove = 0f;
+
+        foreach (Force force in _activeForces)
+        {
+            // Calculate how much this would move the player
+            // Apply to newDistanceOnLine
+            float angleBetweenForceAndSlope = Vector3.Angle(force.Direction, currentLine.Slope * currentLine.DirectionModifier);
+
+
+            // Speed modified based on current line length
+            float speed = force.Magnitude / OnLineController.CurrentLine.Length;
+            float distanceDelta = speed * Time.deltaTime;
+
+            if (angleBetweenForceAndSlope < 90f)
+            {
+                distanceToMove += distanceDelta;
+                // These invokes should be after we know which way we're going
+                OnTryToMoveInDirection?.Invoke(1);
+            }
+            else if (angleBetweenForceAndSlope > 90f)
+            {
+                distanceToMove -= distanceDelta;
+                OnTryToMoveInDirection?.Invoke(-1);
+            }
+
+            combinedDirection += force.Direction;
+        }
+
+        bool moved = Move(distanceToMove);
+
+        if (!moved)
+        {
+            // If we didn't move, get rid of all forces
+            _activeForces.Clear();
+        }
+
+        CleanupForces();
+    }
+
+
+    // Apply drag to all forces, then get rid of any that meet conditions
+    private void CleanupForces()
+    {
+        _logger.DebugLog("Removing Forces");
+        _activeForces.ForEach(force => force.ApplyDrag());
+        // Loop through each force, remove if condition is met
+        _activeForces.RemoveAll(force => force.Magnitude < 0.01f);
+
+        // Need to also remove forces that are trying to push the object in a way it can't move
+        _activeForces.RemoveAll(force => ValidateForce(force) == false);
+
+        _logger.DebugLog($"Number of forces after cleanup = {_activeForces.Count}");
+    }
+
+
+    // Return whether or not a force is valid (mainly check if force would try to push us past an endpoint)
+    private bool ValidateForce(Force force)
+    {
+        float angleBetweenForceAndSlope = Vector2.Angle(force.Direction, OnLineController.CurrentLine.Slope);
+        bool isValid = true;
+
+        if (angleBetweenForceAndSlope < 90f)
+        {
+            isValid &= OnLineController.DistanceOnLine != 1;
+        }
+        else if (angleBetweenForceAndSlope > 90f)
+        {
+            isValid &= OnLineController.DistanceOnLine != 0;
+        }
+
+        return isValid;
+    }
+
+    
+
+    /** SETTERS **/
+
+    //Set the level manager
     public void SetLevelManager(LevelManager newLevelManager)
     {
         LevelManager = newLevelManager;
     }
 
-    private void OnGUI()
+    
+    // Set whether or not we should ignore forces
+    public void SetIgnoreForces(bool ignore)
     {
-        if (gameObject.name == "Player")
+        if (ignore == true)
         {
-            GUI.skin.label.fontSize = 24;
-            GUILayout.Label("Current Line Slope: " + OnLineController.CurrentLine.Slope);
-            GUILayout.Label("Angle Between Input and Slope: " + _angleBetweenInputAndSlope);
+            _activeForces.Clear();
         }
 
+        _ignoreForces = ignore;
+    }
 
+
+    // Set new Line
+    public void SetNewLine(LineController newLine, float distanceOnLine = 0)
+    {
+        OnLineController.SetLine(newLine, distanceOnLine);
     }
 }

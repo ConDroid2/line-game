@@ -74,6 +74,8 @@ public class LevelManager : MonoBehaviour
         {
             SetPlayer(_player);
         }
+
+        new List<LineMovementController>(FindObjectsOfType<LineMovementController>()).ForEach(controller => controller.SetLevelManager(this));
     }
 
     private void Update()

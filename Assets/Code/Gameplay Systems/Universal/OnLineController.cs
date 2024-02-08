@@ -32,6 +32,7 @@ public class OnLineController : MonoBehaviour
             Vector3 av = transform.position - CurrentLine.CurrentA;
 
             DistanceOnLine = Vector3.Dot(av, ab) / Vector3.Dot(ab, ab);
+            if(CurrentLine.OnLineControllers.Contains(this) == false) CurrentLine.AddOnLine(this);
         }
     }
 

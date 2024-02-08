@@ -87,7 +87,9 @@ public class Player : MonoBehaviour
             float distanceThisFrame = modifiedSpeed * Time.deltaTime;
 
             // Move player
-            MovementController.MoveAlongLine(_inputVector, distanceThisFrame);
+            // MovementController.MoveAlongLine(_inputVector, distanceThisFrame);
+
+            MovementController.AddForce(new Force(currentSpeed, _inputVector, 0f, gameObject));
         }
         else if (_aimingMode)
         {
@@ -150,7 +152,7 @@ public class Player : MonoBehaviour
         MovementController.SetNewLine(newLine, distanceAlongNewLine);
     }
 
-    public void GetKilled()
+    public void GetKilled(Enums.KillType killType)
     {
         // Need to send event so level manager can spawn properly
         OnPlayerDeath.Invoke();

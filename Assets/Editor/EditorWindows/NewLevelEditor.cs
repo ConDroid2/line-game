@@ -122,16 +122,21 @@ public class NewLevelEditor : EditorWindow
 
     private void AddObjectToLine()
     {
-        string fullAssetPath = EditorUtility.OpenFilePanel("Select type of object", "Assets/Prefabs/LevelComponents/OnLineComponents", "prefab");
+        if (CheckForLevelPrefab())
+        {
+            string fullAssetPath = EditorUtility.OpenFilePanel("Select type of object", "Assets/Prefabs/LevelComponents/OnLineComponents", "prefab");
 
-        // Trim the path up untill "Asset"
-        int beginningOfAssetPath = fullAssetPath.IndexOf("Asset");
-        string updatedAssetPath = fullAssetPath.Substring(beginningOfAssetPath);
+            // Trim the path up until "Asset"
+            int beginningOfAssetPath = fullAssetPath.IndexOf("Asset");
+            string updatedAssetPath = fullAssetPath.Substring(beginningOfAssetPath);
 
-        OnLineController prefab = AssetDatabase.LoadAssetAtPath<OnLineController>(updatedAssetPath);
+            OnLineController prefab = AssetDatabase.LoadAssetAtPath<OnLineController>(updatedAssetPath);
 
-        OnLineController newObject = (OnLineController)PrefabUtility.InstantiatePrefab(prefab, _levelManager.MiscLevelComponentsParent.transform);
-        newObject.SetLine(_selectedLine, 0f);
+            OnLineController newObject = (OnLineController)PrefabUtility.InstantiatePrefab(prefab, _levelManager.MiscLevelComponentsParent.transform);
+            newObject.SetLine(_selectedLine, 0f);
+
+            EditorUtility.SetDirty(_selectedLine);
+        }
     }
 
 

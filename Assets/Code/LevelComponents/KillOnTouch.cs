@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class KillOnTouch : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public Enums.KillType killType = Enums.KillType.Default;
+    public bool Active;
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.TryGetComponent(out Player player))
-        {
-            player.GetKilled();
+        {    
+            if (Active)
+            {
+                player.GetKilled(killType);
+            }
         }
     }
 }

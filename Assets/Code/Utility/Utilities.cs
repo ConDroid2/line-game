@@ -106,5 +106,10 @@ public static class Utilities
             Point = newPoint;
             IsParallel = isParallel;
         }
+
+        public override string ToString()
+        {
+            return $"Point: {Point}, IsParallel: {IsParallel}";
+        }
     }
 }
