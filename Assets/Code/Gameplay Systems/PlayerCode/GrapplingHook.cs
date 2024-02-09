@@ -53,7 +53,6 @@ public class GrapplingHook : MonoBehaviour
         // draw line
         if(_drawingLine)
         {
-            Debug.Log("Drawing line");
             _timeDrawingLine += Time.deltaTime;
             float journeyRatio = _timeDrawingLine / _grappleShootTime;
 
