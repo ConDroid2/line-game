@@ -10,24 +10,34 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log($"collided with {collision.collider.gameObject.name}");
+        // Destroy destructables
         if (collision.collider.gameObject.CompareTag("PlayerDestructable"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
 
+        // Push pushables
         else if (collision.collider.gameObject.CompareTag("Pushable"))
         {
             
             Vector2 forceDirection = collision.contacts[0].normal * -1;
-            Debug.Log($"Trying to push in direction: {forceDirection}");
 
             LineMovementController movementController = collision.gameObject.GetComponent<LineMovementController>();
 
-            Debug.Log(movementController.AddForce(new Force(_pushableForce, forceDirection, _drag, gameObject)));
+            movementController.AddForce(new Force(_pushableForce, forceDirection, _drag, gameObject));
             Destroy(gameObject);
 
+        }
+
+        // Activate Switches that aren't Continuous
+        else if(collision.collider.TryGetComponent(out Switch switchHit))
+        {
+            if (switchHit.SwitchType != Enums.SwitchType.Continuous)
+            {
+                switchHit.Activate();
+                Destroy(gameObject);
+            }
         }
     }
 }
