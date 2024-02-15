@@ -84,6 +84,11 @@ public class LineRotator : MonoBehaviour
 
     public void ValidateNewOrientation()
     {
+        
+        _lineController.SetEndpoint("A", FixEndpointPositions(_lineController.CurrentA));
+        _lineController.SetEndpoint("B", FixEndpointPositions(_lineController.CurrentB));
+        _lineController.FixPointOrientation();
+
         Vector3 a = _lineController.CurrentA;
         Vector3 b = _lineController.CurrentB;
 
@@ -103,12 +108,16 @@ public class LineRotator : MonoBehaviour
                 Reverse();
             }
         }
-        // Check if it has any intersections that are Positive Infinity and Parallel
-        // Check if this line is inside any of those
-        // Check if either endpoint is outside level bounds
-        // If not valid, rotate back
+    }
 
-        //Debug.Log($"{_lineController.CurrentA.y}");
-        //Debug.Log($"{System.Math.Round((decimal)_lineController.CurrentA.y, 2)}");
+    private Vector3 FixEndpointPositions(Vector3 endpoint)
+    {
+        decimal x = System.Math.Round((decimal)endpoint.x, 2);
+        decimal y = System.Math.Round((decimal)endpoint.y, 2);
+        decimal z = System.Math.Round((decimal)endpoint.z, 2);
+
+        // Debug.Log($"Initial x: {endpoint.y}, Fixed x: {(float)y}");
+
+        return new Vector3((float)x, (float)y, (float)z);
     }
 }

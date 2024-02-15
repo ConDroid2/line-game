@@ -158,6 +158,18 @@ public class LineController : MonoBehaviour
         }
     }
 
+    public void SetEndpoint(string endpoint, Vector3 position)
+    {
+        if(endpoint == "A")
+        {
+            _transformA.position = position;
+        }
+        else if(endpoint == "B")
+        {
+            _transformB.position = position;
+        }
+    }
+
     public void AddOnLine(OnLineController newObject)
     {
         if(OnLineControllers.Contains(newObject) == false)
