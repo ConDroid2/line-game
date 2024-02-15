@@ -71,6 +71,15 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f2086fe-fef0-4b0d-9211-ec09cd4a65e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -282,6 +291,17 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""action"": ""Grapple"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""430fdc12-231d-4c1e-a345-52e4eeee29aa"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -323,6 +343,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         m_PlayerMap_AimMode = m_PlayerMap.FindAction("AimMode", throwIfNotFound: true);
         m_PlayerMap_FireProjectile = m_PlayerMap.FindAction("FireProjectile", throwIfNotFound: true);
         m_PlayerMap_Grapple = m_PlayerMap.FindAction("Grapple", throwIfNotFound: true);
+        m_PlayerMap_Rotate = m_PlayerMap.FindAction("Rotate", throwIfNotFound: true);
         // TestMap
         m_TestMap = asset.FindActionMap("TestMap", throwIfNotFound: true);
         m_TestMap_Vector2 = m_TestMap.FindAction("Vector2", throwIfNotFound: true);
@@ -390,6 +411,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_AimMode;
     private readonly InputAction m_PlayerMap_FireProjectile;
     private readonly InputAction m_PlayerMap_Grapple;
+    private readonly InputAction m_PlayerMap_Rotate;
     public struct PlayerMapActions
     {
         private @BaseControls m_Wrapper;
@@ -399,6 +421,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         public InputAction @AimMode => m_Wrapper.m_PlayerMap_AimMode;
         public InputAction @FireProjectile => m_Wrapper.m_PlayerMap_FireProjectile;
         public InputAction @Grapple => m_Wrapper.m_PlayerMap_Grapple;
+        public InputAction @Rotate => m_Wrapper.m_PlayerMap_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -423,6 +446,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @Grapple.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGrapple;
                 @Grapple.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGrapple;
                 @Grapple.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnGrapple;
+                @Rotate.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnRotate;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -442,6 +468,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @Grapple.started += instance.OnGrapple;
                 @Grapple.performed += instance.OnGrapple;
                 @Grapple.canceled += instance.OnGrapple;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
             }
         }
     }
@@ -486,6 +515,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         void OnAimMode(InputAction.CallbackContext context);
         void OnFireProjectile(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
     public interface ITestMapActions
     {

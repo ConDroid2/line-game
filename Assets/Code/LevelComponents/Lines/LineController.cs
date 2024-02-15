@@ -61,11 +61,6 @@ public class LineController : MonoBehaviour
             FixPointOrientation();
         }
         Slope = CalculateSlope();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            FixPointOrientation();
-        }
     }
 
 

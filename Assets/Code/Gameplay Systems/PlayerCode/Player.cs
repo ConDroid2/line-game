@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.FireProjectile.performed += HandleFirePerformed;
 
         _baseControls.PlayerMap.Grapple.performed += HandleGrapplePerformed;
+
+        _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
     }
 
     private void Start()
@@ -140,6 +142,13 @@ public class Player : MonoBehaviour
         {
             _grapplingHook.AttemptGrapple();
         }
+    }
+
+    public void HandleRotatePerformed(InputAction.CallbackContext context)
+    {
+        // rotate
+        Debug.Log("Rotating");
+        MovementController.OnLineController.CurrentLine.GetComponent<LineRotator>().Rotate();
     }
 
     public void SetLevelManager(LevelManager newLevelManager)
