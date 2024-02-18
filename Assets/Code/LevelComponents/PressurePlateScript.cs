@@ -8,24 +8,22 @@ public class PressurePlateScript : MonoBehaviour
 
     public Collider2D thisCollider;
 
-    public UnityEvent OnPressed;
+    
 
     private bool isActivated = false;
 
+    public UnityEvent OnPressed;
+    public UnityEvent OnDeactivated;
+
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("triggered");
-
-        if (other.tag == "ActivatesPlate")
+        if (CheckIfEncapsulated(other))
         {
-            if (CheckIfEncapsulated(other))
+            if (!isActivated)
             {
                 Debug.Log("Pressed!");
-                if (!isActivated)
-                {
-                    OnPressed.Invoke();
-                    isActivated = true;
-                }
+                OnPressed.Invoke();
+                isActivated = true;
             }
         }
     }
@@ -36,9 +34,14 @@ public class PressurePlateScript : MonoBehaviour
         {
             return true;
         }
-        else
+        else if(isActivated)
         {
             isActivated = false;
+            OnDeactivated.Invoke();
+            return false;
+        }
+        else
+        {
             return false;
         }
     }
