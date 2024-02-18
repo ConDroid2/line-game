@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LineController : MonoBehaviour
 {
@@ -27,12 +28,18 @@ public class LineController : MonoBehaviour
 
     public List<OnLineController> OnLineControllers = new List<OnLineController>();
 
+    public bool Active { get; private set; }
+
+    public UnityEvent OnObjectAddedToLine;
+    public UnityEvent OnObjectRemovedFromLine;
+
     //[Header("Moving line stuff")]
     //public LineShifter[] LineShifters = new LineShifter[1];
     private bool _needsSlopeUpdates = false;
 
     private void Awake()
     {
+        Active = true;
         _transformA.position = InitialA;
         _transformB.position = InitialB;
 
@@ -170,11 +177,31 @@ public class LineController : MonoBehaviour
         }
     }
 
+    public void SetActive(bool active)
+    {
+        Active = active;
+
+        if(Active == false)
+        {
+            bool killPlayer = false;
+            foreach(OnLineController onLineController in OnLineControllers)
+            {
+                if(onLineController.TryGetComponent(out Player player))
+                {
+                    killPlayer = true;
+                }
+            }
+
+            if (killPlayer) Player.Instance.GetKilled(Enums.KillType.Default);
+        }
+    }
+
     public void AddOnLine(OnLineController newObject)
     {
         if(OnLineControllers.Contains(newObject) == false)
         {
             OnLineControllers.Add(newObject);
+            OnObjectAddedToLine.Invoke();
         }
     }
 
@@ -183,6 +210,7 @@ public class LineController : MonoBehaviour
         if (OnLineControllers.Contains(objectOnLine))
         {
             OnLineControllers.Remove(objectOnLine);
+            OnObjectRemovedFromLine.Invoke();
         }
     }
 

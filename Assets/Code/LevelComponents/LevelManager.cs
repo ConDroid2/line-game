@@ -131,6 +131,8 @@ public class LevelManager : MonoBehaviour
 
         foreach(LineController line in Lines)
         {
+            if (line.Active == false) continue;
+
             Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(line.CurrentA, line.CurrentB, lineStart, lineEnd);
             Vector3 point = intersectionPoint.Point;
 
@@ -180,7 +182,7 @@ public class LevelManager : MonoBehaviour
             foreach (LineController otherLine in Lines)
             {
                 // Make sure we're not comparing a line to itself
-                if (currentLine != otherLine)
+                if (currentLine != otherLine && currentLine.Active && otherLine.Active)
                 {
                     Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(currentLine.CurrentA, currentLine.CurrentB, otherLine.CurrentA, otherLine.CurrentB);
                     Vector3 point = intersectionPoint.Point;
