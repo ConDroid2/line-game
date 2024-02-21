@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
 
         if(_player == null  && levelManager != null)
         {
+            Debug.Log("Creating Player");
             _player = Instantiate(_playerPrefab);
         }
 

@@ -53,9 +53,23 @@ public class FlagMasterSetEditor : EditorWindow
             // Need to if check again here because if we cancel, flags is null but it finishes running all this code
             if (flags != null)
             {
+                string flagToDelete = "";
                 foreach (string flag in flags.FlagNames)
                 {
+                    GUILayout.BeginHorizontal();
+
+                    if (GUILayout.Button("Del", GUILayout.Width(30)))
+                    {
+                        flagToDelete = flag;
+                    }
                     GUILayout.Label(flag);
+                    
+                    GUILayout.EndHorizontal();
+                }
+
+                if(flagToDelete != "")
+                {
+                    flags.FlagNames.Remove(flagToDelete);
                 }
 
                 GUILayout.BeginHorizontal();

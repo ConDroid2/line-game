@@ -13,6 +13,7 @@ public class SerializeableVector3
         z = vector.z;
     }
 
+    [Newtonsoft.Json.JsonConstructor]
     public SerializeableVector3(float x, float y, float z)
     {
         this.x = x;

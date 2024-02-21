@@ -81,8 +81,11 @@ public class LineMovementController : MonoBehaviour
         if (willMove)
         {
             OnLineController.DistanceOnLine = newDistanceOnLine;
+            // Debug.Log($"Setting distance to: {newDistanceOnLine}. Actual: {OnLineController.DistanceOnLine}");
 
-            if (OnLineController.DistanceOnLine == 0 || OnLineController.DistanceOnLine == 1)
+            float tolerance = 0.000005f;
+
+            if (OnLineController.DistanceOnLine - tolerance <= 0 || OnLineController.DistanceOnLine + tolerance >= 1)
             {
                 OnReachedEdgeOfLine?.Invoke(transform.position);
             }

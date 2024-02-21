@@ -47,6 +47,7 @@ public class OnLineController : MonoBehaviour
     private void SetDistanceOnLine(float newDistance)
     {
         _distanceOnLine = Mathf.Clamp(newDistance, 0f, 1f);
+        // Debug.Log($"Attempted Distance: {newDistance} vs Clamped Distance: {_distanceOnLine}");
         Vector3 A = _useCurrentLineData ? CurrentLine.CurrentA : CurrentLine.InitialA;
         Vector3 B = _useCurrentLineData ? CurrentLine.CurrentB : CurrentLine.InitialB;
 
