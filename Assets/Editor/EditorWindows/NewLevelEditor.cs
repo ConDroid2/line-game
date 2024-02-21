@@ -150,6 +150,7 @@ public class NewLevelEditor : EditorWindow
         foreach (LineController line in FindObjectsOfType<LineController>())
         {
             line.FixInitialPointOrientation();
+            EditorUtility.SetDirty(line);
         }
         // Get current scene
         UnityEngine.SceneManagement.Scene scene = EditorSceneManager.GetActiveScene();
