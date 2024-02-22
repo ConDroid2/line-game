@@ -65,6 +65,8 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
+        _baseControls.PlayerMap.AimMode.performed -= AimModeStatusChanged;
+        _baseControls.PlayerMap.AimMode.canceled -= AimModeStatusChanged;
     }
 
 
