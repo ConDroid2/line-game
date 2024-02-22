@@ -34,6 +34,10 @@ public class BigAssLaser : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Adjust laser in case it's moving
+        // Debug.Log(transform.up);
+        _maxDistance = _laserStartPoint.position + (transform.up * _range);
+        _laserLine.SetPosition(0, _laserStartPoint.position);
         // Both starting position and ending position should be modified by width
         RaycastHit2D hit = Physics2D.BoxCast(_laserStartPoint.position, new Vector2(_width, _width), transform.rotation.z, transform.up, _range);
 
@@ -42,6 +46,7 @@ public class BigAssLaser : MonoBehaviour
             // Kill Player
             if (hit.collider.CompareTag("Player"))
             {
+                Debug.Log("Hit player");
                 Player.Instance.GetKilled(Enums.KillType.Default);
             }
 
@@ -64,12 +69,33 @@ public class BigAssLaser : MonoBehaviour
 
             _laserLine.SetPosition(1, newEnd);
             _laserEndVisual.transform.position = newEnd;
+
+            _laserEndVisual.SetActive(true);
         }
         else
         {
             // Draw laser to hit point
             _laserLine.SetPosition(1, _maxDistance);
             _laserEndVisual.transform.position = _maxDistance;
+
+            _laserEndVisual.SetActive(false);
+
+            // Deactivate any switches
+            if (_affectedSwitch != null)
+            {
+                _affectedSwitch.Deactivate();
+                _affectedSwitch = null;
+            }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+
+        Vector3 lineEnd = _laserStartPoint.position + (transform.up * _range);
+
+        Gizmos.DrawLine(_laserStartPoint.position, lineEnd);
+
     }
 }

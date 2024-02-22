@@ -18,7 +18,7 @@ public class FreeObjectRotator : MonoBehaviour
     private void Awake()
     {
         _startRotation = transform.eulerAngles.z;
-        _endRotation = 360f;
+        _endRotation = _startRotation + 360f;
 
         if (WaitAtStart)
         {
