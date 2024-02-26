@@ -6,12 +6,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Player _playerPrefab;
+    [SerializeField] private string _flagsetName;
+
+    public Dictionary<string, bool> Flags;
 
     public static GameManager Instance;
     private WorldData _currentWorld;
     private WorldRoomData _currentRoom;
     private RoomPort _toPort;
     private Player _player;
+
+    public System.Action<string, bool> OnSetFlag;
 
     private void Awake()
     {
@@ -21,6 +26,15 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            JsonUtilities utils = new JsonUtilities(Application.dataPath + "/FlagMasterSets");
+            FlagsClass flagNames = utils.LoadData<FlagsClass>("/" + _flagsetName + ".txt");
+
+            Flags = new Dictionary<string, bool>();
+            foreach(string name in flagNames.FlagNames)
+            {
+                Flags.Add(name, false);
+            }
         }
         else
         {
@@ -37,6 +51,18 @@ public class GameManager : MonoBehaviour
     public void SetCurrentWorld(WorldData worldData)
     {
         _currentWorld = worldData;     
+    }
+
+    public void SetFlag(string flagName, bool setFlagAs)
+    {
+        if (Flags.ContainsKey(flagName))
+        {
+            if(Flags[flagName] != setFlagAs)
+            {
+                Flags[flagName] = setFlagAs;
+                OnSetFlag?.Invoke(flagName, setFlagAs);
+            }
+        }
     }
 
     // Trigger Handlers
