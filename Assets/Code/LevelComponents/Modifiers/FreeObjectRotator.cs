@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FreeObjectRotator : MonoBehaviour
 {
+    [Range(-1, 1)]
+    public int direction;
     public float TimeForFullRotation = 1;
     public float TimeToWait = 0f;
     public bool WaitAtStart = false;
@@ -18,7 +20,7 @@ public class FreeObjectRotator : MonoBehaviour
     private void Awake()
     {
         _startRotation = transform.eulerAngles.z;
-        _endRotation = _startRotation + 360f;
+        _endRotation = _startRotation + (direction * 360f);
 
         if (WaitAtStart)
         {

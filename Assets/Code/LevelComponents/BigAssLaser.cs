@@ -17,6 +17,8 @@ public class BigAssLaser : MonoBehaviour
     private Vector3 _maxDistance;
     private Switch _affectedSwitch = null;
 
+    [SerializeField] private bool _active = true;
+
 
     private void Start()
     {
@@ -34,6 +36,9 @@ public class BigAssLaser : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if (_active == false) return;
+
         // Adjust laser in case it's moving
         // Debug.Log(transform.up);
         _maxDistance = _laserStartPoint.position + (transform.up * _range);
@@ -87,6 +92,14 @@ public class BigAssLaser : MonoBehaviour
                 _affectedSwitch = null;
             }
         }
+    }
+
+    public void Activate(bool activate)
+    {
+        _active = activate;
+
+        _laserLine.enabled = _active;
+        _laserEndVisual.SetActive(_active);
     }
 
     private void OnDrawGizmosSelected()
