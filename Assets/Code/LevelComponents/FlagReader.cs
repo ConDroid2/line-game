@@ -27,7 +27,7 @@ public class FlagReader : MonoBehaviour
 
     private void OnDisable()
     {
-        if (GameManager.Instance != null) return;
+        if (GameManager.Instance == null) return;
 
         GameManager.Instance.OnSetFlag -= HandleFlagChange;
     }
