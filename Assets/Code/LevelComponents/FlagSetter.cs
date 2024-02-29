@@ -5,10 +5,10 @@ using UnityEngine;
 public class FlagSetter : MonoBehaviour
 {
     [SerializeField] private string _flagName;
-    [SerializeField] private bool _setFlagAs;
+    // [SerializeField] private bool _setFlagAs;
     
 
-    public void SetFlag()
+    public void SetFlag(bool _setFlagAs)
     {
         if (GameManager.Instance == null) return;
 
