@@ -93,10 +93,10 @@ public class LevelManager : MonoBehaviour
         _player.OnPlayerDeath += HandlePlayerDeath;
     }
 
-    private void OnDisable()
-    {
-        _player.OnPlayerDeath -= HandlePlayerDeath;
-    }
+    //private void OnDisable()
+    //{
+    //    _player.OnPlayerDeath -= HandlePlayerDeath;
+    //}
 
     public void ResetPlayer()
     {
