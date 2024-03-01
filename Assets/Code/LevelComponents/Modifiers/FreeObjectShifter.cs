@@ -127,4 +127,14 @@ public class FreeObjectShifter : MonoBehaviour
         float adjustedDistance = _timingCurve.Evaluate(distance);
         transform.position = Vector3.Lerp(_startPoint, _endPoint, adjustedDistance);
     }
+
+    public void ChangeStartingPoint(float startingPoint)
+    {
+        _timeMoving = startingPoint;
+
+        if (startingPoint >= 1)
+        {
+            SwapEndpoints();
+        }
+    }
 }
