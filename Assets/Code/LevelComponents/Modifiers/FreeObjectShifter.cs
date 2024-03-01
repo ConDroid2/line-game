@@ -130,7 +130,7 @@ public class FreeObjectShifter : MonoBehaviour
 
     public void ChangeStartingPoint(float startingPoint)
     {
-        _timeMoving = startingPoint;
+        MovePoint(startingPoint);
 
         if (startingPoint >= 1)
         {
