@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -89,13 +90,24 @@ public class LevelManager : MonoBehaviour
         _player = player;
         _player.SetLevelManager(this);
         ResetPlayer();
-        _player.OnPlayerDeath += ResetPlayer;
+        _player.OnPlayerDeath += HandlePlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        _player.OnPlayerDeath -= HandlePlayerDeath;
     }
 
     public void ResetPlayer()
     {
         // float startingPos = StartingPoint == Enums.LinePoints.A ? 0 : 1;
         _player.SetNewLine(StartingLine, _startingDistance);
+        
+    }
+
+    public void HandlePlayerDeath()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SetStartingDistance(float startingDistance)

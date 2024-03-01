@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 
             levelManager.SetStartingDistance(startingDistance);
 
-            _toPort = null;
+            // _toPort = null;
         }
         else if (levelManager != null && _toPort == null)
         {
