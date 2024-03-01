@@ -119,6 +119,11 @@ public class FreeObjectShifter : MonoBehaviour
         if(ContinuousMove == false && _moving == false)
         {
             _moving = true;
+
+            if (WaitAtStart)
+            {
+                _waiting = true;
+            }
         }
     }
 
