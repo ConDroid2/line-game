@@ -6,6 +6,7 @@ public class FreeObjectShifter : MonoBehaviour
 {
     /** Settings **/
     [HideInInspector] public Vector3 MovementVector;
+    public bool ContinuousMove = true;
     public Enums.ShiftMode Mode = Enums.ShiftMode.Rebound;
     public float TimeToMove = 1f;
     public float TimeToWait = 0f;
@@ -14,6 +15,7 @@ public class FreeObjectShifter : MonoBehaviour
     [SerializeField] private AnimationCurve _timingCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
     /**Controlling Variables**/
+    private bool _moving = false;
     private Vector3 _startPoint;
     private Vector3 _endPoint;
     private float _timeMoving = 0f;
@@ -34,17 +36,28 @@ public class FreeObjectShifter : MonoBehaviour
             SwapEndpoints();
         }
 
-        // Handle waiting at the beginning
-        if (WaitAtStart)
+        if (ContinuousMove == true)
         {
-            _waiting = true;
-            MovePoint(_timeMoving / TimeToMove);
+            _moving = true;
+        }
+
+        if (_moving == true)
+        {
+            // Handle waiting at the beginning
+            if (WaitAtStart)
+            {
+                _waiting = true;
+                MovePoint(_timeMoving / TimeToMove);
+            }
         }
     }
 
     private void Update()
     {
-        Shift(Time.deltaTime);
+        if (_moving)
+        {
+            Shift(Time.deltaTime);
+        }
     }
 
     public void Shift(float timeSinceLastCall)
@@ -61,6 +74,12 @@ public class FreeObjectShifter : MonoBehaviour
             {
                 _timeMoving = 0f;
                 if(Mode == Enums.ShiftMode.Rebound) SwapEndpoints();
+
+                // If we are not a continuously moving line, stop moving
+                if(ContinuousMove == false)
+                {
+                    _moving = false;
+                }
 
                 if (TimeToWait > 0)
                 {
@@ -93,6 +112,14 @@ public class FreeObjectShifter : MonoBehaviour
     public void SwapEndpoints()
     {
         Utilities.SwapVector3(ref _startPoint, ref _endPoint);
+    }
+
+    public void DoOneShift()
+    {
+        if(ContinuousMove == false && _moving == false)
+        {
+            _moving = true;
+        }
     }
 
     public void MovePoint(float distance)

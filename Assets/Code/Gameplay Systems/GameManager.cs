@@ -83,10 +83,28 @@ public class GameManager : MonoBehaviour
 
             Vector3 startPosition = portPosition;
 
+            if (Flags.ContainsKey("TopOfRoom"))
+            {
+                Flags["TopOfRoom"] = _toPort.SideOfRoom == Enums.RoomSides.Top;
+            }
+            if (Flags.ContainsKey("BottomOfRoom"))
+            {
+                Flags["BottomOfRoom"] = _toPort.SideOfRoom == Enums.RoomSides.Bottom;
+            }
+            if (Flags.ContainsKey("LeftOfRoom"))
+            {
+                Flags["LeftOfRoom"] = _toPort.SideOfRoom == Enums.RoomSides.Left;
+            }
+            if (Flags.ContainsKey("RightOfRoom"))
+            {
+                Flags["RightOfRoom"] = _toPort.SideOfRoom == Enums.RoomSides.Right;
+            }
+
             if (_toPort.SideOfRoom == Enums.RoomSides.Top) startPosition = portPosition + new Vector3(0f, -0.25f, 0f);
             else if (_toPort.SideOfRoom == Enums.RoomSides.Bottom) startPosition = portPosition + new Vector3(0f, 0.25f, 0f);
             else if (_toPort.SideOfRoom == Enums.RoomSides.Left) startPosition = portPosition + new Vector3(0.25f, 0f, 0f);
-            else if (_toPort.SideOfRoom == Enums.RoomSides.Right) startPosition = portPosition + new Vector3(-0.25f, 0f, 0f);
+            else if (_toPort.SideOfRoom == Enums.RoomSides.Right) startPosition = portPosition + new Vector3(-0.25f, 0f, 0f); 
+
 
             float startingDistance = startPosition.InverseLerp(levelManager.StartingLine.InitialA, levelManager.StartingLine.InitialB);
 
