@@ -75,6 +75,12 @@ public class Player : MonoBehaviour
     {
         _inputVector = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("Hitting k");
+            GetKilled(Enums.KillType.Default);
+        }
+
 
         if (_allowMoving && !_aimingMode)
         {
@@ -99,6 +105,8 @@ public class Player : MonoBehaviour
         {
             _aimController.SetAim(_inputVector);
         }
+
+        
     }
 
     public void SprintingStatusChanged(InputAction.CallbackContext context)
