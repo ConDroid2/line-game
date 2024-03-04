@@ -11,6 +11,7 @@ public class FreeObjectShifter : MonoBehaviour
     public float TimeToMove = 1f;
     public float TimeToWait = 0f;
     public bool WaitAtStart = false;
+    public float StartWaitTime = 0f;
     [Range(0f, 2f)] public float StartingPointAlongPath = 0f;
     [SerializeField] private AnimationCurve _timingCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
@@ -21,6 +22,7 @@ public class FreeObjectShifter : MonoBehaviour
     private float _timeMoving = 0f;
     private float _timeWaiting = 0f;
     private bool _waiting = false;
+    private float _currentTimeToWait = 0f;
 
     private void Awake()
     {
@@ -44,9 +46,10 @@ public class FreeObjectShifter : MonoBehaviour
         if (_moving == true)
         {
             // Handle waiting at the beginning
-            if (WaitAtStart)
+            if (StartWaitTime > 0)
             {
                 _waiting = true;
+                _currentTimeToWait = StartWaitTime;
                 MovePoint(_timeMoving / TimeToMove);
             }
         }
@@ -84,6 +87,7 @@ public class FreeObjectShifter : MonoBehaviour
                 if (TimeToWait > 0)
                 {
                     _waiting = true;
+                    _currentTimeToWait = TimeToWait;
                 }
             }
             // Advance time moving
@@ -96,14 +100,14 @@ public class FreeObjectShifter : MonoBehaviour
         else
         {
             // If we're done waiting, stop waiting
-            if (_timeWaiting >= TimeToWait)
+            if (_timeWaiting >= _currentTimeToWait)
             {
                 _timeWaiting = 0f;
                 _waiting = false;
             }
             else
             {
-                _timeWaiting = Mathf.Clamp(_timeWaiting + timeSinceLastCall, 0f, TimeToWait);
+                _timeWaiting = Mathf.Clamp(_timeWaiting + timeSinceLastCall, 0f, _currentTimeToWait);
             }
         }
     }
@@ -120,9 +124,10 @@ public class FreeObjectShifter : MonoBehaviour
         {
             _moving = true;
 
-            if (WaitAtStart)
+            if (StartWaitTime > 0)
             {
                 _waiting = true;
+                _currentTimeToWait = StartWaitTime;
             }
         }
     }

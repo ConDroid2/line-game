@@ -240,4 +240,18 @@ public class LevelManager : MonoBehaviour
     {
         return new RoomData(LineParent.GetComponentsInChildren<LineController>(), this);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Vector3 topLeft = new Vector3(RoomLeftSide, RoomTopSide);
+        Vector3 bottomLeft = new Vector3(RoomLeftSide, RoomBottomSide);
+        Vector3 bottomRight = new Vector3(RoomRightSide, RoomBottomSide);
+        Vector3 topRight = new Vector3(RoomRightSide, RoomTopSide);
+
+        Gizmos.DrawLine(topLeft, bottomLeft);
+        Gizmos.DrawLine(bottomLeft, bottomRight);
+        Gizmos.DrawLine(bottomRight, topRight);
+        Gizmos.DrawLine(topRight, topLeft);
+    }
 }
