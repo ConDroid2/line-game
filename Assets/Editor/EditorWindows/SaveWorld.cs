@@ -40,7 +40,7 @@ public class SaveWorld : EditorWindow
 
         foreach(RoomPreview room in _roomPreviews)
         {
-            Debug.Log($"Generating data for {room.name}");
+            // Debug.Log($"Generating data for {room.name}");
             bool isStartRoom = room == startingRoom;
             List<RoomConnection> connectionsForRoom = FindConnectionsForRoom(room);
             SerializeableVector3 roomPreviewPosition = new SerializeableVector3(room.transform.position);
@@ -147,8 +147,8 @@ public class SaveWorld : EditorWindow
 
                     if (worldSpaceRoomPort == worldSpaceInnerRoomPort)
                     {
-                        Debug.Log(room.RoomData);
-                        Debug.Log(room.RoomData.Ports[room.RelativePorts.IndexOf(roomPort)]);
+                        // Debug.Log(room.RoomData);
+                        // Debug.Log(room.RoomData.Ports[room.RelativePorts.IndexOf(roomPort)]);
                         RoomPort fromPort = room.RoomData.Ports[room.RelativePorts.IndexOf(roomPort)];
                         RoomPort toPort = innerRoom.RoomData.Ports[innerRoom.RelativePorts.IndexOf(innerRoomPort)];
 

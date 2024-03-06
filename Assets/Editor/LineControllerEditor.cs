@@ -64,7 +64,7 @@ public class LineControllerEditor : Editor
         }
     }
 
-    [DrawGizmo(GizmoType.NonSelected | GizmoType.Pickable)]
+    [DrawGizmo(GizmoType.NotInSelectionHierarchy | GizmoType.Pickable)]
     static void DrawGizmo(LineController line, GizmoType gizmoType)
     {
         if (Application.isEditor)

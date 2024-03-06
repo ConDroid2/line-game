@@ -6,7 +6,13 @@ using UnityEditor;
 [CustomEditor(typeof(RoomPreview))]
 public class RoomPreviewEditor : Editor
 {
-    [DrawGizmo(GizmoType.NonSelected | GizmoType.Pickable)]
+
+    private void OnSceneGUI()
+    {
+        
+    }
+
+    [DrawGizmo(GizmoType.NotInSelectionHierarchy | GizmoType.Pickable)]
     static void DrawGizmo(RoomPreview preview, GizmoType gizmoType)
     {
         if (Application.isEditor)
