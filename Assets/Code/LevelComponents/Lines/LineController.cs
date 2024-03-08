@@ -8,6 +8,7 @@ public class LineController : MonoBehaviour
     // Leaving these here just for now in case the editor bug wasn't fixed
     //public SerializeableVector3 TestA = new SerializeableVector3(1, 1, 0);
     //public SerializeableVector3 TestB = new SerializeableVector3(1, 0, 0);
+    public Color LineColor;
     public Vector3 InitialA = new Vector3(1, 1, 0);
     public Vector3 InitialB = new Vector3(1, 0, 0);
     public Vector3 InitialMidpoint => new Vector3((InitialA.x + InitialB.x) / 2, (InitialA.y + InitialB.y) / 2);
@@ -181,18 +182,33 @@ public class LineController : MonoBehaviour
     {
         Active = active;
 
-        if(Active == false)
+        if (Active == false)
         {
             bool killPlayer = false;
-            foreach(OnLineController onLineController in OnLineControllers)
+            foreach (OnLineController onLineController in OnLineControllers)
             {
-                if(onLineController.TryGetComponent(out Player player))
+                if (onLineController.TryGetComponent(out Player player))
                 {
                     killPlayer = true;
                 }
+                else
+                {
+                    onLineController.gameObject.SetActive(false);
+                }
             }
 
-            if (killPlayer) Player.Instance.GetKilled(Enums.KillType.Default);
+            if (killPlayer)
+            {
+                OnLineControllers.Remove(Player.Instance.MovementController.OnLineController);
+                Player.Instance.GetKilled(Enums.KillType.Default);
+            }
+        }
+        else
+        {
+            foreach(OnLineController onLineController in OnLineControllers)
+            {
+                onLineController.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -218,6 +234,7 @@ public class LineController : MonoBehaviour
     {
         if (Application.isPlaying == false)
         {
+            Gizmos.color = LineColor;
             Gizmos.DrawLine(InitialA, InitialB);
         }
     }

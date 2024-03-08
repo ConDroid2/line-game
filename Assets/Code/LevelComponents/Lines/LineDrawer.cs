@@ -19,6 +19,8 @@ public class LineDrawer : MonoBehaviour
         if (_renderer != null)
         {
             UpdateLinePositions();
+            _renderer.startColor = _controller.LineColor;
+            _renderer.endColor = _controller.LineColor;
         }
         else
         {
