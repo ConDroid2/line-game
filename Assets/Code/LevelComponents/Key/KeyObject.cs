@@ -22,7 +22,7 @@ public class KeyObject : MonoBehaviour
     {
         if (_followPoint == null && collider.CompareTag("Player"))
         {
-            // _flagSetter.SetFlag(true);
+            _flagSetter.SetFlag(true);
             _followPoint = Player.Instance.FollowPoint;
 
             DontDestroyOnLoad(gameObject);

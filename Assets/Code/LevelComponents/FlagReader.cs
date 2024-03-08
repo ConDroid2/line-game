@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class FlagReader : MonoBehaviour
 {
     [SerializeField] private string _flagName;
+    [SerializeField] bool _onlyCheckOnStart = false;
 
     public UnityEvent OnIfTrue;
     public UnityEvent OnIfFalse;
@@ -22,14 +23,20 @@ public class FlagReader : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
-        GameManager.Instance.OnSetFlag += HandleFlagChange;
+        if (_onlyCheckOnStart == false)
+        {
+            GameManager.Instance.OnSetFlag += HandleFlagChange;
+        }
     }
 
     private void OnDisable()
     {
         if (GameManager.Instance == null) return;
 
-        GameManager.Instance.OnSetFlag -= HandleFlagChange;
+        if (_onlyCheckOnStart == false)
+        {
+            GameManager.Instance.OnSetFlag -= HandleFlagChange;
+        }
     }
     public void HandleFlagChange(string changedFlagName, bool newFlagValue)
     {

@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
 
         if(_player != null)
         {
+            _player.MovementController.OnReachedEdgeOfLine -= HandlePlayerReachedEdgeOfLine;
             _player.MovementController.OnReachedEdgeOfLine += HandlePlayerReachedEdgeOfLine;
         }
 
