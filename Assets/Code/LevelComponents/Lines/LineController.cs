@@ -33,6 +33,7 @@ public class LineController : MonoBehaviour
 
     public UnityEvent OnObjectAddedToLine;
     public UnityEvent OnObjectRemovedFromLine;
+    public UnityEvent<bool> OnActiveChanged;
 
     //[Header("Moving line stuff")]
     //public LineShifter[] LineShifters = new LineShifter[1];
@@ -181,6 +182,7 @@ public class LineController : MonoBehaviour
     public void SetActive(bool active)
     {
         Active = active;
+        OnActiveChanged.Invoke(Active);
 
         if (Active == false)
         {

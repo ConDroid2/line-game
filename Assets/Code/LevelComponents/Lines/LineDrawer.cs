@@ -61,4 +61,16 @@ public class LineDrawer : MonoBehaviour
         _visualA = _controller.CurrentA - (slope.normalized * halfWidth);
         _visualB = _controller.CurrentB + (slope.normalized * halfWidth);
     }
+
+    public void HandleLineActiveChanged(bool active)
+    {
+        if(active == true)
+        {
+            SetAlpha(0f);
+        }
+        else
+        {
+            SetAlpha(1f);
+        }
+    }
 }
