@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Creating Player");
             _player = Instantiate(_playerPrefab);
+            DontDestroyOnLoad(_player.gameObject);
         }
 
         if(_player != null)
