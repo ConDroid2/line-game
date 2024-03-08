@@ -123,6 +123,10 @@ public class FlagMasterSetEditor : EditorWindow
         {
             EditorUtility.DisplayDialog("New Flag Error", "Flag Already Exists", "OK");
         }
+        else
+        {
+            newFlagName = "";
+        }
     }
 
     private void SaveFlagSet()
