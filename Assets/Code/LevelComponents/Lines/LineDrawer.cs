@@ -19,8 +19,12 @@ public class LineDrawer : MonoBehaviour
         if (_renderer != null)
         {
             UpdateLinePositions();
-            _renderer.startColor = _controller.LineColor;
-            _renderer.endColor = _controller.LineColor;
+
+            float currentAlpha = _renderer.startColor.a;
+            Color lineColor = new Color(_controller.LineColor.r, _controller.LineColor.g, _controller.LineColor.b, currentAlpha);
+
+            _renderer.startColor = lineColor;
+            _renderer.endColor = lineColor;
         }
         else
         {
