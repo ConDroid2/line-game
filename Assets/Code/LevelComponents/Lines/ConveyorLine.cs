@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class ConveyorLine : MonoBehaviour
 {
-    private LineController _lineController;
+    [SerializeField] private LineController _lineController;
     [SerializeField] private float _magnitude;
     [SerializeField] [Range(-1, 1)] private int _direction;
+
+    [SerializeField] private Transform _directionVisuals;
 
     private void Start()
     {
         _lineController = GetComponent<LineController>();
+
+        _directionVisuals.up = _lineController.Slope * _direction;
+
+        Debug.Log($"Slope and direction = {_lineController.Slope * _direction}");
+        Debug.Log($"Direction visuals up = {_directionVisuals.up}");
     }
 
     private void Update()
