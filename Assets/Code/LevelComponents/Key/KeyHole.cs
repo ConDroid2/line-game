@@ -1,14 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KeyHole : MonoBehaviour
 {
+    public UnityEvent OnUnlocked;
+    private bool _unlocked = false;
+
     public void HandleKeyInRange(Collider2D collider)
     {
-        if (collider.GetComponent<KeyObject>() != null)
+        if (_unlocked == false && collider.GetComponent<KeyObject>() != null)
         {
-            Debug.Log("Key In Range");
+            collider.GetComponent<KeyObject>().Use();
+            UnlockKeyHole();
         }
+    }
+
+    public void UnlockKeyHole()
+    {
+        OnUnlocked.Invoke();
+        _unlocked = true;
     }
 }

@@ -39,4 +39,10 @@ public class KeyObject : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    public void Use()
+    {
+        Player.Instance.OnPlayerDeath -= HandlePlayerDeath;
+        Destroy(gameObject);
+    }
 }
