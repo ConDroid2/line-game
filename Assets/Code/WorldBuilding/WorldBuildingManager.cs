@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+// using UnityEditor;
 
 public class WorldBuildingManager : MonoBehaviour
 {
@@ -18,6 +18,6 @@ public class WorldBuildingManager : MonoBehaviour
     public void SetCurrentWorldData(WorldData worldData)
     {
         CurrentWorldData = worldData;
-        EditorUtility.SetDirty(this);
+        // EditorUtility.SetDirty(this);
     }
 }

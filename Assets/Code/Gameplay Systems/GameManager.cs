@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
 
-            JsonUtilities utils = new JsonUtilities(Application.dataPath + "/FlagMasterSets");
-            FlagsClass flagNames = utils.LoadData<FlagsClass>("/" + _flagsetName + ".txt");
+            JsonUtilities utils = new JsonUtilities("");
+            FlagsClass flagNames = utils.LoadFromResources<FlagsClass>("FlagMasterSets/" + _flagsetName);
 
             Flags = new Dictionary<string, bool>();
             foreach(string name in flagNames.FlagNames)

@@ -93,7 +93,8 @@ public class FlagMasterSetEditor : EditorWindow
     private void GetAllFlagMasterSets()
     {
         flagMasterSetNames = new List<string>();
-        foreach(string flagMasterSetFilePath in System.IO.Directory.EnumerateFiles(Application.dataPath + "/FlagMasterSets", "*.txt"))
+
+        foreach(string flagMasterSetFilePath in System.IO.Directory.EnumerateFiles(Application.dataPath + "/Resources/FlagMasterSets", "*.txt"))
         {
             string setName = System.IO.Path.GetFileName(flagMasterSetFilePath).Replace(".txt", "");
 
@@ -110,10 +111,10 @@ public class FlagMasterSetEditor : EditorWindow
         }
         else
         {
-            JsonUtilities utils = new JsonUtilities(Application.dataPath + "/FlagMasterSets");
+            JsonUtilities utils = new JsonUtilities("");
 
             this.masterSetName = masterSetName;
-            flags = utils.LoadData<FlagsClass>("/" + masterSetName + ".txt");
+            flags = utils.LoadFromResources<FlagsClass>("FlagMasterSets/" + masterSetName);
         }
     }
 
@@ -138,7 +139,7 @@ public class FlagMasterSetEditor : EditorWindow
         }
         else
         {
-            JsonUtilities utils = new JsonUtilities(Application.dataPath + "/FlagMasterSets");
+            JsonUtilities utils = new JsonUtilities(Application.dataPath + "/Resources/FlagMasterSets");
 
             utils.SaveData("/" + masterSetName + ".txt", flags);
 

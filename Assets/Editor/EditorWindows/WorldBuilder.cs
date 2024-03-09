@@ -34,12 +34,12 @@ public class WorldBuilder : EditorWindow
 
     private void AddRoom()
     {
-        string path = EditorUtility.OpenFilePanel("Select Room", "Assets/Levels/LevelMetadata", "txt");
+        string path = EditorUtility.OpenFilePanel("Select Room", "Assets/Resources/LevelMetadata", "txt");
 
         string roomName = System.IO.Path.GetFileName(path).Replace("-metadata.txt", "");
 
         JsonUtilities utils = new JsonUtilities("");
-        RoomData roomData = utils.LoadData<RoomData>(path);
+        RoomData roomData = utils.LoadFromResources<RoomData>("LevelMetadata/" + roomName + "-metadata");
 
         RoomPreview roomPreviewPrefab = AssetDatabase.LoadAssetAtPath<RoomPreview>("Assets/Prefabs/WorldBuilding/RoomPreview.prefab");
 
@@ -55,10 +55,16 @@ public class WorldBuilder : EditorWindow
     private void LoadWorld()
     {
         if (CloseWorld() == false) return;
-        string path = EditorUtility.OpenFilePanel("Select World", "Assets/Worlds", "txt");
+        string path = EditorUtility.OpenFilePanel("Select World", "Assets/Resources/Worlds", "txt");
+
+        string worldName = System.IO.Path.GetFileName(path).Replace(".txt", "");
+
+        Debug.Log(worldName);
 
         JsonUtilities worldUtils = new JsonUtilities("");
-        WorldData worldData = worldUtils.LoadData<WorldData>(path);
+        WorldData worldData = worldUtils.LoadFromResources<WorldData>("Worlds/" + worldName);
+
+        Debug.Log(worldData.ToString());
 
         JsonUtilities roomUtils = new JsonUtilities(Application.dataPath + "/Levels/LevelMetadata");
         RoomPreview roomPreviewPrefab = AssetDatabase.LoadAssetAtPath<RoomPreview>("Assets/Prefabs/WorldBuilding/RoomPreview.prefab");
@@ -67,8 +73,8 @@ public class WorldBuilder : EditorWindow
         {
             WorldRoomData worldRoomData = worldData.RoomNameToData[roomName];
 
-            string roomPath = "/" + roomName + "-metadata.txt";
-            RoomData roomData = roomUtils.LoadData<RoomData>(roomPath);
+            string roomPath = roomName + "-metadata";
+            RoomData roomData = roomUtils.LoadFromResources<RoomData>("LevelMetadata/" + roomPath);
 
             RoomPreview roomPreview = (RoomPreview)PrefabUtility.InstantiatePrefab(roomPreviewPrefab);
             roomPreview.name = roomName;

@@ -156,7 +156,7 @@ public class NewLevelEditor : EditorWindow
         UnityEngine.SceneManagement.Scene scene = EditorSceneManager.GetActiveScene();
         EditorSceneManager.SaveScene(scene);
 
-        JsonUtilities utils = new JsonUtilities(Application.dataPath + "/Levels/LevelMetadata");
+        JsonUtilities utils = new JsonUtilities(Application.dataPath + "/Resources/LevelMetadata");
 
         // Create and save room data for the room
         if (CheckForLevelPrefab())

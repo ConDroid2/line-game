@@ -51,7 +51,7 @@ public class SaveWorld : EditorWindow
         }
 
         Debug.Log("About to save data");
-        JsonUtilities utils = new JsonUtilities(Application.dataPath + "/Worlds");
+        JsonUtilities utils = new JsonUtilities(Application.dataPath + "/Resources/Worlds");
         utils.SaveData<WorldData>("/" + worldData.Name + ".txt", worldData);
     }
 

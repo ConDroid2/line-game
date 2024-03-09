@@ -59,4 +59,44 @@ public class JsonUtilities
             throw e;
         }
     }
+
+    public T LoadFromResources<T>(string relativePath)
+    {
+        TextAsset textAsset = Resources.Load<TextAsset>(relativePath);
+
+        try
+        {
+            T data = JsonConvert.DeserializeObject<T>(textAsset.text);
+            return data;
+        }
+        catch(System.Exception e)
+        {
+            Debug.LogError($"Failed to load data: {e.Message} {e.StackTrace}");
+            throw e;
+        }
+    }
+
+    public T[] LoadAllFromResources<T>(string relativePath)
+    {
+        TextAsset[] textAssets = Resources.LoadAll<TextAsset>(relativePath);
+
+        try
+        {
+            T[] data = new T[textAssets.Length];
+
+            for(int i = 0; i < textAssets.Length; i++)
+            {
+                TextAsset textAsset = textAssets[i];
+
+                data[i] = JsonConvert.DeserializeObject<T>(textAsset.text);
+            }
+
+            return data;
+        }
+        catch(System.Exception e)
+        {
+            Debug.LogError($"Failed to load data: {e.Message} {e.StackTrace}");
+            throw e;
+        }
+    }
 }
