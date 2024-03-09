@@ -46,6 +46,7 @@ public class SafeZone : MonoBehaviour
         Physics2D.queriesHitTriggers = false;
 
         _affectedDarknesses = new List<Collider2D>();
+        List<Collider2D> overlappingSafeZones = new List<Collider2D>();
 
         foreach (Collider2D hit in hits)
         {
@@ -53,15 +54,38 @@ public class SafeZone : MonoBehaviour
             {
                 hit.GetComponent<KillOnTouch>().Active = false;
                 _affectedDarknesses.Add(hit);
+            }
+            else if (hit.CompareTag("SafeZone") && hit.gameObject != gameObject)
+            {
+                overlappingSafeZones.Add(hit);
+            }
+        }
 
-                foreach(Vector3 corner in playerCorners)
+
+        // Check if player should die
+        foreach(Collider2D darkness in _affectedDarknesses)
+        {
+            // If player corner is in darkness and not in this safe zone or any other safe zone
+
+            foreach(Vector3 corner in playerCorners)
+            {
+                bool cornerInDarkness = darkness.OverlapPoint(corner);
+                bool cornerInThisSafeZone = _collider.OverlapPoint(corner);
+
+                bool cornerInAnotherSafeZone = false;
+
+                foreach(Collider2D safeZone in overlappingSafeZones)
                 {
-                    if(hit.OverlapPoint(corner) && !_collider.OverlapPoint(corner))
-                    {
-                        Player.Instance.GetKilled(Enums.KillType.Darkness);
-                    }
+                    cornerInAnotherSafeZone |= safeZone.OverlapPoint(corner);
+                }
+
+                if(cornerInDarkness == true && cornerInThisSafeZone == false && cornerInAnotherSafeZone == false)
+                {
+                    Player.Instance.GetKilled(Enums.KillType.Darkness);
                 }
             }
         }
+
+        Debug.Log($"Number of overlapping safe zones: {overlappingSafeZones.Count}");
     }
 }
