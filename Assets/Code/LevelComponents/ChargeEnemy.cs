@@ -27,7 +27,7 @@ public class ChargeEnemy : MonoBehaviour
             _timeCharging += Time.deltaTime;
 
             float percentageDone = _chargeCurve.Evaluate(_timeCharging / _totalChargeTime);
-            Debug.Log(percentageDone);
+            // Debug.Log(percentageDone);
 
             transform.position = Vector3.LerpUnclamped(_chargeStartingPosition, _chargeEndingPosition, percentageDone);
 
