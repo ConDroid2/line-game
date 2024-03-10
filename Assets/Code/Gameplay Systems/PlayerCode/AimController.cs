@@ -17,7 +17,8 @@ public class AimController : MonoBehaviour
         // This is sort of the effect we want but it behaves a little strangely, maybe just use a straight up Lerp or something
         // Vector2 newUp = Vector2.MoveTowards(transform.up, aimVector, _aimingSpeed * Time.deltaTime);
 
-        Vector2 newUp = Vector3.Slerp(transform.up, aimVector, _aimingSpeed * Time.deltaTime);
+       //  Vector2 newUp = Vector3.Slerp(transform.up, aimVector, _aimingSpeed * Time.deltaTime);
+        Vector2 newUp = aimVector;
 
         // Debug.Log($"Current up: {transform.up} \n Current goal: {aimVector} \n Next frame up: {newUp}");
 
