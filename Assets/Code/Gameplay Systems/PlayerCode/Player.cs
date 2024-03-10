@@ -176,6 +176,8 @@ public class Player : MonoBehaviour
     {
         // Need to send event so level manager can spawn properly
         OnPlayerDeath.Invoke();
+        _grapplingHook.FinishGrapple();
+        _aimingMode = false;
     }
 
     public void HandleTryToMoveInDirection(int direction)

@@ -98,7 +98,7 @@ public class GrapplingHook : MonoBehaviour
         // move player
     }
 
-    private void FinishGrapple()
+    public void FinishGrapple()
     {
         _moveTo = null;
         _timeMovingPlayer = 0f;
