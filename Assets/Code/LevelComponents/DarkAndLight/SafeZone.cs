@@ -6,23 +6,37 @@ public class SafeZone : MonoBehaviour
 {
     private CircleCollider2D _collider;
 
-    private List<Collider2D> _affectedDarknesses = new List<Collider2D>();
+    public List<Collider2D> AffectedDarknesses = new List<Collider2D>();
 
     private void Awake()
     {
         _collider = GetComponent<CircleCollider2D>();
-        Debug.Log($"Extents: {_collider.bounds.extents}");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.GetComponent<Player>() != null)
         {
-            foreach(Collider2D collider in _affectedDarknesses)
+            foreach(Collider2D darkness in AffectedDarknesses)
             {
-                collider.GetComponent<KillOnTouch>().Active = true;
+                Physics2D.queriesHitTriggers = true;
+                List<Collider2D> hits = new List<Collider2D>(Physics2D.OverlapCircleAll(_collider.bounds.center, _collider.bounds.extents.x));
+                Physics2D.queriesHitTriggers = false;
+
+                foreach(Collider2D hit in hits)
+                {
+                    if (hit.CompareTag("SafeZone"))
+                    {
+                        SafeZone otherSafeZone = hit.GetComponent<SafeZone>();
+
+                        if(otherSafeZone.AffectedDarknesses.Contains(darkness) == false)
+                        {
+                            darkness.GetComponent<KillOnTouch>().Active = true;
+                        }
+                    }
+                }     
             }
-            _affectedDarknesses = new List<Collider2D>();
+            AffectedDarknesses = new List<Collider2D>();
         }
     }
 
@@ -30,7 +44,7 @@ public class SafeZone : MonoBehaviour
     {
         if (collision.GetComponent<Player>() == null) return;
 
-        foreach(Collider2D collider in _affectedDarknesses)
+        foreach(Collider2D collider in AffectedDarknesses)
         {
             collider.GetComponent<KillOnTouch>().Active = true;
         }
@@ -45,7 +59,7 @@ public class SafeZone : MonoBehaviour
         List<Collider2D> hits = new List<Collider2D>(Physics2D.OverlapCircleAll(_collider.bounds.center, _collider.bounds.extents.x));
         Physics2D.queriesHitTriggers = false;
 
-        _affectedDarknesses = new List<Collider2D>();
+        AffectedDarknesses = new List<Collider2D>();
         List<Collider2D> overlappingSafeZones = new List<Collider2D>();
 
         foreach (Collider2D hit in hits)
@@ -53,7 +67,7 @@ public class SafeZone : MonoBehaviour
             if (hit.CompareTag("Darkness"))
             {
                 hit.GetComponent<KillOnTouch>().Active = false;
-                _affectedDarknesses.Add(hit);
+                AffectedDarknesses.Add(hit);
             }
             else if (hit.CompareTag("SafeZone") && hit.gameObject != gameObject)
             {
@@ -63,7 +77,7 @@ public class SafeZone : MonoBehaviour
 
 
         // Check if player should die
-        foreach(Collider2D darkness in _affectedDarknesses)
+        foreach(Collider2D darkness in AffectedDarknesses)
         {
             // If player corner is in darkness and not in this safe zone or any other safe zone
 
