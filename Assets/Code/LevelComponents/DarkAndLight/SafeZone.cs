@@ -23,18 +23,27 @@ public class SafeZone : MonoBehaviour
                 List<Collider2D> hits = new List<Collider2D>(Physics2D.OverlapCircleAll(_collider.bounds.center, _collider.bounds.extents.x));
                 Physics2D.queriesHitTriggers = false;
 
+                bool darknessAffectedByOtherSafeZone = false;
+
                 foreach(Collider2D hit in hits)
                 {
                     if (hit.CompareTag("SafeZone"))
                     {
                         SafeZone otherSafeZone = hit.GetComponent<SafeZone>();
 
-                        if(otherSafeZone.AffectedDarknesses.Contains(darkness) == false)
+                        //Debug.Log(otherSafeZone.AffectedDarknesses.Count);
+
+                        if(otherSafeZone.AffectedDarknesses.Contains(darkness) == true)
                         {
-                            darkness.GetComponent<KillOnTouch>().Active = true;
+                            darknessAffectedByOtherSafeZone |= true;
                         }
                     }
-                }     
+                }    
+                
+                if(!darknessAffectedByOtherSafeZone)
+                {
+                    darkness.GetComponent<KillOnTouch>().Active = true;
+                }
             }
             AffectedDarknesses = new List<Collider2D>();
         }
@@ -68,6 +77,7 @@ public class SafeZone : MonoBehaviour
             {
                 hit.GetComponent<KillOnTouch>().Active = false;
                 AffectedDarknesses.Add(hit);
+                //Debug.Log($"{gameObject.name} is affecting the dark zone");
             }
             else if (hit.CompareTag("SafeZone") && hit.gameObject != gameObject)
             {
@@ -96,10 +106,11 @@ public class SafeZone : MonoBehaviour
                 if(cornerInDarkness == true && cornerInThisSafeZone == false && cornerInAnotherSafeZone == false)
                 {
                     Player.Instance.GetKilled(Enums.KillType.Darkness);
+                    //Debug.Log(gameObject.name);
                 }
             }
         }
 
-        Debug.Log($"Number of overlapping safe zones: {overlappingSafeZones.Count}");
+        //Debug.Log($"Number of overlapping safe zones: {overlappingSafeZones.Count}");
     }
 }

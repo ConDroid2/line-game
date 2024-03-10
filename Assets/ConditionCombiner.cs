@@ -76,6 +76,26 @@ public class ConditionCombiner : MonoBehaviour
             conditions[itemIndex] = setTo;
             Debug.Log("Item " + itemIndex + "Pressed");
         }
+
+        if (conditions.ToList().TrueForAll(x => x == true))
+        {
+            if (!isActivated)
+            {
+                OnActivation.Invoke();
+                isActivated = true;
+                Debug.Log("Activated");
+            }
+
+        }
+        else
+        {
+            if (isActivated)
+            {
+                isActivated = false;
+                OnDeactivation.Invoke();
+                Debug.Log("Deactivated");
+            }
+        }
     }
 
     private bool isActivated = false;
@@ -90,25 +110,25 @@ public class ConditionCombiner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(conditions.ToList().TrueForAll(x=>x==true))
-        {
-            if(!isActivated)
-            {
-                OnActivation.Invoke();
-                isActivated = true;
-                Debug.Log("Activated");
-            }
+        //if (conditions.ToList().TrueForAll(x => x == true))
+        //{
+        //    if (!isActivated)
+        //    {
+        //        OnActivation.Invoke();
+        //        isActivated = true;
+        //        Debug.Log("Activated");
+        //    }
 
-        }
-        else
-        {
-            if(isActivated)
-            {
-                isActivated = false;
-                OnDeactivation.Invoke();
-                Debug.Log("Deactivated");
-            }
+        //}
+        //else
+        //{
+        //    if (isActivated)
+        //    {
+        //        isActivated = false;
+        //        OnDeactivation.Invoke();
+        //        Debug.Log("Deactivated");
+        //    }
 
-        }
+        //}
     }
 }
