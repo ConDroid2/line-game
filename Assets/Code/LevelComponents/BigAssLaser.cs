@@ -32,6 +32,8 @@ public class BigAssLaser : MonoBehaviour
 
         _laserLine.SetPosition(0, _laserStartPoint.position);
         _laserLine.SetPosition(1, _maxDistance);
+
+        Activate(_active);
     }
 
     private void FixedUpdate()
