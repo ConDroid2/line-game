@@ -132,6 +132,9 @@ GameObject:
   - component: {fileID: 6479525402138951201}
   - component: {fileID: 1830234548}
   - component: {fileID: 1830234549}
+  - component: {fileID: 2865154622816972759}
+  - component: {fileID: 7805795358060138668}
+  - component: {fileID: 4996201712381715790}
   - component: {fileID: 7762022393839428642}
   m_Layer: 3
   m_Name: Player
@@ -256,6 +259,102 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &2865154622816972759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851276334494299708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646442bde03b1d146b04e56d0dd56d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flagName: ShootUnlocked
+  _onlyCheckOnStart: 0
+  OnIfTrue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2851276334494299683}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: UnlockShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnIfFalse:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7805795358060138668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851276334494299708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646442bde03b1d146b04e56d0dd56d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flagName: GrappleUnlocked
+  _onlyCheckOnStart: 0
+  OnIfTrue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2851276334494299683}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: UnlockGrapple
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnIfFalse:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4996201712381715790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851276334494299708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646442bde03b1d146b04e56d0dd56d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flagName: RotateUnlocked
+  _onlyCheckOnStart: 0
+  OnIfTrue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2851276334494299683}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: UnlockRotate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnIfFalse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7762022393839428642
 MonoBehaviour:
   m_ObjectHideFlags: 0

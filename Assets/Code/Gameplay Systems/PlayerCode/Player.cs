@@ -21,8 +21,14 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform _visuals;
     [SerializeField] private Transform _aimPointer;
-    
+
     // Private variables
+
+    [SerializeField] private bool _shootUnlocked = false;
+    [SerializeField] private bool _grappleUnlocked = false;
+    [SerializeField] private bool _rotateUnlocked = false;
+
+
     BaseControls _baseControls;
 
     Vector2 _inputVector = Vector2.zero;
@@ -45,16 +51,21 @@ public class Player : MonoBehaviour
         _baseControls = new BaseControls();
         _baseControls.PlayerMap.Enable();
 
+        // Sprinting Events
         _baseControls.PlayerMap.Sprint.performed += SprintingStatusChanged;
         _baseControls.PlayerMap.Sprint.canceled += SprintingStatusChanged;
 
+        // Aim Mode Events
         _baseControls.PlayerMap.AimMode.performed += AimModeStatusChanged;
         _baseControls.PlayerMap.AimMode.canceled += AimModeStatusChanged;
 
+        // Projectile Ability Events
         _baseControls.PlayerMap.FireProjectile.performed += HandleFirePerformed;
 
+        // Grapple Ability Events
         _baseControls.PlayerMap.Grapple.performed += HandleGrapplePerformed;
 
+        // Rotate Ability Events
         _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
     }
 
@@ -124,6 +135,9 @@ public class Player : MonoBehaviour
 
     public void AimModeStatusChanged(InputAction.CallbackContext context)
     {
+        // Gate for aiming, need at least one aim ability
+        if (_shootUnlocked == false && _grappleUnlocked == false && GameManager.Instance != null) return;
+
         if(context.phase == InputActionPhase.Performed)
         {
             _aimingMode = true;
@@ -141,6 +155,8 @@ public class Player : MonoBehaviour
 
     public void HandleFirePerformed(InputAction.CallbackContext context)
     {
+        if (_shootUnlocked == false && GameManager.Instance != null) return;
+
         if (_aimingMode)
         {
             _projectileLauncher.Fire();
@@ -149,6 +165,8 @@ public class Player : MonoBehaviour
 
     public void HandleGrapplePerformed(InputAction.CallbackContext context)
     {
+        if (_grappleUnlocked == false && GameManager.Instance != null) return;
+
         if (_aimingMode)
         {
             _grapplingHook.AttemptGrapple();
@@ -157,6 +175,8 @@ public class Player : MonoBehaviour
 
     public void HandleRotatePerformed(InputAction.CallbackContext context)
     {
+        if (_rotateUnlocked == false && GameManager.Instance != null) return;
+
         // rotate
         Debug.Log("Rotating");
         MovementController.OnLineController.CurrentLine.GetComponent<LineRotator>().Rotate();
@@ -183,6 +203,21 @@ public class Player : MonoBehaviour
     public void HandleTryToMoveInDirection(int direction)
     {
         _visuals.localScale = new Vector3(direction, _visuals.localScale.y, _visuals.localScale.z);
+    }
+
+    public void UnlockShoot()
+    {
+        _shootUnlocked = true;
+    }
+
+    public void UnlockGrapple()
+    {
+        _grappleUnlocked = true;
+    }
+
+    public void UnlockRotate()
+    {
+        _rotateUnlocked = true;
     }
 
     private void OnDrawGizmos()
