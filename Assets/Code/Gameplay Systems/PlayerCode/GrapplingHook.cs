@@ -27,17 +27,17 @@ public class GrapplingHook : MonoBehaviour
         if (_performGrapple == false)
         {
             Vector3 lineStart = transform.position;
+            Debug.Log(transform.up.normalized);
             Vector3 lineEnd = transform.position + (transform.up.normalized * _grappleDistance);
 
             // Make level manager static
             _moveTo = Player.Instance.MovementController.LevelManager.FindClosestIntersectionFromLine(lineStart, lineEnd);
-            Debug.Log(_moveTo);
 
             if(_moveTo == null)
             {
                 // Didn't fine a line
                 Debug.Log("Did not find a line");
-                _moveTo = new IntersectionData(null, 0f, transform.up.normalized * _grappleDistance, false);
+                _moveTo = new IntersectionData(null, 0f, lineEnd, false);
             }
 
             _startPosition = Player.Instance.transform.position;
@@ -66,7 +66,6 @@ public class GrapplingHook : MonoBehaviour
                 _timeDrawingLine = 0f;
                 _drawingLine = false;
 
-                Debug.Log(_moveTo.Line);
                 if(_moveTo.Line == null)
                 {
                     FinishGrapple();
@@ -107,6 +106,4 @@ public class GrapplingHook : MonoBehaviour
         _lineRenderer.SetPosition(0, transform.position);
         _lineRenderer.SetPosition(1, transform.position);
     }
-
-
 }
