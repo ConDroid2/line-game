@@ -74,6 +74,11 @@ public class OnLineController : MonoBehaviour
         SetDistanceOnLine(distanceOnLine);
     }
 
+    public void SetLineInEvent(LineController newLine)
+    {
+        SetLine(newLine);
+    }
+
 #if UNITY_EDITOR
     public void SetDistanceOnLineInEditor(float newDistance)
     {
