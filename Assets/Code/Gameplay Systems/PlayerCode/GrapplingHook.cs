@@ -5,6 +5,8 @@ using UnityEngine;
 public class GrapplingHook : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private Collider2D _playerCollider;
+    [SerializeField] private LayerMask _collisionMask;
 
     [SerializeField] private float _grappleDistance;
     [SerializeField] private float _grappleShootTime;
@@ -27,7 +29,6 @@ public class GrapplingHook : MonoBehaviour
         if (_performGrapple == false)
         {
             Vector3 lineStart = transform.position;
-            Debug.Log(transform.up.normalized);
             Vector3 lineEnd = transform.position + (transform.up.normalized * _grappleDistance);
 
             // Make level manager static
@@ -40,6 +41,9 @@ public class GrapplingHook : MonoBehaviour
                 _moveTo = new IntersectionData(null, 0f, lineEnd, false);
             }
 
+            // Check collisions
+            CheckAndHandleCollisions();
+
             _startPosition = Player.Instance.transform.position;
             _performGrapple = true;
             _drawingLine = true;
@@ -49,6 +53,9 @@ public class GrapplingHook : MonoBehaviour
     private void Update()
     {
         if (_performGrapple == false) return;
+
+        
+
 
         // draw line
         if(_drawingLine)
@@ -79,6 +86,12 @@ public class GrapplingHook : MonoBehaviour
 
         if (_movingPlayer)
         {
+            // In the strange case that you move to a new level mid grapple (from conveyor lines usually), need to end grapple
+            if (_moveTo.Line == null)
+            {
+                FinishGrapple();
+            }
+
             _timeMovingPlayer += Time.deltaTime;
 
             float journeyRatio = _timeMovingPlayer / _grapplePullTime;
@@ -95,6 +108,22 @@ public class GrapplingHook : MonoBehaviour
             }
         }
         // move player
+    }
+
+    public void CheckAndHandleCollisions()
+    {
+        // Shoot out a box cast to the _moveTo endpoint
+        // If we hit something, _moveTo should be a new 
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, _playerCollider.bounds.size, transform.parent.eulerAngles.z, transform.up, (_moveTo.IntersectionWorldSpace - transform.position).magnitude, _collisionMask);
+        if (hit.collider != null)
+        {
+            _moveTo = new IntersectionData(null, 0f, hit.point, false);
+        }
+        else
+        {
+            Debug.Log("Didn't hit anything");
+        }
+        
     }
 
     public void FinishGrapple()

@@ -182,6 +182,9 @@ MonoBehaviour:
   _aimingMode: 0
   _visuals: {fileID: 5163410397776510114}
   _aimPointer: {fileID: 5462557448471139548}
+  _shootUnlocked: 0
+  _grappleUnlocked: 0
+  _rotateUnlocked: 0
 --- !u!114 &4758419547639542450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +437,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 3750980690194745530}
+  _playerCollider: {fileID: 1830234549}
+  _collisionMask:
+    serializedVersion: 2
+    m_Bits: 247
   _grappleDistance: 10
   _grappleShootTime: 0.1
   _grappleShootCurve:
