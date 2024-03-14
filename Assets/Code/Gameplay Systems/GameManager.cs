@@ -45,11 +45,13 @@ public class GameManager : MonoBehaviour
 
                 if (name.Contains("_T"))
                 {
-                    name.Replace("_T", "");
+                    //name = name.Replace("_T", "");
                     flagStartingValue = true;
                 }
 
-                Flags.Add(name, flagStartingValue);
+                Debug.Log(name.Replace("_T", ""));
+
+                Flags.Add(name.Replace("_T", ""), flagStartingValue);
             }
         }
         else
