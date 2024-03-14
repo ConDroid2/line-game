@@ -114,7 +114,8 @@ public class FlagMasterSetEditor : EditorWindow
             JsonUtilities utils = new JsonUtilities("");
 
             this.masterSetName = masterSetName;
-            flags = utils.LoadFromResources<FlagsClass>("FlagMasterSets/" + masterSetName);
+            // flags = utils.LoadFromResources<FlagsClass>("FlagMasterSets/" + masterSetName);
+            flags = utils.LoadData<FlagsClass>(Application.dataPath + "/Resources/FlagMasterSets/" + masterSetName + ".txt");
         }
     }
 
