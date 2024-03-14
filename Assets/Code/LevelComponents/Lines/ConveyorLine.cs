@@ -12,7 +12,7 @@ public class ConveyorLine : MonoBehaviour
 
     private void Start()
     {
-        _lineController = GetComponent<LineController>();
+        //_lineController = GetComponent<LineController>();
 
         _directionVisuals.up = _lineController.Slope * _direction;
 
