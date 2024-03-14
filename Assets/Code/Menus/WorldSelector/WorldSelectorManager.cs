@@ -14,29 +14,34 @@ public class WorldSelectorManager : MonoBehaviour
     {
         JsonUtilities utils = new JsonUtilities("");
 
-
-        //foreach (string worldFilePath in System.IO.Directory.EnumerateFiles(Application.dataPath + "/Worlds", "*.txt"))
-        //{ 
-        //    string fixedPath = worldFilePath.Replace("\\", "/");
-        //    Debug.Log(worldFilePath.Replace("\\", "/"));
-        //    WorldData worldData = utils.LoadData<WorldData>(fixedPath);
-        //    _worldNameToData.Add(worldData.Name, worldData);
-
-        //    WorldSelectorButton newButton = Instantiate<WorldSelectorButton>(_worldButtonPrefab, _buttonParent);
-        //    newButton.WorldName = worldData.Name;
-        //    newButton.GetComponentInChildren<TextMeshProUGUI>().text = worldData.Name;
-        //    newButton.WorldSelected.AddListener(LoadWorld);
-        //}
-
-        Debug.Log("About to grab worlds");
-        foreach (WorldData worldData in utils.LoadAllFromResources<WorldData>("Worlds"))
+        // RUN THIS CODE WHEN IN EDITOR
+        if (Application.isEditor)
         {
-            _worldNameToData.Add(worldData.Name, worldData);
+            foreach (string worldFilePath in System.IO.Directory.EnumerateFiles(Application.dataPath + "/Resources/Worlds", "*.txt"))
+            {
+                string fixedPath = worldFilePath.Replace("\\", "/");
+                Debug.Log(worldFilePath.Replace("\\", "/"));
+                WorldData worldData = utils.LoadData<WorldData>(fixedPath);
+                _worldNameToData.Add(worldData.Name, worldData);
 
-            WorldSelectorButton newButton = Instantiate<WorldSelectorButton>(_worldButtonPrefab, _buttonParent);
-            newButton.WorldName = worldData.Name;
-            newButton.GetComponentInChildren<TextMeshProUGUI>().text = worldData.Name;
-            newButton.WorldSelected.AddListener(LoadWorld);
+                WorldSelectorButton newButton = Instantiate<WorldSelectorButton>(_worldButtonPrefab, _buttonParent);
+                newButton.WorldName = worldData.Name;
+                newButton.GetComponentInChildren<TextMeshProUGUI>().text = worldData.Name;
+                newButton.WorldSelected.AddListener(LoadWorld);
+            }
+        }
+        else
+        {
+            Debug.Log("About to grab worlds");
+            foreach (WorldData worldData in utils.LoadAllFromResources<WorldData>("Worlds"))
+            {
+                _worldNameToData.Add(worldData.Name, worldData);
+
+                WorldSelectorButton newButton = Instantiate<WorldSelectorButton>(_worldButtonPrefab, _buttonParent);
+                newButton.WorldName = worldData.Name;
+                newButton.GetComponentInChildren<TextMeshProUGUI>().text = worldData.Name;
+                newButton.WorldSelected.AddListener(LoadWorld);
+            }
         }
     }
 
