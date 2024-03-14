@@ -28,7 +28,15 @@ public class GameManager : MonoBehaviour
             SceneManager.sceneLoaded += OnSceneLoaded;
 
             JsonUtilities utils = new JsonUtilities("");
-            FlagsClass flagNames = utils.LoadFromResources<FlagsClass>("FlagMasterSets/" + _flagsetName);
+            FlagsClass flagNames;
+            if (Application.isEditor)
+            {
+                flagNames = utils.LoadData<FlagsClass>(Application.dataPath + "/Resources/FlagMasterSets/" + _flagsetName + ".txt");
+            }
+            else
+            {
+                flagNames = utils.LoadFromResources<FlagsClass>("FlagMasterSets/" + _flagsetName);
+            }
 
             Flags = new Dictionary<string, bool>();
             foreach(string name in flagNames.FlagNames)
