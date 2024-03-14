@@ -33,7 +33,15 @@ public class GameManager : MonoBehaviour
             Flags = new Dictionary<string, bool>();
             foreach(string name in flagNames.FlagNames)
             {
-                Flags.Add(name, false);
+                bool flagStartingValue = false;
+
+                if (name.Contains("_T"))
+                {
+                    name.Replace("_T", "");
+                    flagStartingValue = true;
+                }
+
+                Flags.Add(name, flagStartingValue);
             }
         }
         else
