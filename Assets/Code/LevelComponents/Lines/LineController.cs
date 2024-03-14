@@ -46,6 +46,8 @@ public class LineController : MonoBehaviour
         _transformB.position = InitialB;
 
         OnLineControllers = new List<OnLineController>();
+
+        ConfigureInformation();
     }
 
     private void Start()

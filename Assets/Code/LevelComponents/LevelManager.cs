@@ -48,10 +48,10 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        foreach (LineController line in Lines)
-        {
-            line.ConfigureInformation();
-        }
+        //foreach (LineController line in Lines)
+        //{
+        //    line.ConfigureInformation();
+        //}
 
         _intersections = CalculateIntersections();
 
@@ -95,7 +95,7 @@ public class LevelManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _player.OnPlayerDeath -= HandlePlayerDeath;
+        Player.Instance.OnPlayerDeath -= HandlePlayerDeath;
     }
 
     public void ResetPlayer()
