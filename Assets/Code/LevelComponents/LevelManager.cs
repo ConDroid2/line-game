@@ -253,5 +253,18 @@ public class LevelManager : MonoBehaviour
         Gizmos.DrawLine(bottomLeft, bottomRight);
         Gizmos.DrawLine(bottomRight, topRight);
         Gizmos.DrawLine(topRight, topLeft);
+
+        //if (Application.isPlaying)
+        //{
+        //    Gizmos.color = Color.green;
+
+        //    foreach (Dictionary<Vector3, List<IntersectionData>> intersectionData in _intersections.Values)
+        //    {
+        //        foreach (Vector3 point in intersectionData.Keys)
+        //        {
+        //            Gizmos.DrawSphere(point, 0.3f);
+        //        }
+        //    }
+        //}
     }
 }

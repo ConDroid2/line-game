@@ -11,6 +11,7 @@ public class LineMovementController : MonoBehaviour
     // Settings
     public float CheckForIntersectionsDistance; // The distance we check for intersections
     [SerializeField] private bool _canPush;
+    [SerializeField] private float _edgeOfLineTolerance = 0.000005f;
 
     // Force Variabls
     private List<Force> _activeForces = new List<Force>();
@@ -85,7 +86,7 @@ public class LineMovementController : MonoBehaviour
 
             float tolerance = 0.000005f;
 
-            if (OnLineController.DistanceOnLine - tolerance <= 0 || OnLineController.DistanceOnLine + tolerance >= 1)
+            if (OnLineController.DistanceOnLine - _edgeOfLineTolerance <= 0 || OnLineController.DistanceOnLine + _edgeOfLineTolerance >= 1)
             {
                 OnReachedEdgeOfLine?.Invoke(transform.position);
             }
@@ -140,7 +141,7 @@ public class LineMovementController : MonoBehaviour
 
             if (intersection.IsParallel)
             {
-                canMoveToNewLine &= OnLineController.DistanceOnLine == 0 || OnLineController.DistanceOnLine == 1;
+                canMoveToNewLine &= OnLineController.DistanceOnLine - _edgeOfLineTolerance <= 0 || OnLineController.DistanceOnLine + _edgeOfLineTolerance >= 1;
             }
 
             // Set new line using Intersection Data
