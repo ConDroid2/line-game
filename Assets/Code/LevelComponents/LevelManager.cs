@@ -202,13 +202,24 @@ public class LevelManager : MonoBehaviour
                     // Make sure we actually have an intersection point (using the x component is enough since we can't actually compare Vector3.infinity with itself)
                     if (point.x != Vector3.positiveInfinity.x)
                     {
+                        // Need to do some tolerance stuff to make things close to 0 act as 0 (This might need to be extended to other numbers)
+                        float aX = otherLine.CurrentA.x;
+                        float bX = otherLine.CurrentB.x;
+                        float aY = otherLine.CurrentA.y;
+                        float bY = otherLine.CurrentB.y;
+                        float zeroTolerance = 0.000005f;
+
+                        if (aX > -zeroTolerance && aX < zeroTolerance) aX = 0f;
+                        if (bX > -zeroTolerance && bX < zeroTolerance) bX = 0f;
+                        if (aY > -zeroTolerance && aY < zeroTolerance) aY = 0f;
+                        if (bY > -zeroTolerance && bY < zeroTolerance) bY = 0f;
                         // Use the X values to find how far along the line we are from 0 to 1
-                        float tValue = Mathf.InverseLerp(otherLine.CurrentA.x, otherLine.CurrentB.x, point.x);
+                        float tValue = Mathf.InverseLerp(aX, bX, point.x);
 
                         // If we got 0 using X, try Y
                         if (tValue == 0)
                         {
-                            tValue = Mathf.InverseLerp(otherLine.CurrentA.y, otherLine.CurrentB.y, point.y);
+                            tValue = Mathf.InverseLerp(aY, bY, point.y);
                         }
 
                         // Create intersection data and add it to the dictionary
@@ -254,17 +265,17 @@ public class LevelManager : MonoBehaviour
         Gizmos.DrawLine(bottomRight, topRight);
         Gizmos.DrawLine(topRight, topLeft);
 
-        //if (Application.isPlaying)
-        //{
-        //    Gizmos.color = Color.green;
+        if (Application.isPlaying)
+        {
+            Gizmos.color = Color.green;
 
-        //    foreach (Dictionary<Vector3, List<IntersectionData>> intersectionData in _intersections.Values)
-        //    {
-        //        foreach (Vector3 point in intersectionData.Keys)
-        //        {
-        //            Gizmos.DrawSphere(point, 0.3f);
-        //        }
-        //    }
-        //}
+            foreach (Dictionary<Vector3, List<IntersectionData>> intersectionData in _intersections.Values)
+            {
+                foreach (Vector3 point in intersectionData.Keys)
+                {
+                    Gizmos.DrawSphere(point, 0.3f);
+                }
+            }
+        }
     }
 }

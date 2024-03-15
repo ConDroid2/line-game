@@ -9,7 +9,7 @@ public class LineDisintegrator : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Grabbing stuff and setting events");
+        // Debug.Log("Grabbing stuff and setting events");
         LineController lineController = GetComponentInParent<LineController>();
         LineDrawer lineDrawer = GetComponentInParent<LineDrawer>();
 

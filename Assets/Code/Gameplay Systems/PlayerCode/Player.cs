@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
         if (_rotateUnlocked == false && GameManager.Instance != null) return;
 
         // rotate
-        Debug.Log("Rotating");
+        // Debug.Log("Rotating");
         MovementController.OnLineController.CurrentLine.GetComponent<LineRotator>().Rotate();
     }
 
