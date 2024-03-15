@@ -79,6 +79,9 @@ public class Player : MonoBehaviour
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
         _baseControls.PlayerMap.AimMode.performed -= AimModeStatusChanged;
         _baseControls.PlayerMap.AimMode.canceled -= AimModeStatusChanged;
+        _baseControls.PlayerMap.Rotate.performed -= HandleRotatePerformed;
+        _baseControls.PlayerMap.Grapple.performed -= HandleGrapplePerformed;
+        _baseControls.PlayerMap.FireProjectile.performed -= HandleFirePerformed;
     }
 
 
