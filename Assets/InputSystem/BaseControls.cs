@@ -284,7 +284,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2a53f87c-fb86-4cd3-9fa2-3bc3c4dda3f0"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -296,6 +296,17 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""430fdc12-231d-4c1e-a345-52e4eeee29aa"",
                     ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca9e00b5-1f0b-4d19-b5bc-efb19570b4e3"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
