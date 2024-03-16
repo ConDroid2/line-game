@@ -8,7 +8,12 @@ public class ActivationIndicatorLine : MonoBehaviour
     public Color NotActivatedColor;
     public Color ActivatedColor;
 
-    private bool _activated = false;
+    [SerializeField] private bool _activated = false;
+
+    private void Awake()
+    {
+        SetActivated(_activated);
+    }
 
     public void SetActivated(bool activated)
     {
