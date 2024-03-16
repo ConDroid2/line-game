@@ -26,7 +26,7 @@ public class FreeObjectShifter : MonoBehaviour
 
     private void Awake()
     {
-        _startPoint = transform.position;
+        _startPoint = transform.localPosition;
 
         _endPoint = _startPoint + MovementVector;
 
@@ -135,7 +135,7 @@ public class FreeObjectShifter : MonoBehaviour
     public void MovePoint(float distance)
     {
         float adjustedDistance = _timingCurve.Evaluate(distance);
-        transform.position = Vector3.LerpUnclamped(_startPoint, _endPoint, adjustedDistance);
+        transform.localPosition = Vector3.LerpUnclamped(_startPoint, _endPoint, adjustedDistance);
     }
 
     public void ChangeStartingPoint(float startingPoint)
