@@ -1040,10 +1040,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 0, y: -2, z: 0}
+  ContinuousMove: 1
   Mode: 0
   TimeToMove: 2
   TimeToWait: 0
   WaitAtStart: 0
+  StartWaitTime: 0
   StartingPointAlongPath: 0
   _timingCurve:
     serializedVersion: 2
@@ -1839,10 +1841,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 0, y: 2, z: 0}
+  ContinuousMove: 1
   Mode: 0
   TimeToMove: 2
   TimeToWait: 0
   WaitAtStart: 0
+  StartWaitTime: 0
   StartingPointAlongPath: 0
   _timingCurve:
     serializedVersion: 2
@@ -2574,6 +2578,10 @@ PrefabInstance:
     - target: {fileID: 3755817443664416724, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
       propertyPath: InitialA.x
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755817443664416724, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: InitialA.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3755817443664416724, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
       propertyPath: InitialB.x
