@@ -17,6 +17,13 @@ public class LineRotator : MonoBehaviour
     float _timeSinceStarting = 0f;
     float _startRotation;
     float _endRotation;
+    Vector3 _startA;
+    Vector3 _startB;
+    Vector3 _calculatedA;
+    Vector3 _calculatedB;
+
+    Quaternion _startQuaternion;
+    Quaternion _endQuaternion;
 
     // Events
     public UnityEvent DoneRotating;
@@ -40,18 +47,28 @@ public class LineRotator : MonoBehaviour
             float rotationPercentage = Mathf.Clamp01(_timeSinceStarting / _timeForRotation);
             float adjustedPercentage = _rotationCurve.Evaluate(rotationPercentage);
 
-            float newZRotation = Mathf.Lerp(_startRotation, _endRotation, adjustedPercentage);
+            //float newZRotation = Mathf.Lerp(_startRotation, _endRotation, adjustedPercentage);
 
-            transform.eulerAngles = new Vector3(0f, 0f, newZRotation);
+            //transform.eulerAngles = new Vector3(0f, 0f, newZRotation);
 
-            _lineController.FixPointOrientation();
+            // transform.rotation = Quaternion.Lerp(_startQuaternion, _endQuaternion, adjustedPercentage);
+
+            Vector3 newA = Vector3.Slerp(_startA, _calculatedA, adjustedPercentage);
+            Vector3 newB = Vector3.Slerp(_startB, _calculatedB, adjustedPercentage);
+
+            _lineController.SetLocalEndpoint("A", newA);
+            _lineController.SetLocalEndpoint("B", newB);
+
+            // _lineController.FixPointOrientation();
 
             if(_timeSinceStarting >= _timeForRotation)
             {
+                _lineController.SetLocalEndpoint("A", _calculatedA);
+                _lineController.SetLocalEndpoint("B", _calculatedB);
+
                 _rotating = false;
                 DoneRotating.Invoke();
-                // Allow player to move'
-                // Need to do some kind of check to see if rotation is valid
+
                 ValidateNewOrientation();
             }
         }
@@ -60,9 +77,21 @@ public class LineRotator : MonoBehaviour
     public void Rotate()
     {
         if (_rotating) return;
-        // Debug.Log("Start Rotating");
-        _startRotation = transform.eulerAngles.z;
-        _endRotation = _startRotation - 90f;
+
+        Vector2 nextSlope = Vector2.Perpendicular(_lineController.CalculateSlope()) * -1;
+        float halfLength = _lineController.Length / 2;
+
+        _startA = _lineController.CurrentLocalA;
+        _startB = _lineController.CurrentLocalB;
+
+        _calculatedA = -1* new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
+        _calculatedB = new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
+
+        //Debug.Log($"Next slope is: {nextSlope.x}, {nextSlope.y}");
+        //Debug.Log($"Half length is: {halfLength}");
+        //Debug.Log($"New A.x is: {_calculatedA.x}");
+        //Debug.Log($"New A.y is: {_calculatedA.y}");
+
         _timeSinceStarting = 0;
 
         _lineController.LineType = Enums.LineType.Shifting;
@@ -74,8 +103,22 @@ public class LineRotator : MonoBehaviour
     {
         if (_rotating) return;
         Debug.Log("Start Reversing");
-        _startRotation = transform.eulerAngles.z;
-        _endRotation = _startRotation + 90f;
+        
+
+        Vector2 nextSlope = Vector2.Perpendicular(_lineController.CalculateSlope());
+        float halfLength = _lineController.Length / 2;
+
+        _startA = _lineController.CurrentLocalA;
+        _startB = _lineController.CurrentLocalB;
+
+        _calculatedA = -1 * new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
+        _calculatedB = new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
+
+        //Debug.Log($"Next slope is: {nextSlope.x}, {nextSlope.y}");
+        //Debug.Log($"Half length is: {halfLength}");
+        //Debug.Log($"New A.x is: {_calculatedA.x}");
+        //Debug.Log($"New A.y is: {_calculatedA.y}");
+
         _timeSinceStarting = 0;
 
         _lineController.LineType = Enums.LineType.Shifting;
@@ -84,9 +127,9 @@ public class LineRotator : MonoBehaviour
 
     public void ValidateNewOrientation()
     {
-        
-        _lineController.SetEndpoint("A", FixEndpointPositions(_lineController.CurrentA));
-        _lineController.SetEndpoint("B", FixEndpointPositions(_lineController.CurrentB));
+        Debug.Log("Validating new orientation");
+        //_lineController.SetEndpoint("A", FixEndpointPositions(_lineController.CurrentA));
+        //_lineController.SetEndpoint("B", FixEndpointPositions(_lineController.CurrentB));
         _lineController.FixPointOrientation();
 
         Vector3 a = _lineController.CurrentA;
@@ -104,7 +147,7 @@ public class LineRotator : MonoBehaviour
 
             if (intersectionPoint.IsParallel && intersectionPoint.Point.x == Vector3.negativeInfinity.x)
             {
-                // Debug.Log("Potential Problem");
+                Debug.Log("Potential Problem");
                 Reverse();
             }
         }

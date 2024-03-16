@@ -122,10 +122,6 @@ public class GrapplingHook : MonoBehaviour
         {
             _moveTo = new IntersectionData(null, 0f, hit.point, false);
         }
-        else
-        {
-            Debug.Log("Didn't hit anything");
-        }
         
     }
 

@@ -36,9 +36,12 @@ public static class Utilities
             float tolerance = 0.005f;
             Vector3 point = Vector3.zero;
 
-            float lineLength = Vector3.Distance(c, d);
-            bool isAOnLine = Vector3.Distance(a, c) + Vector3.Distance(a, d) == lineLength;
-            bool isBOnLine = Vector3.Distance(b, c) + Vector3.Distance(b, d) == lineLength;
+            float CDLineLength = Vector3.Distance(c, d);
+            float ABLineLength = Vector3.Distance(a, b);
+            bool isAOnLine = Vector3.Distance(a, c) + Vector3.Distance(a, d) == CDLineLength;
+            bool isBOnLine = Vector3.Distance(b, c) + Vector3.Distance(b, d) == CDLineLength;
+            bool isCOnLine = Vector3.Distance(c, a) + Vector3.Distance(c, b) == ABLineLength;
+            bool isDOnLine = Vector3.Distance(d, a) + Vector3.Distance(d, b) == ABLineLength;
 
             //Debug.Log($"Is A on line: {isAOnLine}, is B on line: {isBOnLine}");
             //Debug.Log($"{lineLength} vs {Vector3.Distance(a, c) + Vector3.Distance(a, d)}");
@@ -48,7 +51,7 @@ public static class Utilities
             // Taking advantage of the fact that all lines go A -> B, meaning we only want this if D and A are the same or C and B are the same
             if (Vector3.Distance(a, d) < tolerance && Vector3.Distance(b, c) > tolerance) point = a;
             else if (Vector3.Distance(b, c) < tolerance && Vector3.Distance(a, d) > tolerance) point = b;
-            else if (isAOnLine || isBOnLine) { 
+            else if (isAOnLine || isBOnLine || isCOnLine || isDOnLine) { 
                 point = Vector3.negativeInfinity; 
             }
             else point = Vector3.positiveInfinity;

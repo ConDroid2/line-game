@@ -17,6 +17,8 @@ public class LineController : MonoBehaviour
     [SerializeField] private Transform _transformB;
     public Vector3 CurrentA => _transformA.position;
     public Vector3 CurrentB => _transformB.position;
+    public Vector3 CurrentLocalA => _transformA.localPosition;
+    public Vector3 CurrentLocalB => _transformB.localPosition;
     public Vector3 CurrentMidpoint => new Vector3((CurrentA.x + CurrentB.x) / 2, (CurrentA.y + CurrentB.y) / 2);
 
     public Enums.SlopeType SlopeType { get; private set; }
@@ -86,15 +88,25 @@ public class LineController : MonoBehaviour
         CalculateDirectionModifier();
     }
 
-    public Vector2 CalculateSlope()
+    public Vector2 CalculateSlope(bool debug = false)
     {
+        
         float slopeX = CurrentB.x - CurrentA.x;
         float slopeY = CurrentB.y - CurrentA.y;
 
         //Debug.Log(slopeX);
         //Debug.Log(slopeY);
+        Vector2 newSlope = new Vector2(slopeX, slopeY).normalized;
 
-        return new Vector2(slopeX, slopeY).normalized;
+        if (debug == true)
+        {
+            Debug.Log($"Calculating slope Y: {CurrentB.y} - {CurrentA.y} = {CurrentB.y - CurrentA.y}");
+            Debug.Log($"Calculating slope X: {CurrentB.x} - {CurrentA.x} = {CurrentB.x - CurrentA.x}");
+            Debug.Log($"SlopeX after normalize: {newSlope.x}");
+            Debug.Log($"SlopeY after Normalize: {newSlope.y}");
+        }
+
+        return newSlope;
     }
 
     public Vector2 CalculateInitialSlope()
@@ -174,10 +186,24 @@ public class LineController : MonoBehaviour
         if(endpoint == "A")
         {
             _transformA.position = position;
+            // Debug.Log(_transformA.localPosition);
         }
         else if(endpoint == "B")
         {
             _transformB.position = position;
+        }
+    }
+
+    public void SetLocalEndpoint(string endpoint, Vector3 localPosition)
+    {
+        if (endpoint == "A")
+        {
+            _transformA.localPosition = localPosition;
+            // Debug.Log(_transformA.localPosition);
+        }
+        else if (endpoint == "B")
+        {
+            _transformB.localPosition = localPosition;
         }
     }
 
