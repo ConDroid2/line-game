@@ -24,6 +24,9 @@ public class GrapplingHook : MonoBehaviour
     private bool _movingPlayer = false;
     private float _timeMovingPlayer = 0f;
 
+    // Events
+    public System.Action OnGrappleFinished;
+
     public void AttemptGrapple()
     {
         if (_performGrapple == false)
@@ -134,5 +137,6 @@ public class GrapplingHook : MonoBehaviour
         _performGrapple = false;
         _lineRenderer.SetPosition(0, transform.position);
         _lineRenderer.SetPosition(1, transform.position);
+        OnGrappleFinished?.Invoke();
     }
 }

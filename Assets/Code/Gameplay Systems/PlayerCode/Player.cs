@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _grappleUnlocked = false;
     [SerializeField] private bool _rotateUnlocked = false;
 
+    private bool _allowInput = true;
+    private bool _bufferTurnOffAimMode = false;
+
 
     BaseControls _baseControls;
 
@@ -67,6 +70,8 @@ public class Player : MonoBehaviour
 
         // Rotate Ability Events
         _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
+
+        _grapplingHook.OnGrappleFinished += HandleGrappleFinished;
     }
 
     private void Start()
@@ -82,6 +87,7 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.Rotate.performed -= HandleRotatePerformed;
         _baseControls.PlayerMap.Grapple.performed -= HandleGrapplePerformed;
         _baseControls.PlayerMap.FireProjectile.performed -= HandleFirePerformed;
+        _grapplingHook.OnGrappleFinished -= HandleGrappleFinished;
     }
 
 
@@ -143,16 +149,12 @@ public class Player : MonoBehaviour
 
         if(context.phase == InputActionPhase.Performed)
         {
-            _aimingMode = true;
-            _allowMoving = false;
-            _aimController.Activate();
+            TurnOnAimMode();
         }
 
         else if(context.phase == InputActionPhase.Canceled)
         {
-            _aimingMode = false;
-            _allowMoving = true;
-            _aimController.Deactivate();
+            TurnOffAimMode();
         }
     }
 
@@ -173,6 +175,7 @@ public class Player : MonoBehaviour
         if (_aimingMode)
         {
             _grapplingHook.AttemptGrapple();
+            _allowInput = false;
         }
     }
 
@@ -221,6 +224,43 @@ public class Player : MonoBehaviour
     public void UnlockRotate()
     {
         _rotateUnlocked = true;
+    }
+
+    public void HandleGrappleFinished()
+    {
+        _allowInput = true;
+
+        if(_bufferTurnOffAimMode == true)
+        {
+            _bufferTurnOffAimMode = false;
+            TurnOffAimMode();
+        }
+    }
+
+    public void TurnOnAimMode()
+    {
+        _aimingMode = true;
+        _allowMoving = false;
+        _aimController.Activate();
+
+        if (_bufferTurnOffAimMode == true)
+        {
+            _bufferTurnOffAimMode = false;
+        }
+    }
+
+    public void TurnOffAimMode()
+    {
+        if (_allowInput == false)
+        {
+            _bufferTurnOffAimMode = true;
+        }
+        else
+        {
+            _aimingMode = false;
+            _allowMoving = true;
+            _aimController.Deactivate();
+        }
     }
 
     private void OnDrawGizmos()
