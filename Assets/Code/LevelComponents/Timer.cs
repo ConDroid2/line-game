@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private float _time;
+    [SerializeField] private bool _startOnRoomStart = false;
 
     // Variables to keep track
     private float _timeSinceStart;
@@ -17,6 +18,14 @@ public class Timer : MonoBehaviour
 
     // properties
     public float PercentDone => _timeSinceStart / _time;
+
+    private void Start()
+    {
+        if (_startOnRoomStart)
+        {
+            StartTimer();
+        }
+    }
 
     void Update()
     {
