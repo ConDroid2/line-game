@@ -80,6 +80,15 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""feed6d72-3d90-43bd-a481-e79a317c9c21"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -313,6 +322,28 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99c45ff8-f0f6-4d57-82c8-d85767b1c25a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0eebfda1-dbcc-4bc9-9ec0-9e479d87dc8f"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -355,6 +386,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         m_PlayerMap_FireProjectile = m_PlayerMap.FindAction("FireProjectile", throwIfNotFound: true);
         m_PlayerMap_Grapple = m_PlayerMap.FindAction("Grapple", throwIfNotFound: true);
         m_PlayerMap_Rotate = m_PlayerMap.FindAction("Rotate", throwIfNotFound: true);
+        m_PlayerMap_OpenMenu = m_PlayerMap.FindAction("OpenMenu", throwIfNotFound: true);
         // TestMap
         m_TestMap = asset.FindActionMap("TestMap", throwIfNotFound: true);
         m_TestMap_Vector2 = m_TestMap.FindAction("Vector2", throwIfNotFound: true);
@@ -423,6 +455,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_FireProjectile;
     private readonly InputAction m_PlayerMap_Grapple;
     private readonly InputAction m_PlayerMap_Rotate;
+    private readonly InputAction m_PlayerMap_OpenMenu;
     public struct PlayerMapActions
     {
         private @BaseControls m_Wrapper;
@@ -433,6 +466,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         public InputAction @FireProjectile => m_Wrapper.m_PlayerMap_FireProjectile;
         public InputAction @Grapple => m_Wrapper.m_PlayerMap_Grapple;
         public InputAction @Rotate => m_Wrapper.m_PlayerMap_Rotate;
+        public InputAction @OpenMenu => m_Wrapper.m_PlayerMap_OpenMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -460,6 +494,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @Rotate.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnRotate;
                 @Rotate.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnRotate;
                 @Rotate.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnRotate;
+                @OpenMenu.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMenu;
+                @OpenMenu.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMenu;
+                @OpenMenu.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMenu;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -482,6 +519,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
+                @OpenMenu.started += instance.OnOpenMenu;
+                @OpenMenu.performed += instance.OnOpenMenu;
+                @OpenMenu.canceled += instance.OnOpenMenu;
             }
         }
     }
@@ -527,6 +567,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         void OnFireProjectile(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+        void OnOpenMenu(InputAction.CallbackContext context);
     }
     public interface ITestMapActions
     {

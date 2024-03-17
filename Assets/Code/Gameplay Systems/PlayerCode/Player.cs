@@ -71,7 +71,12 @@ public class Player : MonoBehaviour
         // Rotate Ability Events
         _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
 
+        // Pause Event
+        _baseControls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
+
         _grapplingHook.OnGrappleFinished += HandleGrappleFinished;
+
+
     }
 
     private void Start()
@@ -88,6 +93,7 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.Grapple.performed -= HandleGrapplePerformed;
         _baseControls.PlayerMap.FireProjectile.performed -= HandleFirePerformed;
         _grapplingHook.OnGrappleFinished -= HandleGrappleFinished;
+        _baseControls.PlayerMap.OpenMenu.performed -= HandlePausePerformed;
     }
 
 
@@ -186,6 +192,14 @@ public class Player : MonoBehaviour
         // rotate
         // Debug.Log("Rotating");
         MovementController.OnLineController.CurrentLine.GetComponent<LineRotator>().Rotate();
+    }
+
+    public void HandlePausePerformed(InputAction.CallbackContext context)
+    {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.HandlePause();
+        }
     }
 
     public void SetLevelManager(LevelManager newLevelManager)

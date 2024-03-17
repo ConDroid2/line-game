@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Player _playerPrefab;
     [SerializeField] private string _flagsetName;
+    [SerializeField] private GameObject _pauseMenu;
 
     public Dictionary<string, bool> Flags;
 
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     private WorldRoomData _currentRoom;
     private RoomPort _toPort;
     private Player _player;
+    private bool _gamePaused = false;
 
     public System.Action<string, bool> OnSetFlag;
 
@@ -170,5 +172,31 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(roomConnection.ToLevelName);   
             }
         }    
+    }
+
+    private void Pause()
+    {
+        Time.timeScale = 0;
+        _pauseMenu.SetActive(true);
+        _gamePaused = true;
+    }
+
+    private void Unpause()
+    {
+        Time.timeScale = 1;
+        _pauseMenu.SetActive(false);
+        _gamePaused = false;
+    }
+
+    public void HandlePause()
+    {
+        if(_gamePaused == false)
+        {
+            Pause();
+        }
+        else
+        {
+            Unpause();
+        }
     }
 }
