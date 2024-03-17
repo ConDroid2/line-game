@@ -331,7 +331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3755817443664416724, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
       propertyPath: InitialB.y
-      value: 5
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 3755817443664416725, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
       propertyPath: m_Name
@@ -347,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3755817443664416731, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 4.75
       objectReference: {fileID: 0}
     - target: {fileID: 3755817443664416731, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -785,10 +785,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 0, y: -8, z: 0}
+  ContinuousMove: 1
   Mode: 0
   TimeToMove: 2.3
   TimeToWait: 0.2
   WaitAtStart: 0
+  StartWaitTime: 0
   StartingPointAlongPath: 0
   _timingCurve:
     serializedVersion: 2
@@ -1206,10 +1208,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: -9, y: -0, z: 0}
+  ContinuousMove: 1
   Mode: 0
   TimeToMove: 2.3
   TimeToWait: 0.2
   WaitAtStart: 0
+  StartWaitTime: 0
   StartingPointAlongPath: 0
   _timingCurve:
     serializedVersion: 2
