@@ -68,7 +68,7 @@ public class SaveWorld : EditorWindow
             }
             else if (room.StartingRoom == true && startingRoom != null)
             {
-                EditorUtility.DisplayDialog("World Save Error", "There is more than one starting room. Make sure there is only one.", "Ok");
+                EditorUtility.DisplayDialog("World Save Error", $"There is more than one starting room({startingRoom.name}, {room.name}). Make sure there is only one.", "Ok");
                 return null;
             }
         }
