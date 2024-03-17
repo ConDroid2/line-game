@@ -37,9 +37,9 @@ public class Timer : MonoBehaviour
 
             // If timer done, send event
             if(_timeSinceStart >= _time)
-            {
-                OnTimerEnd.Invoke();
+            {  
                 _running = false;
+                OnTimerEnd.Invoke();
             }
         }
     }
