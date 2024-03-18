@@ -12,6 +12,8 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private int _currentBeat = 0; // typically 1 - 4
     private float _songPositionInSeconds;
     public float SongPositionInBeats;
+    private float _totalBeatsInSong;
+    // Keep track of how many times we've looped
 
     private float _dspStartTime;
 
@@ -24,13 +26,16 @@ public class BeatManager : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         SetTrackAsset(_trackAsset);
+        _audioSource.Play();
+        _songGoing = true;
+        _dspStartTime = (float)AudioSettings.dspTime;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             if(_songGoing == false)
             {
@@ -51,6 +56,11 @@ public class BeatManager : MonoBehaviour
         {
             SongPositionInBeats = _audioSource.timeSamples / (_audioSource.clip.frequency * _secondsPerBeat);
 
+            // Store SongPositionInBeats in _previousSongPositionInBeats
+            // If _previous... > SongPosition
+            // ---- DeltaBeats = Song
+            // DeltaBeats = CurrentBeats - PreviousBeats
+
 
 
             int newBeat = (Mathf.FloorToInt(SongPositionInBeats) % _trackAsset.TimeSignature) + 1;
@@ -66,9 +76,9 @@ public class BeatManager : MonoBehaviour
 
     }
 
-    public void SetTrackAsset(TrackAsset _newTrack)
+    public void SetTrackAsset(TrackAsset newTrack)
     {
-        _trackAsset = _newTrack;
+        _trackAsset = newTrack;
 
         // Set up audio source
         _audioSource.clip = _trackAsset.AudioClip;
@@ -76,5 +86,7 @@ public class BeatManager : MonoBehaviour
         // Set up manager
         _bpm = _trackAsset.BPM;
         _secondsPerBeat = 60f / _bpm;
+        _totalBeatsInSong = _trackAsset.AudioClip.length / _secondsPerBeat;
+        Debug.Log(_totalBeatsInSong);
     }
 }
