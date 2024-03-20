@@ -8,41 +8,58 @@ public class PressurePlateScript : MonoBehaviour
 
     public Collider2D thisCollider;
 
-    
+    private List<Collider2D> _collidersInTrigger = new List<Collider2D>();
 
-    private bool isActivated = false;
+    private bool _isActivated = false;
 
+
+    // Events
     public UnityEvent OnPressed;
     public UnityEvent OnDeactivated;
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void FixedUpdate()
     {
-        if (CheckIfEncapsulated(other))
+        // Find out if pressure plate should be active
+        bool shouldBeActive = false;
+
+        foreach(Collider2D collider in _collidersInTrigger)
         {
-            if (!isActivated)
-            {
-                Debug.Log("Pressed!");
-                OnPressed.Invoke();
-                isActivated = true;
-            }
+            shouldBeActive |= CheckIfEncapsulated(collider);
+        }
+
+        // If not active, but should be, activate
+        if(_isActivated == false && shouldBeActive == true)
+        {
+            OnPressed.Invoke();
+            _isActivated = true;
+        }
+        // If active but shouldn't be, deactivate
+        else if(_isActivated == true && shouldBeActive == false)
+        {
+            OnDeactivated.Invoke();
+            _isActivated = false;
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(_collidersInTrigger.Contains(collision) == false)
+        {
+            _collidersInTrigger.Add(collision);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (_collidersInTrigger.Contains(collision))
+        {
+            _collidersInTrigger.Remove(collision);
         }
     }
 
     private bool CheckIfEncapsulated(Collider2D other)
     {
-        if (thisCollider.bounds.Contains(other.bounds.max) && thisCollider.bounds.Contains(other.bounds.min))
-        {
-            return true;
-        }
-        else if(isActivated)
-        {
-            isActivated = false;
-            OnDeactivated.Invoke();
-            return false;
-        }
-        else
-        {
-            return false;
-        }
+        return thisCollider.bounds.Contains(other.bounds.max) && thisCollider.bounds.Contains(other.bounds.min);
     }
 }
