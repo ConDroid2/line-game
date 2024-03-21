@@ -81,12 +81,12 @@ public class BeatManager : MonoBehaviour
         _trackAsset = newTrack;
 
         // Set up audio source
-        _audioSource.clip = _trackAsset.AudioClip;
+        // _audioSource.clip = _trackAsset.AudioClip;
 
         // Set up manager
         _bpm = _trackAsset.BPM;
         _secondsPerBeat = 60f / _bpm;
-        _totalBeatsInSong = _trackAsset.AudioClip.length / _secondsPerBeat;
+        // _totalBeatsInSong = _trackAsset.AudioClip.length / _secondsPerBeat;
         Debug.Log(_totalBeatsInSong);
     }
 }
