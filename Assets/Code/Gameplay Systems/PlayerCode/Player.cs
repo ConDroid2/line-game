@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _grappleUnlocked = false;
     [SerializeField] private bool _rotateUnlocked = false;
 
+    [SerializeField] private bool _invulnerable = false;
     private bool _allowInput = true;
     private bool _bufferTurnOffAimMode = false;
 
@@ -212,8 +213,23 @@ public class Player : MonoBehaviour
         MovementController.SetNewLine(newLine, distanceAlongNewLine);
     }
 
+    public IEnumerator MakeInvulnerable(float invulnerabilityTime)
+    {
+        _invulnerable = true;
+        float totalTimeInvulnerable = 0f;
+
+        while(totalTimeInvulnerable < invulnerabilityTime)
+        {
+            totalTimeInvulnerable += Time.deltaTime;
+            yield return null;
+        }
+
+        _invulnerable = false;
+    }
+
     public void GetKilled(Enums.KillType killType)
     {
+        if (_invulnerable == true) return; 
         // Need to send event so level manager can spawn properly
         OnPlayerDeath.Invoke();
         _grapplingHook.FinishGrapple();
