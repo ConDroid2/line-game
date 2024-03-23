@@ -101,7 +101,7 @@ public class ConditionCombiner : MonoBehaviour
     private bool isActivated = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         conditions = new bool[numberOfConditionToCheck].Select(x => false).ToArray();
         Debug.Log("initial state " + conditions.ToString());

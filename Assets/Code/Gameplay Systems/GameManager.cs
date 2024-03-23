@@ -51,8 +51,6 @@ public class GameManager : MonoBehaviour
                     flagStartingValue = true;
                 }
 
-                Debug.Log(name.Replace("_T", ""));
-
                 Flags.Add(name.Replace("_T", ""), flagStartingValue);
             }
         }

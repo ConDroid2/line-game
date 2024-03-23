@@ -15,9 +15,6 @@ public class ConveyorLine : MonoBehaviour
         //_lineController = GetComponent<LineController>();
 
         _directionVisuals.up = _lineController.Slope * _direction;
-
-        Debug.Log($"Slope and direction = {_lineController.Slope * _direction}");
-        Debug.Log($"Direction visuals up = {_directionVisuals.up}");
     }
 
     private void Update()
@@ -26,7 +23,7 @@ public class ConveyorLine : MonoBehaviour
         {
             if(onLine.TryGetComponent(out LineMovementController movementController))
             {
-                movementController.AddForce(new Force(_magnitude, _lineController.Slope * _direction, 0f, gameObject), true);
+                Debug.Log(movementController.AddForce(new Force(_magnitude, _lineController.Slope * _direction, 0f, gameObject), true));
             }
         }
     }

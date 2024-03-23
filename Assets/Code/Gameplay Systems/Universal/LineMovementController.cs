@@ -362,11 +362,11 @@ public class LineMovementController : MonoBehaviour
 
         if (angleBetweenForceAndSlope < 90f)
         {
-            isValid &= OnLineController.DistanceOnLine != 1;
+            isValid &= OnLineController.DistanceOnLine + _edgeOfLineTolerance < 1;
         }
         else if (angleBetweenForceAndSlope > 90f)
         {
-            isValid &= OnLineController.DistanceOnLine != 0;
+            isValid &= OnLineController.DistanceOnLine - _edgeOfLineTolerance > 0;
         }
 
         return isValid;
