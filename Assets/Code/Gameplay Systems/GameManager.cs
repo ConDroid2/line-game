@@ -189,6 +189,8 @@ public class GameManager : MonoBehaviour
 
     public void HandlePause()
     {
+        if (_devMenu.activeInHierarchy == true) return;
+
         if(_gamePaused == false)
         {
             Pause();
@@ -201,6 +203,8 @@ public class GameManager : MonoBehaviour
 
     public void HandleDevMenu()
     {
+        if (_gamePaused == true) return;
+
         if(_devMenu.activeInHierarchy == false)
         {
             Time.timeScale = 0;
