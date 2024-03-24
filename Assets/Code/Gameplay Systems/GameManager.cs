@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player _playerPrefab;
     [SerializeField] private string _flagsetName;
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _devMenu;
 
     public Dictionary<string, bool> Flags;
 
@@ -195,6 +196,19 @@ public class GameManager : MonoBehaviour
         else
         {
             Unpause();
+        }
+    }
+
+    public void HandleDevMenu()
+    {
+        if(_devMenu.activeInHierarchy == false)
+        {
+            Time.timeScale = 0;
+            _devMenu.SetActive(true);
+        }
+        else{
+            Time.timeScale = 1;
+            _devMenu.SetActive(false);
         }
     }
 }

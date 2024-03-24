@@ -46,4 +46,9 @@ public class FlagReader : MonoBehaviour
             else OnIfFalse.Invoke();
         }
     }
+
+    public string GetFlagName()
+    {
+        return _flagName;
+    }
 }

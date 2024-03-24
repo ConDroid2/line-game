@@ -89,6 +89,15 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenDevMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""6db1c13b-14e3-433a-a29d-1ec1abe0eb47"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -344,6 +353,28 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""action"": ""OpenMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""597af277-7374-4ec7-9c08-a67e050540eb"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenDevMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03b871eb-d39d-4fe2-8cae-0132cb571b8f"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenDevMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -387,6 +418,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         m_PlayerMap_Grapple = m_PlayerMap.FindAction("Grapple", throwIfNotFound: true);
         m_PlayerMap_Rotate = m_PlayerMap.FindAction("Rotate", throwIfNotFound: true);
         m_PlayerMap_OpenMenu = m_PlayerMap.FindAction("OpenMenu", throwIfNotFound: true);
+        m_PlayerMap_OpenDevMenu = m_PlayerMap.FindAction("OpenDevMenu", throwIfNotFound: true);
         // TestMap
         m_TestMap = asset.FindActionMap("TestMap", throwIfNotFound: true);
         m_TestMap_Vector2 = m_TestMap.FindAction("Vector2", throwIfNotFound: true);
@@ -456,6 +488,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Grapple;
     private readonly InputAction m_PlayerMap_Rotate;
     private readonly InputAction m_PlayerMap_OpenMenu;
+    private readonly InputAction m_PlayerMap_OpenDevMenu;
     public struct PlayerMapActions
     {
         private @BaseControls m_Wrapper;
@@ -467,6 +500,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         public InputAction @Grapple => m_Wrapper.m_PlayerMap_Grapple;
         public InputAction @Rotate => m_Wrapper.m_PlayerMap_Rotate;
         public InputAction @OpenMenu => m_Wrapper.m_PlayerMap_OpenMenu;
+        public InputAction @OpenDevMenu => m_Wrapper.m_PlayerMap_OpenDevMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -497,6 +531,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @OpenMenu.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMenu;
                 @OpenMenu.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMenu;
                 @OpenMenu.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMenu;
+                @OpenDevMenu.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenDevMenu;
+                @OpenDevMenu.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenDevMenu;
+                @OpenDevMenu.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenDevMenu;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -522,6 +559,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @OpenMenu.started += instance.OnOpenMenu;
                 @OpenMenu.performed += instance.OnOpenMenu;
                 @OpenMenu.canceled += instance.OnOpenMenu;
+                @OpenDevMenu.started += instance.OnOpenDevMenu;
+                @OpenDevMenu.performed += instance.OnOpenDevMenu;
+                @OpenDevMenu.canceled += instance.OnOpenDevMenu;
             }
         }
     }
@@ -568,6 +608,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         void OnGrapple(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnOpenMenu(InputAction.CallbackContext context);
+        void OnOpenDevMenu(InputAction.CallbackContext context);
     }
     public interface ITestMapActions
     {

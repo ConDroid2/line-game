@@ -78,7 +78,7 @@ public class GrapplingHook : MonoBehaviour
 
                 if(_moveTo.Line == null)
                 {
-                    FinishGrapple();
+                    StartCoroutine(WaitForAMoment());
                 }
                 else
                 {
@@ -134,5 +134,12 @@ public class GrapplingHook : MonoBehaviour
         _lineRenderer.SetPosition(0, transform.position);
         _lineRenderer.SetPosition(1, transform.position);
         OnGrappleFinished?.Invoke();
+    }
+
+    private IEnumerator WaitForAMoment()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        FinishGrapple();
     }
 }
