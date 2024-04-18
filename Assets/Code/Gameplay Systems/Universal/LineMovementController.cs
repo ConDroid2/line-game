@@ -400,4 +400,11 @@ public class LineMovementController : MonoBehaviour
     {
         OnLineController.SetLine(newLine, distanceOnLine);
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, CheckForIntersectionsDistance);
+
+    }
 }
