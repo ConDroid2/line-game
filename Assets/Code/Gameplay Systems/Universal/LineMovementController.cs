@@ -11,6 +11,7 @@ public class LineMovementController : MonoBehaviour
     // Settings
     public float CheckForIntersectionsDistance; // The distance we check for intersections
     [SerializeField] private bool _canPush;
+    [SerializeField] private float _lineSwapAngleTolerance = 45f;
     [SerializeField] private float _edgeOfLineTolerance = 0.000005f;
 
     // Force Variabls
@@ -21,6 +22,9 @@ public class LineMovementController : MonoBehaviour
     // Collision Variabls
     private Collider2D _collider;
     private LineMovementController _objectBeingPushed = null;
+
+    // Stuff to keep track of
+    private LineSwapData _mostRecentLineSwap = null;
 
     // Utilities
     private DebugLogger _logger;
@@ -133,11 +137,16 @@ public class LineMovementController : MonoBehaviour
         foreach (IntersectionData intersection in intersections)
         {
             // Check if the input would allow movment along the intersecting line
-            float toleranceAngle = 20f;
+            // float toleranceAngle = 45f;
 
 
-            bool canMoveToNewLine = Vector3.Angle(inputVector.normalized, intersection.Line.Slope) < toleranceAngle;
-            canMoveToNewLine |= Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1) < toleranceAngle;
+            bool canMoveToNewLine = Vector3.Angle(inputVector.normalized, intersection.Line.Slope) <= _lineSwapAngleTolerance;
+            canMoveToNewLine |= Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1) <= _lineSwapAngleTolerance;
+
+            if (_mostRecentLineSwap != null)
+            {
+                canMoveToNewLine &= _mostRecentLineSwap.PreviousLine != intersection.Line || _mostRecentLineSwap.InputVectorWhenSwap != inputVector;
+            }
 
             if (intersection.IsParallel)
             {
@@ -147,6 +156,7 @@ public class LineMovementController : MonoBehaviour
             // Set new line using Intersection Data
             if (canMoveToNewLine)
             {
+                _mostRecentLineSwap = new LineSwapData(inputVector, currentLine);
                 SetNewLine(intersection.Line, intersection.DistanceAlongLine);
                 break;
             }
@@ -406,5 +416,18 @@ public class LineMovementController : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, CheckForIntersectionsDistance);
 
+    }
+
+    // Utils
+    public class LineSwapData
+    {
+        public Vector2 InputVectorWhenSwap;
+        public LineController PreviousLine;
+
+        public LineSwapData(Vector2 inputVector, LineController previousLine)
+        {
+            InputVectorWhenSwap = inputVector;
+            PreviousLine = previousLine;
+        }
     }
 }
