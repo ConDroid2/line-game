@@ -13,9 +13,6 @@ public class LevelManager : MonoBehaviour
     [Header("Room Settings")]
     [Tooltip("Height of room in Room Units")] public int RoomHeight = 1;
     [Tooltip("Width of Room in Room Units")] public int RoomWidth = 1;
-
-    [Header("Settings")]
-    [SerializeField] private float _roomStartPlayerInvulnerability = 0.5f;
     
 
     [Header("Likely to be made private")]
@@ -92,7 +89,7 @@ public class LevelManager : MonoBehaviour
     {
         _player = player;
         _player.SetLevelManager(this);
-        StartCoroutine(_player.MakeInvulnerable(_roomStartPlayerInvulnerability));
+        StartCoroutine(_player.MakeInvulnerable(_player.RoomStartInvulnerability));
         ResetPlayer();
         _player.OnPlayerDeath += HandlePlayerDeath;
     }

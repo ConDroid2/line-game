@@ -134,14 +134,37 @@ public class LineMovementController : MonoBehaviour
         // Check if there are any intersection points in range   
         List<IntersectionData> intersections = LevelManager.GetIntersectionPointsAroundPos(currentLine, transform.position, CheckForIntersectionsDistance);
 
+        // Need to keep track of which line the player is most likely trying to move to
+        // Start with a lowestAngle of whatever the angle between input and current line is and say we are trying to move to current line
+        // For each intersection, check angle between input and line, if it's smaller then our current lowestAngle, it's the new lowest and say we want to move to that line
+        // I think this will break parallel intersections, but we'll see
+        // Currently a problem with lines oriented like this _|_
+        float lowestAngle = Vector3.Angle(inputVector.normalized, currentLine.Slope);
+        if(lowestAngle > Vector3.Angle(inputVector.normalized, currentLine.Slope * -1))
+        {
+            lowestAngle = Vector3.Angle(inputVector.normalized, currentLine.Slope * -1);
+        }
+
+        // If we're at the edge of a line, we probably don't want to stay on it
+        if(OnLineController.DistanceOnLine - _edgeOfLineTolerance <= 0 || OnLineController.DistanceOnLine + _edgeOfLineTolerance >= 1)
+        {
+            lowestAngle = 90f;
+        }
+        float newDistanceAlongLine = 0f;
+        LineController lineToMoveTo = currentLine;
+
         foreach (IntersectionData intersection in intersections)
         {
             // Check if the input would allow movment along the intersecting line
             // float toleranceAngle = 45f;
 
+            float angleAgainstPositiveSlope = Vector3.Angle(inputVector.normalized, intersection.Line.Slope);
+            float angleAgainstNegativeSlope = Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1);
 
-            bool canMoveToNewLine = Vector3.Angle(inputVector.normalized, intersection.Line.Slope) <= _lineSwapAngleTolerance;
-            canMoveToNewLine |= Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1) <= _lineSwapAngleTolerance;
+            float angle = angleAgainstPositiveSlope < angleAgainstNegativeSlope ? angleAgainstPositiveSlope : angleAgainstNegativeSlope; 
+
+
+            bool canMoveToNewLine = angleAgainstPositiveSlope <= _lineSwapAngleTolerance || angleAgainstNegativeSlope <= _lineSwapAngleTolerance;
 
             if (_mostRecentLineSwap != null)
             {
@@ -154,12 +177,20 @@ public class LineMovementController : MonoBehaviour
             }
 
             // Set new line using Intersection Data
-            if (canMoveToNewLine)
+            if (canMoveToNewLine && (angle < lowestAngle || (intersection.DistanceAlongLine == 1 || intersection.DistanceAlongLine == 0)))
             {
-                _mostRecentLineSwap = new LineSwapData(inputVector, currentLine);
-                SetNewLine(intersection.Line, intersection.DistanceAlongLine);
+                lowestAngle = angle;
+                lineToMoveTo = intersection.Line;
+                newDistanceAlongLine = intersection.DistanceAlongLine;
+                
                 break;
             }
+        }
+
+        if(lineToMoveTo != currentLine)
+        {
+            _mostRecentLineSwap = new LineSwapData(inputVector, currentLine);
+            SetNewLine(lineToMoveTo, newDistanceAlongLine);
         }
     }
 

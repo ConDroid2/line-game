@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     public float Speed;
     public float SprintingSpeed;
+    public float RoomStartInvulnerability;
 
     private bool _allowMoving = true;
     [SerializeField] private bool _aimingMode = false;
