@@ -151,13 +151,13 @@ public class LineMovementController : MonoBehaviour
         // If we're at the edge of a line, we probably don't want to stay on it
         if (OnLineController.DistanceOnLine - _edgeOfLineTolerance <= 0 || OnLineController.DistanceOnLine + _edgeOfLineTolerance >= 1)
         {
-            Debug.Log("We're at the edge, setting lowest angle to 90");
+            //Debug.Log("We're at the edge, setting lowest angle to 90");
             lowestAngle = 90f;
         }
         float newDistanceAlongLine = 0f;
         LineController lineToMoveTo = currentLine;
 
-        Debug.Log($"Lowest Angle {lowestAngle}");
+       // Debug.Log($"Lowest Angle {lowestAngle}");
 
         foreach (IntersectionData intersection in intersections)
         {
@@ -169,7 +169,7 @@ public class LineMovementController : MonoBehaviour
             // Skip intersection if the point is at the end of the line in the direction we are moving in (if we are moving right, don't put us on the right endpoint of a new line)
             if (goingPositive && intersection.DistanceAlongLine == 1 || goingNegative && intersection.DistanceAlongLine == 0)
             {
-                Debug.Log($"Skipping {intersection.Line.name}, {inputAngleAgainstLine} + {goingPositive}/{goingNegative}");
+                //Debug.Log($"Skipping {intersection.Line.name}, {inputAngleAgainstLine} + {goingPositive}/{goingNegative}");
                 continue;
             }
 
@@ -178,7 +178,7 @@ public class LineMovementController : MonoBehaviour
             {
                 if(_previousSwapData.InputVector == inputVector && _previousSwapData.IntersectionPoints.Contains(intersection.IntersectionWorldSpace))
                 {
-                    Debug.Log($"Skipping {intersection.Line.name} due to previous frame data");
+                    //Debug.Log($"Skipping {intersection.Line.name} due to previous frame data");
                     continue;
                 }
             }
@@ -200,7 +200,7 @@ public class LineMovementController : MonoBehaviour
             // Set new line using Intersection Data
             if (canMoveToNewLine && angle < lowestAngle)
             {
-                Debug.Log($"LowestAngle is: {lowestAngle}. Angle for {intersection.Line.name} is: {angle}");
+                //Debug.Log($"LowestAngle is: {lowestAngle}. Angle for {intersection.Line.name} is: {angle}");
                 lowestAngle = angle;
                 lineToMoveTo = intersection.Line;
                 newDistanceAlongLine = intersection.DistanceAlongLine;
@@ -215,7 +215,7 @@ public class LineMovementController : MonoBehaviour
 
         if(lineToMoveTo != currentLine)
         {
-            Debug.Log($"Moving to new line: {lineToMoveTo.name}");
+            //Debug.Log($"Moving to new line: {lineToMoveTo.name}");
             SetNewLine(lineToMoveTo, newDistanceAlongLine);
 
             _previousSwapData = new LineSwapData(inputVector, intersections);
