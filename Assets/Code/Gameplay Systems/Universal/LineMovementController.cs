@@ -24,7 +24,7 @@ public class LineMovementController : MonoBehaviour
     private LineMovementController _objectBeingPushed = null;
 
     // Stuff to keep track of
-    private LineSwapData _mostRecentLineSwap = null;
+    private LineSwapData _previousSwapData = null;
 
     // Utilities
     private DebugLogger _logger;
@@ -134,11 +134,14 @@ public class LineMovementController : MonoBehaviour
         // Check if there are any intersection points in range   
         List<IntersectionData> intersections = LevelManager.GetIntersectionPointsAroundPos(currentLine, transform.position, CheckForIntersectionsDistance);
 
-        // Need to keep track of which line the player is most likely trying to move to
-        // Start with a lowestAngle of whatever the angle between input and current line is and say we are trying to move to current line
-        // For each intersection, check angle between input and line, if it's smaller then our current lowestAngle, it's the new lowest and say we want to move to that line
-        // I think this will break parallel intersections, but we'll see
-        // Currently a problem with lines oriented like this _|_
+        // if (intersections.Count == 0) return;
+
+
+        //float inputAngleAgainstLine = Vector3.Angle(inputVector, currentLine.Slope);
+        //bool goingPositive = inputAngleAgainstLine < 90f;
+        //bool goingNegative = inputAngleAgainstLine > 90f;
+
+
         float lowestAngle = Vector3.Angle(inputVector.normalized, currentLine.Slope);
         if(lowestAngle > Vector3.Angle(inputVector.normalized, currentLine.Slope * -1))
         {
@@ -146,17 +149,39 @@ public class LineMovementController : MonoBehaviour
         }
 
         // If we're at the edge of a line, we probably don't want to stay on it
-        if(OnLineController.DistanceOnLine - _edgeOfLineTolerance <= 0 || OnLineController.DistanceOnLine + _edgeOfLineTolerance >= 1)
+        if (OnLineController.DistanceOnLine - _edgeOfLineTolerance <= 0 || OnLineController.DistanceOnLine + _edgeOfLineTolerance >= 1)
         {
+            Debug.Log("We're at the edge, setting lowest angle to 90");
             lowestAngle = 90f;
         }
         float newDistanceAlongLine = 0f;
         LineController lineToMoveTo = currentLine;
 
+        Debug.Log($"Lowest Angle {lowestAngle}");
+
         foreach (IntersectionData intersection in intersections)
         {
             // Check if the input would allow movment along the intersecting line
-            // float toleranceAngle = 45f;
+            float inputAngleAgainstLine = Vector3.Angle(inputVector, intersection.Line.Slope);
+            bool goingPositive = inputAngleAgainstLine < 90f;
+            bool goingNegative = inputAngleAgainstLine > 90f;
+
+            // Skip intersection if the point is at the end of the line in the direction we are moving in (if we are moving right, don't put us on the right endpoint of a new line)
+            if (goingPositive && intersection.DistanceAlongLine == 1 || goingNegative && intersection.DistanceAlongLine == 0)
+            {
+                Debug.Log($"Skipping {intersection.Line.name}, {inputAngleAgainstLine} + {goingPositive}/{goingNegative}");
+                continue;
+            }
+
+            // Skip intersection if we have previous frame data and our input is the same and the intersection we're checking was part of our previous frame check
+            if(_previousSwapData != null && intersection.IsParallel == false)
+            {
+                if(_previousSwapData.InputVector == inputVector && _previousSwapData.IntersectionPoints.Contains(intersection.IntersectionWorldSpace))
+                {
+                    Debug.Log($"Skipping {intersection.Line.name} due to previous frame data");
+                    continue;
+                }
+            }
 
             float angleAgainstPositiveSlope = Vector3.Angle(inputVector.normalized, intersection.Line.Slope);
             float angleAgainstNegativeSlope = Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1);
@@ -166,10 +191,6 @@ public class LineMovementController : MonoBehaviour
 
             bool canMoveToNewLine = angleAgainstPositiveSlope <= _lineSwapAngleTolerance || angleAgainstNegativeSlope <= _lineSwapAngleTolerance;
 
-            if (_mostRecentLineSwap != null)
-            {
-                canMoveToNewLine &= _mostRecentLineSwap.PreviousLine != intersection.Line || _mostRecentLineSwap.InputVectorWhenSwap != inputVector;
-            }
 
             if (intersection.IsParallel)
             {
@@ -177,21 +198,30 @@ public class LineMovementController : MonoBehaviour
             }
 
             // Set new line using Intersection Data
-            if (canMoveToNewLine && (angle < lowestAngle || (intersection.DistanceAlongLine == 1 || intersection.DistanceAlongLine == 0)))
+            if (canMoveToNewLine && angle < lowestAngle)
             {
+                Debug.Log($"LowestAngle is: {lowestAngle}. Angle for {intersection.Line.name} is: {angle}");
                 lowestAngle = angle;
                 lineToMoveTo = intersection.Line;
                 newDistanceAlongLine = intersection.DistanceAlongLine;
-                
-                break;
+            }
+
+            else if (canMoveToNewLine && lineToMoveTo.Slope == currentLine.Slope && intersection.Line.Slope != currentLine.Slope && angle == lowestAngle)
+            {
+                lineToMoveTo = intersection.Line;
+                newDistanceAlongLine = intersection.DistanceAlongLine;
             }
         }
 
         if(lineToMoveTo != currentLine)
         {
-            _mostRecentLineSwap = new LineSwapData(inputVector, currentLine);
+            Debug.Log($"Moving to new line: {lineToMoveTo.name}");
             SetNewLine(lineToMoveTo, newDistanceAlongLine);
+
+            _previousSwapData = new LineSwapData(inputVector, intersections);
         }
+
+        
     }
 
 
@@ -450,15 +480,21 @@ public class LineMovementController : MonoBehaviour
     }
 
     // Utils
+
     public class LineSwapData
     {
-        public Vector2 InputVectorWhenSwap;
-        public LineController PreviousLine;
+        public Vector2 InputVector;
+        public HashSet<Vector3> IntersectionPoints;
 
-        public LineSwapData(Vector2 inputVector, LineController previousLine)
+        public LineSwapData(Vector2 inputVector, List<IntersectionData> intersections)
         {
-            InputVectorWhenSwap = inputVector;
-            PreviousLine = previousLine;
+            InputVector = inputVector;
+            IntersectionPoints = new HashSet<Vector3>();
+
+            foreach(IntersectionData intersection in intersections)
+            {
+                IntersectionPoints.Add(intersection.IntersectionWorldSpace);
+            }
         }
     }
 }
