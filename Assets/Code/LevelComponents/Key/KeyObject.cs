@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class KeyObject : MonoBehaviour
 {
-    [SerializeField] private Transform _followPoint;
-    [SerializeField] private float _followResponsiveness;
+
+    public bool InUse = false;
     [SerializeField] private FlagSetter _flagSetter;
+    [SerializeField] private SpringJoint2D _springJoint;
 
 
     // Update is called once per frame
-    void Update()
-    {
-        if(_followPoint != null)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _followPoint.position, _followResponsiveness * Time.deltaTime);
-        }
-    }
 
     public void HandlePlayerInRange(Collider2D collider)
     {
-        if (_followPoint == null && collider.CompareTag("Player"))
+        if (_springJoint.enabled == false && collider.CompareTag("Player"))
         {
             _flagSetter.SetFlag(true);
-            _followPoint = Player.Instance.FollowPoint;
+            _springJoint.enabled = true;
+            InUse = true;
+            _springJoint.connectedBody = Player.Instance.FollowPoint;
 
             DontDestroyOnLoad(gameObject);
 

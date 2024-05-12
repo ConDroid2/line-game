@@ -151,8 +151,20 @@ public class GameManager : MonoBehaviour
         {
             _player.MovementController.OnReachedEdgeOfLine -= HandlePlayerReachedEdgeOfLine;
             _player.MovementController.OnReachedEdgeOfLine += HandlePlayerReachedEdgeOfLine;
+
+            // I don't like this, maybe find a better way to do this later
+            KeyObject[] keys = FindObjectsOfType<KeyObject>();
+
+            foreach (KeyObject key in keys)
+            {
+                if (key.InUse)
+                {
+                    key.transform.position = _toPort.RelativePosition.ConvertToVector3();
+                }
+            }
         }
 
+        
         if (_currentWorld == null) return;
 
         _currentRoom = _currentWorld.RoomNameToData[scene.name];

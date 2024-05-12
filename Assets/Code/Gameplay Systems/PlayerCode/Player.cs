@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AimController _aimController;
     [SerializeField] private ProjectileLauncher _projectileLauncher;
     [SerializeField] private GrapplingHook _grapplingHook;
-    public Transform FollowPoint;
+    public Rigidbody2D FollowPoint;
 
     public float Speed;
     public float SprintingSpeed;
