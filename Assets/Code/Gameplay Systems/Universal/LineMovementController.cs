@@ -79,7 +79,7 @@ public class LineMovementController : MonoBehaviour
         // If we can push, deal with any potential pushables
         if (_canPush)
         {
-            willMove &= HandlePushables(results, movementVector, distanceToMove);
+            willMove &= HandlePushables(results, movementVector, distanceToMove * OnLineController.CurrentLine.Length);
         }
 
         // If we meet all criteria, set our new position
@@ -102,6 +102,7 @@ public class LineMovementController : MonoBehaviour
 
 
     // Attempt to move based on direct input
+    // This takes in a raw distance to move (not yet modified by current line length)
     public bool MoveDirectly(Vector2 direction, float moveAmount)
     {
         
@@ -112,6 +113,9 @@ public class LineMovementController : MonoBehaviour
         // Figure out which direction along the line we're trying to move based on angles
         float angleBetweenDirectionAndSlope = Vector3.Angle(direction, currentLine.Slope);
         float distanceToMove = 0f;
+
+        // modify move amount by line length
+        moveAmount /= OnLineController.CurrentLine.Length;
 
         if (angleBetweenDirectionAndSlope < 90f)
         {
