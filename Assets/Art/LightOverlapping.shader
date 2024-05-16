@@ -6,41 +6,21 @@ Shader "Custom/LightOverlapping"
         _MaskTex("Mask", 2D) = "white" {}
         _NormalMap("Normal Map", 2D) = "bump" {}
 
-        _StencilComp ("Stencil Comparison", Float) = 8
-        _Stencil ("Stencil ID", Float) = 0
-        _StencilOp ("Stencil Operation", Float) = 0
-        _StencilWriteMask ("Stencil Write Mask", Float) = 255
-        _StencilReadMask ("Stencil Read Mask", Float) = 255
-
-        _ColorMask ("Color Mask", Float) = 15
-
         // Legacy properties. They're here so that materials using this shader can gracefully fallback to the legacy sprite shader.
-        _Color("Tint", Color) = (1,1,1,1)
+        [HideInInspector] _Color("Tint", Color) = (1,1,1,1)
         [HideInInspector] _RendererColor("RendererColor", Color) = (1,1,1,1)
         [HideInInspector] _Flip("Flip", Vector) = (1,1,1,1)
         [HideInInspector] _AlphaTex("External Alpha", 2D) = "white" {}
         [HideInInspector] _EnableExternalAlpha("Enable External Alpha", Float) = 0
-
-        
     }
 
     SubShader
     {
         Tags {"Queue" = "Transparent" "RenderType" = "Transparent" "RenderPipeline" = "UniversalPipeline" }
 
-        Stencil
-        {
-            Ref [_Stencil]
-            Comp [_StencilComp]
-            Pass [_StencilOp]
-            ReadMask [_StencilReadMask]
-            WriteMask [_StencilWriteMask]
-        }
-
         Blend SrcAlpha OneMinusSrcAlpha, One OneMinusSrcAlpha
         Cull Off
         ZWrite Off
-        ColorMask[_ColorMask]
 
         Pass
         {
