@@ -31,7 +31,7 @@ public class LineController : MonoBehaviour
 
     public List<OnLineController> OnLineControllers = new List<OnLineController>();
 
-    public bool Active { get; private set; }
+    public bool Active;
 
     public UnityEvent OnObjectAddedToLine;
     public UnityEvent OnObjectRemovedFromLine;
@@ -43,7 +43,6 @@ public class LineController : MonoBehaviour
 
     private void Awake()
     {
-        Active = true;
         _transformA.position = InitialA;
         _transformB.position = InitialB;
 
@@ -65,6 +64,8 @@ public class LineController : MonoBehaviour
         {
             _needsSlopeUpdates = true;
         }
+
+        SetActive(Active);
     }
 
     private void Update()
