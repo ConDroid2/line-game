@@ -140,7 +140,7 @@ public class LineRotator : MonoBehaviour
 
         foreach(LineController line in levelManager.Lines)
         {
-            if (line == _lineController) continue;
+            if (line == _lineController || line.Active == false) continue;
             // Debug.Log("Checking line");
             Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(a, b, line.CurrentA, line.CurrentB);
             // Debug.Log($"{intersectionPoint.Point}, {intersectionPoint.IsParallel}");
