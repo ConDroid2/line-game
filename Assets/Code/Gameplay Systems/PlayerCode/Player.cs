@@ -61,14 +61,16 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.Sprint.canceled += SprintingStatusChanged;
 
         // Aim Mode Events
-        _baseControls.PlayerMap.AimMode.performed += AimModeStatusChanged;
-        _baseControls.PlayerMap.AimMode.canceled += AimModeStatusChanged;
+        //_baseControls.PlayerMap.AimMode.performed += AimModeStatusChanged;
+        //_baseControls.PlayerMap.AimMode.canceled += AimModeStatusChanged;
 
         // Projectile Ability Events
         _baseControls.PlayerMap.FireProjectile.performed += HandleFirePerformed;
+        _baseControls.PlayerMap.FireProjectile.canceled += HandleFirePerformed;
 
         // Grapple Ability Events
         _baseControls.PlayerMap.Grapple.performed += HandleGrapplePerformed;
+        _baseControls.PlayerMap.Grapple.canceled += HandleGrapplePerformed;
 
         // Rotate Ability Events
         _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
@@ -94,7 +96,9 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.AimMode.canceled -= AimModeStatusChanged;
         _baseControls.PlayerMap.Rotate.performed -= HandleRotatePerformed;
         _baseControls.PlayerMap.Grapple.performed -= HandleGrapplePerformed;
+        _baseControls.PlayerMap.Grapple.canceled -= HandleGrapplePerformed;
         _baseControls.PlayerMap.FireProjectile.performed -= HandleFirePerformed;
+        _baseControls.PlayerMap.FireProjectile.canceled -= HandleFirePerformed;
         _grapplingHook.OnGrappleFinished -= HandleGrappleFinished;
         _baseControls.PlayerMap.OpenMenu.performed -= HandlePausePerformed;
         _baseControls.PlayerMap.OpenDevMenu.performed -= HandleDevMenuPerformed;
@@ -172,20 +176,39 @@ public class Player : MonoBehaviour
     {
         if (_shootUnlocked == false && GameManager.Instance != null) return;
 
-        if (_aimingMode)
+        if(context.phase == InputActionPhase.Performed)
         {
-            _projectileLauncher.Fire();
+            TurnOnAimMode();
         }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            if (_aimingMode)
+            {
+                _projectileLauncher.Fire();
+                TurnOffAimMode();
+            }
+        }
+
+        
     }
 
     public void HandleGrapplePerformed(InputAction.CallbackContext context)
     {
         if (_grappleUnlocked == false && GameManager.Instance != null) return;
 
-        if (_aimingMode)
+        if (context.phase == InputActionPhase.Performed)
         {
-            _grapplingHook.AttemptGrapple();
-            _allowInput = false;
+            TurnOnAimMode();
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            if (_aimingMode)
+            {
+                _grapplingHook.AttemptGrapple();
+                _allowInput = false;
+
+                TurnOffAimMode();
+            }
         }
     }
 
