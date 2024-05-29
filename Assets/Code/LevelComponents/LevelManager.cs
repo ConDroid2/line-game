@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,8 +21,15 @@ public class LevelManager : MonoBehaviour
     private Player _player;
     public LineController[] Lines;
 
+    [Header("Camera Stuff")]
+    [SerializeField] CinemachineVirtualCamera _staticVirtualCamera;
+    [SerializeField] CinemachineVirtualCamera _dynamicVirtualCamera;
+    private CinemachineVirtualCamera _inUseCamera;
+    [SerializeField] PolygonCollider2D _cameraBounds;
+
     
 
+    [Header("Misc")]
     public LineController StartingLine;
     public float _startingDistance;
     public Enums.LinePoints StartingPoint = Enums.LinePoints.A;
@@ -75,6 +83,25 @@ public class LevelManager : MonoBehaviour
         {
             SetPlayer(_player);
         }
+
+        _cameraBounds.SetPath(0, new Vector2[] {
+            new Vector2(RoomLeftSide, RoomTopSide),
+            new Vector2(RoomLeftSide, RoomBottomSide),
+            new Vector2(RoomRightSide, RoomBottomSide),
+            new Vector2(RoomRightSide, RoomTopSide)
+        });
+
+        if(RoomHeight != 1 || RoomWidth != 1)
+        {
+            _inUseCamera = _dynamicVirtualCamera;
+        }
+        else
+        {
+            _inUseCamera = _staticVirtualCamera;
+        }
+
+        _inUseCamera.gameObject.SetActive(true);
+        _inUseCamera.Follow = _player.transform;
 
         // TODO: Revisit this, not sure if there's a better way to do this
         new List<LineMovementController>(FindObjectsOfType<LineMovementController>()).ForEach(controller => controller.SetLevelManager(this));
