@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 651590785}
   - component: {fileID: 651590787}
   m_Layer: 0
-  m_Name: flagstuff DepthsSafeZone2On1_1
+  m_Name: flagstuffDepthsSafeZone2On1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1993,7 +1993,7 @@ GameObject:
   - component: {fileID: 1895931083}
   - component: {fileID: 1895931086}
   m_Layer: 0
-  m_Name: flagstuff Depths SafeZone2On
+  m_Name: flagstuffDepths SafeZone2On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,13 +2025,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flagName: DepthsSafeZone2On
-  _onlyCheckOnStart: 0
+  _onlyCheckOnStart: 1
   OnIfTrue:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 558856964}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 1508665956}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2041,9 +2041,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1508665956}
-        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
-        m_MethodName: SetActivated
+      - m_Target: {fileID: 852744266}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
