@@ -46,7 +46,9 @@ public class SaveWorld : EditorWindow
             SerializeableVector3 roomPreviewPosition = new SerializeableVector3(room.transform.position);
             string roomName = room.name;
 
-            WorldRoomData worldRoomData = new WorldRoomData(connectionsForRoom, roomPreviewPosition, roomName, isStartRoom);
+            int roomWidth = (int)(room.RoomData.Right - room.RoomData.Left);
+            int roomHeight = (int)(room.RoomData.Top - room.RoomData.Bottom);
+            WorldRoomData worldRoomData = new WorldRoomData(connectionsForRoom, roomPreviewPosition, roomName, isStartRoom, roomWidth, roomHeight);
             worldData.AddWorldRoomData(roomName, worldRoomData);
         }
 
