@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6620836573944720578}
   - component: {fileID: 6620836573944720579}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BasicRoomImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 6620836574914061627}
   - component: {fileID: 6620836574914061625}
   - component: {fileID: 6620836574914061626}
+  - component: {fileID: 7958824250762303348}
   m_Layer: 5
   m_Name: Room
   m_TagString: Untagged
@@ -153,3 +154,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7958824250762303348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620836574914061620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16185d269172d3d4da5fa2ed4fe20610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RectTransform: {fileID: 6620836574914061627}
+  BasicRoomImage: {fileID: 6620836573944720579}

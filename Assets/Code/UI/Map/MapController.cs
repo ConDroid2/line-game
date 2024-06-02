@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapController : MonoBehaviour
 {
-    [SerializeField] private RectTransform _roomPrefab;
+    [Header("References")]
+    [SerializeField] private MapRoom _roomPrefab;
+    [SerializeField] private RectTransform _mapParent;
 
-    [SerializeField] private Transform _mapParent;
+    [Header("Settings")]
+    [SerializeField] private Color _currentRoomColor;
+    [SerializeField] private Color _regularRoomColor;
+    [SerializeField] private Image _currentRoomImage;
 
-    private Dictionary<string, RectTransform> _rooms = new Dictionary<string, RectTransform>();
+    private Dictionary<string, MapRoom> _rooms = new Dictionary<string, MapRoom>();
 
     private void Awake()
     {
@@ -27,15 +33,15 @@ public class MapController : MonoBehaviour
         {
             if (_rooms.ContainsKey(room.RoomName) == false)
             {
-                RectTransform roomPreview = Instantiate(_roomPrefab, _mapParent);
-                roomPreview.anchoredPosition = new Vector2(room.PreviewRoomPosition.x / 10f * 200, room.PreviewRoomPosition.y / 5.5f * 110);
-                roomPreview.gameObject.name = room.RoomName;
+                MapRoom mapRoom = Instantiate(_roomPrefab, _mapParent.transform);
+                mapRoom.RectTransform.anchoredPosition = new Vector2(room.PreviewRoomPosition.x / 10f * 200, room.PreviewRoomPosition.y / 5.5f * 110);
+                mapRoom.gameObject.name = room.RoomName;
 
-                roomPreview.sizeDelta = new Vector2(room.RoomWidth / 20 * 200, room.RoomHeight / 11 * 110);
+                mapRoom.RectTransform.sizeDelta = new Vector2(room.RoomWidth / 20 * 200, room.RoomHeight / 11 * 110);
 
-                _rooms.Add(room.RoomName, roomPreview);
+                _rooms.Add(room.RoomName, mapRoom);
 
-                roomPreview.gameObject.SetActive(false);
+                mapRoom.gameObject.SetActive(false);
             }
         }
 
@@ -52,6 +58,28 @@ public class MapController : MonoBehaviour
                     _rooms[roomName].gameObject.SetActive(true);
                 }
             }
+
+            SetCurrentRoom(GameManager.Instance.GetCurrentRoom().RoomName);
         }
+    }
+
+    public void SetCurrentRoom(string roomName)
+    {
+        if(_currentRoomImage != null)
+        {
+            _currentRoomImage.color = _regularRoomColor;
+        }
+
+        if (_rooms.ContainsKey(roomName))
+        {
+            _currentRoomImage = _rooms[roomName].BasicRoomImage;
+            _currentRoomImage.color = _currentRoomColor;
+
+            Vector2 shiftMapBy = _rooms[roomName].RectTransform.anchoredPosition * -1;
+            Debug.Log($"Shift Map By: {shiftMapBy}");
+            _mapParent.anchoredPosition = shiftMapBy;
+        }
+
+        
     }
 }

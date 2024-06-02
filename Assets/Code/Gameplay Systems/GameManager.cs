@@ -92,6 +92,11 @@ public class GameManager : MonoBehaviour
         return _visitedRooms;
     }
 
+    public WorldRoomData GetCurrentRoom()
+    {
+        return _currentRoom;
+    }
+
     // Trigger Handlers
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -178,7 +183,6 @@ public class GameManager : MonoBehaviour
         _currentRoom = _currentWorld.RoomNameToData[scene.name];
 
         _visitedRooms.Add(_currentRoom.RoomName);
-
     }
 
     public void HandlePlayerReachedEdgeOfLine(Vector3 playerPosition)
