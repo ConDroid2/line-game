@@ -8,6 +8,8 @@ public class MapController : MonoBehaviour
 
     [SerializeField] private Transform _mapParent;
 
+    private Dictionary<string, RectTransform> _rooms = new Dictionary<string, RectTransform>();
+
     private void Awake()
     {
         JsonUtilities utils = new JsonUtilities("");
@@ -18,24 +20,38 @@ public class MapController : MonoBehaviour
 
         // Keep track of what rooms I already loaded (HashSet)
         // Loop through each Room
-        Dictionary<string, RectTransform> loadedRoomNames = new Dictionary<string, RectTransform>();
 
 
 
         foreach(WorldRoomData room in _worldData.RoomNameToData.Values)
         {
-            if (loadedRoomNames.ContainsKey(room.RoomName) == false)
+            if (_rooms.ContainsKey(room.RoomName) == false)
             {
                 RectTransform roomPreview = Instantiate(_roomPrefab, _mapParent);
                 roomPreview.anchoredPosition = new Vector2(room.PreviewRoomPosition.x / 10f * 200, room.PreviewRoomPosition.y / 5.5f * 110);
                 roomPreview.gameObject.name = room.RoomName;
 
-                Debug.Log($"Room width/height = {room.RoomWidth} / {room.RoomHeight}");
                 roomPreview.sizeDelta = new Vector2(room.RoomWidth / 20 * 200, room.RoomHeight / 11 * 110);
 
-                loadedRoomNames.Add(room.RoomName, roomPreview);
+                _rooms.Add(room.RoomName, roomPreview);
+
+                roomPreview.gameObject.SetActive(false);
             }
         }
 
+    }
+
+    private void OnEnable()
+    {
+        if(GameManager.Instance != null)
+        {
+            foreach(string roomName in GameManager.Instance.GetVisitedRooms())
+            {
+                if (_rooms.ContainsKey(roomName))
+                {
+                    _rooms[roomName].gameObject.SetActive(true);
+                }
+            }
+        }
     }
 }

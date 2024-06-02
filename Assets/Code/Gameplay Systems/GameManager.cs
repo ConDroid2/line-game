@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string _flagsetName;
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _devMenu;
+    [SerializeField] private GameObject _map;
 
     public Dictionary<string, bool> Flags;
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     private RoomPort _toPort;
     private Player _player;
     private bool _gamePaused = false;
+
+    private HashSet<string> _visitedRooms = new HashSet<string>();
 
     public System.Action<string, bool> OnSetFlag;
 
@@ -82,6 +85,11 @@ public class GameManager : MonoBehaviour
                 OnSetFlag?.Invoke(flagName, setFlagAs);
             }
         }
+    }
+
+    public HashSet<string> GetVisitedRooms()
+    {
+        return _visitedRooms;
     }
 
     // Trigger Handlers
@@ -169,6 +177,8 @@ public class GameManager : MonoBehaviour
 
         _currentRoom = _currentWorld.RoomNameToData[scene.name];
 
+        _visitedRooms.Add(_currentRoom.RoomName);
+
     }
 
     public void HandlePlayerReachedEdgeOfLine(Vector3 playerPosition)
@@ -225,6 +235,22 @@ public class GameManager : MonoBehaviour
         else{
             Time.timeScale = 1;
             _devMenu.SetActive(false);
+        }
+    }
+
+    public void HandleMap()
+    {
+        if (_devMenu.activeInHierarchy == true || _gamePaused) return;
+
+        if(_map.activeInHierarchy == false)
+        {
+            Time.timeScale = 0;
+            _map.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            _map.SetActive(false);
         }
     }
 }

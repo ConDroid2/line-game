@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
         // Menu Events
         _baseControls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
         _baseControls.PlayerMap.OpenDevMenu.performed += HandleDevMenuPerformed;
+        _baseControls.PlayerMap.OpenMap.performed += HandleMapPerformed;
 
         _grapplingHook.OnGrappleFinished += HandleGrappleFinished;
 
@@ -102,6 +103,7 @@ public class Player : MonoBehaviour
         _grapplingHook.OnGrappleFinished -= HandleGrappleFinished;
         _baseControls.PlayerMap.OpenMenu.performed -= HandlePausePerformed;
         _baseControls.PlayerMap.OpenDevMenu.performed -= HandleDevMenuPerformed;
+        _baseControls.PlayerMap.OpenMap.performed -= HandleMapPerformed;
     }
 
 
@@ -234,6 +236,14 @@ public class Player : MonoBehaviour
         if(GameManager.Instance != null)
         {
             GameManager.Instance.HandleDevMenu();
+        }
+    }
+
+    public void HandleMapPerformed(InputAction.CallbackContext context)
+    {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.HandleMap();
         }
     }
 
