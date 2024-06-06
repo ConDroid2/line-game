@@ -60,9 +60,9 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.Sprint.performed += SprintingStatusChanged;
         _baseControls.PlayerMap.Sprint.canceled += SprintingStatusChanged;
 
-        // Aim Mode Events
-        //_baseControls.PlayerMap.AimMode.performed += AimModeStatusChanged;
-        //_baseControls.PlayerMap.AimMode.canceled += AimModeStatusChanged;
+        //Aim Mode Events
+        _baseControls.PlayerMap.AimMode.performed += AimModeStatusChanged;
+        _baseControls.PlayerMap.AimMode.canceled += AimModeStatusChanged;
 
         // Projectile Ability Events
         _baseControls.PlayerMap.FireProjectile.performed += HandleFirePerformed;
@@ -180,18 +180,11 @@ public class Player : MonoBehaviour
 
         if(context.phase == InputActionPhase.Performed)
         {
-            TurnOnAimMode();
-        }
-        else if(context.phase == InputActionPhase.Canceled)
-        {
             if (_aimingMode)
             {
                 _projectileLauncher.Fire();
-                TurnOffAimMode();
             }
-        }
-
-        
+        }        
     }
 
     public void HandleGrapplePerformed(InputAction.CallbackContext context)
