@@ -436,6 +436,159 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PauseMap"",
+            ""id"": ""99e86a9f-193b-477e-94a4-c8d7d44a6a3a"",
+            ""actions"": [
+                {
+                    ""name"": ""CloseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d61c59f-deec-4419-a132-a8a1f2abe815"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ea718209-8cbe-4ea2-a349-ec9dd849917a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37e4b592-762e-4836-89c4-814be2098a36"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MapMap"",
+            ""id"": ""f78c3a48-2bc0-4a48-9261-1bd9edc6507f"",
+            ""actions"": [
+                {
+                    ""name"": ""CloseMap"",
+                    ""type"": ""Button"",
+                    ""id"": ""a08febd0-00ac-42cb-969f-9738a28dd964"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScrollMap"",
+                    ""type"": ""Value"",
+                    ""id"": ""3e8495e9-31bb-4c0a-8ceb-8ca6a6d2a4fe"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""114a15bd-a842-4bc9-a7f9-4e28ff02d7c5"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f263fa0f-8d93-40fe-a800-8e394465ff7a"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e4ee0fc-f07b-43e7-9ba5-2966f63f391a"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Arrow Keys"",
+                    ""id"": ""61fbd0c8-3920-45de-b5dd-ffc14d6a0cfe"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollMap"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""04ae9ca1-f9fb-483a-bba9-c89c90fa38ca"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""76f4f95c-82e4-488e-8d8b-f651162edc5c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""0c7c3a87-ca85-4950-9db9-535825499abb"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b0b9ccce-0276-4b4b-8425-9a1e42d9111a"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -454,6 +607,13 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         // TestMap
         m_TestMap = asset.FindActionMap("TestMap", throwIfNotFound: true);
         m_TestMap_Vector2 = m_TestMap.FindAction("Vector2", throwIfNotFound: true);
+        // PauseMap
+        m_PauseMap = asset.FindActionMap("PauseMap", throwIfNotFound: true);
+        m_PauseMap_CloseMenu = m_PauseMap.FindAction("CloseMenu", throwIfNotFound: true);
+        // MapMap
+        m_MapMap = asset.FindActionMap("MapMap", throwIfNotFound: true);
+        m_MapMap_CloseMap = m_MapMap.FindAction("CloseMap", throwIfNotFound: true);
+        m_MapMap_ScrollMap = m_MapMap.FindAction("ScrollMap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -639,6 +799,80 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         }
     }
     public TestMapActions @TestMap => new TestMapActions(this);
+
+    // PauseMap
+    private readonly InputActionMap m_PauseMap;
+    private IPauseMapActions m_PauseMapActionsCallbackInterface;
+    private readonly InputAction m_PauseMap_CloseMenu;
+    public struct PauseMapActions
+    {
+        private @BaseControls m_Wrapper;
+        public PauseMapActions(@BaseControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CloseMenu => m_Wrapper.m_PauseMap_CloseMenu;
+        public InputActionMap Get() { return m_Wrapper.m_PauseMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseMapActions set) { return set.Get(); }
+        public void SetCallbacks(IPauseMapActions instance)
+        {
+            if (m_Wrapper.m_PauseMapActionsCallbackInterface != null)
+            {
+                @CloseMenu.started -= m_Wrapper.m_PauseMapActionsCallbackInterface.OnCloseMenu;
+                @CloseMenu.performed -= m_Wrapper.m_PauseMapActionsCallbackInterface.OnCloseMenu;
+                @CloseMenu.canceled -= m_Wrapper.m_PauseMapActionsCallbackInterface.OnCloseMenu;
+            }
+            m_Wrapper.m_PauseMapActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @CloseMenu.started += instance.OnCloseMenu;
+                @CloseMenu.performed += instance.OnCloseMenu;
+                @CloseMenu.canceled += instance.OnCloseMenu;
+            }
+        }
+    }
+    public PauseMapActions @PauseMap => new PauseMapActions(this);
+
+    // MapMap
+    private readonly InputActionMap m_MapMap;
+    private IMapMapActions m_MapMapActionsCallbackInterface;
+    private readonly InputAction m_MapMap_CloseMap;
+    private readonly InputAction m_MapMap_ScrollMap;
+    public struct MapMapActions
+    {
+        private @BaseControls m_Wrapper;
+        public MapMapActions(@BaseControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CloseMap => m_Wrapper.m_MapMap_CloseMap;
+        public InputAction @ScrollMap => m_Wrapper.m_MapMap_ScrollMap;
+        public InputActionMap Get() { return m_Wrapper.m_MapMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MapMapActions set) { return set.Get(); }
+        public void SetCallbacks(IMapMapActions instance)
+        {
+            if (m_Wrapper.m_MapMapActionsCallbackInterface != null)
+            {
+                @CloseMap.started -= m_Wrapper.m_MapMapActionsCallbackInterface.OnCloseMap;
+                @CloseMap.performed -= m_Wrapper.m_MapMapActionsCallbackInterface.OnCloseMap;
+                @CloseMap.canceled -= m_Wrapper.m_MapMapActionsCallbackInterface.OnCloseMap;
+                @ScrollMap.started -= m_Wrapper.m_MapMapActionsCallbackInterface.OnScrollMap;
+                @ScrollMap.performed -= m_Wrapper.m_MapMapActionsCallbackInterface.OnScrollMap;
+                @ScrollMap.canceled -= m_Wrapper.m_MapMapActionsCallbackInterface.OnScrollMap;
+            }
+            m_Wrapper.m_MapMapActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @CloseMap.started += instance.OnCloseMap;
+                @CloseMap.performed += instance.OnCloseMap;
+                @CloseMap.canceled += instance.OnCloseMap;
+                @ScrollMap.started += instance.OnScrollMap;
+                @ScrollMap.performed += instance.OnScrollMap;
+                @ScrollMap.canceled += instance.OnScrollMap;
+            }
+        }
+    }
+    public MapMapActions @MapMap => new MapMapActions(this);
     public interface IPlayerMapActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -654,5 +888,14 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     public interface ITestMapActions
     {
         void OnVector2(InputAction.CallbackContext context);
+    }
+    public interface IPauseMapActions
+    {
+        void OnCloseMenu(InputAction.CallbackContext context);
+    }
+    public interface IMapMapActions
+    {
+        void OnCloseMap(InputAction.CallbackContext context);
+        void OnScrollMap(InputAction.CallbackContext context);
     }
 }

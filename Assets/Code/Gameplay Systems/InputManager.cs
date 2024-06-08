@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
 
     public static InputManager Instance;
 
-    public BaseControls BaseControls { get; private set; }
+    public BaseControls Controls { get; private set; }
 
     private void Awake()
     {
@@ -20,13 +21,71 @@ public class InputManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        BaseControls = new BaseControls();
-        BaseControls.PlayerMap.Enable();
+        Controls = new BaseControls();
+        Controls.PlayerMap.Enable();
+
+        Controls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
+        Controls.PlayerMap.OpenDevMenu.performed += HandleDevMenuPerformed;
+        Controls.PlayerMap.OpenMap.performed += HandleMapPerformed;
+        Controls.PauseMap.CloseMenu.performed += HandleCloseMenuPerformed;
+        Controls.MapMap.CloseMap.performed += HandleMapClosed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        Controls.PlayerMap.OpenMenu.performed -= HandlePausePerformed;
+        Controls.PlayerMap.OpenDevMenu.performed -= HandleDevMenuPerformed;
+        Controls.PlayerMap.OpenMap.performed -= HandleMapPerformed;
+        Controls.PauseMap.CloseMenu.performed -= HandleCloseMenuPerformed;
+        Controls.MapMap.CloseMap.performed -= HandleMapClosed;
     }
+
+    public void HandlePausePerformed(InputAction.CallbackContext context)
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.HandlePause();
+            Controls.PlayerMap.Disable();
+            Controls.PauseMap.Enable();
+        }
+    }
+
+    public void HandleDevMenuPerformed(InputAction.CallbackContext context)
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.HandleDevMenu();
+        }
+    }
+
+    public void HandleMapPerformed(InputAction.CallbackContext context)
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.HandleMap();
+            Controls.PlayerMap.Disable();
+            Controls.MapMap.Enable();
+        }
+    }
+
+    public void HandleCloseMenuPerformed(InputAction.CallbackContext context)
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.HandlePause();
+            Controls.PauseMap.Enable();
+            Controls.PlayerMap.Disable();
+        }
+    }
+
+    public void HandleMapClosed(InputAction.CallbackContext context)
+    {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.HandleMap();
+            Controls.MapMap.Disable();
+            Controls.PlayerMap.Enable();
+        }
+    }
+
 }

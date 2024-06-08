@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class MapController : MonoBehaviour
 {
@@ -10,9 +11,13 @@ public class MapController : MonoBehaviour
     [SerializeField] private RectTransform _mapParent;
 
     [Header("Settings")]
+    [SerializeField] private float _scrollSpeed;
     [SerializeField] private Color _currentRoomColor;
     [SerializeField] private Color _regularRoomColor;
     [SerializeField] private Image _currentRoomImage;
+
+    // Private references
+    private BaseControls _controls;
 
     private Dictionary<string, MapRoom> _rooms = new Dictionary<string, MapRoom>();
 
@@ -47,6 +52,14 @@ public class MapController : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        if(InputManager.Instance != null)
+        {
+            _controls = InputManager.Instance.Controls;
+        }
+    }
+
     private void OnEnable()
     {
         if(GameManager.Instance != null)
@@ -60,6 +73,19 @@ public class MapController : MonoBehaviour
             }
 
             SetCurrentRoom(GameManager.Instance.GetCurrentRoom().RoomName);
+        }
+    }
+
+    private void Update()
+    {
+        if (_controls != null && _controls.MapMap.enabled)
+        {
+            // The direction we want to move the map (we want to move it opposite of the input to make it seem like we're moving in the direction of the input
+            Vector2 inputVector = _controls.MapMap.ScrollMap.ReadValue<Vector2>() * -1;
+
+            Vector2 moveAmount = inputVector * _scrollSpeed * Time.unscaledDeltaTime;
+
+            _mapParent.anchoredPosition += inputVector * _scrollSpeed * Time.unscaledDeltaTime;
         }
     }
 

@@ -52,9 +52,20 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        _baseControls = new BaseControls();
-        _baseControls.PlayerMap.Enable();
+
+    private void Start()
+    {
+        if(InputManager.Instance != null)
+        {
+            _baseControls = InputManager.Instance.Controls;
+        }
+        else
+        {
+            _baseControls = new BaseControls();
+            _baseControls.PlayerMap.Enable();
+        }
 
         // Sprinting Events
         _baseControls.PlayerMap.Sprint.performed += SprintingStatusChanged;
@@ -76,17 +87,12 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
 
         // Menu Events
-        _baseControls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
-        _baseControls.PlayerMap.OpenDevMenu.performed += HandleDevMenuPerformed;
-        _baseControls.PlayerMap.OpenMap.performed += HandleMapPerformed;
+        //_baseControls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
+        //_baseControls.PlayerMap.OpenDevMenu.performed += HandleDevMenuPerformed;
+        //_baseControls.PlayerMap.OpenMap.performed += HandleMapPerformed;
 
         _grapplingHook.OnGrappleFinished += HandleGrappleFinished;
 
-
-    }
-
-    private void Start()
-    {
         MovementController.OnTryToMoveInDirection += HandleTryToMoveInDirection;
     }
 
@@ -101,9 +107,9 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.FireProjectile.performed -= HandleFirePerformed;
         _baseControls.PlayerMap.FireProjectile.canceled -= HandleFirePerformed;
         _grapplingHook.OnGrappleFinished -= HandleGrappleFinished;
-        _baseControls.PlayerMap.OpenMenu.performed -= HandlePausePerformed;
-        _baseControls.PlayerMap.OpenDevMenu.performed -= HandleDevMenuPerformed;
-        _baseControls.PlayerMap.OpenMap.performed -= HandleMapPerformed;
+        //_baseControls.PlayerMap.OpenMenu.performed -= HandlePausePerformed;
+        //_baseControls.PlayerMap.OpenDevMenu.performed -= HandleDevMenuPerformed;
+        //_baseControls.PlayerMap.OpenMap.performed -= HandleMapPerformed;
     }
 
 
