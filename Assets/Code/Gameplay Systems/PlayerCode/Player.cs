@@ -86,11 +86,6 @@ public class Player : MonoBehaviour
         // Rotate Ability Events
         _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
 
-        // Menu Events
-        //_baseControls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
-        //_baseControls.PlayerMap.OpenDevMenu.performed += HandleDevMenuPerformed;
-        //_baseControls.PlayerMap.OpenMap.performed += HandleMapPerformed;
-
         _grapplingHook.OnGrappleFinished += HandleGrappleFinished;
 
         MovementController.OnTryToMoveInDirection += HandleTryToMoveInDirection;
@@ -107,9 +102,6 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.FireProjectile.performed -= HandleFirePerformed;
         _baseControls.PlayerMap.FireProjectile.canceled -= HandleFirePerformed;
         _grapplingHook.OnGrappleFinished -= HandleGrappleFinished;
-        //_baseControls.PlayerMap.OpenMenu.performed -= HandlePausePerformed;
-        //_baseControls.PlayerMap.OpenDevMenu.performed -= HandleDevMenuPerformed;
-        //_baseControls.PlayerMap.OpenMap.performed -= HandleMapPerformed;
     }
 
 
@@ -222,29 +214,6 @@ public class Player : MonoBehaviour
         MovementController.OnLineController.CurrentLine.GetComponent<LineRotator>().Rotate();
     }
 
-    public void HandlePausePerformed(InputAction.CallbackContext context)
-    {
-        if(GameManager.Instance != null)
-        {
-            GameManager.Instance.HandlePause();
-        }
-    }
-
-    public void HandleDevMenuPerformed(InputAction.CallbackContext context)
-    {
-        if(GameManager.Instance != null)
-        {
-            GameManager.Instance.HandleDevMenu();
-        }
-    }
-
-    public void HandleMapPerformed(InputAction.CallbackContext context)
-    {
-        if(GameManager.Instance != null)
-        {
-            GameManager.Instance.HandleMap();
-        }
-    }
 
     public void SetLevelManager(LevelManager newLevelManager)
     {
