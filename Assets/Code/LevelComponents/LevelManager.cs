@@ -6,6 +6,9 @@ using Cinemachine;
 
 public class LevelManager : MonoBehaviour
 {
+
+    public static LevelManager Instance;
+
     [Header("Public References")]
     public GameObject LineParent;
     public GameObject DangerZoneParent;
@@ -46,6 +49,17 @@ public class LevelManager : MonoBehaviour
     // A Dictonary of Line -> Dictionary of Vector3 -> Intersection Data
     private Dictionary<LineController, Dictionary<Vector3, List<IntersectionData>>> _intersections;
 
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         Lines = LineParent.GetComponentsInChildren<LineController>();
