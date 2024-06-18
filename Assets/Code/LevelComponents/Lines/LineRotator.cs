@@ -135,6 +135,13 @@ public class LineRotator : MonoBehaviour
         Vector3 a = _lineController.CurrentA;
         Vector3 b = _lineController.CurrentB;
 
+        // Check if either point is outside level bounds
+        if(CheckIfPointIsOutsideLevel(a) || CheckIfPointIsOutsideLevel(b))
+        {
+            Reverse();
+            return;
+        }
+
         // Get level manager
         LevelManager levelManager = FindObjectOfType<LevelManager>();
 
@@ -162,5 +169,10 @@ public class LineRotator : MonoBehaviour
         // Debug.Log($"Initial x: {endpoint.y}, Fixed x: {(float)y}");
 
         return new Vector3((float)x, (float)y, (float)z);
+    }
+
+    private bool CheckIfPointIsOutsideLevel(Vector3 point)
+    {
+        return point.x < LevelManager.Instance.RoomLeftSide || point.x > LevelManager.Instance.RoomRightSide || point.y < LevelManager.Instance.RoomBottomSide || point.y > LevelManager.Instance.RoomTopSide;
     }
 }
