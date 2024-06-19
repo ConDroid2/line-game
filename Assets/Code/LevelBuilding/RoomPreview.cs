@@ -40,6 +40,11 @@ public class RoomPreview : MonoBehaviour
         _colorToUse = useDefault ? _defaultColor : _overlappingColor;
     }
 
+    public float GetScale()
+    {
+        return _scale;
+    }
+
     public float WorldSpaceTop => transform.position.y + (RoomData.Top * _scale);
     public float WorldSpaceBottom => transform.position.y + (RoomData.Bottom * _scale);
     public float WorldSpaceLeft => transform.position.x + (RoomData.Left * _scale);

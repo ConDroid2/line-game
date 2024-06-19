@@ -14,7 +14,7 @@ public class MapController : MonoBehaviour
     [SerializeField] private float _scrollSpeed;
     [SerializeField] private Color _currentRoomColor;
     [SerializeField] private Color _regularRoomColor;
-    [SerializeField] private Image _currentRoomImage;
+    [SerializeField] private MapRoom _currentRoom;
 
     // Private references
     private BaseControls _controls;
@@ -39,13 +39,14 @@ public class MapController : MonoBehaviour
             if (_rooms.ContainsKey(room.RoomName) == false)
             {
                 MapRoom mapRoom = Instantiate(_roomPrefab, _mapParent.transform);
-                mapRoom.RectTransform.anchoredPosition = new Vector2(room.PreviewRoomPosition.x / 10f * 200, room.PreviewRoomPosition.y / 5.5f * 110);
+                mapRoom.RectTransform.anchoredPosition = new Vector2(room.PreviewRoomPosition.x / 10f * Consts.RoomInfo.RoomWidth, room.PreviewRoomPosition.y / 5.5f * Consts.RoomInfo.RoomHeight);
                 mapRoom.gameObject.name = room.RoomName;
 
-                mapRoom.RectTransform.sizeDelta = new Vector2(room.RoomWidth / 20 * 200, room.RoomHeight / 11 * 110);
+                mapRoom.RectTransform.sizeDelta = new Vector2(room.RoomWidth / 20 * Consts.RoomInfo.RoomWidth, room.RoomHeight / 11 * Consts.RoomInfo.RoomHeight);
 
                 _rooms.Add(room.RoomName, mapRoom);
 
+                mapRoom.SetConnectionImages(room.HasRightConnection, room.HasLeftConnection, room.HasBottomConnection, room.HasTopConnection);
                 mapRoom.gameObject.SetActive(false);
             }
         }
@@ -85,21 +86,21 @@ public class MapController : MonoBehaviour
 
             Vector2 moveAmount = inputVector * _scrollSpeed * Time.unscaledDeltaTime;
 
-            _mapParent.anchoredPosition += inputVector * _scrollSpeed * Time.unscaledDeltaTime;
+            _mapParent.anchoredPosition += moveAmount;
         }
     }
 
     public void SetCurrentRoom(string roomName)
     {
-        if(_currentRoomImage != null)
+        if(_currentRoom != null)
         {
-            _currentRoomImage.color = _regularRoomColor;
+            _currentRoom.SetColor(_regularRoomColor);
         }
 
         if (_rooms.ContainsKey(roomName))
         {
-            _currentRoomImage = _rooms[roomName].BasicRoomImage;
-            _currentRoomImage.color = _currentRoomColor;
+            _currentRoom = _rooms[roomName];
+            _currentRoom.SetColor(_currentRoomColor);
 
             Vector2 shiftMapBy = _rooms[roomName].RectTransform.anchoredPosition * -1;
             Debug.Log($"Shift Map By: {shiftMapBy}");

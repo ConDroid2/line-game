@@ -10,8 +10,13 @@ public class WorldRoomData
     public int RoomWidth;
     public int RoomHeight;
 
+    public bool HasRightConnection;
+    public bool HasLeftConnection;
+    public bool HasBottomConnection;
+    public bool HasTopConnection;
+
     [Newtonsoft.Json.JsonConstructor]
-    public WorldRoomData(List<RoomConnection> roomConnections, SerializeableVector3 previewRoomPosition, string roomName, bool startRoom, int roomWidth, int roomHeight)
+    public WorldRoomData(List<RoomConnection> roomConnections, SerializeableVector3 previewRoomPosition, string roomName, bool startRoom, int roomWidth, int roomHeight, bool hasRightConnection, bool hasLeftConnection, bool hasBottomConnection, bool hasTopConnection)
     {
         RoomConnections = roomConnections;
         PreviewRoomPosition = previewRoomPosition;
@@ -19,6 +24,10 @@ public class WorldRoomData
         StartRoom = startRoom;
         RoomWidth = roomWidth;
         RoomHeight = roomHeight;
+        HasRightConnection = hasRightConnection;
+        HasLeftConnection = hasLeftConnection;
+        HasBottomConnection = hasBottomConnection;
+        HasTopConnection = hasTopConnection;
     }
 
     public WorldRoomData(SerializeableVector3 previewRoomPosition, string roomName)
