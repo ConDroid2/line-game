@@ -50,6 +50,11 @@ public class GrapplingHook : MonoBehaviour
             _startPosition = Player.Instance.transform.position;
             _performGrapple = true;
             _drawingLine = true;
+
+            if(LevelManager.Instance != null)
+            {
+                LevelManager.Instance.ObjectMovementTimeScale = 0f;
+            }
         }
     }
 
@@ -133,6 +138,12 @@ public class GrapplingHook : MonoBehaviour
         _performGrapple = false;
         _lineRenderer.SetPosition(0, transform.position);
         _lineRenderer.SetPosition(1, transform.position);
+
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.ObjectMovementTimeScale = 1f;
+        }
+
         OnGrappleFinished?.Invoke();
     }
 

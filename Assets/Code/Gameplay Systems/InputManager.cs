@@ -73,8 +73,8 @@ public class InputManager : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.HandlePause();
-            Controls.PauseMap.Enable();
-            Controls.PlayerMap.Disable();
+            Controls.PauseMap.Disable();
+            Controls.PlayerMap.Enable();
         }
     }
 

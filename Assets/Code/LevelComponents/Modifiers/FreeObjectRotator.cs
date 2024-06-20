@@ -57,6 +57,11 @@ public class FreeObjectRotator : MonoBehaviour
             }
             else
             {
+                if (LevelManager.Instance != null)
+                {
+                    timeSinceLastCall *= LevelManager.Instance.ObjectMovementTimeScale;
+                }
+
                 _timeMoving += timeSinceLastCall;
             }
         }

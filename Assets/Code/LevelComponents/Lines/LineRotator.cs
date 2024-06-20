@@ -42,16 +42,20 @@ public class LineRotator : MonoBehaviour
     {
         if (_rotating)
         {
-            _timeSinceStarting += Time.deltaTime;
+            float timeSinceLastUpdate = Time.deltaTime;
+
+            if (LevelManager.Instance != null)
+            {
+                timeSinceLastUpdate *= LevelManager.Instance.ObjectMovementTimeScale;
+            }
+
+            _timeSinceStarting += timeSinceLastUpdate;
 
             float rotationPercentage = Mathf.Clamp01(_timeSinceStarting / _timeForRotation);
+
+           
+
             float adjustedPercentage = _rotationCurve.Evaluate(rotationPercentage);
-
-            //float newZRotation = Mathf.Lerp(_startRotation, _endRotation, adjustedPercentage);
-
-            //transform.eulerAngles = new Vector3(0f, 0f, newZRotation);
-
-            // transform.rotation = Quaternion.Lerp(_startQuaternion, _endQuaternion, adjustedPercentage);
 
             Vector3 newA = Vector3.Slerp(_startA, _calculatedA, adjustedPercentage);
             Vector3 newB = Vector3.Slerp(_startB, _calculatedB, adjustedPercentage);

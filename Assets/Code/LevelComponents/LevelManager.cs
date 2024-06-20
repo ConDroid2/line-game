@@ -36,6 +36,7 @@ public class LevelManager : MonoBehaviour
     public LineController StartingLine;
     public float _startingDistance;
     public Enums.LinePoints StartingPoint = Enums.LinePoints.A;
+    [HideInInspector] public float ObjectMovementTimeScale = 1f; 
 
     // Shouldn't need this
     public LineController LinePrefab;
