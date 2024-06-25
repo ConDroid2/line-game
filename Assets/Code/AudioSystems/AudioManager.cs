@@ -25,11 +25,19 @@ public class AudioManager : MonoBehaviour
     {
         if (_trackType == TrackType.Intro)
         {
-            if(_audioSourceIntro.isPlaying == false)
+            if(_audioSourceIntro.isPlaying == false  && Application.isFocused)
             {
+                Debug.Log("Starting loop");
+                Debug.Log($"Is Intro Virtual: {_audioSourceIntro.isVirtual}");
                 _audioSourceLoop.Play();
                 _trackType = TrackType.Loop;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log($"Intro Playing: {_audioSourceIntro.isPlaying}");
+            Debug.Log($"Loop Playing: {_audioSourceLoop.isPlaying}");
         }
     }
 
