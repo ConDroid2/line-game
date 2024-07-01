@@ -50,7 +50,15 @@ public class AudioManager : MonoBehaviour
         _audioSourceIntro.clip = _currentTrack.IntroTrack;
         _audioSourceLoop.clip = _currentTrack.LoopTrack;
 
-        _audioSourceIntro.Play();
-        _trackType = TrackType.Intro;
+        if (_audioSourceIntro.clip != null)
+        {
+            _audioSourceIntro.Play();
+            _trackType = TrackType.Intro;
+        }
+        else
+        {
+            _audioSourceLoop.Play();
+            _trackType = TrackType.Loop;
+        }
     }
 }

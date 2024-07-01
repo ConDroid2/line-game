@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
@@ -150,6 +151,27 @@ public class LevelManager : MonoBehaviour
 
     public void HandlePlayerDeath()
     {
+        Debug.Log("Player has died");
+        StartCoroutine(PlayerDeathCoroutine());
+    }
+
+    private IEnumerator PlayerDeathCoroutine()
+    {
+        List<ExplodeOnDeath> thingsToExplode = FindObjectsOfType<ExplodeOnDeath>().OrderBy(x => x.Priority).ToList();
+
+        Debug.Log($"Found {thingsToExplode.Count} things to explode");
+
+        foreach(ExplodeOnDeath exploder in thingsToExplode)
+        {
+            Debug.Log($"Exploding {exploder.transform.parent.gameObject.name}");
+            exploder.TriggerEffect();
+
+            while (exploder.IsPlaying())
+            {
+                yield return null;
+            }
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

@@ -246,6 +246,8 @@ public class Player : MonoBehaviour
         OnPlayerDeath.Invoke();
         _grapplingHook.FinishGrapple();
         _aimingMode = false;
+        _invulnerable = true;
+        _allowMoving = false;
     }
 
     public void HandleTryToMoveInDirection(int direction)
