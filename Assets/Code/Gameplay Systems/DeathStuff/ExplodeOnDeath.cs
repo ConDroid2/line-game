@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ExplodeOnDeath : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class ExplodeOnDeath : MonoBehaviour
 
     private bool _playing = false;
 
-    public System.Action OnDonePlaying;
+    // public System.Action OnDonePlaying;
+    public UnityEvent OnExplodeTriggered;
+    public UnityEvent OnExplodeDone;
 
     private void Awake()
     {
@@ -24,7 +27,8 @@ public class ExplodeOnDeath : MonoBehaviour
             if(_particleSystem.IsAlive() == false)
             {
                 _playing = false;
-                OnDonePlaying?.Invoke();
+                OnExplodeDone?.Invoke();
+                
             }
         }
     }
@@ -39,6 +43,7 @@ public class ExplodeOnDeath : MonoBehaviour
         _particleSystem.Play();
 
         _playing = true;
+        OnExplodeTriggered?.Invoke();
     }
 
     public bool IsPlaying()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KeyObject : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class KeyObject : MonoBehaviour
     public bool InUse = false;
     [SerializeField] private FlagSetter _flagSetter;
     [SerializeField] private SpringJoint2D _springJoint;
+    [SerializeField] private GameObject _explodeEffect;
+    [SerializeField] private GameObject _visuals;
 
 
     // Update is called once per frame
@@ -23,22 +26,23 @@ public class KeyObject : MonoBehaviour
 
             DontDestroyOnLoad(gameObject);
 
-            Player.Instance.OnPlayerDeath += HandlePlayerDeath;
+            _explodeEffect.SetActive(true);
         }
     }
 
-    public void HandlePlayerDeath()
+    public void TurnOffVisuals()
     {
-        Player.Instance.OnPlayerDeath -= HandlePlayerDeath;
-
         _flagSetter.SetFlag(false);
+        _visuals.SetActive(false);
+    }
 
+    public void DestroyKey()
+    {
         Destroy(gameObject);
     }
 
     public void Use()
     {
-        Player.Instance.OnPlayerDeath -= HandlePlayerDeath;
         Destroy(gameObject);
     }
 }
