@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Player start");
         if(InputManager.Instance != null)
         {
             _baseControls = InputManager.Instance.Controls;
@@ -66,6 +68,8 @@ public class Player : MonoBehaviour
             _baseControls = new BaseControls();
             _baseControls.PlayerMap.Enable();
         }
+
+        SceneManager.sceneLoaded += HandleSceneLoaded;
 
         // Sprinting Events
         _baseControls.PlayerMap.Sprint.performed += SprintingStatusChanged;
@@ -93,6 +97,8 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
+        Debug.Log("Disable called");
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
         _baseControls.PlayerMap.AimMode.performed -= AimModeStatusChanged;
         _baseControls.PlayerMap.AimMode.canceled -= AimModeStatusChanged;
@@ -142,6 +148,12 @@ public class Player : MonoBehaviour
         }
 
         
+    }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        _visuals.gameObject.SetActive(true);
+        _allowMoving = true;
     }
 
     public void SprintingStatusChanged(InputAction.CallbackContext context)
