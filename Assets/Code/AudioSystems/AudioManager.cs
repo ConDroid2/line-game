@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSourceIntro;
     [SerializeField] private AudioSource _audioSourceLoop;
 
+    public float Volume { get; private set; } = 0.5f;
+
     private enum TrackType { Intro, Loop, None }
 
     private TrackType _trackType = TrackType.None;
@@ -60,5 +62,13 @@ public class AudioManager : MonoBehaviour
             _audioSourceLoop.Play();
             _trackType = TrackType.Loop;
         }
+    }
+
+    public void SetVolume(float newVolume)
+    {
+        Volume = newVolume;
+
+        _audioSourceIntro.volume = Volume;
+        _audioSourceLoop.volume = Volume;
     }
 }
