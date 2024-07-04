@@ -29,7 +29,13 @@ public class ChargeEnemy : MonoBehaviour
             float percentageDone = _chargeCurve.Evaluate(_timeCharging / _totalChargeTime);
             // Debug.Log(percentageDone);
 
-            transform.position = Vector3.LerpUnclamped(_chargeStartingPosition, _chargeEndingPosition, percentageDone);
+            Vector3 potentialNewPosition = Vector3.LerpUnclamped(_chargeStartingPosition, _chargeEndingPosition, percentageDone);
+
+            float clampedX = Mathf.Clamp(potentialNewPosition.x, LevelManager.Instance.RoomLeftSide, LevelManager.Instance.RoomRightSide);
+            float clampedY = Mathf.Clamp(potentialNewPosition.y, LevelManager.Instance.RoomBottomSide, LevelManager.Instance.RoomTopSide);
+
+            transform.position = new Vector3(clampedX, clampedY);
+
 
             if(_timeCharging >= _totalChargeTime)
             {
