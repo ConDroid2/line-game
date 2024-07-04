@@ -13,9 +13,6 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private float _fireInterval = 1;
     [SerializeField] private ProjectileData _projectileData;
 
-    private float _timeSinceLastFire = 0f;
-    private bool _canFire = true;
-    private float _lastFireTime = 0f;
     private float _nextFireTime = 0f;
 
     private void Awake()
@@ -28,15 +25,6 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void Update()
     {
-        if(_canFire == false)
-        {
-            _timeSinceLastFire += Time.deltaTime;
-
-            if(_timeSinceLastFire >= _fireInterval)
-            {
-                _canFire = true;
-            }
-        }
 
         if (_automatic)
         {
@@ -53,8 +41,6 @@ public class ProjectileLauncher : MonoBehaviour
             ProjectileMover newProjectile = Instantiate(_projectilePrefab, transform.position, transform.rotation);
             newProjectile.Fire(new ProjectileData(_projectileData));
 
-            _canFire = false;
-            _timeSinceLastFire = 0f;
             _nextFireTime = Time.time + _fireInterval;
         }
     }
