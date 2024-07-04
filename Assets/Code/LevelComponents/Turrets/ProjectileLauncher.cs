@@ -15,6 +15,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     private float _timeSinceLastFire = 0f;
     private bool _canFire = true;
+    private float _lastFireTime = 0f;
+    private float _nextFireTime = 0f;
 
     private void Awake()
     {
@@ -44,7 +46,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     public void Fire()
     {
-        if (_canFire == true)
+        if (Time.time >= _nextFireTime)
         {
             _projectileData.Direction = transform.up;
 
@@ -53,6 +55,7 @@ public class ProjectileLauncher : MonoBehaviour
 
             _canFire = false;
             _timeSinceLastFire = 0f;
+            _nextFireTime = Time.time + _fireInterval;
         }
     }
 
