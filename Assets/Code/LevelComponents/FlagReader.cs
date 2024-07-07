@@ -7,6 +7,7 @@ public class FlagReader : MonoBehaviour
 {
     [SerializeField] private string _flagName;
     [SerializeField] bool _onlyCheckOnStart = false;
+    [SerializeField] bool _readFlagOnEnable = false;
 
     public UnityEvent OnIfTrue;
     public UnityEvent OnIfFalse;
@@ -22,6 +23,11 @@ public class FlagReader : MonoBehaviour
     private void OnEnable()
     {
         if (GameManager.Instance == null) return;
+
+        if (_readFlagOnEnable)
+        {
+            HandleFlagChange(_flagName, GameManager.Instance.Flags[_flagName]);
+        }
 
         if (_onlyCheckOnStart == false)
         {
