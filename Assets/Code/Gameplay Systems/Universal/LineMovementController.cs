@@ -58,8 +58,10 @@ public class LineMovementController : MonoBehaviour
         bool willMove = true;
 
         // Calculate the new distance on line
+        _logger.DebugLog($"Current distance on line: {OnLineController.DistanceOnLine} will be modified by {distanceToMove}");
         float newDistanceOnLine = Mathf.Clamp01(OnLineController.DistanceOnLine + distanceToMove);
         Vector3 attemptedNewPosition = OnLineController.CheckNewPosition(newDistanceOnLine);
+        _logger.DebugLog($"Current position vs attempted position: {transform.position} vs {attemptedNewPosition}");
 
         // Check if our new position is actually new
         willMove &= transform.position != attemptedNewPosition;
@@ -109,6 +111,8 @@ public class LineMovementController : MonoBehaviour
         LineController currentLine = OnLineController.CurrentLine;
 
         HandleSwappingLines(direction, currentLine);
+
+        currentLine = OnLineController.CurrentLine;
 
         // Figure out which direction along the line we're trying to move based on angles
         float angleBetweenDirectionAndSlope = Vector3.Angle(direction, currentLine.Slope);
@@ -209,6 +213,7 @@ public class LineMovementController : MonoBehaviour
 
         if(lineToMoveTo != currentLine)
         {
+            _logger.DebugLog("Moving to a new line");
             SetNewLine(lineToMoveTo, newDistanceAlongLine);
 
             _previousSwapData = new LineSwapData(inputVector, intersections);
@@ -363,6 +368,8 @@ public class LineMovementController : MonoBehaviour
         // Swap lines based on the combined direction
         HandleSwappingLines(combinedDirection, currentLine);
 
+        currentLine = OnLineController.CurrentLine;
+
         float distanceToMove = 0f;
 
         foreach (Force force in _activeForces)
@@ -370,11 +377,14 @@ public class LineMovementController : MonoBehaviour
             // Calculate how much this would move the player
             // Apply to newDistanceOnLine
             float angleBetweenForceAndSlope = Vector3.Angle(force.Direction, currentLine.Slope * currentLine.DirectionModifier);
+            _logger.DebugLog($"Current line slope: {currentLine.Slope}");
 
 
             // Speed modified based on current line length
             float speed = force.Magnitude / OnLineController.CurrentLine.Length;
             float distanceDelta = speed * Time.deltaTime;
+
+            
 
             if (angleBetweenForceAndSlope < 90f)
             {
@@ -388,6 +398,9 @@ public class LineMovementController : MonoBehaviour
                 OnTryToMoveInDirection?.Invoke(-1);
             }
 
+            _logger.DebugLog($"Angle between force and slope: {angleBetweenForceAndSlope}");
+            _logger.DebugLog($"Distance delta this frame: {distanceToMove}");
+
             combinedDirection += force.Direction;
         }
 
@@ -396,6 +409,7 @@ public class LineMovementController : MonoBehaviour
         if (!moved)
         {
             // If we didn't move, get rid of all forces
+            _logger.DebugLog("We did not move, clearing forces");
             _activeForces.Clear();
         }
 
@@ -407,6 +421,7 @@ public class LineMovementController : MonoBehaviour
     private void CleanupForces()
     {
         _logger.DebugLog("Removing Forces");
+        _logger.DebugLog($"Number of forces before cleanup = {_activeForces.Count}");
         _activeForces.ForEach(force => force.ApplyDrag());
         // Loop through each force, remove if condition is met
         _activeForces.RemoveAll(force => force.Magnitude < 0.01f);
