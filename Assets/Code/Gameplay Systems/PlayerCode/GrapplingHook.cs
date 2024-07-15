@@ -53,7 +53,7 @@ public class GrapplingHook : MonoBehaviour
 
             if(LevelManager.Instance != null)
             {
-                LevelManager.Instance.ObjectMovementTimeScale = 0f;
+                //LevelManager.Instance.ObjectMovementTimeScale = 0f;
             }
         }
     }
@@ -141,7 +141,7 @@ public class GrapplingHook : MonoBehaviour
 
         if (LevelManager.Instance != null)
         {
-            LevelManager.Instance.ObjectMovementTimeScale = 1f;
+            // LevelManager.Instance.ObjectMovementTimeScale = 1f;
         }
 
         OnGrappleFinished?.Invoke();
