@@ -42,16 +42,20 @@ public class LineRotator : MonoBehaviour
     {
         if (_rotating)
         {
-            _timeSinceStarting += Time.deltaTime;
+            float timeSinceLastUpdate = Time.deltaTime;
+
+            if (LevelManager.Instance != null)
+            {
+                timeSinceLastUpdate *= LevelManager.Instance.ObjectMovementTimeScale;
+            }
+
+            _timeSinceStarting += timeSinceLastUpdate;
 
             float rotationPercentage = Mathf.Clamp01(_timeSinceStarting / _timeForRotation);
+
+           
+
             float adjustedPercentage = _rotationCurve.Evaluate(rotationPercentage);
-
-            //float newZRotation = Mathf.Lerp(_startRotation, _endRotation, adjustedPercentage);
-
-            //transform.eulerAngles = new Vector3(0f, 0f, newZRotation);
-
-            // transform.rotation = Quaternion.Lerp(_startQuaternion, _endQuaternion, adjustedPercentage);
 
             Vector3 newA = Vector3.Slerp(_startA, _calculatedA, adjustedPercentage);
             Vector3 newB = Vector3.Slerp(_startB, _calculatedB, adjustedPercentage);
@@ -135,6 +139,13 @@ public class LineRotator : MonoBehaviour
         Vector3 a = _lineController.CurrentA;
         Vector3 b = _lineController.CurrentB;
 
+        // Check if either point is outside level bounds
+        if(CheckIfPointIsOutsideLevel(a) || CheckIfPointIsOutsideLevel(b))
+        {
+            Reverse();
+            return;
+        }
+
         // Get level manager
         LevelManager levelManager = FindObjectOfType<LevelManager>();
 
@@ -162,5 +173,10 @@ public class LineRotator : MonoBehaviour
         // Debug.Log($"Initial x: {endpoint.y}, Fixed x: {(float)y}");
 
         return new Vector3((float)x, (float)y, (float)z);
+    }
+
+    private bool CheckIfPointIsOutsideLevel(Vector3 point)
+    {
+        return point.x < LevelManager.Instance.RoomLeftSide || point.x > LevelManager.Instance.RoomRightSide || point.y < LevelManager.Instance.RoomBottomSide || point.y > LevelManager.Instance.RoomTopSide;
     }
 }

@@ -11,9 +11,9 @@ public class PlayerProjectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Destroy destructables
-        if (collision.collider.gameObject.CompareTag("PlayerDestructable"))
+        if (collision.collider.gameObject.TryGetComponent<PlayerDestructible>(out PlayerDestructible destructible))
         {
-            Destroy(collision.gameObject);
+            destructible.Destruct();
             Destroy(gameObject);
         }
 

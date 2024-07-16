@@ -40,13 +40,35 @@ public class SaveWorld : EditorWindow
 
         foreach(RoomPreview room in _roomPreviews)
         {
-            // Debug.Log($"Generating data for {room.name}");
+            Debug.Log($"Generating data for {room.name}");
             bool isStartRoom = room == startingRoom;
             List<RoomConnection> connectionsForRoom = FindConnectionsForRoom(room);
             SerializeableVector3 roomPreviewPosition = new SerializeableVector3(room.transform.position);
             string roomName = room.name;
 
-            WorldRoomData worldRoomData = new WorldRoomData(connectionsForRoom, roomPreviewPosition, roomName, isStartRoom);
+            int roomWidth = (int)(room.RoomData.Right - room.RoomData.Left);
+            int roomHeight = (int)(room.RoomData.Top - room.RoomData.Bottom);
+
+            bool hasRightConnection = false;
+            bool hasLeftConnection = false;
+            bool hasBottomConnection = false;
+            bool hasTopConnection = false;
+
+            Debug.Log($"Room bounds are: {room.WorldSpaceRight}, {room.WorldSpaceLeft}, {room.WorldSpaceBottom}, {room.WorldSpaceTop}");
+            foreach (RoomConnection roomConnection in connectionsForRoom)
+            {
+                Vector3 connectionWorldSpace = room.transform.position + (roomConnection.FromPort.RelativePosition.ConvertToVector3() * room.GetScale());
+
+                Debug.Log($"Connection world space is: {connectionWorldSpace}");
+                
+
+                hasRightConnection |= room.WorldSpaceRight == connectionWorldSpace.x;
+                hasLeftConnection |= room.WorldSpaceLeft == connectionWorldSpace.x;
+                hasBottomConnection |= room.WorldSpaceBottom == connectionWorldSpace.y;
+                hasTopConnection |= room.WorldSpaceTop == connectionWorldSpace.y;
+            }
+
+            WorldRoomData worldRoomData = new WorldRoomData(connectionsForRoom, roomPreviewPosition, roomName, isStartRoom, roomWidth, roomHeight, hasRightConnection, hasLeftConnection, hasBottomConnection, hasTopConnection);
             worldData.AddWorldRoomData(roomName, worldRoomData);
         }
 

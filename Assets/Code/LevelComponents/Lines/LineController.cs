@@ -261,6 +261,11 @@ public class LineController : MonoBehaviour
         }
     }
 
+    public Vector3 GetPointAlongLine(float distanceOnLine)
+    {
+        return Vector3.Lerp(CurrentA, CurrentB, distanceOnLine);
+    }
+
     private void OnDrawGizmos()
     {
         if (Application.isPlaying == false)

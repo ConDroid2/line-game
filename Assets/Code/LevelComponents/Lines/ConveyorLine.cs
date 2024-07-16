@@ -23,7 +23,7 @@ public class ConveyorLine : MonoBehaviour
         {
             if(onLine.TryGetComponent(out LineMovementController movementController))
             {
-                Debug.Log(movementController.AddForce(new Force(_magnitude, _lineController.Slope * _direction, 0f, gameObject), true));
+                movementController.AddForce(new Force(_magnitude, _lineController.Slope * _direction, 0f, gameObject), true);
             }
         }
     }

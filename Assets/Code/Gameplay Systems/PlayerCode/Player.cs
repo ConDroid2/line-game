@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -52,17 +53,31 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        _baseControls = new BaseControls();
-        _baseControls.PlayerMap.Enable();
+
+    private void Start()
+    {
+        Debug.Log("Player start");
+        if(InputManager.Instance != null)
+        {
+            _baseControls = InputManager.Instance.Controls;
+        }
+        else
+        {
+            _baseControls = new BaseControls();
+            _baseControls.PlayerMap.Enable();
+        }
+
+        SceneManager.sceneLoaded += HandleSceneLoaded;
 
         // Sprinting Events
         _baseControls.PlayerMap.Sprint.performed += SprintingStatusChanged;
         _baseControls.PlayerMap.Sprint.canceled += SprintingStatusChanged;
 
-        // Aim Mode Events
-        //_baseControls.PlayerMap.AimMode.performed += AimModeStatusChanged;
-        //_baseControls.PlayerMap.AimMode.canceled += AimModeStatusChanged;
+        //Aim Mode Events
+        _baseControls.PlayerMap.AimMode.performed += AimModeStatusChanged;
+        _baseControls.PlayerMap.AimMode.canceled += AimModeStatusChanged;
 
         // Projectile Ability Events
         _baseControls.PlayerMap.FireProjectile.performed += HandleFirePerformed;
@@ -75,22 +90,15 @@ public class Player : MonoBehaviour
         // Rotate Ability Events
         _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
 
-        // Menu Events
-        _baseControls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
-        _baseControls.PlayerMap.OpenDevMenu.performed += HandleDevMenuPerformed;
-
         _grapplingHook.OnGrappleFinished += HandleGrappleFinished;
 
-
-    }
-
-    private void Start()
-    {
         MovementController.OnTryToMoveInDirection += HandleTryToMoveInDirection;
     }
 
     private void OnDisable()
     {
+        Debug.Log("Disable called");
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
         _baseControls.PlayerMap.AimMode.performed -= AimModeStatusChanged;
         _baseControls.PlayerMap.AimMode.canceled -= AimModeStatusChanged;
@@ -100,8 +108,6 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.FireProjectile.performed -= HandleFirePerformed;
         _baseControls.PlayerMap.FireProjectile.canceled -= HandleFirePerformed;
         _grapplingHook.OnGrappleFinished -= HandleGrappleFinished;
-        _baseControls.PlayerMap.OpenMenu.performed -= HandlePausePerformed;
-        _baseControls.PlayerMap.OpenDevMenu.performed -= HandleDevMenuPerformed;
     }
 
 
@@ -144,6 +150,12 @@ public class Player : MonoBehaviour
         
     }
 
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        _visuals.gameObject.SetActive(true);
+        _allowMoving = true;
+    }
+
     public void SprintingStatusChanged(InputAction.CallbackContext context)
     {
         if(context.phase == InputActionPhase.Performed)
@@ -178,18 +190,11 @@ public class Player : MonoBehaviour
 
         if(context.phase == InputActionPhase.Performed)
         {
-            TurnOnAimMode();
-        }
-        else if(context.phase == InputActionPhase.Canceled)
-        {
             if (_aimingMode)
             {
                 _projectileLauncher.Fire();
-                TurnOffAimMode();
             }
-        }
-
-        
+        }        
     }
 
     public void HandleGrapplePerformed(InputAction.CallbackContext context)
@@ -221,21 +226,6 @@ public class Player : MonoBehaviour
         MovementController.OnLineController.CurrentLine.GetComponent<LineRotator>().Rotate();
     }
 
-    public void HandlePausePerformed(InputAction.CallbackContext context)
-    {
-        if(GameManager.Instance != null)
-        {
-            GameManager.Instance.HandlePause();
-        }
-    }
-
-    public void HandleDevMenuPerformed(InputAction.CallbackContext context)
-    {
-        if(GameManager.Instance != null)
-        {
-            GameManager.Instance.HandleDevMenu();
-        }
-    }
 
     public void SetLevelManager(LevelManager newLevelManager)
     {
@@ -268,6 +258,8 @@ public class Player : MonoBehaviour
         OnPlayerDeath.Invoke();
         _grapplingHook.FinishGrapple();
         _aimingMode = false;
+        _invulnerable = true;
+        _allowMoving = false;
     }
 
     public void HandleTryToMoveInDirection(int direction)

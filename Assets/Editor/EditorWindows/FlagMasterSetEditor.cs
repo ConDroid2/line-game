@@ -11,6 +11,8 @@ public class FlagMasterSetEditor : EditorWindow
     string newFlagName;
     string masterSetName;
 
+    Vector2 scrollView;
+
     [MenuItem("Custom/Flag Editor")]
     public static void ShowWindow()
     {
@@ -49,6 +51,8 @@ public class FlagMasterSetEditor : EditorWindow
 
             GUILayout.EndHorizontal();
 
+            scrollView = EditorGUILayout.BeginScrollView(scrollView);
+
             GUILayout.Space(15f);
             // Need to if check again here because if we cancel, flags is null but it finishes running all this code
             if (flags != null)
@@ -71,6 +75,8 @@ public class FlagMasterSetEditor : EditorWindow
                 {
                     flags.FlagNames.Remove(flagToDelete);
                 }
+
+                EditorGUILayout.EndScrollView();
 
                 GUILayout.BeginHorizontal();
 

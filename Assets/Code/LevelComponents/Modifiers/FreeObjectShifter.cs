@@ -70,6 +70,7 @@ public class FreeObjectShifter : MonoBehaviour
         if (_waiting == false)
         {
             float movementPercentage = _timeMoving / TimeToMove;
+
             MovePoint(movementPercentage);
 
             // If we've reached the end, swap end points, start waiting if need to
@@ -93,6 +94,11 @@ public class FreeObjectShifter : MonoBehaviour
             // Advance time moving
             else
             {
+                if (LevelManager.Instance != null)
+                {
+                    timeSinceLastCall *= LevelManager.Instance.ObjectMovementTimeScale;
+                }
+
                 _timeMoving = Mathf.Clamp(_timeMoving + timeSinceLastCall, 0f, TimeToMove);
             }
         }

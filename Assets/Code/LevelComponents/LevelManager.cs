@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
+
+    public static LevelManager Instance;
+
     [Header("Public References")]
     public GameObject LineParent;
     public GameObject DangerZoneParent;
@@ -20,11 +25,19 @@ public class LevelManager : MonoBehaviour
     private Player _player;
     public LineController[] Lines;
 
+    [Header("Camera Stuff")]
+    [SerializeField] CinemachineVirtualCamera _staticVirtualCamera;
+    [SerializeField] CinemachineVirtualCamera _dynamicVirtualCamera;
+    private CinemachineVirtualCamera _inUseCamera;
+    [SerializeField] PolygonCollider2D _cameraBounds;
+
     
 
+    [Header("Misc")]
     public LineController StartingLine;
     public float _startingDistance;
     public Enums.LinePoints StartingPoint = Enums.LinePoints.A;
+    [HideInInspector] public float ObjectMovementTimeScale = 1f; 
 
     // Shouldn't need this
     public LineController LinePrefab;
@@ -38,6 +51,17 @@ public class LevelManager : MonoBehaviour
     // A Dictonary of Line -> Dictionary of Vector3 -> Intersection Data
     private Dictionary<LineController, Dictionary<Vector3, List<IntersectionData>>> _intersections;
 
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         Lines = LineParent.GetComponentsInChildren<LineController>();
@@ -76,6 +100,25 @@ public class LevelManager : MonoBehaviour
             SetPlayer(_player);
         }
 
+        _cameraBounds.SetPath(0, new Vector2[] {
+            new Vector2(RoomLeftSide, RoomTopSide),
+            new Vector2(RoomLeftSide, RoomBottomSide),
+            new Vector2(RoomRightSide, RoomBottomSide),
+            new Vector2(RoomRightSide, RoomTopSide)
+        });
+
+        if(RoomHeight != 1 || RoomWidth != 1)
+        {
+            _inUseCamera = _dynamicVirtualCamera;
+        }
+        else
+        {
+            _inUseCamera = _staticVirtualCamera;
+        }
+
+        _inUseCamera.gameObject.SetActive(true);
+        _inUseCamera.Follow = _player.transform;
+
         // TODO: Revisit this, not sure if there's a better way to do this
         new List<LineMovementController>(FindObjectsOfType<LineMovementController>()).ForEach(controller => controller.SetLevelManager(this));
     }
@@ -108,6 +151,27 @@ public class LevelManager : MonoBehaviour
 
     public void HandlePlayerDeath()
     {
+        Debug.Log("Player has died");
+        StartCoroutine(PlayerDeathCoroutine());
+    }
+
+    private IEnumerator PlayerDeathCoroutine()
+    {
+        List<ExplodeOnDeath> thingsToExplode = FindObjectsOfType<ExplodeOnDeath>().OrderBy(x => x.Priority).ToList();
+
+        Debug.Log($"Found {thingsToExplode.Count} things to explode");
+
+        foreach(ExplodeOnDeath exploder in thingsToExplode)
+        {
+            Debug.Log($"Exploding {exploder.transform.parent.gameObject.name}");
+            exploder.TriggerEffect();
+
+            while (exploder.IsPlaying())
+            {
+                yield return null;
+            }
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

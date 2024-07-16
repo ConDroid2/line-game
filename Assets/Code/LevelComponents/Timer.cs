@@ -12,6 +12,8 @@ public class Timer : MonoBehaviour
     private float _timeSinceStart;
     private bool _running = false;
 
+    private bool _paused = false;
+
     // Events
     public UnityEvent OnTimerEnd;
     public UnityEvent<float> OnPercentDoneChange;
@@ -29,7 +31,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (_running)
+        if (_running && _paused == false)
         {
             _timeSinceStart += Time.deltaTime;
 
@@ -52,5 +54,26 @@ public class Timer : MonoBehaviour
             _timeSinceStart = 0f;
             _running = true;
         }
+    }
+
+    public void PauseTimer()
+    {
+        _paused = true;
+    }
+
+    public void UnPauseTimer()
+    {
+        _paused = false;
+    }
+
+    public void StopTimerWithoutSendingEvent()
+    {
+        _running = false;
+    }
+
+    public void StopTimerAndSendEvent()
+    {
+        _running = false;
+        OnTimerEnd.Invoke();
     }
 }
