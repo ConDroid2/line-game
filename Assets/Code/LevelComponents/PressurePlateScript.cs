@@ -15,6 +15,13 @@ public class PressurePlateScript : MonoBehaviour
     [Header("Setting")]
     [SerializeField] private bool _isHeavy = false;
 
+    [Header("References")]
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Sprite _regularActive;
+    [SerializeField] private Sprite _regularInactive;
+    [SerializeField] private Sprite _heavyActive;
+    [SerializeField] private Sprite _heavyInactive;
+
 
     // Events
     public UnityEvent OnPressed;
@@ -38,14 +45,12 @@ public class PressurePlateScript : MonoBehaviour
         // If not active, but should be, activate
         if(_isActivated == false && shouldBeActive == true)
         {
-            OnPressed.Invoke();
-            _isActivated = true;
+            Activate();
         }
         // If active but shouldn't be, deactivate
         else if(_isActivated == true && shouldBeActive == false)
         {
-            OnDeactivated.Invoke();
-            _isActivated = false;
+            Deactivate();
         }
 
     }
@@ -70,4 +75,32 @@ public class PressurePlateScript : MonoBehaviour
     {
         return thisCollider.bounds.Contains(other.bounds.max) && thisCollider.bounds.Contains(other.bounds.min);
     }
+
+    private void Activate()
+    {
+        OnPressed.Invoke();
+        _isActivated = true;
+
+        _spriteRenderer.sprite = _isHeavy == false ? _regularActive : _heavyActive;
+    }
+
+    private void Deactivate()
+    {
+        OnDeactivated.Invoke();
+        _isActivated = false;
+
+        _spriteRenderer.sprite = _isHeavy == false ? _regularInactive : _heavyInactive;
+    }
+
+    public void SetCorrectSpriteInEditor()
+    {
+        _spriteRenderer.sprite = _isHeavy == false ? _regularInactive : _heavyInactive;
+    }
+
+#if UNITY_EDITOR
+    //private void OnValidate()
+    //{
+    //    _spriteRenderer.sprite = _isHeavy == false ? _regularInactive : _heavyInactive;
+    //}
+#endif
 }

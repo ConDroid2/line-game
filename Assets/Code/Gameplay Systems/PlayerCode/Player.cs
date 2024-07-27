@@ -98,7 +98,6 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("Disable called");
         SceneManager.sceneLoaded -= HandleSceneLoaded;
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
         _baseControls.PlayerMap.AimMode.performed -= AimModeStatusChanged;
