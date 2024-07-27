@@ -171,18 +171,18 @@ public class Player : MonoBehaviour
 
     public void AimModeStatusChanged(InputAction.CallbackContext context)
     {
-        // Gate for aiming, need at least one aim ability
-        if (_shootUnlocked == false && _grappleUnlocked == false && GameManager.Instance != null) return;
+        //// Gate for aiming, need at least one aim ability
+        //if (_shootUnlocked == false && _grappleUnlocked == false && GameManager.Instance != null) return;
 
-        if(context.phase == InputActionPhase.Performed)
-        {
-            TurnOnAimMode();
-        }
+        //if(context.phase == InputActionPhase.Performed)
+        //{
+        //    TurnOnAimMode();
+        //}
 
-        else if(context.phase == InputActionPhase.Canceled)
-        {
-            TurnOffAimMode();
-        }
+        //else if(context.phase == InputActionPhase.Canceled)
+        //{
+        //    TurnOffAimMode();
+        //}
     }
 
     public void HandleFirePerformed(InputAction.CallbackContext context)
