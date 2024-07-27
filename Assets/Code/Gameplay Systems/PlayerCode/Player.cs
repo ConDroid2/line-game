@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float Speed;
     public float SprintingSpeed;
     public float RoomStartInvulnerability;
+    public float DelayAfterShoot = 0.5f;
 
     private bool _allowMoving = true;
     [SerializeField] private bool _aimingMode = false;
@@ -190,9 +191,14 @@ public class Player : MonoBehaviour
 
         if(context.phase == InputActionPhase.Performed)
         {
+            TurnOnAimMode();
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
             if (_aimingMode)
             {
                 _projectileLauncher.Fire();
+                StartCoroutine(FinishFire());
             }
         }        
     }
@@ -237,6 +243,7 @@ public class Player : MonoBehaviour
         MovementController.SetNewLine(newLine, distanceAlongNewLine);
     }
 
+    /** Coroutines **/
     public IEnumerator MakeInvulnerable(float invulnerabilityTime)
     {
         _invulnerable = true;
@@ -249,6 +256,12 @@ public class Player : MonoBehaviour
         }
 
         _invulnerable = false;
+    }
+
+    public IEnumerator FinishFire()
+    {
+        yield return new WaitForSeconds(DelayAfterShoot);
+        TurnOffAimMode();
     }
 
     public void GetKilled(Enums.KillType killType)
