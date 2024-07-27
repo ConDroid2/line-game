@@ -12,6 +12,9 @@ public class PressurePlateScript : MonoBehaviour
 
     private bool _isActivated = false;
 
+    [Header("Setting")]
+    [SerializeField] private bool _isHeavy = false;
+
 
     // Events
     public UnityEvent OnPressed;
@@ -24,6 +27,11 @@ public class PressurePlateScript : MonoBehaviour
 
         foreach(Collider2D collider in _collidersInTrigger)
         {
+            if (_isHeavy && collider.CompareTag("Pushable") == false) 
+            { 
+                continue; 
+            }
+
             shouldBeActive |= CheckIfEncapsulated(collider);
         }
 
