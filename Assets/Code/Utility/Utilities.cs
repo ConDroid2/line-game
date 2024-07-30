@@ -93,6 +93,15 @@ public static class Utilities
         }
     }
 
+    public static bool IsPointOnLine(Vector3 a, Vector3 b, Vector3 p)
+    {
+        float ab = Vector3.Distance(a, b);
+        float ap = Vector3.Distance(a, p);
+        float bp = Vector3.Distance(b, p);
+
+        return ab == ap + bp;
+    }
+
     public static Enums.SlopeType DetermineSlopeType(float x, float y)
     {
         Enums.SlopeType type = Enums.SlopeType.Horizontal;

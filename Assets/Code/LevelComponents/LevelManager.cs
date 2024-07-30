@@ -253,6 +253,9 @@ public class LevelManager : MonoBehaviour
         // Loop through each line
         foreach (LineController currentLine in Lines)
         {
+            // We don't actually need intersection data if nothing is on the line
+            if (currentLine.HasObjectsOn == false) continue;
+
             Dictionary<Vector3, List<IntersectionData>> innerDictionary = new Dictionary<Vector3, List<IntersectionData>>();
 
             // Loop through each line

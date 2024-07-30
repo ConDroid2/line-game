@@ -31,6 +31,8 @@ public class LineController : MonoBehaviour
 
     public List<OnLineController> OnLineControllers = new List<OnLineController>();
 
+    public bool HasObjectsOn => OnLineControllers.Count > 0;
+
     public bool Active { get; private set; }
 
     public UnityEvent OnObjectAddedToLine;
