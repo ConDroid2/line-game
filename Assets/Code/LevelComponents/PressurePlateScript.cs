@@ -82,6 +82,14 @@ public class PressurePlateScript : MonoBehaviour
         _isActivated = true;
 
         _spriteRenderer.sprite = _isHeavy == false ? _regularActive : _heavyActive;
+
+        foreach(Collider2D collider in _collidersInTrigger)
+        {
+            if (collider.CompareTag("Pushable"))
+            {
+                collider.GetComponentInChildren<SpriteSwapper>().SwapSprite(1);
+            }
+        }
     }
 
     private void Deactivate()
@@ -90,6 +98,14 @@ public class PressurePlateScript : MonoBehaviour
         _isActivated = false;
 
         _spriteRenderer.sprite = _isHeavy == false ? _regularInactive : _heavyInactive;
+
+        foreach (Collider2D collider in _collidersInTrigger)
+        {
+            if (collider.CompareTag("Pushable"))
+            {
+                collider.GetComponentInChildren<SpriteSwapper>().SwapSprite(0);
+            }
+        }
     }
 
     public void SetCorrectSpriteInEditor()
