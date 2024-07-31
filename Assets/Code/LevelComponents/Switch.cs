@@ -11,6 +11,8 @@ public class Switch : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private Color _deactivatedColor;
     [SerializeField] private Color _activatedColor;
+    [SerializeField] private Sprite _deactivatedSprite;
+    [SerializeField] private Sprite _activatedSprite;
     public Enums.SwitchType SwitchType = Enums.SwitchType.Default;
 
     [Header("Events")]
@@ -22,7 +24,7 @@ public class Switch : MonoBehaviour
 
     private void Awake()
     {
-        _sprite.color = _deactivatedColor;
+        _sprite.sprite = _deactivatedSprite;
     }
 
     // Activate the Switch based on conditions
@@ -31,7 +33,7 @@ public class Switch : MonoBehaviour
         if (_active == false)
         {
             _active = true;
-            _sprite.color = _activatedColor;
+            _sprite.sprite = _activatedSprite;
             OnActivated.Invoke();
         }
         else if(_active == true && SwitchType == Enums.SwitchType.Toggle)
@@ -46,7 +48,7 @@ public class Switch : MonoBehaviour
         if (_active == true)
         {
             _active = false;
-            _sprite.color = _deactivatedColor;
+            _sprite.sprite = _deactivatedSprite;
             OnDeactivated.Invoke();
         }
     }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2842082322313075997}
   - component: {fileID: 2842082322313075998}
-  - component: {fileID: 2842082322313075999}
   - component: {fileID: 2842082322313075995}
+  - component: {fileID: 4953512772770655923}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -50,38 +50,15 @@ MonoBehaviour:
   _sprite: {fileID: 2842082322452561357}
   _deactivatedColor: {r: 0.6415094, g: 0, b: 0, a: 1}
   _activatedColor: {r: 0, g: 0.6037736, b: 0.18628377, a: 1}
+  _deactivatedSprite: {fileID: 21300000, guid: d0995c1be044f2748900396404303f52, type: 3}
+  _activatedSprite: {fileID: 21300000, guid: ee6dc9e6660122a45b7eebf2b78c2f87, type: 3}
+  SwitchType: 2
   OnActivated:
     m_PersistentCalls:
       m_Calls: []
   OnDeactivated:
     m_PersistentCalls:
       m_Calls: []
---- !u!61 &2842082322313075999
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2842082322313075984}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &2842082322313075995
 Rigidbody2D:
   serializedVersion: 4
@@ -103,6 +80,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &4953512772770655923
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842082322313075984}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &2842082322452561358
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +107,7 @@ GameObject:
   - component: {fileID: 2842082322452561356}
   - component: {fileID: 2842082322452561357}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +122,7 @@ Transform:
   m_GameObject: {fileID: 2842082322452561358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2842082322313075997}
@@ -176,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee6dc9e6660122a45b7eebf2b78c2f87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
