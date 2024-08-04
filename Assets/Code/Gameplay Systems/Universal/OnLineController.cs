@@ -70,8 +70,12 @@ public class OnLineController : MonoBehaviour
         }
 
         CurrentLine = newLine;
-        CurrentLine.AddOnLine(this);
-        SetDistanceOnLine(distanceOnLine);
+
+        if (CurrentLine != null)
+        {
+            CurrentLine.AddOnLine(this);
+            SetDistanceOnLine(distanceOnLine);
+        }
     }
 
     public void SetLineInEvent(LineController newLine)
