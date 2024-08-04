@@ -145,6 +145,7 @@ public class Player : MonoBehaviour
         else if (_aimingMode)
         {
             _aimController.SetAim(_inputVector);
+            _grapplingHook.SetPreview();
         }
 
         
@@ -297,12 +298,14 @@ public class Player : MonoBehaviour
     public void HandleGrappleFinished()
     {
         _allowInput = true;
+        TurnOffAimMode();
 
-        if(_bufferTurnOffAimMode == true)
-        {
-            _bufferTurnOffAimMode = false;
-            TurnOffAimMode();
-        }
+        //if(_bufferTurnOffAimMode == true)
+        //{
+        //    _bufferTurnOffAimMode = false;
+        //    Debug.Log("Turning off aim mode");
+        //    TurnOffAimMode();
+        //}
     }
 
     public void TurnOnAimMode()

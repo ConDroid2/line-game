@@ -5,6 +5,8 @@ using UnityEngine;
 public class GrapplingHook : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private LineRenderer _previewLine;
+    [SerializeField] private OnLineController _playerPreview;
     [SerializeField] private Collider2D _playerCollider;
     [SerializeField] private LayerMask _collisionMask;
 
@@ -29,32 +31,28 @@ public class GrapplingHook : MonoBehaviour
 
     public void AttemptGrapple()
     {
-        if (_performGrapple == false)
+        if (_performGrapple == false && _moveTo != null && _moveTo.Line != null)
         {
-            Vector3 lineStart = transform.position;
-            Vector3 lineEnd = transform.position + (transform.up.normalized * _grappleDistance);
 
-            // Make level manager static
-            _moveTo = Player.Instance.MovementController.LevelManager.FindClosestIntersectionFromLine(lineStart, lineEnd);
-
-            if(_moveTo == null)
-            {
-                // Didn't fine a line
-                Debug.Log("Did not find a line");
-                _moveTo = new IntersectionData(null, 0f, lineEnd, false);
-            }
-
-            // Check collisions
-            CheckAndHandleCollisions();
+            _previewLine.SetPosition(0, transform.position);
+            _previewLine.SetPosition(1, transform.position);
 
             _startPosition = Player.Instance.transform.position;
             _performGrapple = true;
-            _drawingLine = true;
+            //_drawingLine = true;
+            _movingPlayer = true;
 
-            if(LevelManager.Instance != null)
+            _playerPreview.SetLine(null);
+            _playerPreview.gameObject.SetActive(false);
+
+            if (LevelManager.Instance != null)
             {
                 //LevelManager.Instance.ObjectMovementTimeScale = 0f;
             }
+        }
+        else if(_performGrapple == false && (_moveTo == null || _moveTo.Line == null))
+        {
+            FinishGrapple();
         }
     }
 
@@ -65,47 +63,24 @@ public class GrapplingHook : MonoBehaviour
         
 
 
-        // draw line
-        if(_drawingLine)
-        {
-            _timeDrawingLine += Time.deltaTime;
-            float journeyRatio = _timeDrawingLine / _grappleShootTime;
-
-            // draw line based on lerp between transform.position and intersection world position
-            Vector3 grapplePosition = Vector3.Lerp(_startPosition, _moveTo.IntersectionWorldSpace, _grappleShootCurve.Evaluate(journeyRatio));
-            _lineRenderer.SetPosition(0, _startPosition);
-            _lineRenderer.SetPosition(1, grapplePosition);
-
-            if(_timeDrawingLine >= _grappleShootTime)
-            {
-                _timeDrawingLine = 0f;
-                _drawingLine = false;
-
-                if(_moveTo.Line == null)
-                {
-                    StartCoroutine(WaitForAMoment());
-                }
-                else
-                {
-                    _movingPlayer = true;
-                }   
-            }
-        }
-
         if (_movingPlayer)
         {
+            
+
             // In the strange case that you move to a new level mid grapple (from conveyor lines usually), need to end grapple
             if (_moveTo.Line == null)
             {
                 FinishGrapple();
             }
 
+            _lineRenderer.SetPosition(1, _moveTo.IntersectionWorldSpace);
+
             _timeMovingPlayer += Time.deltaTime;
 
             float journeyRatio = _timeMovingPlayer / _grapplePullTime;
 
             Player.Instance.transform.position = Vector3.Lerp(_startPosition, _moveTo.IntersectionWorldSpace, _grapplePullCurve.Evaluate(journeyRatio));
-            _lineRenderer.SetPosition(0, Player.Instance.transform.position);
+            _lineRenderer.SetPosition(0, _startPosition);
 
             if(_timeMovingPlayer >= _grapplePullTime)
             {
@@ -138,6 +113,7 @@ public class GrapplingHook : MonoBehaviour
         _performGrapple = false;
         _lineRenderer.SetPosition(0, transform.position);
         _lineRenderer.SetPosition(1, transform.position);
+        
 
         if (LevelManager.Instance != null)
         {
@@ -145,6 +121,43 @@ public class GrapplingHook : MonoBehaviour
         }
 
         OnGrappleFinished?.Invoke();
+    }
+
+    public void SetPreview()
+    {
+        if (_performGrapple == true) return;
+
+        Vector3 lineStart = transform.position;
+        Vector3 lineEnd = transform.position + (transform.up.normalized * _grappleDistance);
+
+        _moveTo = Player.Instance.MovementController.LevelManager.FindClosestIntersectionFromLine(lineStart, lineEnd);
+
+        if(_moveTo != null)
+        {
+            CheckAndHandleCollisions();
+            lineEnd = _moveTo.IntersectionWorldSpace;
+
+            if (_moveTo.Line != null)
+            {
+                _playerPreview.gameObject.SetActive(true);
+                _playerPreview.SetLine(_moveTo.Line, _moveTo.DistanceAlongLine);
+            }
+            else
+            {
+                _playerPreview.SetLine(null);
+                _playerPreview.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            _playerPreview.SetLine(null);
+            _playerPreview.gameObject.SetActive(false);
+        }
+
+        
+
+        _previewLine.SetPosition(0, lineStart);
+        _previewLine.SetPosition(1, lineEnd);
     }
 
     private IEnumerator WaitForAMoment()
