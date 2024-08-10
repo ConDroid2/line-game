@@ -11,9 +11,10 @@ public class GrapplingHook : MonoBehaviour
     [SerializeField] private LayerMask _collisionMask;
 
     [SerializeField] private float _grappleDistance;
+    [SerializeField] private float _maxGrapplePullTime;
     [SerializeField] private float _grappleShootTime;
     [SerializeField] private AnimationCurve _grappleShootCurve;
-    [SerializeField] private float _grapplePullTime;
+    private float _grapplePullTime;
     [SerializeField] private AnimationCurve _grapplePullCurve;
 
     private bool _performGrapple = false;
@@ -45,10 +46,7 @@ public class GrapplingHook : MonoBehaviour
             _playerPreview.SetLine(null);
             _playerPreview.gameObject.SetActive(false);
 
-            if (LevelManager.Instance != null)
-            {
-                //LevelManager.Instance.ObjectMovementTimeScale = 0f;
-            }
+            _grapplePullTime = _maxGrapplePullTime * (Vector3.Distance(_startPosition, _moveTo.IntersectionWorldSpace) / _grappleDistance);
         }
         else if(_performGrapple == false && (_moveTo == null || _moveTo.Line == null))
         {
