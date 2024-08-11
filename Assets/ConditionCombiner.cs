@@ -104,7 +104,7 @@ public class ConditionCombiner : MonoBehaviour
     void Awake()
     {
         conditions = new bool[numberOfConditionToCheck].Select(x => false).ToArray();
-        Debug.Log("initial state " + conditions.ToString());
+        // Debug.Log("initial state " + conditions.ToString());
     }
 
     // Update is called once per frame

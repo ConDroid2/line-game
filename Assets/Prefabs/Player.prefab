@@ -521,7 +521,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4254808483101165801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b823df1db247db04496cf1a290834ef7, type: 3}
   m_Name: 
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4254808483101165801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e0816611587774469aa19a232ce54cd, type: 3}
   m_Name: 
@@ -589,7 +589,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _grapplePullTime: 0.2
   _grapplePullCurve:
     serializedVersion: 2
     m_Curve:
@@ -758,6 +757,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aimingSpeed: 4
+  _abilityMappings:
+  - ability: 1
+    component: {fileID: 8863722294546724570}
+  - ability: 0
+    component: {fileID: 3224782062748459162}
 --- !u!1 &4829016081361909144
 GameObject:
   m_ObjectHideFlags: 0

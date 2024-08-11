@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
 
     public static Player Instance = null;
 
+    public enum AbilityEnum { Grapple, Shoot, Default };
+
     private void Awake()
     {
         if(Instance == null)
@@ -145,7 +147,8 @@ public class Player : MonoBehaviour
         else if (_aimingMode)
         {
             _aimController.SetAim(_inputVector);
-            _grapplingHook.SetPreview();
+            if(_grapplingHook.enabled)
+                _grapplingHook.SetPreview();
         }
 
         
@@ -191,7 +194,7 @@ public class Player : MonoBehaviour
 
         if(context.phase == InputActionPhase.Performed)
         {
-            TurnOnAimMode();
+            TurnOnAimMode(AbilityEnum.Shoot);
         }
         else if(context.phase == InputActionPhase.Canceled)
         {
@@ -209,7 +212,7 @@ public class Player : MonoBehaviour
 
         if (context.phase == InputActionPhase.Performed)
         {
-            TurnOnAimMode();
+            TurnOnAimMode(AbilityEnum.Grapple);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
@@ -308,11 +311,11 @@ public class Player : MonoBehaviour
         //}
     }
 
-    public void TurnOnAimMode()
+    public void TurnOnAimMode(AbilityEnum abilityUsed)
     {
         _aimingMode = true;
         _allowMoving = false;
-        _aimController.Activate();
+        _aimController.Activate(abilityUsed);
 
         if (_bufferTurnOffAimMode == true)
         {

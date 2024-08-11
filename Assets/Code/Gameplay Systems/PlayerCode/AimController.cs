@@ -5,6 +5,7 @@ using UnityEngine;
 public class AimController : MonoBehaviour
 {
     [SerializeField] private float _aimingSpeed = 4f;
+    [SerializeField] private List<AbilityComponentMapping> _abilityMappings;
     private bool _active = false;
 
     public void SetAim(Vector2 aimVector)
@@ -25,15 +26,34 @@ public class AimController : MonoBehaviour
         transform.up = newUp;
     }
 
-    public void Activate()
+    public void Activate(Player.AbilityEnum abilityUsed)
     {
+        foreach(AbilityComponentMapping mapping in _abilityMappings)
+        {
+            mapping.component.enabled = false;
+            if(mapping.ability == abilityUsed)
+            {
+                mapping.component.enabled = true;
+            }
+        }
         _active = true;
         gameObject.SetActive(true);
     }
 
     public void Deactivate()
     {
+        foreach(AbilityComponentMapping mapping in _abilityMappings)
+        {
+            mapping.component.enabled = false;
+        }
         _active = false;
         gameObject.SetActive(false);
+    }
+
+    [System.Serializable]
+    public struct AbilityComponentMapping
+    {
+        public Player.AbilityEnum ability;
+        public MonoBehaviour component;
     }
 }
