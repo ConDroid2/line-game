@@ -499,6 +499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActivationLine3 head
       objectReference: {fileID: 0}
+    - target: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
+      propertyPath: _startActivated
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -602,7 +606,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &338985733
 MonoBehaviour:
@@ -672,6 +676,10 @@ PrefabInstance:
     - target: {fileID: 2036272058754593905, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Name
       value: ActivationLine4 head
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
+      propertyPath: _startActivated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
@@ -756,6 +764,10 @@ PrefabInstance:
     - target: {fileID: 2036272058754593905, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Name
       value: ActivationLine3 stem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
+      propertyPath: _startActivated
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
@@ -1146,6 +1158,7 @@ GameObject:
   - component: {fileID: 599924634}
   - component: {fileID: 599924637}
   - component: {fileID: 599924636}
+  - component: {fileID: 599924638}
   m_Layer: 0
   m_Name: FlashingArrowsStuff
   m_TagString: Untagged
@@ -1160,13 +1173,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599924633}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646442bde03b1d146b04e56d0dd56d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _flagName: RotateUnlocked
-  _onlyCheckOnStart: 1
+  _onlyCheckOnStart: 0
   _readFlagOnEnable: 0
   OnIfTrue:
     m_PersistentCalls:
@@ -1237,12 +1250,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f63f7b0c4ac47428c14826b518d6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 1
-  _startOnRoomStart: 0
+  _time: 0.5
+  _startOnRoomStart: 1
   OnTimerEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 599924637}
+      - m_Target: {fileID: 599924638}
         m_TargetAssemblyTypeName: Timer, Assembly-CSharp
         m_MethodName: StartTimer
         m_Mode: 1
@@ -1288,7 +1301,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 352432557}
         m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
@@ -1300,7 +1313,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1002130639}
         m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
@@ -1312,7 +1325,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 526791757}
         m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
@@ -1324,11 +1337,8 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
-  OnPercentDoneChange:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 713141143}
         m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
         m_MethodName: SetActivated
@@ -1387,7 +1397,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1832685388}
         m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
@@ -1399,8 +1409,11 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
+  OnPercentDoneChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &599924637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f63f7b0c4ac47428c14826b518d6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 1
+  _time: 0.5
   _startOnRoomStart: 0
   OnTimerEnd:
     m_PersistentCalls:
@@ -1464,6 +1477,182 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 321369724}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1408164589}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1832685388}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 239850950}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 225902410}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1321942423}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 352432557}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1002130639}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 526791757}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPercentDoneChange:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &599924638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599924633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f63f7b0c4ac47428c14826b518d6eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _time: 0.5
+  _startOnRoomStart: 0
+  OnTimerEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 599924637}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 713141143}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 691081858}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 380221190}
+        m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
+        m_MethodName: SetActivated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 321369724}
@@ -1488,7 +1677,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1832685388}
         m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
@@ -1500,11 +1689,8 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
-  OnPercentDoneChange:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 239850950}
         m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
         m_MethodName: SetActivated
@@ -1563,7 +1749,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 526791757}
         m_TargetAssemblyTypeName: ActivationIndicatorLine, Assembly-CSharp
@@ -1575,8 +1761,11 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
+  OnPercentDoneChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &691081857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1615,6 +1804,10 @@ PrefabInstance:
     - target: {fileID: 2036272058754593905, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Name
       value: ActivationLine1 head
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
+      propertyPath: _startActivated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
@@ -1699,6 +1892,10 @@ PrefabInstance:
     - target: {fileID: 2036272058754593905, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Name
       value: ActivationLine1 stem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
+      propertyPath: _startActivated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
@@ -2254,6 +2451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActivationLine4 stem
       objectReference: {fileID: 0}
+    - target: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
+      propertyPath: _startActivated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2337,6 +2538,10 @@ PrefabInstance:
     - target: {fileID: 2036272058754593905, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Name
       value: ActivationLine5 stem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
+      propertyPath: _startActivated
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
@@ -2589,6 +2794,10 @@ PrefabInstance:
     - target: {fileID: 2036272058754593905, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Name
       value: ActivationLine5 head
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
+      propertyPath: _startActivated
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
@@ -3221,7 +3430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476374824417874868, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3476374824417874868, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
       propertyPath: m_AnchorMax.x
