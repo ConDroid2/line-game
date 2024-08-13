@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flagName: W2SimpleShootABlockSolved
   _onlyCheckOnStart: 1
+  _readFlagOnEnable: 0
   OnIfTrue:
     m_PersistentCalls:
       m_Calls:
@@ -1610,6 +1611,10 @@ PrefabInstance:
       propertyPath: CurrentLine
       value: 
       objectReference: {fileID: 461807119}
+    - target: {fileID: 1829404865011725948, guid: 68948d3dee054a94ba2e2c247ec9fc08, type: 3}
+      propertyPath: _fixDistanceOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3126619937473309833, guid: 68948d3dee054a94ba2e2c247ec9fc08, type: 3}
       propertyPath: m_Name
       value: PushableBlock
@@ -1620,7 +1625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3126619937473309836, guid: 68948d3dee054a94ba2e2c247ec9fc08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3126619937473309836, guid: 68948d3dee054a94ba2e2c247ec9fc08, type: 3}
       propertyPath: m_LocalPosition.y
