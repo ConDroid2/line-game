@@ -58,10 +58,10 @@ public class LineMovementController : MonoBehaviour
         bool willMove = true;
 
         // Calculate the new distance on line
-        _logger.DebugLog($"Current distance on line: {OnLineController.DistanceOnLine} will be modified by {distanceToMove}");
+        // _logger.DebugLog($"Current distance on line: {OnLineController.DistanceOnLine} will be modified by {distanceToMove}");
         float newDistanceOnLine = Mathf.Clamp01(OnLineController.DistanceOnLine + distanceToMove);
         Vector3 attemptedNewPosition = OnLineController.CheckNewPosition(newDistanceOnLine);
-        _logger.DebugLog($"Current position vs attempted position: {transform.position} vs {attemptedNewPosition}");
+        // _logger.DebugLog($"Current position vs attempted position: {transform.position} vs {attemptedNewPosition}");
 
         // Check if our new position is actually new
         willMove &= transform.position != attemptedNewPosition;
@@ -169,7 +169,7 @@ public class LineMovementController : MonoBehaviour
             // Skip intersection if the point is at the end of the line in the direction we are moving in (if we are moving right, don't put us on the right endpoint of a new line)
             if (goingPositive && intersection.DistanceAlongLine == 1 || goingNegative && intersection.DistanceAlongLine == 0)
             {
-                //Debug.Log($"Skipping {intersection.Line.name}, {inputAngleAgainstLine} + {goingPositive}/{goingNegative}");
+                // Debug.Log($"Skipping {intersection.Line.name}, {inputAngleAgainstLine} + {goingPositive}/{goingNegative}");
                 continue;
             }
 
@@ -185,8 +185,7 @@ public class LineMovementController : MonoBehaviour
             float angleAgainstPositiveSlope = Vector3.Angle(inputVector.normalized, intersection.Line.Slope);
             float angleAgainstNegativeSlope = Vector3.Angle(inputVector.normalized, intersection.Line.Slope * -1);
 
-            float angle = angleAgainstPositiveSlope < angleAgainstNegativeSlope ? angleAgainstPositiveSlope : angleAgainstNegativeSlope; 
-
+            float angle = angleAgainstPositiveSlope < angleAgainstNegativeSlope ? angleAgainstPositiveSlope : angleAgainstNegativeSlope;
 
             bool canMoveToNewLine = angleAgainstPositiveSlope <= _lineSwapAngleTolerance || angleAgainstNegativeSlope <= _lineSwapAngleTolerance;
 
@@ -301,7 +300,7 @@ public class LineMovementController : MonoBehaviour
                 otherController.SetIgnoreForces(true);
 
                 // Try to move pushable
-                _logger.DebugLog($"Would be pushing {collider.gameObject.name}");
+                // _logger.DebugLog($"Would be pushing {collider.gameObject.name}");
                 return otherController.MoveDirectly(direction, distanceToMove);
             }
         }
@@ -309,7 +308,7 @@ public class LineMovementController : MonoBehaviour
         // If we don't find any pushables, reset if needed, then we can move
         if(_objectBeingPushed != null)
         {
-            _logger.DebugLog($"Stopped pushing {_objectBeingPushed.gameObject.name}");
+            // _logger.DebugLog($"Stopped pushing {_objectBeingPushed.gameObject.name}");
             _objectBeingPushed.SetIgnoreForces(false);
             _objectBeingPushed = null;
         }
@@ -329,11 +328,11 @@ public class LineMovementController : MonoBehaviour
         {
             if(validateForce == true)
             {
-                _logger.DebugLog($"Is new force valid? {ValidateForce(newForce)}");
+                // _logger.DebugLog($"Is new force valid? {ValidateForce(newForce)}");
                 if (ValidateForce(newForce) == false) return false;
             }
 
-            _logger.DebugLog($"Adding new force");
+            // _logger.DebugLog($"Adding new force");
             _activeForces.Add(newForce);
             return true;
         }
@@ -357,7 +356,7 @@ public class LineMovementController : MonoBehaviour
 
         combinedDirection.Normalize();
 
-        _logger.DebugLog($"Combined direcetion: {combinedDirection}");
+        // _logger.DebugLog($"Combined direcetion: {combinedDirection}");
 
         if (combinedDirection == Vector2.zero)
         {
@@ -377,7 +376,7 @@ public class LineMovementController : MonoBehaviour
             // Calculate how much this would move the player
             // Apply to newDistanceOnLine
             float angleBetweenForceAndSlope = Vector3.Angle(force.Direction, currentLine.Slope * currentLine.DirectionModifier);
-            _logger.DebugLog($"Current line slope: {currentLine.Slope}");
+            // _logger.DebugLog($"Current line slope: {currentLine.Slope}");
 
 
             // Speed modified based on current line length
@@ -398,8 +397,8 @@ public class LineMovementController : MonoBehaviour
                 OnTryToMoveInDirection?.Invoke(-1);
             }
 
-            _logger.DebugLog($"Angle between force and slope: {angleBetweenForceAndSlope}");
-            _logger.DebugLog($"Distance delta this frame: {distanceToMove}");
+            //_logger.DebugLog($"Angle between force and slope: {angleBetweenForceAndSlope}");
+            //_logger.DebugLog($"Distance delta this frame: {distanceToMove}");
 
             combinedDirection += force.Direction;
         }
@@ -409,7 +408,7 @@ public class LineMovementController : MonoBehaviour
         if (!moved)
         {
             // If we didn't move, get rid of all forces
-            _logger.DebugLog("We did not move, clearing forces");
+            // _logger.DebugLog("We did not move, clearing forces");
             _activeForces.Clear();
         }
 
@@ -420,8 +419,8 @@ public class LineMovementController : MonoBehaviour
     // Apply drag to all forces, then get rid of any that meet conditions
     private void CleanupForces()
     {
-        _logger.DebugLog("Removing Forces");
-        _logger.DebugLog($"Number of forces before cleanup = {_activeForces.Count}");
+        //_logger.DebugLog("Removing Forces");
+        //_logger.DebugLog($"Number of forces before cleanup = {_activeForces.Count}");
         _activeForces.ForEach(force => force.ApplyDrag());
         // Loop through each force, remove if condition is met
         _activeForces.RemoveAll(force => force.Magnitude < 0.01f);
@@ -429,7 +428,7 @@ public class LineMovementController : MonoBehaviour
         // Need to also remove forces that are trying to push the object in a way it can't move
         _activeForces.RemoveAll(force => ValidateForce(force) == false);
 
-        _logger.DebugLog($"Number of forces after cleanup = {_activeForces.Count}");
+        // _logger.DebugLog($"Number of forces after cleanup = {_activeForces.Count}");
     }
 
 
@@ -439,14 +438,14 @@ public class LineMovementController : MonoBehaviour
         float angleBetweenForceAndSlope = Vector2.Angle(force.Direction, OnLineController.CurrentLine.Slope);
         bool isValid = true;
 
-        if (angleBetweenForceAndSlope < 90f)
-        {
-            isValid &= OnLineController.DistanceOnLine + _edgeOfLineTolerance < 1;
-        }
-        else if (angleBetweenForceAndSlope > 90f)
-        {
-            isValid &= OnLineController.DistanceOnLine - _edgeOfLineTolerance > 0;
-        }
+        //if (angleBetweenForceAndSlope < 90f)
+        //{
+        //    isValid &= OnLineController.DistanceOnLine + _edgeOfLineTolerance < 1;
+        //}
+        //else if (angleBetweenForceAndSlope > 90f)
+        //{
+        //    isValid &= OnLineController.DistanceOnLine - _edgeOfLineTolerance > 0;
+        //}
 
         return isValid;
     }
