@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class KeyHole : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Animator _animator;
+
+    [Header("Events")]
     public UnityEvent OnUnlocked;
     private bool _unlocked = false;
 
@@ -20,6 +24,7 @@ public class KeyHole : MonoBehaviour
     public void UnlockKeyHole()
     {
         OnUnlocked.Invoke();
+        _animator.SetTrigger("Unlock");
         _unlocked = true;
     }
 }
