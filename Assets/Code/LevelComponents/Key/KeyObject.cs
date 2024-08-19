@@ -8,7 +8,7 @@ public class KeyObject : MonoBehaviour
 
     public bool InUse = false;
     [SerializeField] private FlagSetter _flagSetter;
-    [SerializeField] private SpringJoint2D _springJoint;
+    public SpringJoint2D SpringJoint;
     [SerializeField] private GameObject _explodeEffect;
     [SerializeField] private GameObject _visuals;
 
@@ -17,12 +17,12 @@ public class KeyObject : MonoBehaviour
 
     public void HandlePlayerInRange(Collider2D collider)
     {
-        if (_springJoint.enabled == false && collider.CompareTag("Player"))
+        if (SpringJoint.enabled == false && collider.CompareTag("Player"))
         {
             _flagSetter.SetFlag(true);
-            _springJoint.enabled = true;
+            SpringJoint.enabled = true;
             InUse = true;
-            _springJoint.connectedBody = Player.Instance.FollowPoint;
+            SpringJoint.connectedBody = Player.Instance.FollowPoint;
 
             DontDestroyOnLoad(gameObject);
 

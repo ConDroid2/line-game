@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7d545ed38e4494c8d22f89142532f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 1564563163}
+  Animator: {fileID: 0}
   triggerName: Unlock
 --- !u!1 &1078439499
 GameObject:
@@ -199,7 +199,7 @@ Transform:
   m_Children:
   - {fileID: 708340703}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1448070502
 PrefabInstance:
@@ -263,7 +263,7 @@ PrefabInstance:
     - target: {fileID: 5345637495355639671, guid: 36e9eab98d6aaf84ebb284c8f2d579f8, type: 3}
       propertyPath: OnUnlocked.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1564563163}
+      objectReference: {fileID: 0}
     - target: {fileID: 5345637495355639671, guid: 36e9eab98d6aaf84ebb284c8f2d579f8, type: 3}
       propertyPath: OnUnlocked.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -294,11 +294,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36e9eab98d6aaf84ebb284c8f2d579f8, type: 3}
---- !u!95 &1564563163 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5825427173842842270, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-  m_PrefabInstance: {fileID: 5825427172680934469}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1696555826
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,60 +378,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5825427172680934469
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5825427173140083432, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_Name
-      value: UnlockVisuals
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5825427173140083434, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2f1dc839c2fd606469a892facc583aff, type: 3}
