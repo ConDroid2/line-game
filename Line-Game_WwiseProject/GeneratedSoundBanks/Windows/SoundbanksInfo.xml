@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B6CBD692-12EC-CDBA-0932-48F63C40C91F}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{9BDD1C2D-E81C-0972-0CE0-0EE6B4D47C4F}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -21,7 +21,140 @@
 			<Busses>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
+			<StateGroups>
+				<StateGroup Id="2789638893" Name="WanderingPad">
+					<States>
+						<State Id="309159965" Name="SquareAndSawPad"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="1730641605" Name="SqurePadDryOnly"/>
+						<State Id="3547219115" Name="SquarePadWetOnly"/>
+						<State Id="3843366911" Name="SawPad"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="4286244013" Name="WanderingPercussion">
+					<States>
+						<State Id="748895195" Name="None"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+			<SwitchGroups>
+				<SwitchGroup Id="832057375" Name="zone">
+					<Switches>
+						<Switch Id="84696441" Name="f"/>
+						<Switch Id="84696442" Name="e"/>
+						<Switch Id="84696443" Name="d"/>
+						<Switch Id="84696444" Name="c"/>
+						<Switch Id="84696445" Name="b"/>
+						<Switch Id="84696446" Name="a"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="1412217666" Name="WanderingMelody">
+					<Switches>
+						<Switch Id="421134689" Name="discoMelody"/>
+						<Switch Id="443572616" Name="saw"/>
+						<Switch Id="930712164" Name="off"/>
+						<Switch Id="1818333208" Name="square"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="1421364506" Name="WanderingPulsewave">
+					<Switches>
+						<Switch Id="930712164" Name="off"/>
+						<Switch Id="3920460409" Name="disco"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="1528543176" Name="WanderingSawPad">
+					<Switches>
+						<Switch Id="930712164" Name="off"/>
+						<Switch Id="1651971902" Name="on"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="2086391272" Name="WanderingArpeggio">
+					<Switches>
+						<Switch Id="127960571" Name="squareDry"/>
+						<Switch Id="443572616" Name="saw"/>
+						<Switch Id="930712164" Name="off"/>
+						<Switch Id="3696409429" Name="squareWithDelay"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="2812095919" Name="WanderingBass">
+					<Switches>
+						<Switch Id="114451572" Name="discoBass"/>
+						<Switch Id="930712164" Name="off"/>
+						<Switch Id="2829385960" Name="arpInBass"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="3053675412" Name="WanderignSquarePad">
+					<Switches>
+						<Switch Id="930712164" Name="off"/>
+						<Switch Id="1066491206" Name="onWith8vaDouble"/>
+						<Switch Id="1651971902" Name="on"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="4286244013" Name="WanderingPercussion">
+					<Switches>
+						<Switch Id="84696443" Name="d"/>
+						<Switch Id="84696444" Name="c"/>
+						<Switch Id="84696445" Name="b"/>
+						<Switch Id="84696446" Name="a"/>
+						<Switch Id="930712164" Name="off"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="1831431028" Type="User" Language="SFX" Hash="{8C8E984D-23FF-2EB6-E877-E140DDFEF120}">
+			<ShortName>TestSoundbank</ShortName>
+			<Path>TestSoundbank.bnk</Path>
+			<Media>
+				<File Id="423153995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Wandering_3_var4.wav</ShortName>
+					<CachePath>SFX/Wandering_3_var4_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="728215597" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Wandering_3_var5.wav</ShortName>
+					<CachePath>SFX/Wandering_3_var5_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="763280467" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Wandering_3_var3.wav</ShortName>
+					<CachePath>SFX/Wandering_3_var3_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="894802120" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Wandering_3_var6.wav</ShortName>
+					<CachePath>SFX/Wandering_3_var6_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="895632474" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Wandering_3_var2.wav</ShortName>
+					<CachePath>SFX/Wandering_3_var2_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="1003634324" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Wandering_3_var7.wav</ShortName>
+					<CachePath>SFX/Wandering_3_var7_FBC78EF0.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="465142343" Name="Play_Wandering" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="423153995"/>
+						<MediaRef Id="728215597"/>
+						<MediaRef Id="763280467"/>
+						<MediaRef Id="894802120"/>
+						<MediaRef Id="895632474"/>
+						<MediaRef Id="1003634324"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="832057375" Name="zone">
+					<Switches>
+						<Switch Id="84696441" Name="f"/>
+						<Switch Id="84696442" Name="e"/>
+						<Switch Id="84696443" Name="d"/>
+						<Switch Id="84696444" Name="c"/>
+						<Switch Id="84696445" Name="b"/>
+						<Switch Id="84696446" Name="a"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{65ACD701-C344-9E7E-4B1A-A247DBAA44A3}</FileHash>
+	<FileHash>{FDF2EA62-7E3E-1AE2-3996-0E99561039AD}</FileHash>
 </SoundBanksInfo>
