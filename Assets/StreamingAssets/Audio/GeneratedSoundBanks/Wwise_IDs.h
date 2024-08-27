@@ -13,7 +13,26 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID BREAK_ALLBGSSWITCHCONTAINER = 2929608979U;
+        static const AkUniqueID MUTE_ALLBGSSWITCHCONTAINER = 2649641287U;
+        static const AkUniqueID PAUSE_ALLBGSSWITCHCONTAINER = 346159844U;
+        static const AkUniqueID PLAY_ALLBGSSWITCHCONTAINER = 3850123198U;
         static const AkUniqueID PLAY_WANDERING = 465142343U;
+        static const AkUniqueID RESET_VOICE_HIGH_PASS_FILTER_ALLBGSSWITCHCONTAINER = 2238057352U;
+        static const AkUniqueID RESET_VOICE_LOW_PASS_FILTER_ALLBGSSWITCHCONTAINER = 2103622306U;
+        static const AkUniqueID RESET_VOICE_VOLUME_ALLBGSSWITCHCONTAINER = 2795130315U;
+        static const AkUniqueID RESUME_ALLBGSSWITCHCONTAINER = 2148965273U;
+        static const AkUniqueID SEEK_ALLBGSSWITCHCONTAINER = 3083749424U;
+        static const AkUniqueID SET_VOICE_HIGH_PASS_FILTER_ALLBGSSWITCHCONTAINER = 1742419299U;
+        static const AkUniqueID SET_VOICE_LOW_PASS_FILTER_ALLBGSSWITCHCONTAINER = 998656967U;
+        static const AkUniqueID SET_VOICE_VOLUME_ALLBGSSWITCHCONTAINER = 3223721356U;
+        static const AkUniqueID STOP_ALLBGSSWITCHCONTAINER = 1661072716U;
+        static const AkUniqueID STRUGGLEBEAT1 = 1952352785U;
+        static const AkUniqueID STRUGGLEBEAT2 = 1952352786U;
+        static const AkUniqueID STRUGGLEBEAT3 = 1952352787U;
+        static const AkUniqueID STRUGGLEBEAT4 = 1952352788U;
+        static const AkUniqueID STRUGGLEBEAT5 = 1952352789U;
+        static const AkUniqueID UNMUTE_ALLBGSSWITCHCONTAINER = 777545546U;
     } // namespace EVENTS
 
     namespace STATES
@@ -42,10 +61,56 @@ namespace AK
             } // namespace STATE
         } // namespace WANDERINGPERCUSSION
 
+        namespace WORLDTRACK
+        {
+            static const AkUniqueID GROUP = 3670271356U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace WORLDTRACK
+
     } // namespace STATES
 
     namespace SWITCHES
     {
+        namespace BACKGROUNDTRACK
+        {
+            static const AkUniqueID GROUP = 693291814U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID MICROPROCESSOR_W1 = 469249852U;
+                static const AkUniqueID SOONFORGOTTEN_W3 = 4089353215U;
+                static const AkUniqueID STRUGGLE_W4 = 755231598U;
+                static const AkUniqueID UNAUTHORIZED_W2 = 1491136465U;
+                static const AkUniqueID WANDERING_W0 = 2818412452U;
+            } // namespace SWITCH
+        } // namespace BACKGROUNDTRACK
+
+        namespace UNAUTHORIZED
+        {
+            static const AkUniqueID GROUP = 235446319U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID DEFAULT = 782826392U;
+                static const AkUniqueID LIGHTSOUT = 702027158U;
+            } // namespace SWITCH
+        } // namespace UNAUTHORIZED
+
+        namespace W3_ZONE
+        {
+            static const AkUniqueID GROUP = 1936950428U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID DEPTHS = 246282379U;
+                static const AkUniqueID UPPERLEVEL = 779567659U;
+            } // namespace SWITCH
+        } // namespace W3_ZONE
+
         namespace WANDERIGNSQUAREPAD
         {
             static const AkUniqueID GROUP = 3053675412U;
@@ -132,6 +197,19 @@ namespace AK
             } // namespace SWITCH
         } // namespace WANDERINGSAWPAD
 
+        namespace WANDERINGSUBTRACK
+        {
+            static const AkUniqueID GROUP = 1243382953U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID BASE = 1291433366U;
+                static const AkUniqueID DISCO = 3920460409U;
+                static const AkUniqueID GROOVE = 2129540867U;
+                static const AkUniqueID MELODY_SQUARE = 1643365445U;
+            } // namespace SWITCH
+        } // namespace WANDERINGSUBTRACK
+
         namespace ZONE
         {
             static const AkUniqueID GROUP = 832057375U;
@@ -152,6 +230,7 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID BACKGROUNDMUSICSOUNDBANK = 3618373U;
         static const AkUniqueID TESTSOUNDBANK = 1831431028U;
     } // namespace BANKS
 

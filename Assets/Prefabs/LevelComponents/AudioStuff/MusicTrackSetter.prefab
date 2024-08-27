@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 23908200709812009}
-  - component: {fileID: 23908200709812010}
-  - component: {fileID: 23908200709812011}
-  - component: {fileID: 23908200709812012}
+  - component: {fileID: 7908224260802345186}
+  - component: {fileID: 4406063990986270884}
   m_Layer: 11
   m_Name: MusicTrackSetter
   m_TagString: Untagged
@@ -34,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &23908200709812010
+--- !u!114 &7908224260802345186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,11 +42,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 23908200709812013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67c5271468417e4cadf5a9e0ea7b4b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1456f8d1546dd994c8906114560ba9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trackAsset: {fileID: 0}
---- !u!61 &23908200709812011
+  Switch:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  _onStart: 0
+  _onTriggerEnter: 0
+--- !u!61 &4406063990986270884
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,37 +79,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &23908200709812012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23908200709812013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e16f4ca3a4d51b41924dc6258b28f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JustPlayer: 1
-  OnTriggerEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 23908200709812010}
-        m_TargetAssemblyTypeName: TrackSetter, Assembly-CSharp
-        m_MethodName: PlayTrack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnTriggerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTriggerStay:
-    m_PersistentCalls:
-      m_Calls: []
