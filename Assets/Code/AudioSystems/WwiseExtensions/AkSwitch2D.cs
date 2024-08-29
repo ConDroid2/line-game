@@ -30,4 +30,14 @@ public class AkSwitch2D : MonoBehaviour
             if (SecondarySwitch.Name != "") SecondarySwitch.SetValue(AudioManager.Instance.SoundPlayer);
         }
     }
+
+    public void ForceSwitch()
+    {
+        if (AudioManager.Instance != null)
+        {
+            Switch.SetValue(AudioManager.Instance.SoundPlayer);
+
+            if (SecondarySwitch.Name != "") SecondarySwitch.SetValue(AudioManager.Instance.SoundPlayer);
+        }
+    }
 }
