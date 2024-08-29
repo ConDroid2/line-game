@@ -180,8 +180,16 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 245019001641f114b8d9aa4becdcac6f, type: 2}
-  useCallbacks: 0
-  Callbacks: []
+  useCallbacks: 1
+  Callbacks:
+  - Flags:
+      value: 256
+    FunctionName: FireOnBeat
+    GameObject: {fileID: 6316619006287870897}
+  - Flags:
+      value: 512
+    FunctionName: FireOnBar
+    GameObject: {fileID: 6316619006287870897}
   playingId: 0
   soundEmitterObject: {fileID: 0}
   transitionDuration: 0

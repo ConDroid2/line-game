@@ -8,6 +8,9 @@ public class AudioManager : MonoBehaviour
 
     public GameObject SoundPlayer;
 
+    public System.Action OnBeat;
+    public System.Action OnBar;
+
     public float Volume { get; private set; } = 0.5f;
 
 
@@ -23,14 +26,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void FireOnBeat()
     {
-        
+        OnBeat?.Invoke();
     }
 
-    public void SetNewTrack(TrackAsset newTrack)
+    public void FireOnBar()
     {
-        
+        OnBar?.Invoke();
     }
 
     public void SetVolume(float newVolume)

@@ -529,8 +529,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2585810910555400514, guid: 8b49e68954c0499478cd1c6be4c67bb7, type: 3}
+      propertyPath: _automatic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585810910555400514, guid: 8b49e68954c0499478cd1c6be4c67bb7, type: 3}
       propertyPath: _fireInterval
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2585810910555400514, guid: 8b49e68954c0499478cd1c6be4c67bb7, type: 3}
       propertyPath: _projectileData.Speed
@@ -590,6 +594,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b49e68954c0499478cd1c6be4c67bb7, type: 3}
+--- !u!114 &611070591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2585810910555400514, guid: 8b49e68954c0499478cd1c6be4c67bb7, type: 3}
+  m_PrefabInstance: {fileID: 583351440}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b823df1db247db04496cf1a290834ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &673552598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1690,6 +1705,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+--- !u!1 &2065795389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8099271089240877100, guid: 8b49e68954c0499478cd1c6be4c67bb7, type: 3}
+  m_PrefabInstance: {fileID: 583351440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2065795390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065795389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac0893a928a1b4d96789c15876fac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listenOnBeat: 0
+  _listenOnBar: 1
+  OnAudioEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 611070591}
+        m_TargetAssemblyTypeName: ProjectileLauncher, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2089294598
 PrefabInstance:
   m_ObjectHideFlags: 0
