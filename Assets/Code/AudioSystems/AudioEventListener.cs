@@ -29,7 +29,6 @@ public class AudioEventListener : MonoBehaviour
 
     public void HandleBeatEvent(int beat)
     {
-        Debug.Log($"In listener event: {beat}");
         if (_beatsToListenTo.Contains(beat) || _beatsToListenTo.Count == 0)
         {
             OnAudioEvent?.Invoke();

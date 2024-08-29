@@ -32,7 +32,6 @@ public class AudioManager : MonoBehaviour
     {
         currentBeat++;
 
-        Debug.Log(currentBeat);
         // Fire events
         OnBeat?.Invoke(currentBeat);
     }
