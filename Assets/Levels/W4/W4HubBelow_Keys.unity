@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593911, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -363,6 +363,36 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &347669938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347669935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac0893a928a1b4d96789c15876fac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listenOnBeat: 1
+  _listenOnBar: 0
+  _beatsToListenTo: 020000000400000005000000
+  OnAudioEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 347669936}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &508214475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -441,7 +471,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5345637495355639668, guid: 36e9eab98d6aaf84ebb284c8f2d579f8, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5345637495355639668, guid: 36e9eab98d6aaf84ebb284c8f2d579f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -663,7 +693,7 @@ Transform:
   m_Children:
   - {fileID: 1522692648}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &851633329
 PrefabInstance:
@@ -1069,7 +1099,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1522692647
 GameObject:
@@ -1136,241 +1166,6 @@ MonoBehaviour:
   OnIfFalse:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1556901109
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1556901114}
-  - component: {fileID: 1556901113}
-  - component: {fileID: 1556901112}
-  - component: {fileID: 1556901111}
-  - component: {fileID: 1556901110}
-  m_Layer: 0
-  m_Name: StruggleTimer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1556901110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556901109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f63f7b0c4ac47428c14826b518d6eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _time: 1.7142857
-  _startOnRoomStart: 1
-  OnTimerEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1792602686}
-        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
-        m_MethodName: DoOneShift
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 347669936}
-        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
-        m_MethodName: DoOneShift
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPercentDoneChange:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1556901111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556901109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f63f7b0c4ac47428c14826b518d6eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _time: 1.2857143
-  _startOnRoomStart: 1
-  OnTimerEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1792602686}
-        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
-        m_MethodName: DoOneShift
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 347669936}
-        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
-        m_MethodName: DoOneShift
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPercentDoneChange:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1556901112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556901109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f63f7b0c4ac47428c14826b518d6eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _time: 0.4285714
-  _startOnRoomStart: 1
-  OnTimerEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1792602686}
-        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
-        m_MethodName: DoOneShift
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 347669936}
-        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
-        m_MethodName: DoOneShift
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPercentDoneChange:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1556901113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556901109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f63f7b0c4ac47428c14826b518d6eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _time: 2.142857
-  _startOnRoomStart: 1
-  OnTimerEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1556901113}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1556901112}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1556901111}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1556901110}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPercentDoneChange:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &1556901114
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556901109}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7779388, y: -0.12849462, z: -0.4195337}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1792602684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1477,6 +1272,36 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1792602692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792602685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac0893a928a1b4d96789c15876fac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listenOnBeat: 1
+  _listenOnBar: 0
+  _beatsToListenTo: 020000000400000005000000
+  OnAudioEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1792602686}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1841633019
 PrefabInstance:
   m_ObjectHideFlags: 0

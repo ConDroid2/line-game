@@ -8,17 +8,35 @@ public class AudioEventListener : MonoBehaviour
     [SerializeField] private bool _listenOnBeat = false;
     [SerializeField] private bool _listenOnBar = false;
 
+    [Header("Which Beats")]
+    [SerializeField] private List<int> _beatsToListenTo = new List<int>();
+
     public UnityEvent OnAudioEvent;
 
-    private void Awake()
+    private void Start()
     {
         if (AudioManager.Instance == null) return;
 
-        if (_listenOnBeat == true) AudioManager.Instance.OnBeat += HandleEvent;
-        if (_listenOnBar == true) AudioManager.Instance.OnBar += HandleEvent;
+        if (_listenOnBeat == true) AudioManager.Instance.OnBeat += HandleBeatEvent;
+        if (_listenOnBar == true) AudioManager.Instance.OnBar += HandleBarEvent;
     }
 
-    public void HandleEvent()
+    private void OnDisable()
+    {
+        AudioManager.Instance.OnBeat -= HandleBeatEvent;
+        AudioManager.Instance.OnBar -= HandleBarEvent;
+    }
+
+    public void HandleBeatEvent(int beat)
+    {
+        Debug.Log($"In listener event: {beat}");
+        if (_beatsToListenTo.Contains(beat) || _beatsToListenTo.Count == 0)
+        {
+            OnAudioEvent?.Invoke();
+        }
+    }
+
+    public void HandleBarEvent()
     {
         OnAudioEvent?.Invoke();
     }

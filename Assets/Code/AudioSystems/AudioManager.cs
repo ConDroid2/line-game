@@ -8,8 +8,10 @@ public class AudioManager : MonoBehaviour
 
     public GameObject SoundPlayer;
 
-    public System.Action OnBeat;
+    public System.Action<int> OnBeat;
     public System.Action OnBar;
+
+    private int currentBeat = 0;
 
     public float Volume { get; private set; } = 0.5f;
 
@@ -28,11 +30,18 @@ public class AudioManager : MonoBehaviour
 
     public void FireOnBeat()
     {
-        OnBeat?.Invoke();
+        currentBeat++;
+
+        Debug.Log(currentBeat);
+        // Fire events
+        OnBeat?.Invoke(currentBeat);
     }
 
     public void FireOnBar()
     {
+        currentBeat = 0;
+
+        // Fire events
         OnBar?.Invoke();
     }
 
