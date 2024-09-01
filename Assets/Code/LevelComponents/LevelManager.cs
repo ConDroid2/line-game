@@ -151,7 +151,6 @@ public class LevelManager : MonoBehaviour
 
     public void HandlePlayerDeath()
     {
-        Debug.Log("Player has died");
         StartCoroutine(PlayerDeathCoroutine());
     }
 
@@ -159,11 +158,8 @@ public class LevelManager : MonoBehaviour
     {
         List<ExplodeOnDeath> thingsToExplode = FindObjectsOfType<ExplodeOnDeath>().OrderBy(x => x.Priority).ToList();
 
-        Debug.Log($"Found {thingsToExplode.Count} things to explode");
-
         foreach(ExplodeOnDeath exploder in thingsToExplode)
         {
-            Debug.Log($"Exploding {exploder.transform.parent.gameObject.name}");
             exploder.TriggerEffect();
 
             while (exploder.IsPlaying())
