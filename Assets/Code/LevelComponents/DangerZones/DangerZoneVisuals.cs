@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class DangerZoneVisuals : MonoBehaviour
 {
+    [Header("References")]
     public BoxCollider2D Trigger;
+    [SerializeField] private SpriteRenderer _boarderRenderer;
+    [SerializeField] private SpriteRenderer _gridRenderer;
+
+    [Header("Sprites")]
+    [SerializeField] private Sprite _cornersBoarder;
+    [SerializeField] private Sprite _noCornersBoarder;
 
     private void Awake()
     {
@@ -18,9 +25,14 @@ public class DangerZoneVisuals : MonoBehaviour
 
     private void SetUpSprite()
     {
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        sprite.enabled = true;
+        if(Trigger.size.x <= 1 || Trigger.size.y <= 1)
+        {
+            _boarderRenderer.sprite = _noCornersBoarder;
+        }
+        _boarderRenderer.enabled = true;
+        _boarderRenderer.size = Trigger.size;
 
-        sprite.size = Trigger.size;
+        _gridRenderer.enabled = true;
+        _gridRenderer.size = Trigger.size;
     }
 }
