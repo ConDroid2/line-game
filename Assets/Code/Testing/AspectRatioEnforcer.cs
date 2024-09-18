@@ -47,4 +47,6 @@ public class AspectRatioEnforcer : MonoBehaviour
             _camera.rect = rect;
         }
     }
+
+
 }
