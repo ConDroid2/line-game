@@ -201,6 +201,87 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Set_Switch_BeepsOn" ID="{6C203B8A-4C62-4475-A871-3E9D5882C81D}">
+					<ChildrenList>
+						<Action Name="" ID="{B5A8A563-34A1-4F2C-BD4D-94BAAEDAF9B1}" ShortID="1019323108">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="23"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BeepsOn" ID="{01422E09-110D-4AE2-9C0C-0AF77CA5C37F}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Set_Switch_BeepsOff" ID="{413464B3-74A5-4383-8112-B3A16E4C3BEF}">
+					<ChildrenList>
+						<Action Name="" ID="{29D96F84-2C24-4809-A160-E8690750F014}" ShortID="514389409">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="23"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BeepsOff" ID="{31B667A3-9783-4E32-886C-6CB06E306AF6}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Set_Switch_DangerVortexOff" ID="{F9BFB985-689A-414D-9A62-53BF9B0EF7AC}">
+					<ChildrenList>
+						<Action Name="" ID="{8757F613-3005-4F53-8B54-46FB492D25E5}" ShortID="238367743">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="23"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DangerVortexOff" ID="{4442E45F-0D00-4165-9F5C-00D5C9837A88}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Set_Switch_DangerVortexOn" ID="{64459CC6-9E40-4A52-BF15-B3BF395EA6DD}">
+					<ChildrenList>
+						<Action Name="" ID="{A49D0ED5-0519-48E8-9841-82611ACD0818}" ShortID="824875140">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="23"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DangerVortexOn" ID="{19B57424-7F6C-4BE4-86C4-362AA224B0AE}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Memory_Leak_Foley" ID="{901ECC62-5089-425C-A25C-37B7E7FE2FB8}">
+					<ChildrenList>
+						<Action Name="" ID="{A4297A7A-B24E-4807-8E51-CC92405BA521}" ShortID="706947044">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Memory Leak Foley" ID="{F15742EC-4D42-4B76-9C88-4AE16FC4B16F}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Memory_Leak_Foley" ID="{434B233B-82BF-4736-BD40-C7733C19F9AE}">
+					<ChildrenList>
+						<Action Name="" ID="{DDD8ADC4-31AD-4EB0-985D-C14768FC0F1E}" ShortID="986836699">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Memory Leak Foley" ID="{F15742EC-4D42-4B76-9C88-4AE16FC4B16F}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
