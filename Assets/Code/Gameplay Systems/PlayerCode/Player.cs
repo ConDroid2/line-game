@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     private bool _allowInput = true;
     private bool _bufferTurnOffAimMode = false;
 
+    [SerializeField] private Animator _eyeAnimator;
+
 
     BaseControls _baseControls;
 
@@ -122,6 +124,10 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Hitting k");
             GetKilled(Enums.KillType.Default);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _eyeAnimator.SetTrigger("Blink");
         }
 
 

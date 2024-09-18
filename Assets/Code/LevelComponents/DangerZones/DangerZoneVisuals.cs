@@ -8,7 +8,7 @@ public class DangerZoneVisuals : MonoBehaviour
     public BoxCollider2D Trigger;
     [SerializeField] private SpriteRenderer _boarderRenderer;
     [SerializeField] private SpriteRenderer _gridRenderer;
-
+    [SerializeField] private GameObject _gridMask;
     [Header("Sprites")]
     [SerializeField] private Sprite _cornersBoarder;
     [SerializeField] private Sprite _noCornersBoarder;
@@ -25,9 +25,10 @@ public class DangerZoneVisuals : MonoBehaviour
 
     private void SetUpSprite()
     {
-        if(Trigger.size.x <= 1 || Trigger.size.y <= 1)
+        if(Trigger.size.x <= 1 && Trigger.size.y <= 1)
         {
             _boarderRenderer.sprite = _noCornersBoarder;
+            _gridMask.SetActive(true);
         }
         _boarderRenderer.enabled = true;
         _boarderRenderer.size = Trigger.size;
