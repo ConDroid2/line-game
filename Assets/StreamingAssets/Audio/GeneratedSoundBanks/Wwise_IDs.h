@@ -17,16 +17,22 @@ namespace AK
         static const AkUniqueID MUTE_ALLBGSSWITCHCONTAINER = 2649641287U;
         static const AkUniqueID PAUSE_ALLBGSSWITCHCONTAINER = 346159844U;
         static const AkUniqueID PLAY_ALLBGSSWITCHCONTAINER = 3850123198U;
+        static const AkUniqueID PLAY_MEMORY_LEAK_FOLEY = 3719212787U;
         static const AkUniqueID PLAY_WANDERING = 465142343U;
         static const AkUniqueID RESET_VOICE_HIGH_PASS_FILTER_ALLBGSSWITCHCONTAINER = 2238057352U;
         static const AkUniqueID RESET_VOICE_LOW_PASS_FILTER_ALLBGSSWITCHCONTAINER = 2103622306U;
         static const AkUniqueID RESET_VOICE_VOLUME_ALLBGSSWITCHCONTAINER = 2795130315U;
         static const AkUniqueID RESUME_ALLBGSSWITCHCONTAINER = 2148965273U;
         static const AkUniqueID SEEK_ALLBGSSWITCHCONTAINER = 3083749424U;
+        static const AkUniqueID SET_SWITCH_BEEPSOFF = 1745318411U;
+        static const AkUniqueID SET_SWITCH_BEEPSON = 1112751095U;
+        static const AkUniqueID SET_SWITCH_DANGERVORTEXOFF = 2427286275U;
+        static const AkUniqueID SET_SWITCH_DANGERVORTEXON = 3862409775U;
         static const AkUniqueID SET_VOICE_HIGH_PASS_FILTER_ALLBGSSWITCHCONTAINER = 1742419299U;
         static const AkUniqueID SET_VOICE_LOW_PASS_FILTER_ALLBGSSWITCHCONTAINER = 998656967U;
         static const AkUniqueID SET_VOICE_VOLUME_ALLBGSSWITCHCONTAINER = 3223721356U;
         static const AkUniqueID STOP_ALLBGSSWITCHCONTAINER = 1661072716U;
+        static const AkUniqueID STOP_MEMORY_LEAK_FOLEY = 1429974361U;
         static const AkUniqueID STRUGGLEBEAT1 = 1952352785U;
         static const AkUniqueID STRUGGLEBEAT2 = 1952352786U;
         static const AkUniqueID STRUGGLEBEAT3 = 1952352787U;
@@ -88,6 +94,28 @@ namespace AK
                 static const AkUniqueID WANDERING_W0 = 2818412452U;
             } // namespace SWITCH
         } // namespace BACKGROUNDTRACK
+
+        namespace COMPUTERFOLEYFORDEPTHS
+        {
+            static const AkUniqueID GROUP = 1800164242U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID BEEPSOFF = 3163588159U;
+                static const AkUniqueID BEEPSON = 3664575467U;
+            } // namespace SWITCH
+        } // namespace COMPUTERFOLEYFORDEPTHS
+
+        namespace DANGERVORTEXSWITCH
+        {
+            static const AkUniqueID GROUP = 2095248444U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID DANGERVORTEXOFF = 1811042591U;
+                static const AkUniqueID DANGERVORTEXON = 1813477451U;
+            } // namespace SWITCH
+        } // namespace DANGERVORTEXSWITCH
 
         namespace UNAUTHORIZED
         {

@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\BackgroundMusicPlaylist
     guid: 1a0962b06261624c95aecf2cc6f314d1
     GuidInternal: 
-    m_lastTime: -8584766429282522920
+    m_lastTime: -8584749111213529513
     List:
     - name: BackgroundMusicSoundBank
       guid: 3f92bb61ec1ae341acbb5e4b03ff3416
@@ -121,7 +121,7 @@ MonoBehaviour:
     ParentPath: Events\BackgroundMusicEvents
     guid: 753e27ae7ba75e4fb3246c92d130ca4e
     GuidInternal: 
-    m_lastTime: -8584766429392604835
+    m_lastTime: -8584749111222761429
     List:
     - name: Break_AllBGsSwitchContainer
       guid: 7bc5c956c84c0a4b9867f977464ec2f6
@@ -188,6 +188,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 12b125b65c9d6643966476c237e9ee83
       Path: Events\BackgroundMusicEvents\Play_AllBGsSwitchContainer
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Memory_Leak_Foley
+      guid: 62cc1e9089505c42a25c37b7e7fe2fb8
+      id: 3719212787
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: BackgroundMusicEvents
+        ObjectType: 12
+        guid: 753e27ae7ba75e4fb3246c92d130ca4e
+      - ElementName: Play_Memory_Leak_Foley
+        ObjectType: 3
+        guid: 62cc1e9089505c42a25c37b7e7fe2fb8
+      Path: Events\BackgroundMusicEvents\Play_Memory_Leak_Foley
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -276,6 +293,74 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Set_Switch_BeepsOff
+      guid: b3643441a57483438112b3a16e4c3bef
+      id: 1745318411
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: BackgroundMusicEvents
+        ObjectType: 12
+        guid: 753e27ae7ba75e4fb3246c92d130ca4e
+      - ElementName: Set_Switch_BeepsOff
+        ObjectType: 3
+        guid: b3643441a57483438112b3a16e4c3bef
+      Path: Events\BackgroundMusicEvents\Set_Switch_BeepsOff
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Set_Switch_BeepsOn
+      guid: 8a3b206c624c7544a8713e9d5882c81d
+      id: 1112751095
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: BackgroundMusicEvents
+        ObjectType: 12
+        guid: 753e27ae7ba75e4fb3246c92d130ca4e
+      - ElementName: Set_Switch_BeepsOn
+        ObjectType: 3
+        guid: 8a3b206c624c7544a8713e9d5882c81d
+      Path: Events\BackgroundMusicEvents\Set_Switch_BeepsOn
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Set_Switch_DangerVortexOff
+      guid: 85b9bff99a684d419a6253bf9b0ef7ac
+      id: 2427286275
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: BackgroundMusicEvents
+        ObjectType: 12
+        guid: 753e27ae7ba75e4fb3246c92d130ca4e
+      - ElementName: Set_Switch_DangerVortexOff
+        ObjectType: 3
+        guid: 85b9bff99a684d419a6253bf9b0ef7ac
+      Path: Events\BackgroundMusicEvents\Set_Switch_DangerVortexOff
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Set_Switch_DangerVortexOn
+      guid: c69c4564409e524abf15b3bf395ea6dd
+      id: 3862409775
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: BackgroundMusicEvents
+        ObjectType: 12
+        guid: 753e27ae7ba75e4fb3246c92d130ca4e
+      - ElementName: Set_Switch_DangerVortexOn
+        ObjectType: 3
+        guid: c69c4564409e524abf15b3bf395ea6dd
+      Path: Events\BackgroundMusicEvents\Set_Switch_DangerVortexOn
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Set_Voice_High_pass_Filter_AllBGsSwitchContainer
       guid: fa80fc08f7294640b07c72d2d52af777
       id: 1742419299
@@ -341,6 +426,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: c9b905bc29d3ba4088b16e466980005f
       Path: Events\BackgroundMusicEvents\Stop_AllBGsSwitchContainer
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Memory_Leak_Foley
+      guid: 3b234b43bf823647bd40c7733c19f9ae
+      id: 1429974361
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: BackgroundMusicEvents
+        ObjectType: 12
+        guid: 753e27ae7ba75e4fb3246c92d130ca4e
+      - ElementName: Stop_Memory_Leak_Foley
+        ObjectType: 3
+        guid: 3b234b43bf823647bd40c7733c19f9ae
+      Path: Events\BackgroundMusicEvents\Stop_Memory_Leak_Foley
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -733,7 +835,7 @@ MonoBehaviour:
     ParentPath: Switches\BackgroundMusicSwitches
     guid: d5c8c723645fe04a854ba7a3dd863fd8
     GuidInternal: 
-    m_lastTime: -8584766429282477631
+    m_lastTime: -8584749111213160684
     List:
     - name: BackgroundTrack
       guid: 62952ac7bfe3d0479bcf7e278272b171
@@ -830,6 +932,106 @@ MonoBehaviour:
         - ElementName: Wandering_W0
           ObjectType: 10
           guid: fd1a20658b1f8343932e2a9b283070f7
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: ComputerFoleyForDepths
+      guid: 4e340b7c51c952498d5386944bd11bb0
+      id: 1800164242
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: BackgroundMusicSwitches
+        ObjectType: 12
+        guid: d5c8c723645fe04a854ba7a3dd863fd8
+      - ElementName: ComputerFoleyForDepths
+        ObjectType: 11
+        guid: 4e340b7c51c952498d5386944bd11bb0
+      Path: Switches\BackgroundMusicSwitches\ComputerFoleyForDepths
+      values:
+      - name: BeepsOff
+        guid: a367b6318397324e886c6cb06e306af6
+        id: 3163588159
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: BackgroundMusicSwitches
+          ObjectType: 12
+          guid: d5c8c723645fe04a854ba7a3dd863fd8
+        - ElementName: ComputerFoleyForDepths
+          ObjectType: 11
+          guid: 4e340b7c51c952498d5386944bd11bb0
+        - ElementName: BeepsOff
+          ObjectType: 10
+          guid: a367b6318397324e886c6cb06e306af6
+      - name: BeepsOn
+        guid: 092e42010d11e24a9c0c0af77ca5c37f
+        id: 3664575467
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: BackgroundMusicSwitches
+          ObjectType: 12
+          guid: d5c8c723645fe04a854ba7a3dd863fd8
+        - ElementName: ComputerFoleyForDepths
+          ObjectType: 11
+          guid: 4e340b7c51c952498d5386944bd11bb0
+        - ElementName: BeepsOn
+          ObjectType: 10
+          guid: 092e42010d11e24a9c0c0af77ca5c37f
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: DangerVortexSwitch
+      guid: 34115f23b94f4e4eab5e3b97eb10c161
+      id: 2095248444
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: BackgroundMusicSwitches
+        ObjectType: 12
+        guid: d5c8c723645fe04a854ba7a3dd863fd8
+      - ElementName: DangerVortexSwitch
+        ObjectType: 11
+        guid: 34115f23b94f4e4eab5e3b97eb10c161
+      Path: Switches\BackgroundMusicSwitches\DangerVortexSwitch
+      values:
+      - name: DangerVortexOff
+        guid: 5fe44244000d65419f5c00d5c9837a88
+        id: 1811042591
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: BackgroundMusicSwitches
+          ObjectType: 12
+          guid: d5c8c723645fe04a854ba7a3dd863fd8
+        - ElementName: DangerVortexSwitch
+          ObjectType: 11
+          guid: 34115f23b94f4e4eab5e3b97eb10c161
+        - ElementName: DangerVortexOff
+          ObjectType: 10
+          guid: 5fe44244000d65419f5c00d5c9837a88
+      - name: DangerVortexOn
+        guid: 2474b5196c7fe44b86c4362aa224b0ae
+        id: 1813477451
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: BackgroundMusicSwitches
+          ObjectType: 12
+          guid: d5c8c723645fe04a854ba7a3dd863fd8
+        - ElementName: DangerVortexSwitch
+          ObjectType: 11
+          guid: 34115f23b94f4e4eab5e3b97eb10c161
+        - ElementName: DangerVortexOn
+          ObjectType: 10
+          guid: 2474b5196c7fe44b86c4362aa224b0ae
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -1664,7 +1866,7 @@ MonoBehaviour:
     m_lastTime: -8584766429282457550
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 030000000400000006000000090000000a0000000b0000000e0000000f00000011000000120000001300000016000000170000001f000000240000002500000026000000290000002a0000002b0000002d0000002e000000380000003d000000
+  ExpandedWaapiItemIds: 030000000400000006000000090000000a0000000b0000000e0000000f00000011000000120000001300000016000000170000001f000000240000002500000026000000290000002a0000002b0000002d0000002e000000380000003d000000cb330000cc330000cd330000df340000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

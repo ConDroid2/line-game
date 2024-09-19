@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _eyeAnimator.SetTrigger("Blink");
+            _eyeAnimator.SetTrigger("Left_Right_Blink");
         }
 
 
