@@ -5023,7 +5023,7 @@
 														<SourceFadeOut>
 															<MusicFade Name="Source Fade-out" ID="{F8C32596-EEA1-416C-B7BF-2232BBE79B80}">
 																<PropertyList>
-																	<Property Name="FadeTime" Type="Real64" Value="1"/>
+																	<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 																	<Property Name="FadeType" Type="int16" Value="1"/>
 																</PropertyList>
 															</MusicFade>
@@ -5308,6 +5308,7 @@
 																<DestinationFadeIn>
 																	<MusicFade Name="Destination Fade-in" ID="{07BBFEAB-69E6-49B4-A410-1D2CD77567DC}">
 																		<PropertyList>
+																			<Property Name="FadeOffset" Type="Real64" Value="-1.5"/>
 																			<Property Name="FadeTime" Type="Real64" Value="1.5"/>
 																		</PropertyList>
 																	</MusicFade>
@@ -5377,7 +5378,7 @@
 											<ChildrenList>
 												<MusicSegment Name="Soon Forgotten_LOOP" ID="{4036D669-51ED-471C-A8E3-6CA21A2EC4C1}" ShortID="276230652">
 													<PropertyList>
-														<Property Name="EndPosition" Type="Real64" Value="114545.458333333"/>
+														<Property Name="EndPosition" Type="Real64" Value="229090.916666666"/>
 														<Property Name="Tempo" Type="Real64" Value="132"/>
 														<Property Name="TimeSignatureUpper" Type="int16" Value="6"/>
 													</PropertyList>
@@ -5421,8 +5422,8 @@
 																						<SourceFadeOut>
 																							<MusicFade Name="Source Fade-out" ID="{82F64060-8930-4796-9343-D803477FF0E4}">
 																								<PropertyList>
-																									<Property Name="FadeOffset" Type="Real64" Value="1"/>
-																									<Property Name="FadeTime" Type="Real64" Value="1"/>
+																									<Property Name="FadeOffset" Type="Real64" Value="0.2"/>
+																									<Property Name="FadeTime" Type="Real64" Value="0.2"/>
 																									<Property Name="FadeType" Type="int16" Value="1"/>
 																								</PropertyList>
 																							</MusicFade>
@@ -5430,7 +5431,7 @@
 																						<DestinationFadeIn>
 																							<MusicFade Name="Destination Fade-in" ID="{407FBC29-4CBD-43A6-9CE8-B4D3441E77E3}">
 																								<PropertyList>
-																									<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+																									<Property Name="FadeTime" Type="Real64" Value="0.2"/>
 																								</PropertyList>
 																							</MusicFade>
 																						</DestinationFadeIn>
@@ -5500,11 +5501,11 @@
 																</Reference>
 															</ReferenceList>
 															<ChildrenList>
-																<AudioFileSource Name="Soon ForgottenLoop" ID="{02DBA92D-F6BF-4DD3-8F4F-0BFD8FF467D6}">
+																<AudioFileSource Name="Soon Forgotten_4LOOP" ID="{651114EB-5CB6-4726-8B02-735DD803AA84}">
 																	<Language>SFX</Language>
-																	<AudioFile>Soon ForgottenLoop.wav</AudioFile>
+																	<AudioFile>Soon Forgotten_4LOOP.wav</AudioFile>
 																	<MediaIDList>
-																		<MediaID ID="773658097"/>
+																		<MediaID ID="548785688"/>
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
@@ -5517,13 +5518,13 @@
 																					<ObjectList Name="Clips">
 																						<Reference>
 																							<Local>
-																								<MusicClip Name="Soon ForgottenLoop" ID="{7D3DA356-7024-45DB-8DA0-83B90694A6A0}">
+																								<MusicClip Name="Soon Forgotten_4LOOP" ID="{DF9C6372-3615-4662-AE14-080282177782}">
 																									<PropertyList>
 																										<Property Name="EndTrimOffset" Type="Real64" Value="114545.458333333"/>
 																										<Property Name="FadeInMode" Type="int16" Value="0"/>
 																										<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																									</PropertyList>
-																									<AudioSourceRef Name="Soon ForgottenLoop" ID="{02DBA92D-F6BF-4DD3-8F4F-0BFD8FF467D6}"/>
+																									<AudioSourceRef Name="Soon Forgotten_4LOOP" ID="{651114EB-5CB6-4726-8B02-735DD803AA84}"/>
 																								</MusicClip>
 																							</Local>
 																						</Reference>
@@ -5602,8 +5603,8 @@
 																						<SourceFadeOut>
 																							<MusicFade Name="Source Fade-out" ID="{5B9ADFE6-FB8F-4FE7-AD4C-757969C4DB35}">
 																								<PropertyList>
-																									<Property Name="FadeOffset" Type="Real64" Value="1"/>
-																									<Property Name="FadeTime" Type="Real64" Value="1"/>
+																									<Property Name="FadeOffset" Type="Real64" Value="0.2"/>
+																									<Property Name="FadeTime" Type="Real64" Value="0.2"/>
 																									<Property Name="FadeType" Type="int16" Value="1"/>
 																								</PropertyList>
 																							</MusicFade>
@@ -5611,7 +5612,7 @@
 																						<DestinationFadeIn>
 																							<MusicFade Name="Destination Fade-in" ID="{719D704B-4099-43EF-8702-6D3A65E8E2B7}">
 																								<PropertyList>
-																									<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+																									<Property Name="FadeTime" Type="Real64" Value="0.2"/>
 																								</PropertyList>
 																							</MusicFade>
 																						</DestinationFadeIn>
