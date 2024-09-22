@@ -19,11 +19,13 @@ namespace AK
         static const AkUniqueID PLAY_ALLBGSSWITCHCONTAINER = 3850123198U;
         static const AkUniqueID PLAY_MEMORY_LEAK_FOLEY = 3719212787U;
         static const AkUniqueID PLAY_WANDERING = 465142343U;
+        static const AkUniqueID RESET_GAME_PARAMETER_MUSICVOLUME = 2122702989U;
         static const AkUniqueID RESET_VOICE_HIGH_PASS_FILTER_ALLBGSSWITCHCONTAINER = 2238057352U;
         static const AkUniqueID RESET_VOICE_LOW_PASS_FILTER_ALLBGSSWITCHCONTAINER = 2103622306U;
         static const AkUniqueID RESET_VOICE_VOLUME_ALLBGSSWITCHCONTAINER = 2795130315U;
         static const AkUniqueID RESUME_ALLBGSSWITCHCONTAINER = 2148965273U;
         static const AkUniqueID SEEK_ALLBGSSWITCHCONTAINER = 3083749424U;
+        static const AkUniqueID SET_GAME_PARAMETER_MUSICVOLUME = 3291076718U;
         static const AkUniqueID SET_SWITCH_BEEPSOFF = 1745318411U;
         static const AkUniqueID SET_SWITCH_BEEPSON = 1112751095U;
         static const AkUniqueID SET_SWITCH_DANGERVORTEXOFF = 2427286275U;
@@ -254,6 +256,11 @@ namespace AK
         } // namespace ZONE
 
     } // namespace SWITCHES
+
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID MUSICVOLUME = 2346531308U;
+    } // namespace GAME_PARAMETERS
 
     namespace BANKS
     {

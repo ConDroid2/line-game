@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
 
     public float Volume { get; private set; } = 0.5f;
 
+    public AK.Wwise.RTPC _wwiseMusicVolume;
+
 
     private void Awake()
     {
@@ -47,5 +49,6 @@ public class AudioManager : MonoBehaviour
     public void SetVolume(float newVolume)
     {
         Volume = newVolume;
+        _wwiseMusicVolume.SetValue(SoundPlayer, Volume);
     }
 }
