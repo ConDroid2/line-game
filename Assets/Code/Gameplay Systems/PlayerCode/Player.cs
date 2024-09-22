@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     public static Player Instance = null;
 
     public enum AbilityEnum { Grapple, Shoot, Default };
+    private AbilityEnum _currentAbilityInUse = AbilityEnum.Default;
 
     private void Awake()
     {
@@ -80,10 +81,6 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.Sprint.performed += SprintingStatusChanged;
         _baseControls.PlayerMap.Sprint.canceled += SprintingStatusChanged;
 
-        //Aim Mode Events
-        _baseControls.PlayerMap.AimMode.performed += AimModeStatusChanged;
-        _baseControls.PlayerMap.AimMode.canceled += AimModeStatusChanged;
-
         // Projectile Ability Events
         _baseControls.PlayerMap.FireProjectile.performed += HandleFirePerformed;
         _baseControls.PlayerMap.FireProjectile.canceled += HandleFirePerformed;
@@ -104,8 +101,6 @@ public class Player : MonoBehaviour
     {
         SceneManager.sceneLoaded -= HandleSceneLoaded;
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
-        _baseControls.PlayerMap.AimMode.performed -= AimModeStatusChanged;
-        _baseControls.PlayerMap.AimMode.canceled -= AimModeStatusChanged;
         _baseControls.PlayerMap.Rotate.performed -= HandleRotatePerformed;
         _baseControls.PlayerMap.Grapple.performed -= HandleGrapplePerformed;
         _baseControls.PlayerMap.Grapple.canceled -= HandleGrapplePerformed;
@@ -152,7 +147,11 @@ public class Player : MonoBehaviour
         }
         else if (_aimingMode)
         {
-            _aimController.SetAim(_inputVector);
+            if (_inputVector != Vector2.zero)
+            {
+                _aimController.SetAim(_inputVector);
+            }
+            
             if(_grapplingHook.enabled)
                 _grapplingHook.SetPreview();
         }
@@ -178,25 +177,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AimModeStatusChanged(InputAction.CallbackContext context)
-    {
-        //// Gate for aiming, need at least one aim ability
-        //if (_shootUnlocked == false && _grappleUnlocked == false && GameManager.Instance != null) return;
-
-        //if(context.phase == InputActionPhase.Performed)
-        //{
-        //    TurnOnAimMode();
-        //}
-
-        //else if(context.phase == InputActionPhase.Canceled)
-        //{
-        //    TurnOffAimMode();
-        //}
-    }
-
     public void HandleFirePerformed(InputAction.CallbackContext context)
     {
         if (_shootUnlocked == false && GameManager.Instance != null) return;
+        if (_aimingMode && _currentAbilityInUse != AbilityEnum.Shoot) return;
 
         if(context.phase == InputActionPhase.Performed)
         {
@@ -215,6 +199,7 @@ public class Player : MonoBehaviour
     public void HandleGrapplePerformed(InputAction.CallbackContext context)
     {
         if (_grappleUnlocked == false && GameManager.Instance != null) return;
+        if (_aimingMode && _currentAbilityInUse != AbilityEnum.Grapple) return;
 
         if (context.phase == InputActionPhase.Performed)
         {
@@ -322,6 +307,7 @@ public class Player : MonoBehaviour
         _aimingMode = true;
         _allowMoving = false;
         _aimController.Activate(abilityUsed);
+        _currentAbilityInUse = abilityUsed;
 
         if (_bufferTurnOffAimMode == true)
         {
@@ -340,6 +326,7 @@ public class Player : MonoBehaviour
             _aimingMode = false;
             _allowMoving = true;
             _aimController.Deactivate();
+            _currentAbilityInUse = AbilityEnum.Default;
         }
     }
 
