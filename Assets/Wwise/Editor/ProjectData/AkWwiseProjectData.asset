@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\BackgroundMusicPlaylist
     guid: 1a0962b06261624c95aecf2cc6f314d1
     GuidInternal: 
-    m_lastTime: -8584749111213529513
+    m_lastTime: -8584745738417321565
     List:
     - name: BackgroundMusicSoundBank
       guid: 3f92bb61ec1ae341acbb5e4b03ff3416
@@ -121,7 +121,7 @@ MonoBehaviour:
     ParentPath: Events\BackgroundMusicEvents
     guid: 753e27ae7ba75e4fb3246c92d130ca4e
     GuidInternal: 
-    m_lastTime: -8584749111222761429
+    m_lastTime: -8584749733323851149
     List:
     - name: Break_AllBGsSwitchContainer
       guid: 7bc5c956c84c0a4b9867f977464ec2f6
@@ -559,7 +559,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: c042508bf80daf46bbc4504b91fd18a7
     GuidInternal: 
-    m_lastTime: -8584749733324405391
+    m_lastTime: -8584745738417408407
     List:
     - name: New_Event
       guid: e64c5ed0c2dc7746a9ddf64bc44bf94e
@@ -629,6 +629,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Reset_Game_Parameter_MusicVolume
+      guid: 3b74ca02c43212439d5ae2b1e4d63f1e
+      id: 2122702989
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: c042508bf80daf46bbc4504b91fd18a7
+      - ElementName: Reset_Game_Parameter_MusicVolume
+        ObjectType: 3
+        guid: 3b74ca02c43212439d5ae2b1e4d63f1e
+      Path: Events\Default Work Unit\Reset_Game_Parameter_MusicVolume
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Set_Game_Parameter_MusicVolume
+      guid: 9958bcaec95489479e133bcd571bb4d7
+      id: 3291076718
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: c042508bf80daf46bbc4504b91fd18a7
+      - ElementName: Set_Game_Parameter_MusicVolume
+        ObjectType: 3
+        guid: 9958bcaec95489479e133bcd571bb4d7
+      Path: Events\Default Work Unit\Set_Game_Parameter_MusicVolume
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -641,8 +675,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: be2f0be240b9c849b3be9a3b7f5dbe95
     GuidInternal: 
-    m_lastTime: -8584766429392589790
-    List: []
+    m_lastTime: -8584745738417818950
+    List:
+    - name: MusicVolume
+      guid: e2025302e6c3c840b6892b5e058e8641
+      id: 2346531308
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: be2f0be240b9c849b3be9a3b7f5dbe95
+      - ElementName: MusicVolume
+        ObjectType: 13
+        guid: e2025302e6c3c840b6892b5e058e8641
+      Path: Game Parameters\Default Work Unit\MusicVolume
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -835,7 +883,7 @@ MonoBehaviour:
     ParentPath: Switches\BackgroundMusicSwitches
     guid: d5c8c723645fe04a854ba7a3dd863fd8
     GuidInternal: 
-    m_lastTime: -8584749111213160684
+    m_lastTime: -8584749733323923241
     List:
     - name: BackgroundTrack
       guid: 62952ac7bfe3d0479bcf7e278272b171
