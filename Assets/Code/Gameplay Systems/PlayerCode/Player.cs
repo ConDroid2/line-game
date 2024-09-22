@@ -220,6 +220,7 @@ public class Player : MonoBehaviour
     public void HandleRotatePerformed(InputAction.CallbackContext context)
     {
         if (_rotateUnlocked == false && GameManager.Instance != null) return;
+        if (_currentAbilityInUse != AbilityEnum.Default) return;
 
         // rotate
         // Debug.Log("Rotating");
