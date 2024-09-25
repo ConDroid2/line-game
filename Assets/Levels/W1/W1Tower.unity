@@ -1122,6 +1122,116 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15d9653801147fd4e84e743a7abeb76a, type: 3}
+--- !u!1 &230513415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230513417}
+  - component: {fileID: 230513416}
+  m_Layer: 0
+  m_Name: BeatTracker1_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &230513416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230513415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac0893a928a1b4d96789c15876fac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listenOnBeat: 1
+  _listenOnBar: 0
+  _beatsToListenTo: 0100000003000000
+  OnAudioEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 597859417}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 644247432}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1647539894}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1199090624}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 657739456}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &230513417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230513415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.7155027, y: -1.3014255, z: -1.184743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &390885998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1338,15 +1448,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597859410}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08fcd39c0d81af24897fa3ef537a46de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
   TimeForFullRotation: 1
-  TimeToWait: 0
-  WaitAtStart: 0
+  TimeToWait: 10
+  WaitAtStart: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -1384,9 +1494,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 0, y: 1.5, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
+  TimeToMove: 1.1
   TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0
@@ -1427,15 +1537,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644247429}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08fcd39c0d81af24897fa3ef537a46de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
   TimeForFullRotation: 1
-  TimeToWait: 0
-  WaitAtStart: 0
+  TimeToWait: 10
+  WaitAtStart: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -1473,9 +1583,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 3, y: 0, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
+  TimeToMove: 1.1
   TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0
@@ -1597,15 +1707,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657739453}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08fcd39c0d81af24897fa3ef537a46de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   direction: -1
   TimeForFullRotation: 1
-  TimeToWait: 0
-  WaitAtStart: 0
+  TimeToWait: 10
+  WaitAtStart: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -1643,9 +1753,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: -3, y: 0, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
+  TimeToMove: 1.1
   TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0
@@ -2812,15 +2922,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199090621}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08fcd39c0d81af24897fa3ef537a46de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   direction: -1
   TimeForFullRotation: 1
-  TimeToWait: 0
-  WaitAtStart: 0
+  TimeToWait: 10
+  WaitAtStart: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -2858,9 +2968,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: -3, y: 0, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
+  TimeToMove: 1.1
   TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0
@@ -3504,6 +3614,116 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+--- !u!1 &1473942847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473942849}
+  - component: {fileID: 1473942848}
+  m_Layer: 0
+  m_Name: BeatTracker2_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1473942848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473942847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ac0893a928a1b4d96789c15876fac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listenOnBeat: 1
+  _listenOnBar: 0
+  _beatsToListenTo: 0200000003000000
+  OnAudioEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 597859416}
+        m_TargetAssemblyTypeName: FreeObjectRotator, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 644247431}
+        m_TargetAssemblyTypeName: FreeObjectRotator, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1647539893}
+        m_TargetAssemblyTypeName: FreeObjectRotator, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1199090623}
+        m_TargetAssemblyTypeName: FreeObjectRotator, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 657739455}
+        m_TargetAssemblyTypeName: FreeObjectRotator, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1473942849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473942847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.7155027, y: -1.3014255, z: -1.184743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1531997639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4036,15 +4256,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647539891}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08fcd39c0d81af24897fa3ef537a46de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
   TimeForFullRotation: 1
-  TimeToWait: 0
-  WaitAtStart: 0
+  TimeToWait: 10
+  WaitAtStart: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -4082,9 +4302,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 3, y: 0, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
+  TimeToMove: 1.1
   TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0

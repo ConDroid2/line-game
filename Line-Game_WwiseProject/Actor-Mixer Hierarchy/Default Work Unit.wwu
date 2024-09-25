@@ -9,7 +9,7 @@
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
-						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="5">
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="10">
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{145C9D25-7418-4D6D-AF00-00B482CD5AB1}">
@@ -22,7 +22,7 @@
 							</ModifierList>
 						</Property>
 						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="10"/>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -1134,6 +1134,45 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{2C7334ED-562E-4479-AE81-3E80CAEB9BF3}" ShortID="44291649">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Volume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="MusicVolume" ID="{025302E2-C3E6-40C8-B689-2B5E058E8641}" WorkUnitID="{E20B2FBE-B940-49C8-B3BE-9A3B7F5DBE95}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{BA010FBE-24D2-4A3F-B0DE-1D23D9E9DFB3}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
