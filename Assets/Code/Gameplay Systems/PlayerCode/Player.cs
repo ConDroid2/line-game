@@ -256,6 +256,7 @@ public class Player : MonoBehaviour
     public IEnumerator FinishFire()
     {
         yield return new WaitForSeconds(DelayAfterShoot);
+        _allowInput = true;
         TurnOffAimMode();
     }
 
