@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     // Trigger Handlers
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"Scene name: {scene.name}");
+        // Debug.Log($"Scene name: {scene.name}");
         // Get Level Manager if it exists
         LevelManager levelManager = FindObjectOfType<LevelManager>();
 

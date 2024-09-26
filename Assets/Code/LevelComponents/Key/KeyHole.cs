@@ -18,12 +18,19 @@ public class KeyHole : MonoBehaviour
     public void HandleKeyInRange(Collider2D collider)
     {
         
-        if (_unlocked == false && collider.TryGetComponent(out KeyObject keyObject))
+        if (_unlocked == false && collider.TryGetComponent(out KeyHolder keyHolder))
         {
+            KeyObject keyObject = keyHolder.GetKey();
+
+            if (keyObject == null) return;
+                
+            keyObject.SpringJoint.connectedBody = _rigidbody;
             Debug.Log("Calling HandleKeyInRange");
             _keyCheckRadius.SetActive(false);
             _unlockRadius.SetActive(true);
-            keyObject.SpringJoint.connectedBody = _rigidbody;
+
+            
+
             
         }
     }

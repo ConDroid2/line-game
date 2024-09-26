@@ -11,6 +11,7 @@ public class KeyObject : MonoBehaviour
     public SpringJoint2D SpringJoint;
     [SerializeField] private GameObject _explodeEffect;
     [SerializeField] private GameObject _visuals;
+    public Rigidbody2D FollowRigidbody;
 
 
     // Update is called once per frame
@@ -20,9 +21,9 @@ public class KeyObject : MonoBehaviour
         if (SpringJoint.enabled == false && collider.CompareTag("Player"))
         {
             _flagSetter.SetFlag(true);
-            SpringJoint.enabled = true;
             InUse = true;
-            SpringJoint.connectedBody = Player.Instance.FollowPoint;
+
+            collider.GetComponent<KeyHolder>().AddKey(this);
 
             DontDestroyOnLoad(gameObject);
 
