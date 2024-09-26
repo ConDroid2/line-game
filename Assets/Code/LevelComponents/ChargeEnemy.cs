@@ -24,6 +24,7 @@ public class ChargeEnemy : MonoBehaviour
     {
         if (_charging)
         {
+            
             _timeCharging += Time.deltaTime;
 
             float percentageDone = _chargeCurve.Evaluate(_timeCharging / _totalChargeTime);
@@ -52,6 +53,7 @@ public class ChargeEnemy : MonoBehaviour
         {
             _chargeStartingPosition = transform.position;
             _chargeEndingPosition = Player.Instance.transform.position;
+            transform.up = (_chargeEndingPosition - _chargeStartingPosition);
             _timeCharging = 0f;
             _charging = true;
         }
