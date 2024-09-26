@@ -12,6 +12,7 @@ public class BigAssLaser : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float _range;
     [SerializeField] private float _width;
+    [SerializeField] private LayerMask _laserPhysicsMask;
 
     // Variables to keep track of things
     private Vector3 _maxDistance;
@@ -46,7 +47,7 @@ public class BigAssLaser : MonoBehaviour
         _maxDistance = _laserStartPoint.position + (transform.up * _range);
         _laserLine.SetPosition(0, _laserStartPoint.position);
         // Both starting position and ending position should be modified by width
-        RaycastHit2D hit = Physics2D.BoxCast(_laserStartPoint.position, new Vector2(_width, _width), transform.rotation.z, transform.up, _range);
+        RaycastHit2D hit = Physics2D.BoxCast(_laserStartPoint.position, new Vector2(_width, _width), transform.rotation.z, transform.up, _range, layerMask: _laserPhysicsMask);
 
         if (hit)
         {
