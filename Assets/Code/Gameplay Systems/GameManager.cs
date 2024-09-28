@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour
         _currentWorld = worldData;     
     }
 
+    public WorldData GetCurrentWorld()
+    {
+        return _currentWorld;
+    }
+
     public void SetFlag(string flagName, bool setFlagAs)
     {
         if (Flags.ContainsKey(flagName))
@@ -194,9 +199,15 @@ public class GameManager : MonoBehaviour
             if(roomConnection.FromPort.RelativePosition.ConvertToVector3() == playerPosition)
             {
                 _toPort = roomConnection.ToPort;
-                SceneManager.LoadScene(roomConnection.ToLevelName);   
+                SceneManager.LoadScene(roomConnection.ToLevelName);
             }
         }    
+    }
+
+    public void MoveToRoomBasedOnPort(string roomName, RoomPort port)
+    {
+        _toPort = port;
+        SceneManager.LoadScene(roomName);
     }
 
     private void Pause()
