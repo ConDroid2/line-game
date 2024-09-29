@@ -6,7 +6,17 @@ public class KeyHolder : MonoBehaviour
 {
 
     private Stack<KeyObject> _keys = new Stack<KeyObject>();
-    
+
+    private void Start()
+    {
+        Player.Instance.OnPlayerDeath += HandlePlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        Player.Instance.OnPlayerDeath -= HandlePlayerDeath;
+    }
+
     public void AddKey(KeyObject newKey)
     {
         if(_keys.Contains(newKey) == false)
@@ -32,5 +42,10 @@ public class KeyHolder : MonoBehaviour
             return _keys.Pop();
         else
             return null;
+    }
+
+    public void HandlePlayerDeath()
+    {
+        _keys.Clear();
     }
 }
