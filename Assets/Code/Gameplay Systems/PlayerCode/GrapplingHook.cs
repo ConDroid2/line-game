@@ -111,6 +111,9 @@ public class GrapplingHook : MonoBehaviour
         _performGrapple = false;
         _previewLine.SetPosition(0, transform.position);
         _previewLine.SetPosition(1, transform.position);
+        _lineRenderer.SetPosition(0, transform.position);
+        _lineRenderer.SetPosition(1, transform.position);
+
 
         OnGrappleFinished?.Invoke();
     }
