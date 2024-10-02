@@ -5000,6 +5000,9 @@
 				<Folder Name="LevelBGPlaylists" ID="{0350A383-487B-425E-A972-5F6246915F66}" ShortID="546247684">
 					<ChildrenList>
 						<MusicSwitchContainer Name="AllBGsSwitchContainer" ID="{496675C6-91BF-4066-B163-E73DAF582BCE}" ShortID="263472674">
+							<PropertyList>
+								<Property Name="ContinuePlay" Type="bool" Value="False"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -5018,12 +5021,13 @@
 													<PropertyList>
 														<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
 														<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+														<Property Name="PlaySourcePostExit" Type="bool" Value="False"/>
 													</PropertyList>
 													<TransitionInfo>
 														<SourceFadeOut>
 															<MusicFade Name="Source Fade-out" ID="{F8C32596-EEA1-416C-B7BF-2232BBE79B80}">
 																<PropertyList>
-																	<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+																	<Property Name="FadeTime" Type="Real64" Value="1"/>
 																	<Property Name="FadeType" Type="int16" Value="1"/>
 																</PropertyList>
 															</MusicFade>
@@ -5271,14 +5275,10 @@
 								</MusicPlaylistContainer>
 								<MusicSwitchContainer Name="SoonForgotten" ID="{FC90314D-6173-4D0A-B26E-B77522907DAA}" ShortID="684771142">
 									<PropertyList>
+										<Property Name="ContinuePlay" Type="bool" Value="False"/>
 										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
 										<Property Name="Tempo" Type="Real64" Value="132"/>
 										<Property Name="TimeSignatureUpper" Type="int16" Value="6"/>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>-17</Value>
-											</ValueList>
-										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
