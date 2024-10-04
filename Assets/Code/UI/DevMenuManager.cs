@@ -36,4 +36,9 @@ public class DevMenuManager : MonoBehaviour
             _flagChangers.Add(newFlagChanger.gameObject);
         }
     }
+
+    public void HandleDebugLogsClicked()
+    {
+        Debug.developerConsoleVisible = !Debug.developerConsoleVisible;
+    }
 }

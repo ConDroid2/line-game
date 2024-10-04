@@ -19,6 +19,8 @@ public class OnLineController : MonoBehaviour
 
     private bool _useCurrentLineData = false;
 
+    [SerializeField] private DebugLogger _logger;
+
     private void Awake()
     {
         _useCurrentLineData = true;
@@ -46,6 +48,8 @@ public class OnLineController : MonoBehaviour
 
     private void SetDistanceOnLine(float newDistance)
     {
+        _logger?.LogError($"Setting {name}'s distance on line to {newDistance}");
+
         _distanceOnLine = Mathf.Clamp(newDistance, 0f, 1f);
         // Debug.Log($"Attempted Distance: {newDistance} vs Clamped Distance: {_distanceOnLine}");
         Vector3 A = _useCurrentLineData ? CurrentLine.CurrentA : CurrentLine.InitialA;

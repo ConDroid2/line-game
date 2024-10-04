@@ -12,4 +12,12 @@ public class DebugLogger : MonoBehaviour
             Debug.Log(message);
         }
     }
+
+    public void LogError(object message)
+    {
+        if (_active)
+        {
+            Debug.LogError(message);
+        }
+    }
 }
