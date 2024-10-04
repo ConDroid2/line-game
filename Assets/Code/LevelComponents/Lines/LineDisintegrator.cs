@@ -19,6 +19,14 @@ public class LineDisintegrator : MonoBehaviour
         _comeBackTimer.OnTimerEnd.AddListener(delegate { lineController.SetActive(true); });
         _comeBackTimer.OnTimerEnd.AddListener(delegate { lineDrawer.SetAlpha(0f); });
 
-        lineController.OnObjectAddedToLine.AddListener(_disintegrationTimer.StartTimer);
+        lineController.OnObjectAddedToLine.AddListener(HandleObjectAddedToLine);
+    }
+
+    public void HandleObjectAddedToLine(GameObject newObject)
+    {
+        if (newObject.CompareTag("Player"))
+        {
+            _disintegrationTimer.StartTimer();
+        }
     }
 }

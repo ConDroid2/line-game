@@ -35,7 +35,7 @@ public class LineController : MonoBehaviour
 
     public bool Active { get; private set; }
 
-    public UnityEvent OnObjectAddedToLine;
+    public UnityEvent<GameObject> OnObjectAddedToLine;
     public UnityEvent OnObjectRemovedFromLine;
     public UnityEvent<bool> OnActiveChanged;
 
@@ -250,7 +250,7 @@ public class LineController : MonoBehaviour
         if(OnLineControllers.Contains(newObject) == false)
         {
             OnLineControllers.Add(newObject);
-            OnObjectAddedToLine.Invoke();
+            OnObjectAddedToLine.Invoke(newObject.gameObject);
         }
     }
 
