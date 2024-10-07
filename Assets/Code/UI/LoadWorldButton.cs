@@ -27,6 +27,7 @@ public class LoadWorldButton : MonoBehaviour
     {
         string startingRoomName = "";
 
+
         foreach (string roomName in _worldData.RoomNameToData.Keys)
         {
             if (_worldData.RoomNameToData[roomName].StartRoom == true)
@@ -34,9 +35,23 @@ public class LoadWorldButton : MonoBehaviour
                 startingRoomName = _worldData.RoomNameToData[roomName].RoomName;
             }
         }
-
-
+        
+        
         GameManager.Instance?.SetCurrentWorld(_worldData);
         SceneManager.LoadScene(startingRoomName);
+    }
+
+    public SaveSlot LoadSaveData()
+    {
+        JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
+
+        try
+        {
+            return utils.LoadData<SaveSlot>("TestSave.txt");
+        }
+        catch (System.Exception e)
+        {
+            return null;
+        }
     }
 }

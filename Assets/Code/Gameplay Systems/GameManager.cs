@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private bool _gamePaused = false;
 
     private HashSet<string> _visitedRooms = new HashSet<string>();
+    private SaveSlot _saveSlot;
 
     public System.Action<string, bool> OnSetFlag;
 
@@ -188,6 +189,8 @@ public class GameManager : MonoBehaviour
         _currentRoom = _currentWorld.RoomNameToData[scene.name];
 
         _visitedRooms.Add(_currentRoom.RoomName);
+
+        SaveData();
     }
 
     public void HandlePlayerReachedEdgeOfLine(Vector3 playerPosition)
@@ -266,6 +269,33 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             _map.SetActive(false);
+        }
+    }
+
+    public void SaveData()
+    {
+        if (_saveSlot == null) return;
+
+        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoom.RoomName, _toPort);
+
+        JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
+
+        utils.SaveData($"{newSlot.Name}.txt", newSlot);
+    }
+
+    public void HandleLoadedData(SaveSlot saveData)
+    {
+        _saveSlot = saveData;
+        _toPort = saveData.CurrentPort;
+        _visitedRooms = saveData.RoomsVisited;
+
+        // Doing it this way allows us to add keys without breaking the save system
+        foreach(string key in saveData.Flags.Keys)
+        {
+            if (Flags.ContainsKey(key))
+            {
+                Flags[key] = saveData.Flags[key];
+            }
         }
     }
 }

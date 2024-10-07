@@ -4,30 +4,19 @@ using UnityEngine;
 
 public class SaveSlot
 {
-    private Dictionary<string, bool> _flags;
+    public string Name;
+    public Dictionary<string, bool> Flags;
+    public HashSet<string> RoomsVisited;
+    public string CurrentRoomName;
+    public RoomPort CurrentPort;
+    public string version;
 
-    public bool GetFlag(string flagName)
+    public SaveSlot(string name, Dictionary<string, bool> flags, HashSet<string> rooms, string currentRoomName, RoomPort currentPort)
     {
-        if (_flags.ContainsKey(flagName))
-        {
-            return _flags[flagName];
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public bool SetFlag(string flagName, bool value)
-    {
-        if (_flags.ContainsKey(flagName))
-        {
-            _flags[flagName] = value;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        Name = name;
+        Flags = flags;
+        RoomsVisited = rooms;
+        CurrentRoomName = currentRoomName;
+        CurrentPort = currentPort;
     }
 }
