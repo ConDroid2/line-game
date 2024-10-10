@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\BackgroundMusicPlaylist
     guid: 1a0962b06261624c95aecf2cc6f314d1
     GuidInternal: 
-    m_lastTime: -8584736146048443251
+    m_lastTime: -8584730351705248831
     List:
     - name: BackgroundMusicSoundBank
       guid: 3f92bb61ec1ae341acbb5e4b03ff3416
@@ -93,22 +93,8 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 6e98d0b6d0c78640aa584f976699f0be
     GuidInternal: 
-    m_lastTime: -8584766429282512912
-    List:
-    - name: TestSoundbank
-      guid: 1df2b945c7e5484792912157f85ed44e
-      id: 1831431028
-      PathAndIcons:
-      - ElementName: SoundBanks
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 6e98d0b6d0c78640aa584f976699f0be
-      - ElementName: TestSoundbank
-        ObjectType: 7
-        guid: 1df2b945c7e5484792912157f85ed44e
-      Path: SoundBanks\Default Work Unit\TestSoundbank
+    m_lastTime: -8584730351704967059
+    List: []
   EventWwu:
   - PhysicalPath: Events\BackgroundMusicEvents.wwu
     PathAndIcons:
@@ -559,76 +545,21 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: c042508bf80daf46bbc4504b91fd18a7
     GuidInternal: 
-    m_lastTime: -8584745737430323012
+    m_lastTime: -8584730351711548391
+    List: []
+  - PhysicalPath: Events\GameParameters.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: GameParameters
+      ObjectType: 12
+      guid: b32452b4931a384ab9d293cf5abbf73a
+    ParentPath: Events\GameParameters
+    guid: b32452b4931a384ab9d293cf5abbf73a
+    GuidInternal: 
+    m_lastTime: -8584730351711518480
     List:
-    - name: New_Event
-      guid: e64c5ed0c2dc7746a9ddf64bc44bf94e
-      id: 3050945240
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: c042508bf80daf46bbc4504b91fd18a7
-      - ElementName: New_Event
-        ObjectType: 3
-        guid: e64c5ed0c2dc7746a9ddf64bc44bf94e
-      Path: Events\Default Work Unit\New_Event
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: New_Event_01
-      guid: 19893e214d27944a8d01c34a13e73e0e
-      id: 1027751982
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: c042508bf80daf46bbc4504b91fd18a7
-      - ElementName: New_Event_01
-        ObjectType: 3
-        guid: 19893e214d27944a8d01c34a13e73e0e
-      Path: Events\Default Work Unit\New_Event_01
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Play_Wandering
-      guid: a0b925ec0a1efc4096d5e153625b1876
-      id: 465142343
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: c042508bf80daf46bbc4504b91fd18a7
-      - ElementName: Play_Wandering
-        ObjectType: 3
-        guid: a0b925ec0a1efc4096d5e153625b1876
-      Path: Events\Default Work Unit\Play_Wandering
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Play_wandering_track
-      guid: 0e3f3ad5455c6647918fc4a896d7c276
-      id: 1260558927
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: c042508bf80daf46bbc4504b91fd18a7
-      - ElementName: Play_wandering_track
-        ObjectType: 3
-        guid: 0e3f3ad5455c6647918fc4a896d7c276
-      Path: Events\Default Work Unit\Play_wandering_track
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: Reset_Game_Parameter_MusicVolume
       guid: 3b74ca02c43212439d5ae2b1e4d63f1e
       id: 2122702989
@@ -636,13 +567,13 @@ MonoBehaviour:
       - ElementName: Events
         ObjectType: 5
         guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
+      - ElementName: GameParameters
         ObjectType: 12
-        guid: c042508bf80daf46bbc4504b91fd18a7
+        guid: b32452b4931a384ab9d293cf5abbf73a
       - ElementName: Reset_Game_Parameter_MusicVolume
         ObjectType: 3
         guid: 3b74ca02c43212439d5ae2b1e4d63f1e
-      Path: Events\Default Work Unit\Reset_Game_Parameter_MusicVolume
+      Path: Events\GameParameters\Reset_Game_Parameter_MusicVolume
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -653,16 +584,165 @@ MonoBehaviour:
       - ElementName: Events
         ObjectType: 5
         guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
+      - ElementName: GameParameters
         ObjectType: 12
-        guid: c042508bf80daf46bbc4504b91fd18a7
+        guid: b32452b4931a384ab9d293cf5abbf73a
       - ElementName: Set_Game_Parameter_MusicVolume
         ObjectType: 3
         guid: 9958bcaec95489479e133bcd571bb4d7
-      Path: Events\Default Work Unit\Set_Game_Parameter_MusicVolume
+      Path: Events\GameParameters\Set_Game_Parameter_MusicVolume
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+  - PhysicalPath: Events\SoundEffects.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: SoundEffects
+      ObjectType: 12
+      guid: aff8243a4a09ed45bce6a6a6f369f4f4
+    ParentPath: Events\SoundEffects
+    guid: aff8243a4a09ed45bce6a6a6f369f4f4
+    GuidInternal: 
+    m_lastTime: -8584730351711498532
+    List:
+    - name: Play_2_clicks_with_rise
+      guid: 64df0ce93ff02e40bacbaf9503d0cdae
+      id: 2387529957
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_2_clicks_with_rise
+        ObjectType: 3
+        guid: 64df0ce93ff02e40bacbaf9503d0cdae
+      Path: Events\SoundEffects\Play_2_clicks_with_rise
+      maxAttenuation: 0
+      maxDuration: 1.0125
+      minDuration: 1.0125
+    - name: Play_3_clicks
+      guid: d1149455e56e584091cfd552b2b76ea7
+      id: 270509899
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_3_clicks
+        ObjectType: 3
+        guid: d1149455e56e584091cfd552b2b76ea7
+      Path: Events\SoundEffects\Play_3_clicks
+      maxAttenuation: 0
+      maxDuration: 0.4125
+      minDuration: 0.4125
+    - name: Play_MaybeGrappleWithNoise
+      guid: e2a744fe2920674db66a294432aa51d6
+      id: 1421315319
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_MaybeGrappleWithNoise
+        ObjectType: 3
+        guid: e2a744fe2920674db66a294432aa51d6
+      Path: Events\SoundEffects\Play_MaybeGrappleWithNoise
+      maxAttenuation: 0
+      maxDuration: 0.975
+      minDuration: 0.975
+    - name: Play_maybePlayerDeath
+      guid: cb8d76acf9b4dd459dcd8d9e5a72db74
+      id: 880380573
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_maybePlayerDeath
+        ObjectType: 3
+        guid: cb8d76acf9b4dd459dcd8d9e5a72db74
+      Path: Events\SoundEffects\Play_maybePlayerDeath
+      maxAttenuation: 0
+      maxDuration: 0.45
+      minDuration: 0.45
+    - name: Play_Shoot_effect
+      guid: 2936b19e00124a4e85053675a2b59947
+      id: 387469649
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_Shoot_effect
+        ObjectType: 3
+        guid: 2936b19e00124a4e85053675a2b59947
+      Path: Events\SoundEffects\Play_Shoot_effect
+      maxAttenuation: 0
+      maxDuration: 1.65
+      minDuration: 1.65
+    - name: Play_Thunk
+      guid: 9c157ca2163a1d43a83a9f443d66d725
+      id: 1995554706
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_Thunk
+        ObjectType: 3
+        guid: 9c157ca2163a1d43a83a9f443d66d725
+      Path: Events\SoundEffects\Play_Thunk
+      maxAttenuation: 0
+      maxDuration: 0.4125
+      minDuration: 0.4125
+    - name: Play_Unlocking
+      guid: 8df4e351115710449f82373c60393ff2
+      id: 3959296026
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_Unlocking
+        ObjectType: 3
+        guid: 8df4e351115710449f82373c60393ff2
+      Path: Events\SoundEffects\Play_Unlocking
+      maxAttenuation: 0
+      maxDuration: 1.65
+      minDuration: 1.65
+    - name: Play_Wamp
+      guid: 187abd8ae2fd234b828b3920673f9fb0
+      id: 1606056817
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_Wamp
+        ObjectType: 3
+        guid: 187abd8ae2fd234b828b3920673f9fb0
+      Path: Events\SoundEffects\Play_Wamp
+      maxAttenuation: 0
+      maxDuration: 0.6375
+      minDuration: 0.6375
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -1928,7 +2008,7 @@ MonoBehaviour:
     m_lastTime: -8584766429282457550
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 0500000024000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

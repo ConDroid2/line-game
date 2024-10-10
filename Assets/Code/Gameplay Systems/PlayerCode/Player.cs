@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -42,7 +43,11 @@ public class Player : MonoBehaviour
 
     Vector2 _inputVector = Vector2.zero;
 
+    // Events
     public System.Action OnPlayerDeath;
+    public UnityEvent OnFire;
+    public UnityEvent OnGrapple;
+    public UnityEvent OnRotate;
 
     public static Player Instance = null;
 
@@ -192,6 +197,7 @@ public class Player : MonoBehaviour
             {
                 _projectileLauncher.Fire();
                 StartCoroutine(FinishFire());
+                OnFire?.Invoke();
             }
         }        
     }
@@ -211,7 +217,7 @@ public class Player : MonoBehaviour
             {
                 _grapplingHook.AttemptGrapple();
                 _allowInput = false;
-
+                OnGrapple?.Invoke();
                 TurnOffAimMode();
             }
         }
@@ -225,6 +231,7 @@ public class Player : MonoBehaviour
         // rotate
         // Debug.Log("Rotating");
         MovementController.OnLineController.CurrentLine.GetComponent<LineRotator>().Rotate();
+        OnRotate?.Invoke();
     }
 
 
