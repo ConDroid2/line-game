@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{4A08A57B-958B-8963-9C2F-D1C1495F64B2}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{7FC0B592-72C7-9780-786F-101E514972C4}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -24,6 +24,10 @@
 				<File Id="9323772" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #19.wav</ShortName>
 					<CachePath>SFX/Bleeps #19_818F3B66.wem</CachePath>
+				</File>
+				<File Id="28467453" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Rotate1.wav</ShortName>
+					<CachePath>SFX/Rotate1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="49286846" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #11.wav</ShortName>
@@ -196,6 +200,10 @@
 				<File Id="585629142" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #20.wav</ShortName>
 					<CachePath>SFX/Bleeps #20_818F3B66.wem</CachePath>
+				</File>
+				<File Id="673348975" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MaybeGrappleTry2.wav</ShortName>
+					<CachePath>SFX/MaybeGrappleTry2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="683424978" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #7.wav</ShortName>
@@ -609,6 +617,11 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="439674172" Name="Play_MaybeGrappleTry2" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
+					<MediaRefs>
+						<MediaRef Id="673348975"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1421315319" Name="Play_MaybeGrappleWithNoise" DurationType="OneShot" DurationMin="0.975" DurationMax="0.975">
 					<MediaRefs>
 						<MediaRef Id="686341057"/>
@@ -671,6 +684,11 @@
 						<MediaRef Id="1019027977"/>
 						<MediaRef Id="1041281801"/>
 						<MediaRef Id="1056317034"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1600916500" Name="Play_Rotate1" DurationType="OneShot" DurationMin="3" DurationMax="3">
+					<MediaRefs>
+						<MediaRef Id="28467453"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="387469649" Name="Play_Shoot_effect" DurationType="OneShot" DurationMin="1.65" DurationMax="1.65">
@@ -1602,5 +1620,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{B999C990-73FF-050A-B59C-13B49174211A}</FileHash>
+	<FileHash>{011A87BD-394D-ED9A-62D9-0000F156C653}</FileHash>
 </SoundBanksInfo>
