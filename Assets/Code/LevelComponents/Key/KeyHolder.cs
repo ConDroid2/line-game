@@ -9,12 +9,12 @@ public class KeyHolder : MonoBehaviour
 
     private void Start()
     {
-        Player.Instance.OnPlayerDeath += HandlePlayerDeath;
+        Player.Instance.OnPlayerDeath.AddListener(HandlePlayerDeath);
     }
 
     private void OnDisable()
     {
-        Player.Instance.OnPlayerDeath -= HandlePlayerDeath;
+        Player.Instance.OnPlayerDeath.RemoveListener(HandlePlayerDeath);
     }
 
     public void AddKey(KeyObject newKey)

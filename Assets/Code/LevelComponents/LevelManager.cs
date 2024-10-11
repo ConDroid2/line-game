@@ -134,12 +134,12 @@ public class LevelManager : MonoBehaviour
         _player.SetLevelManager(this);
         StartCoroutine(_player.MakeInvulnerable(_player.RoomStartInvulnerability));
         ResetPlayer();
-        _player.OnPlayerDeath += HandlePlayerDeath;
+        _player.OnPlayerDeath.AddListener(HandlePlayerDeath);
     }
 
     private void OnDisable()
     {
-        Player.Instance.OnPlayerDeath -= HandlePlayerDeath;
+        Player.Instance.OnPlayerDeath.AddListener(HandlePlayerDeath);
     }
 
     public void ResetPlayer()

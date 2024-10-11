@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     Vector2 _inputVector = Vector2.zero;
 
     // Events
-    public System.Action OnPlayerDeath;
+    public UnityEvent OnPlayerDeath;
     public UnityEvent OnFire;
     public UnityEvent OnGrapple;
     public UnityEvent OnRotate;
