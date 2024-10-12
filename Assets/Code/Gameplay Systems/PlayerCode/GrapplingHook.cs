@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GrapplingHook : MonoBehaviour
 {
@@ -28,7 +29,13 @@ public class GrapplingHook : MonoBehaviour
     private float _timeMovingPlayer = 0f;
 
     // Events
+    [Header("Events")]
     public System.Action OnGrappleFinished;
+    public UnityEvent OnGrappleSuccess;
+    public UnityEvent OnGrappleFail;
+    [Tooltip("Only triggers if successful")] 
+    public UnityEvent OnGrappleDone;
+
 
     public void AttemptGrapple()
     {
@@ -47,19 +54,19 @@ public class GrapplingHook : MonoBehaviour
             _playerPreview.gameObject.SetActive(false);
 
             _grapplePullTime = _maxGrapplePullTime * (Vector3.Distance(_startPosition, _moveTo.IntersectionWorldSpace) / _grappleDistance);
+
+            OnGrappleSuccess?.Invoke();
         }
         else if(_performGrapple == false && (_moveTo == null || _moveTo.Line == null))
         {
             FinishGrapple();
+            OnGrappleFail?.Invoke();
         }
     }
 
     private void Update()
     {
         if (_performGrapple == false) return;
-
-        
-
 
         if (_movingPlayer)
         {
@@ -85,7 +92,7 @@ public class GrapplingHook : MonoBehaviour
 
                 Player.Instance.SetNewLine(_moveTo.Line, _moveTo.DistanceAlongLine);
 
-                FinishGrapple();
+                FinishGrapple(true);
             }
         }
         // move player
@@ -103,7 +110,7 @@ public class GrapplingHook : MonoBehaviour
         
     }
 
-    public void FinishGrapple()
+    public void FinishGrapple(bool triggerEvent = false)
     {
         _moveTo = null;
         _timeMovingPlayer = 0f;
@@ -116,6 +123,11 @@ public class GrapplingHook : MonoBehaviour
 
 
         OnGrappleFinished?.Invoke();
+
+        if (triggerEvent)
+        {
+            OnGrappleDone?.Invoke();
+        }
     }
 
     public void SetPreview()

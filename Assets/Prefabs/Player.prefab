@@ -329,21 +329,12 @@ MonoBehaviour:
   _rotateUnlocked: 0
   _invulnerable: 0
   _eyeAnimator: {fileID: 4802732319232546541}
+  OnPlayerDeath:
+    m_PersistentCalls:
+      m_Calls: []
   OnFire:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7997766017208314589}
-        m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
-        m_MethodName: PostEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnGrapple:
     m_PersistentCalls:
       m_Calls:
@@ -578,6 +569,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bcfadd4bee2fc449d0e6dd9de6f9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnKeyGet:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3716773739966227027
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +673,21 @@ MonoBehaviour:
     Speed: 8
     LifeSpan: 2
     Direction: {x: 0, y: 0, z: 0}
+  OnFire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7997766017208314589}
+        m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+        m_MethodName: PostEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3224782062748459162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,6 +776,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnGrappleSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGrappleFail:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGrappleDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4625425714846659432
 GameObject:
   m_ObjectHideFlags: 0

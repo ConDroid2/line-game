@@ -45,7 +45,6 @@ public class Player : MonoBehaviour
 
     // Events
     public UnityEvent OnPlayerDeath;
-    public UnityEvent OnFire;
     public UnityEvent OnGrapple;
     public UnityEvent OnRotate;
 
@@ -197,7 +196,6 @@ public class Player : MonoBehaviour
             {
                 _projectileLauncher.Fire();
                 StartCoroutine(FinishFire());
-                OnFire?.Invoke();
             }
         }        
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ProjectileLauncher : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private bool _fireOnAwake = false;
     [SerializeField] private float _fireInterval = 1;
     [SerializeField] private ProjectileData _projectileData;
+
+    [Header("Events")]
+    public UnityEvent OnFire;
+
 
     private float _nextFireTime = 0f;
 
@@ -42,6 +47,8 @@ public class ProjectileLauncher : MonoBehaviour
             newProjectile.Fire(new ProjectileData(_projectileData));
 
             _nextFireTime = Time.time + _fireInterval;
+
+            OnFire?.Invoke();
         }
     }
 

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KeyHolder : MonoBehaviour
 {
 
     private Stack<KeyObject> _keys = new Stack<KeyObject>();
+
+    [Header("Events")]
+    public UnityEvent OnKeyGet;
 
     private void Start()
     {
@@ -33,6 +37,8 @@ public class KeyHolder : MonoBehaviour
             }
 
             _keys.Push(newKey);
+
+            OnKeyGet?.Invoke();
         }
     }
 
