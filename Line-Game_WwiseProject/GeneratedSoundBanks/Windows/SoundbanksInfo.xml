@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{7FC0B592-72C7-9780-786F-101E514972C4}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{80CB15C6-2EEB-5559-3265-242FDA64F1D8}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -20,6 +20,10 @@
 				<File Id="2924750" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Shoot effect.wav</ShortName>
 					<CachePath>SFX/Shoot effect_818F3B66.wem</CachePath>
+				</File>
+				<File Id="4137719" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>GetKey1.wav</ShortName>
+					<CachePath>SFX/GetKey1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="9323772" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #19.wav</ShortName>
@@ -32,6 +36,10 @@
 				<File Id="49286846" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #11.wav</ShortName>
 					<CachePath>SFX/Bleeps #11_818F3B66.wem</CachePath>
+				</File>
+				<File Id="83571169" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>GetItem1.wav</ShortName>
+					<CachePath>SFX/GetItem1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="85738663" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Wamp.wav</ShortName>
@@ -92,6 +100,10 @@
 				<File Id="264134249" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bubble noises #24.wav</ShortName>
 					<CachePath>SFX/Bubble noises #24_818F3B66.wem</CachePath>
+				</File>
+				<File Id="264531642" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyShoot2_2.wav</ShortName>
+					<CachePath>SFX/EnemyShoot2_2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="271724456" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bubble noises #18.wav</ShortName>
@@ -185,13 +197,29 @@
 					<ShortName>Bubble noises #12.wav</ShortName>
 					<CachePath>SFX/Bubble noises #12_818F3B66.wem</CachePath>
 				</File>
+				<File Id="473429200" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerShoot2_2.wav</ShortName>
+					<CachePath>SFX/PlayerShoot2_2_818F3B66.wem</CachePath>
+				</File>
 				<File Id="478417569" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Unlocking.wav</ShortName>
 					<CachePath>SFX/Unlocking_818F3B66.wem</CachePath>
 				</File>
+				<File Id="532061112" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>EnemyShoot3_2.wav</ShortName>
+					<CachePath>SFX/EnemyShoot3_2_818F3B66.wem</CachePath>
+				</File>
 				<File Id="548785688" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Soon Forgotten_4LOOP.wav</ShortName>
 					<CachePath>SFX/Soon Forgotten_4LOOP_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="554406615" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>RotateTry2.wav</ShortName>
+					<CachePath>SFX/RotateTry2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="571841297" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LightOn.1wav.wav</ShortName>
+					<CachePath>SFX/LightOn.1wav_818F3B66.wem</CachePath>
 				</File>
 				<File Id="582465378" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>WanderingGroove_loop.wav</ShortName>
@@ -240,6 +268,10 @@
 				<File Id="749399262" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bubble noises #23.wav</ShortName>
 					<CachePath>SFX/Bubble noises #23_818F3B66.wem</CachePath>
+				</File>
+				<File Id="758612055" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Blip(MaybeMenus).wav</ShortName>
+					<CachePath>SFX/Blip(MaybeMenus)_818F3B66.wem</CachePath>
 				</File>
 				<File Id="760796751" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>WanderingBase_loop.wav</ShortName>
@@ -304,6 +336,10 @@
 				<File Id="954093314" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>WanderingDisco.wav</ShortName>
 					<CachePath>SFX/WanderingDisco_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="967253662" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>GrappleTry4.wav</ShortName>
+					<CachePath>SFX/GrappleTry4_818F3B66.wem</CachePath>
 				</File>
 				<File Id="1002722393" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #23.wav</ShortName>
@@ -617,6 +653,46 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="1867580273" Name="Play_Blip_MaybeMenus_" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+					<MediaRefs>
+						<MediaRef Id="758612055"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1644178824" Name="Play_EnemyShoot2_2" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+					<MediaRefs>
+						<MediaRef Id="264531642"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2717799377" Name="Play_EnemyShoot3_2" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+					<MediaRefs>
+						<MediaRef Id="532061112"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="799384824" Name="Play_GetItem1" DurationType="OneShot" DurationMin="2.0020833" DurationMax="2.0020833">
+					<MediaRefs>
+						<MediaRef Id="83571169"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="198216712" Name="Play_GetKey1" DurationType="OneShot" DurationMin="1.0020833" DurationMax="1.0020833">
+					<MediaRefs>
+						<MediaRef Id="4137719"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3543309790" Name="Play_GrappleTry4" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+					<MediaRefs>
+						<MediaRef Id="967253662"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="249006508" Name="Play_GrappleTry4_01" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+					<MediaRefs>
+						<MediaRef Id="967253662"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1668802621" Name="Play_LightOn_1wav" DurationType="OneShot" DurationMin="3.9604166" DurationMax="3.9604166">
+					<MediaRefs>
+						<MediaRef Id="571841297"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="439674172" Name="Play_MaybeGrappleTry2" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
 					<MediaRefs>
 						<MediaRef Id="673348975"/>
@@ -686,9 +762,19 @@
 						<MediaRef Id="1056317034"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3365894439" Name="Play_PlayerShoot2_2" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+					<MediaRefs>
+						<MediaRef Id="473429200"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1600916500" Name="Play_Rotate1" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
 						<MediaRef Id="28467453"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1008362716" Name="Play_RotateTry2" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+					<MediaRefs>
+						<MediaRef Id="554406615"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="387469649" Name="Play_Shoot_effect" DurationType="OneShot" DurationMin="1.65" DurationMax="1.65">
@@ -1620,5 +1706,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{011A87BD-394D-ED9A-62D9-0000F156C653}</FileHash>
+	<FileHash>{5015CC9B-7943-DAE0-5AF8-61DA39698ED6}</FileHash>
 </SoundBanksInfo>

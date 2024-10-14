@@ -3291,6 +3291,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1478793557450587068, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1478793557450587068, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.382
+      objectReference: {fileID: 0}
     - target: {fileID: 1694809294540184327, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3321,7 +3329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -3330,6 +3338,10 @@ PrefabInstance:
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+      propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3344,11 +3356,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 517027355}
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+      propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 2135078401}
+    - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+      propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
@@ -3364,6 +3384,10 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+      propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: PostEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -3374,6 +3398,10 @@ PrefabInstance:
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+      propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: WwiseEventPoster, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -3391,8 +3419,23 @@ PrefabInstance:
       propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8151862693146642413, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+      propertyPath: OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+--- !u!114 &2135078401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6866328667654879974, guid: 16ca8401db8307c478fbeff8e5008ffa, type: 3}
+  m_PrefabInstance: {fileID: 2135078400}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbdca0ce99154d4b86d55d7f5a287de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3476374822939889894
 PrefabInstance:
   m_ObjectHideFlags: 0
