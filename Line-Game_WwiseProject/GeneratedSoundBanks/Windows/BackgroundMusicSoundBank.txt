@@ -1,10 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
 	198216712	Play_GetKey1			\SoundEffects\Play_GetKey1	
-	249006508	Play_GrappleTry4_01			\SoundEffects\Play_GrappleTry4_01	
 	270509899	Play_3_clicks			\SoundEffects\Play_3_clicks	
 	346159844	Pause_AllBGsSwitchContainer			\BackgroundMusicEvents\Pause_AllBGsSwitchContainer	
 	387469649	Play_Shoot_effect			\SoundEffects\Play_Shoot_effect	
 	439674172	Play_MaybeGrappleTry2			\SoundEffects\Play_MaybeGrappleTry2	
+	481951945	Play_EnemyDeath1			\SoundEffects\Play_EnemyDeath1	
 	777545546	UnMute_AllBGsSwitchContainer			\BackgroundMusicEvents\UnMute_AllBGsSwitchContainer	
 	799384824	Play_GetItem1			\SoundEffects\Play_GetItem1	
 	880380573	Play_maybePlayerDeath			\SoundEffects\Play_maybePlayerDeath	
@@ -35,13 +35,17 @@ Event	ID	Name			Wwise Object Path	Notes
 	2427286275	Set_Switch_DangerVortexOff			\BackgroundMusicEvents\Set_Switch_DangerVortexOff	
 	2649641287	Mute_AllBGsSwitchContainer			\BackgroundMusicEvents\Mute_AllBGsSwitchContainer	
 	2717799377	Play_EnemyShoot3_2			\SoundEffects\Play_EnemyShoot3_2	
+	2771980915	Play_Shoot6			\SoundEffects\Play_Shoot6	
 	2795130315	Reset_Voice_Volume_AllBGsSwitchContainer			\BackgroundMusicEvents\Reset_Voice_Volume_AllBGsSwitchContainer	
 	2929608979	Break_AllBGsSwitchContainer			\BackgroundMusicEvents\Break_AllBGsSwitchContainer	
 	3083749424	Seek_AllBGsSwitchContainer			\BackgroundMusicEvents\Seek_AllBGsSwitchContainer	
 	3223721356	Set_Voice_Volume_AllBGsSwitchContainer			\BackgroundMusicEvents\Set_Voice_Volume_AllBGsSwitchContainer	
 	3291076718	Set_Game_Parameter_MusicVolume			\GameParameters\Set_Game_Parameter_MusicVolume	
 	3365894439	Play_PlayerShoot2_2			\SoundEffects\Play_PlayerShoot2_2	
+	3371825843	Play_KeyBreaks			\SoundEffects\Play_KeyBreaks	
+	3527767933	Play_GetUpgradeEflatMajor			\SoundEffects\Play_GetUpgradeEflatMajor	
 	3543309790	Play_GrappleTry4			\SoundEffects\Play_GrappleTry4	
+	3543309791	Play_GrappleTry5			\SoundEffects\Play_GrappleTry5	
 	3719212787	Play_Memory_Leak_Foley			\BackgroundMusicEvents\Play_Memory_Leak_Foley	
 	3850123198	Play_AllBGsSwitchContainer			\BackgroundMusicEvents\Play_AllBGsSwitchContainer	
 	3862409775	Set_Switch_DangerVortexOn			\BackgroundMusicEvents\Set_Switch_DangerVortexOn	
@@ -86,6 +90,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	198392224	Unauthorized_forWneg1	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Unauthorized_forWneg1_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\UnauthorizedSwitchContainer\Unauthorized\Unauthorized_forWneg1\Unauthorized_forWneg1		27927416
 	201830874	Soon Forgotten_first	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Soon Forgotten_first_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\SoonForgotten\UpperWorld\Soon Forgotten_First\Soon Forgotten_first		21992872
 	204318250	Bleeps #9	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #9_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #9		525236
+	210471982	Shoot6	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Shoot6_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\Shoot6		576544
+	225601339	EnemyDeath1	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\EnemyDeath1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\EnemyDeath1		576544
 	235003615	Bleeps #2	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #2		1048872
 	243082496	Bubble noises #16	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bubble noises #16_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bubble noises #16		600872
 	264134249	Bubble noises #24	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bubble noises #24_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bubble noises #24		641600
@@ -97,6 +103,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	289078254	Struggle	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Struggle_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\Struggle\Struggle\Struggle		33737284
 	304090110	Bubble noises #14	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bubble noises #14_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bubble noises #14		634324
 	304735126	Bleeps #5	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #5_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #5		525236
+	333428194	GetUpgradeEflatMajor	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\GetItem1-e flat major_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\GetUpgradeEflatMajor		384544
 	340263390	Bleeps #21	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #21_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #21		1048872
 	345830354	2 clicks with rise	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\2 clicks with rise_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\2 clicks with rise		194544
 	347146397	Bubble noises #19	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bubble noises #19_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bubble noises #19		659052
@@ -118,7 +125,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	532061112	EnemyShoot3_2	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\EnemyShoot3_2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\EnemyShoot3_2		576544
 	548785688	Soon ForgottenLoop	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Soon Forgotten_4LOOP_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\SoonForgotten\UpperWorld\Soon Forgotten_LOOP\Soon ForgottenLoop		21992872
 	554406615	RotateTry2	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\RotateTry2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\RotateTry2		576544
-	571841297	LightOn_1wav	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\LightOn.1wav_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\LightOn_1wav		760544
+	558752065	GrappleTry4	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\KeyBreak1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\GrappleTry4		192544
 	582465378	WanderingBase_loop	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\WanderingGroove_loop_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\WanderingPlaylistContainer\WanderingMusicSegmentLoop\WanderingBase_loop		12197792
 	585629142	Bleeps #20	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #20_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #20		525236
 	673348975	MaybeGrappleTry2	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\MaybeGrappleTry2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\MaybeGrappleTry2		672144
@@ -148,8 +155,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	936197155	Bleeps #15	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #15_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #15		1048872
 	940974601	Wandering_base	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\WanderingGroove_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\WanderingPlaylistContainer\WanderingMusicSegmentStart\Wandering_base		12197792
 	954093314	Wandering_base	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\WanderingDisco_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\WanderingPlaylistContainer\WanderingMusicSegmentStart\Wandering_base		12197792
-	967253662	GrappleTry4	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\GrappleTry4_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\GrappleTry4		576544
 	1002722393	Bleeps #23	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #23_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #23		525236
+	1003484403	GrappleTry5	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\GrappleTry5_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\GrappleTry5		576544
 	1004854673	Bleeps #25	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #25_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #25		525236
 	1010904039	Bleeps #6	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #6_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #6		525236
 	1019027977	Bleeps #14	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #14_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #14		525236
