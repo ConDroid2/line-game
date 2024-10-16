@@ -1133,6 +1133,28 @@
 								<ActiveSource Name="Bubble noises #11" ID="{13272AFB-DE70-4F71-BEC8-8BA81AA295D4}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="ZoomOnConveyorLine1_eflat" ID="{6ADD3717-C90D-45EE-ABF7-239FA8580F4F}" ShortID="497272221">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ZoomOnConveyorLine1_eflat" ID="{7DEF96FF-0645-4FA6-A9BC-20F9B9A21A0B}">
+									<Language>SFX</Language>
+									<AudioFile>ZoomOnConveyorLine1_eflat.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="462801780"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ZoomOnConveyorLine1_eflat" ID="{7DEF96FF-0645-4FA6-A9BC-20F9B9A21A0B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="RTPC">
@@ -1565,6 +1587,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="GetItem1" ID="{23931523-F67E-4256-AC0B-D747DCB6A8F5}" ShortID="821822125">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -1609,6 +1638,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="LightOn_1wav" ID="{6CAA2055-9367-4D09-B553-6C791088A64F}" ShortID="816333802">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -1689,6 +1725,23 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Shoot6" ID="{87C4D3F3-1C80-4FE8-8A8D-E969B90968B2}" ShortID="702836708">
+							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-13</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -1699,10 +1752,15 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="Shoot6" ID="{EDC08799-E1B0-40E5-BE70-99435DDB8D83}">
+									<PropertyList>
+										<Property Name="LoopEnd" Type="Real64" Value="0.581486111111111"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.584"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>Shoot6.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="210471982"/>
+										<MediaID ID="935152826"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
@@ -1711,6 +1769,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="GetUpgradeEflatMajor" ID="{48A01247-71F7-44C0-A7C7-D4B608D7C7D8}" ShortID="755460778">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -1798,6 +1863,339 @@
 								<ActiveSource Name="GrappleTry5" ID="{67A672BC-1320-45B0-9471-8112AB722904}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<SwitchContainer Name="ZoomOnLineEndPart" ID="{E96B6614-389F-4067-9771-045904F342D4}" ShortID="443534111">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Wandering_W0" ID="{65201AFD-1F8B-4383-932E-2A9B283070F7}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="BackgroundTrack" ID="{C72A9562-E3BF-47D0-9BCF-7E278272B171}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="ZoomOnLineEFlat" ID="{E2ED64AD-CD95-4BD8-8618-369C555DA215}" ShortID="182287178">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ZoomOnConveyorLine1_eflat" ID="{E28682EC-B072-491B-80F9-A03F45E84C43}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.25"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ZoomOnConveyorLine1_eflat.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="579753392"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ZoomOnConveyorLine1_eflat" ID="{E28682EC-B072-491B-80F9-A03F45E84C43}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ZoomOnConveyorLine1_all_Dmajor" ID="{280662E0-F689-4C3D-8DE7-2C0D3C8DECE8}" ShortID="253993255">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ZoomOnConveyorLine1_all_Dmajor" ID="{D4A3AF86-C196-4864-B48D-D63F843B954F}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.25"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ZoomOnConveyorLine1_all_Dmajor.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="247792844"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ZoomOnConveyorLine1_all_Dmajor" ID="{D4A3AF86-C196-4864-B48D-D63F843B954F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ZoomOnConveyorLine1_bFlat" ID="{4C0F7ADC-A38F-4035-A4F6-14872C8B56BD}" ShortID="85477703">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ZoomOnConveyorLine1_bFlat" ID="{21F8ADB1-4C07-488D-89B5-02ECC9E92EC2}">
+											<PropertyList>
+												<Property Name="LoopEnd" Type="Real64" Value="1.87497916666667"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.25"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ZoomOnConveyorLine1_bFlat.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="133588556"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ZoomOnConveyorLine1_bFlat" ID="{21F8ADB1-4C07-488D-89B5-02ECC9E92EC2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="ZoomOnLineEFlat" ID="{E2ED64AD-CD95-4BD8-8618-369C555DA215}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="ZoomOnConveyorLine1_bFlat" ID="{4C0F7ADC-A38F-4035-A4F6-14872C8B56BD}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="ZoomOnConveyorLine1_all_Dmajor" ID="{280662E0-F689-4C3D-8DE7-2C0D3C8DECE8}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Unauthorized_W2" ID="{8EC6B328-8210-40CC-8137-001B80BB3A81}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnConveyorLine1_all_Dmajor" ID="{280662E0-F689-4C3D-8DE7-2C0D3C8DECE8}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Struggle_W4" ID="{F2CC7039-4E1D-40B4-B7D8-F6FDB0315A21}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnLineEFlat" ID="{E2ED64AD-CD95-4BD8-8618-369C555DA215}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="SoonForgotten_W3" ID="{F513AE59-BE3F-4C94-B124-3080827E485F}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnConveyorLine1_all_Dmajor" ID="{280662E0-F689-4C3D-8DE7-2C0D3C8DECE8}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Microprocessor_W1" ID="{3072859F-6E51-4A65-BCAD-A867D60D90D6}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnConveyorLine1_bFlat" ID="{4C0F7ADC-A38F-4035-A4F6-14872C8B56BD}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Wandering_W0" ID="{65201AFD-1F8B-4383-932E-2A9B283070F7}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnLineEFlat" ID="{E2ED64AD-CD95-4BD8-8618-369C555DA215}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+						<SwitchContainer Name="ZoomOnLineStartAndLoop" ID="{FD7DB1D8-E537-47A0-BA29-4BECF0C9F5C9}" ShortID="225157116">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Wandering_W0" ID="{65201AFD-1F8B-4383-932E-2A9B283070F7}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="BackgroundTrack" ID="{C72A9562-E3BF-47D0-9BCF-7E278272B171}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="ZoomOnLineEFlat" ID="{84FB8AED-696C-470D-9480-70B12D471782}" ShortID="401841490">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ZoomOnConveyorLine1_eflat" ID="{F02D82A4-1E73-41D4-9DF1-553AA4767AF8}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.75"/>
+												<Property Name="LoopEnd" Type="Real64" Value="1.25"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ZoomOnConveyorLine1_eflat.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="842979744"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ZoomOnConveyorLine1_eflat" ID="{F02D82A4-1E73-41D4-9DF1-553AA4767AF8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ZoomOnConveyorLine1_all_Dmajor" ID="{3484FE3B-A8D4-45E7-A609-704184E5331F}" ShortID="450970103">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ZoomOnConveyorLine1_all_Dmajor" ID="{6FDC5FD2-6CB3-4BD2-A688-68DFD0E63CC1}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.75"/>
+												<Property Name="LoopEnd" Type="Real64" Value="1.25"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.87708"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ZoomOnConveyorLine1_all_Dmajor.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="502238746"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ZoomOnConveyorLine1_all_Dmajor" ID="{6FDC5FD2-6CB3-4BD2-A688-68DFD0E63CC1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ZoomOnConveyorLine1_bFlat" ID="{7173A863-8974-40D6-9D3F-17B4EC4C72AB}" ShortID="700198925">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ZoomOnConveyorLine1_bFlat" ID="{63532DA5-B2A1-4064-9384-30C98DF14ED8}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0.75"/>
+												<Property Name="LoopEnd" Type="Real64" Value="1.25"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ZoomOnConveyorLine1_bFlat.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1014716659"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ZoomOnConveyorLine1_bFlat" ID="{63532DA5-B2A1-4064-9384-30C98DF14ED8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="ZoomOnConveyorLine1_all_Dmajor" ID="{3484FE3B-A8D4-45E7-A609-704184E5331F}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="ZoomOnConveyorLine1_bFlat" ID="{7173A863-8974-40D6-9D3F-17B4EC4C72AB}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="ZoomOnLineEFlat" ID="{84FB8AED-696C-470D-9480-70B12D471782}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Unauthorized_W2" ID="{8EC6B328-8210-40CC-8137-001B80BB3A81}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnConveyorLine1_all_Dmajor" ID="{3484FE3B-A8D4-45E7-A609-704184E5331F}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Struggle_W4" ID="{F2CC7039-4E1D-40B4-B7D8-F6FDB0315A21}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnLineEFlat" ID="{84FB8AED-696C-470D-9480-70B12D471782}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="SoonForgotten_W3" ID="{F513AE59-BE3F-4C94-B124-3080827E485F}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnConveyorLine1_all_Dmajor" ID="{3484FE3B-A8D4-45E7-A609-704184E5331F}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Microprocessor_W1" ID="{3072859F-6E51-4A65-BCAD-A867D60D90D6}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnConveyorLine1_bFlat" ID="{7173A863-8974-40D6-9D3F-17B4EC4C72AB}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Wandering_W0" ID="{65201AFD-1F8B-4383-932E-2A9B283070F7}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnLineEFlat" ID="{84FB8AED-696C-470D-9480-70B12D471782}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
