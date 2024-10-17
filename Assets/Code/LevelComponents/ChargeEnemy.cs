@@ -18,6 +18,7 @@ public class ChargeEnemy : MonoBehaviour
     private Vector3 _chargeEndingPosition;
 
     [Header("Events")]
+    public UnityEvent OnStartCharging;
     public UnityEvent DoneCharging;
 
     private void Update()
@@ -56,6 +57,7 @@ public class ChargeEnemy : MonoBehaviour
             transform.up = (_chargeEndingPosition - _chargeStartingPosition);
             _timeCharging = 0f;
             _charging = true;
+            OnStartCharging?.Invoke();
         }
     }
 

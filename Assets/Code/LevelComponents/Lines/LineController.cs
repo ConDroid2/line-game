@@ -37,6 +37,8 @@ public class LineController : MonoBehaviour
 
     public UnityEvent<GameObject> OnObjectAddedToLine;
     public UnityEvent OnObjectRemovedFromLine;
+    public UnityEvent OnPlayerAddedToLine;
+    public UnityEvent OnPlayerRemovedFromLine;
     public UnityEvent<bool> OnActiveChanged;
 
     //[Header("Moving line stuff")]
@@ -251,6 +253,11 @@ public class LineController : MonoBehaviour
         {
             OnLineControllers.Add(newObject);
             OnObjectAddedToLine.Invoke(newObject.gameObject);
+
+            if (newObject.CompareTag("Player"))
+            {
+                OnPlayerAddedToLine?.Invoke();
+            }
         }
     }
 
@@ -260,6 +267,11 @@ public class LineController : MonoBehaviour
         {
             OnLineControllers.Remove(objectOnLine);
             OnObjectRemovedFromLine.Invoke();
+
+            if (objectOnLine.CompareTag("Player"))
+            {
+                OnPlayerRemovedFromLine?.Invoke();
+            }
         }
     }
 
