@@ -1133,28 +1133,6 @@
 								<ActiveSource Name="Bubble noises #11" ID="{13272AFB-DE70-4F71-BEC8-8BA81AA295D4}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="ZoomOnConveyorLine1_eflat" ID="{6ADD3717-C90D-45EE-ABF7-239FA8580F4F}" ShortID="497272221">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="ZoomOnConveyorLine1_eflat" ID="{7DEF96FF-0645-4FA6-A9BC-20F9B9A21A0B}">
-									<Language>SFX</Language>
-									<AudioFile>ZoomOnConveyorLine1_eflat.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="462801780"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="ZoomOnConveyorLine1_eflat" ID="{7DEF96FF-0645-4FA6-A9BC-20F9B9A21A0B}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="RTPC">
@@ -2196,6 +2174,35 @@
 								</GroupingList>
 							</GroupingInfo>
 						</SwitchContainer>
+						<Sound Name="ChargeEnemyAttack2" ID="{BD28E93E-D472-407F-B7EC-7C9A10E27BAD}" ShortID="1031707436">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ChargeEnemyAttack2" ID="{EF6B439A-63ED-4097-BB8E-3C91AE7D8317}">
+									<Language>SFX</Language>
+									<AudioFile>ChargeEnemyAttack2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="540866740"/>
+									</MediaIDList>
+								</AudioFileSource>
+								<AudioFileSource Name="ChargeEnemyAttack3" ID="{FA695C81-0F3F-4E0C-A7E4-05A4B5B8C2D2}">
+									<Language>SFX</Language>
+									<AudioFile>ChargeEnemyAttack3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="525993017"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ChargeEnemyAttack3" ID="{FA695C81-0F3F-4E0C-A7E4-05A4B5B8C2D2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

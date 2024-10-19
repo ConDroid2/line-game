@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\BackgroundMusicPlaylist
     guid: 1a0962b06261624c95aecf2cc6f314d1
     GuidInternal: 
-    m_lastTime: -8584727332092993387
+    m_lastTime: -8584722279948482330
     List:
     - name: BackgroundMusicSoundBank
       guid: 3f92bb61ec1ae341acbb5e4b03ff3416
@@ -545,7 +545,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: c042508bf80daf46bbc4504b91fd18a7
     GuidInternal: 
-    m_lastTime: -8584726463048646363
+    m_lastTime: -8584722279948402165
     List: []
   - PhysicalPath: Events\GameParameters.wwu
     PathAndIcons:
@@ -605,7 +605,7 @@ MonoBehaviour:
     ParentPath: Events\SoundEffects
     guid: aff8243a4a09ed45bce6a6a6f369f4f4
     GuidInternal: 
-    m_lastTime: -8584726463048592161
+    m_lastTime: -8584722279948319415
     List:
     - name: Play_2_clicks_with_rise
       guid: 64df0ce93ff02e40bacbaf9503d0cdae
@@ -655,6 +655,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 079214ccf346d345a625735c006da346
       Path: Events\SoundEffects\Play_Blip_MaybeMenus_
+      maxAttenuation: 0
+      maxDuration: 3.0020833
+      minDuration: 3.0020833
+    - name: Play_ChargeEnemyAttack2
+      guid: 725f7ba74d1dc9478ae7512b01a78c6f
+      id: 528462596
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_ChargeEnemyAttack2
+        ObjectType: 3
+        guid: 725f7ba74d1dc9478ae7512b01a78c6f
+      Path: Events\SoundEffects\Play_ChargeEnemyAttack2
       maxAttenuation: 0
       maxDuration: 3.0020833
       minDuration: 3.0020833
@@ -962,8 +979,8 @@ MonoBehaviour:
         guid: cfc891dda6f8f543b94a98751dfeb506
       Path: Events\SoundEffects\Play_Shoot6
       maxAttenuation: 0
-      maxDuration: 3.0020833
-      minDuration: 3.0020833
+      maxDuration: 0.584
+      minDuration: 0.584
     - name: Play_Thunk
       guid: 9c157ca2163a1d43a83a9f443d66d725
       id: 1995554706
@@ -1015,6 +1032,57 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.6375
       minDuration: 0.6375
+    - name: Play_ZoomOnLineEndPart
+      guid: 6a6cbb6f624d9d4f93ebc99caaf88ad0
+      id: 1756999358
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_ZoomOnLineEndPart
+        ObjectType: 3
+        guid: 6a6cbb6f624d9d4f93ebc99caaf88ad0
+      Path: Events\SoundEffects\Play_ZoomOnLineEndPart
+      maxAttenuation: 0
+      maxDuration: Infinity
+      minDuration: 0.62708336
+    - name: Play_ZoomOnLineStartAndLoop
+      guid: df5ca929d9ce9c44bd87634df7975284
+      id: 2802534155
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Play_ZoomOnLineStartAndLoop
+        ObjectType: 3
+        guid: df5ca929d9ce9c44bd87634df7975284
+      Path: Events\SoundEffects\Play_ZoomOnLineStartAndLoop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_ZoomOnLineStartAndLoop
+      guid: c406e59b4d8aad4eb4e2e7288cb2b511
+      id: 2486338789
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SoundEffects
+        ObjectType: 12
+        guid: aff8243a4a09ed45bce6a6a6f369f4f4
+      - ElementName: Stop_ZoomOnLineStartAndLoop
+        ObjectType: 3
+        guid: c406e59b4d8aad4eb4e2e7288cb2b511
+      Path: Events\SoundEffects\Stop_ZoomOnLineStartAndLoop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -2280,7 +2348,7 @@ MonoBehaviour:
     m_lastTime: -8584766429282457550
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0500000024000000
+  ExpandedWaapiItemIds: 0500000006000000240000002500000044000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
