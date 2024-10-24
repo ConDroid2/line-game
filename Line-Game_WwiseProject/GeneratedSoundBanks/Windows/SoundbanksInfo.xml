@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{240F31DF-5928-1BAD-503E-78A330B5F7E9}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{3268A12D-DF75-4427-5E33-BAEDF5C5AD7B}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -281,6 +281,10 @@
 					<ShortName>Bleeps.wav</ShortName>
 					<CachePath>SFX/Bleeps_818F3B66.wem</CachePath>
 				</File>
+				<File Id="709430796" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PressurePlateReleased2.wav</ShortName>
+					<CachePath>SFX/PressurePlateReleased2_818F3B66.wem</CachePath>
+				</File>
 				<File Id="710364342" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>3 clicks.wav</ShortName>
 					<CachePath>SFX/3 clicks_818F3B66.wem</CachePath>
@@ -288,6 +292,10 @@
 				<File Id="712590921" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>WanderingMelody.wav</ShortName>
 					<CachePath>SFX/WanderingMelody_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="733654722" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PressurePlateLightPressed2.wav</ShortName>
+					<CachePath>SFX/PressurePlateLightPressed2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="736125564" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #18.wav</ShortName>
@@ -376,6 +384,10 @@
 				<File Id="954093314" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>WanderingDisco.wav</ShortName>
 					<CachePath>SFX/WanderingDisco_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="993600486" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PressurePlateHeavyPressed2.wav</ShortName>
+					<CachePath>SFX/PressurePlateHeavyPressed2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="1002722393" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #23.wav</ShortName>
@@ -747,6 +759,11 @@
 						<MediaRef Id="1003484403"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3400792776" Name="Play_HeavyPressurePlatePressed" DurationType="OneShot" DurationMin="0.87916666" DurationMax="0.87916666">
+					<MediaRefs>
+						<MediaRef Id="993600486"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3371825843" Name="Play_KeyBreaks" DurationType="OneShot" DurationMin="1.0020833" DurationMax="1.0020833">
 					<MediaRefs>
 						<MediaRef Id="558752065"/>
@@ -755,6 +772,11 @@
 				<Event Id="1668802621" Name="Play_LightOn_1wav" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
 					<MediaRefs>
 						<MediaRef Id="210471982"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1785566041" Name="Play_LightPressurePlatePressed" DurationType="OneShot" DurationMin="2.0041666" DurationMax="2.0041666">
+					<MediaRefs>
+						<MediaRef Id="733654722"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="439674172" Name="Play_MaybeGrappleTry2" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
@@ -829,6 +851,11 @@
 				<Event Id="3365894439" Name="Play_PlayerShoot2_2" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
 					<MediaRefs>
 						<MediaRef Id="473429200"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1369417368" Name="Play_PressurePlateReleased" DurationType="OneShot" DurationMin="2.0041666" DurationMax="2.0041666">
+					<MediaRefs>
+						<MediaRef Id="709430796"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1600916500" Name="Play_Rotate1" DurationType="OneShot" DurationMin="3" DurationMax="3">
@@ -1844,5 +1871,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{05AE4E09-3F90-3335-C219-FC29B71A5B6D}</FileHash>
+	<FileHash>{74B545FD-5272-8245-DFFE-6866567F1EAC}</FileHash>
 </SoundBanksInfo>

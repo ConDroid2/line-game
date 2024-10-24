@@ -12,6 +12,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	998656967	Set_Voice_Low_pass_Filter_AllBGsSwitchContainer			\BackgroundMusicEvents\Set_Voice_Low_pass_Filter_AllBGsSwitchContainer	
 	1008362716	Play_RotateTry2			\SoundEffects\Play_RotateTry2	
 	1112751095	Set_Switch_BeepsOn			\BackgroundMusicEvents\Set_Switch_BeepsOn	
+	1369417368	Play_PressurePlateReleased			\SoundEffects\Play_PressurePlateReleased	
 	1421315319	Play_MaybeGrappleWithNoise			\SoundEffects\Play_MaybeGrappleWithNoise	
 	1429974361	Stop_Memory_Leak_Foley			\BackgroundMusicEvents\Stop_Memory_Leak_Foley	
 	1600916500	Play_Rotate1			\SoundEffects\Play_Rotate1	
@@ -22,6 +23,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1742419299	Set_Voice_High_pass_Filter_AllBGsSwitchContainer			\BackgroundMusicEvents\Set_Voice_High_pass_Filter_AllBGsSwitchContainer	
 	1745318411	Set_Switch_BeepsOff			\BackgroundMusicEvents\Set_Switch_BeepsOff	
 	1756999358	Play_ZoomOnLineEndPart			\SoundEffects\Play_ZoomOnLineEndPart	
+	1785566041	Play_LightPressurePlatePressed			\SoundEffects\Play_LightPressurePlatePressed	
 	1867580273	Play_Blip_MaybeMenus_			\SoundEffects\Play_Blip_MaybeMenus_	
 	1952352785	StruggleBeat1			\BackgroundMusicEvents\StruggleBeat1	
 	1952352786	StruggleBeat2			\BackgroundMusicEvents\StruggleBeat2	
@@ -47,6 +49,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3291076718	Set_Game_Parameter_MusicVolume			\GameParameters\Set_Game_Parameter_MusicVolume	
 	3365894439	Play_PlayerShoot2_2			\SoundEffects\Play_PlayerShoot2_2	
 	3371825843	Play_KeyBreaks			\SoundEffects\Play_KeyBreaks	
+	3400792776	Play_HeavyPressurePlatePressed			\SoundEffects\Play_HeavyPressurePlatePressed	
 	3527767933	Play_GetUpgradeEflatMajor			\SoundEffects\Play_GetUpgradeEflatMajor	
 	3543309790	Play_GrappleTry4			\SoundEffects\Play_GrappleTry4	
 	3543309791	Play_GrappleTry5			\SoundEffects\Play_GrappleTry5	
@@ -142,8 +145,10 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	686341057	MaybeGrappleWithNoise	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\MaybeGrappleWithNoise_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\MaybeGrappleWithNoise		187344
 	687764992	LightsOut	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\LightsOut_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\UnauthorizedSwitchContainer\Unauthorized-LightsOut\LightsOut\LightsOut		16063416
 	697163750	Bleeps	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps		20947052
+	709430796	PressurePlateReleased	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\PressurePlateReleased2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\PressurePlateReleased		384944
 	710364342	3 clicks	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\3 clicks_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\3 clicks		79344
 	712590921	Wandering_base	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\WanderingMelody_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\WanderingPlaylistContainer\WanderingMusicSegmentStart\Wandering_base		12197792
+	733654722	LightPressurePlatePressed	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\PressurePlateLightPressed2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\LightPressurePlatePressed		384944
 	736125564	Bleeps #18	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #18_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #18		1048872
 	736250868	Bleeps #8	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #8_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #8		525236
 	749399262	Bubble noises #23	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bubble noises #23_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bubble noises #23		696872
@@ -166,6 +171,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	936197155	Bleeps #15	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #15_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #15		1048872
 	940974601	Wandering_base	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\WanderingGroove_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\WanderingPlaylistContainer\WanderingMusicSegmentStart\Wandering_base		12197792
 	954093314	Wandering_base	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\WanderingDisco_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\LevelBGPlaylists\AllBGsSwitchContainer\WanderingPlaylistContainer\WanderingMusicSegmentStart\Wandering_base		12197792
+	993600486	HeavyPressurePlatePressed	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\PressurePlateHeavyPressed2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\HeavyPressurePlatePressed		168944
 	1002722393	Bleeps #23	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #23_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #23		525236
 	1003484403	GrappleTry5	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\GrappleTry5_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Audio Clips\GrappleTry5		576544
 	1004854673	Bleeps #25	C:\Users\johnp\OneDrive\LineArtGame\Try2\Line-Game_WwiseProject\.cache\Windows\SFX\Bleeps #25_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Memory Leak Foley\Bleeps #25		525236

@@ -2175,6 +2175,13 @@
 							</GroupingInfo>
 						</SwitchContainer>
 						<Sound Name="ChargeEnemyAttack2" ID="{BD28E93E-D472-407F-B7EC-7C9A10E27BAD}" ShortID="1031707436">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-9</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -2198,9 +2205,37 @@
 										<MediaID ID="525993017"/>
 									</MediaIDList>
 								</AudioFileSource>
+								<AudioFileSource Name="ChargeEnemyAttack_2" ID="{0A359785-44A6-468D-820D-B00BB7337A64}">
+									<Language>SFX</Language>
+									<AudioFile>ChargeEnemyAttack_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="782998226"/>
+									</MediaIDList>
+								</AudioFileSource>
+								<AudioFileSource Name="ChargeEnemyAttack_3" ID="{75DD0897-1F50-46F6-A43A-D204E12E828D}">
+									<Language>SFX</Language>
+									<AudioFile>ChargeEnemyAttack_3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="458964060"/>
+									</MediaIDList>
+								</AudioFileSource>
+								<AudioFileSource Name="ChargeEnemyAttack_4" ID="{A950268E-D8F1-48B0-8DAF-843723FF10E2}">
+									<Language>SFX</Language>
+									<AudioFile>ChargeEnemyAttack_4.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="25281912"/>
+									</MediaIDList>
+								</AudioFileSource>
+								<AudioFileSource Name="ChargeEnemyAttack_5" ID="{D5483E80-F5AE-4C53-9A42-D83B1AAC492B}">
+									<Language>SFX</Language>
+									<AudioFile>ChargeEnemyAttack_5.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="606720707"/>
+									</MediaIDList>
+								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="ChargeEnemyAttack3" ID="{FA695C81-0F3F-4E0C-A7E4-05A4B5B8C2D2}" Platform="Linked"/>
+								<ActiveSource Name="ChargeEnemyAttack_5" ID="{D5483E80-F5AE-4C53-9A42-D83B1AAC492B}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
