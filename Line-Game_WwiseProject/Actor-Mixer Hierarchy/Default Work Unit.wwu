@@ -1521,6 +1521,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="EnemyShoot2_2" ID="{3E922028-1C42-4491-BC98-8ACDCD608120}" ShortID="291938546">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -1543,6 +1550,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="EnemyShoot3_2" ID="{F0EECA66-9E8D-4967-87E0-85E9F73E52F1}" ShortID="119252508">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -1716,7 +1730,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-13</Value>
+										<Value>-29</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2236,6 +2250,93 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="ChargeEnemyAttack_5" ID="{D5483E80-F5AE-4C53-9A42-D83B1AAC492B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="LightPressurePlatePressed" ID="{F63EF6FC-E49A-4C74-9025-94D9BD64FEAB}" ShortID="462002244">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PressurePlateLightPressed2" ID="{E61854A4-82A2-45C9-877D-7C0079F4D89A}">
+									<Language>SFX</Language>
+									<AudioFile>PressurePlateLightPressed2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="733654722"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PressurePlateLightPressed2" ID="{E61854A4-82A2-45C9-877D-7C0079F4D89A}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="PressurePlateReleased" ID="{98F2DB98-5E81-413E-8DD5-298536024995}" ShortID="570332763">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PressurePlateReleased2" ID="{348EB8D2-03BA-4FAB-ADD4-963782273D62}">
+									<Language>SFX</Language>
+									<AudioFile>PressurePlateReleased2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="709430796"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PressurePlateReleased2" ID="{348EB8D2-03BA-4FAB-ADD4-963782273D62}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="HeavyPressurePlatePressed" ID="{C4596608-8AB7-45D2-AFC6-4885616608D8}" ShortID="503612345">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PressurePlateHeavyPressed2" ID="{4CC1CAE8-10F4-44AE-BB44-4693900FF7A9}">
+									<Language>SFX</Language>
+									<AudioFile>PressurePlateHeavyPressed2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="993600486"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PressurePlateHeavyPressed2" ID="{4CC1CAE8-10F4-44AE-BB44-4693900FF7A9}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
