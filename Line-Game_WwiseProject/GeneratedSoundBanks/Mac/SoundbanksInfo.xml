@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{20E14A56-CCEB-CAF7-30D3-6AAA639D6BC3}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{240F31DF-5928-1BAD-503E-78A330B5F7E9}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -229,10 +229,6 @@
 					<ShortName>ZoomOnConveyorLine1_all_Dmajor.wav</ShortName>
 					<CachePath>SFX/ZoomOnConveyorLine1_all_Dmajor_F9306B95.wem</CachePath>
 				</File>
-				<File Id="525993017" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ChargeEnemyAttack3.wav</ShortName>
-					<CachePath>SFX/ChargeEnemyAttack3_818F3B66.wem</CachePath>
-				</File>
 				<File Id="532061112" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyShoot3_2.wav</ShortName>
 					<CachePath>SFX/EnemyShoot3_2_818F3B66.wem</CachePath>
@@ -260,6 +256,10 @@
 				<File Id="585629142" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #20.wav</ShortName>
 					<CachePath>SFX/Bleeps #20_818F3B66.wem</CachePath>
+				</File>
+				<File Id="606720707" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ChargeEnemyAttack_5.wav</ShortName>
+					<CachePath>SFX/ChargeEnemyAttack_5_818F3B66.wem</CachePath>
 				</File>
 				<File Id="673348975" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MaybeGrappleTry2.wav</ShortName>
@@ -702,9 +702,9 @@
 						<MediaRef Id="758612055"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="528462596" Name="Play_ChargeEnemyAttack2" DurationType="OneShot" DurationMin="3.6583333" DurationMax="3.6583333">
+				<Event Id="528462596" Name="Play_ChargeEnemyAttack2" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
 					<MediaRefs>
-						<MediaRef Id="525993017"/>
+						<MediaRef Id="606720707"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="481951945" Name="Play_EnemyDeath1" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
@@ -1844,5 +1844,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F7F4A9EB-BFF5-DA57-B596-85924ABC7E45}</FileHash>
+	<FileHash>{DEEAE449-B954-C4DD-64C7-BEA4EE6C33F3}</FileHash>
 </SoundBanksInfo>
