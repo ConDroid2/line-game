@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{3481F4F8-DA1E-10EB-37C7-6C772F4115E6}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{7E043C3C-763C-4D95-0741-5FF50A0252D4}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -244,6 +244,10 @@
 				<File Id="558752065" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>KeyBreak1.wav</ShortName>
 					<CachePath>SFX/KeyBreak1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="570474008" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TargetShot1.wav</ShortName>
+					<CachePath>SFX/TargetShot1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="579753392" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ZoomOnConveyorLine1_eflat.wav</ShortName>
@@ -876,6 +880,11 @@
 				<Event Id="387469649" Name="Play_Shoot_effect" DurationType="OneShot" DurationMin="1.65" DurationMax="1.65">
 					<MediaRefs>
 						<MediaRef Id="2924750"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1593182173" Name="Play_TargetShot" DurationType="OneShot" DurationMin="2.0041666" DurationMax="2.0041666">
+					<MediaRefs>
+						<MediaRef Id="570474008"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1995554706" Name="Play_Thunk" DurationType="OneShot" DurationMin="0.4125" DurationMax="0.4125">
@@ -1871,5 +1880,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F7586E04-8E4B-D988-BDA8-FE2B2243E736}</FileHash>
+	<FileHash>{DC171745-8A6B-DD50-74FB-690C8739A5E4}</FileHash>
 </SoundBanksInfo>

@@ -2339,6 +2339,28 @@
 								<ActiveSource Name="PressurePlateHeavyPressed2" ID="{4CC1CAE8-10F4-44AE-BB44-4693900FF7A9}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="TargetShot" ID="{5A2FF7A2-5215-4C9C-BCFE-2F7EDFCB7C5B}" ShortID="286310655">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="TargetShot1" ID="{E5FB4A2B-2DDE-4262-A5DD-441096FA86B9}">
+									<Language>SFX</Language>
+									<AudioFile>TargetShot1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="570474008"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="TargetShot1" ID="{E5FB4A2B-2DDE-4262-A5DD-441096FA86B9}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
