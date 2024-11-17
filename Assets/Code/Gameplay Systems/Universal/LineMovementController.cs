@@ -178,6 +178,7 @@ public class LineMovementController : MonoBehaviour
             {
                 if(_previousSwapData.InputVector == inputVector && _previousSwapData.IntersectionPoints.Contains(intersection.IntersectionWorldSpace))
                 {
+                    _logger.DebugLog("Skipping intersection due to previous check");
                     continue;
                 }
             }
@@ -196,6 +197,8 @@ public class LineMovementController : MonoBehaviour
             }
 
             // Set new line using Intersection Data
+            _logger.DebugLog($"Lowest Angle is: {lowestAngle}");
+            _logger.DebugLog($"Angle against new line is: {angle}");
             if (canMoveToNewLine && angle < lowestAngle)
             {
                 lowestAngle = angle;
@@ -503,5 +506,10 @@ public class LineMovementController : MonoBehaviour
                 IntersectionPoints.Add(intersection.IntersectionWorldSpace);
             }
         }
+    }
+
+    public void ClearLineSwapData()
+    {
+        _previousSwapData = null;
     }
 }

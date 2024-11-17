@@ -53,6 +53,9 @@ public class Player : MonoBehaviour
     public enum AbilityEnum { Grapple, Shoot, Default };
     private AbilityEnum _currentAbilityInUse = AbilityEnum.Default;
 
+    // Debug Values
+    public Vector2 PlayerInput => _inputVector;
+
     private void Awake()
     {
         if(Instance == null)
@@ -274,6 +277,8 @@ public class Player : MonoBehaviour
         _aimingMode = false;
         _invulnerable = true;
         _allowMoving = false;
+
+        MovementController.ClearLineSwapData();
     }
 
     public void HandleTryToMoveInDirection(int direction)

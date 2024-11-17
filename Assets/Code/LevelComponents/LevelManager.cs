@@ -311,6 +311,21 @@ public class LevelManager : MonoBehaviour
         return intersections;
     }
 
+    public List<IntersectionData> GetAllIntersectionData()
+    {
+        List<IntersectionData> intersections = new List<IntersectionData>();
+
+        foreach(Dictionary<Vector3, List<IntersectionData>> lineInfo in _intersections.Values)
+        {
+            foreach(List<IntersectionData> intersectionDatas in lineInfo.Values)
+            {
+                intersections.AddRange(intersectionDatas);
+            }
+        }
+
+        return intersections;
+    }
+
     public RoomData CreateRoomData()
     {
         return new RoomData(LineParent.GetComponentsInChildren<LineController>(), this);
