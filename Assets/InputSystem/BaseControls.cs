@@ -278,7 +278,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ca9e00b5-1f0b-4d19-b5bc-efb19570b4e3"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
