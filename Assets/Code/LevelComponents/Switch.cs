@@ -32,12 +32,14 @@ public class Switch : MonoBehaviour
     {
         if (_active == false)
         {
+            Debug.Log("Activating");
             _active = true;
             _sprite.sprite = _activatedSprite;
             OnActivated.Invoke();
         }
         else if(_active == true && SwitchType == Enums.SwitchType.Toggle)
         {
+            Debug.Log("Deactivating");
             Deactivate();
         }
     }
@@ -51,5 +53,10 @@ public class Switch : MonoBehaviour
             _sprite.sprite = _deactivatedSprite;
             OnDeactivated.Invoke();
         }
+    }
+
+    public void SetActivatedColor(bool setActiveColor)
+    {
+        _sprite.color = setActiveColor ? _activatedColor : _deactivatedColor;
     }
 }

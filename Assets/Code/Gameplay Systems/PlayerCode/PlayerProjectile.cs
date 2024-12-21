@@ -46,6 +46,12 @@ public class PlayerProjectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        else if (collision.collider.TryGetComponent(out RedBlueSwitch redBlueSwitchHit))
+        {
+            redBlueSwitchHit.Toggle();
+            Destroy(gameObject);
+        }
     }
 
     public void PlayHitEffect(Collision2D collision)
