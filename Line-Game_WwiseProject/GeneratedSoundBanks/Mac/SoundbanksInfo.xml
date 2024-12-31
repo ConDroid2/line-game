@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{7E043C3C-763C-4D95-0741-5FF50A0252D4}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{90EDBD58-7BB2-3EF6-67CE-7F1617B72231}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -193,6 +193,10 @@
 					<ShortName>Bubble noises #6.wav</ShortName>
 					<CachePath>SFX/Bubble noises #6_818F3B66.wem</CachePath>
 				</File>
+				<File Id="425504920" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UnlockingVer2.wav</ShortName>
+					<CachePath>SFX/UnlockingVer2_818F3B66.wem</CachePath>
+				</File>
 				<File Id="430239968" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bubble noises #21.wav</ShortName>
 					<CachePath>SFX/Bubble noises #21_818F3B66.wem</CachePath>
@@ -221,9 +225,9 @@
 					<ShortName>PlayerShoot2_2.wav</ShortName>
 					<CachePath>SFX/PlayerShoot2_2_818F3B66.wem</CachePath>
 				</File>
-				<File Id="478417569" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Unlocking.wav</ShortName>
-					<CachePath>SFX/Unlocking_818F3B66.wem</CachePath>
+				<File Id="496890736" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ShootABlock.wav</ShortName>
+					<CachePath>SFX/ShootABlock_818F3B66.wem</CachePath>
 				</File>
 				<File Id="502238746" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ZoomOnConveyorLine1_all_Dmajor.wav</ShortName>
@@ -882,6 +886,11 @@
 						<MediaRef Id="2924750"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1748532871" Name="Play_ShootABlock" DurationType="OneShot" DurationMin="1.0020833" DurationMax="1.0020833">
+					<MediaRefs>
+						<MediaRef Id="496890736"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1593182173" Name="Play_TargetShot" DurationType="OneShot" DurationMin="2.0041666" DurationMax="2.0041666">
 					<MediaRefs>
 						<MediaRef Id="570474008"/>
@@ -892,9 +901,9 @@
 						<MediaRef Id="763990132"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3959296026" Name="Play_Unlocking" DurationType="OneShot" DurationMin="1.65" DurationMax="1.65">
+				<Event Id="3959296026" Name="Play_Unlocking" DurationType="OneShot" DurationMin="1.50625" DurationMax="1.50625">
 					<MediaRefs>
-						<MediaRef Id="478417569"/>
+						<MediaRef Id="425504920"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1606056817" Name="Play_Wamp" DurationType="OneShot" DurationMin="0.6375" DurationMax="0.6375">
@@ -1880,5 +1889,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{DC171745-8A6B-DD50-74FB-690C8739A5E4}</FileHash>
+	<FileHash>{93AD4C22-08F2-E722-AD39-D6F4902AA959}</FileHash>
 </SoundBanksInfo>
