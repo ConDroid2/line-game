@@ -59,4 +59,12 @@ public class KeyHole : MonoBehaviour
         _unlockRadius.SetActive(false);
         _keyCheckRadius.SetActive(false);
     }
+
+    public void KeyholeUnlocked()
+    {
+        _animator.SetTrigger("KeyholeUnlocked");
+        _unlocked = true;
+        _unlockRadius.SetActive(false);
+        _keyCheckRadius.SetActive(false);
+    }
 }
