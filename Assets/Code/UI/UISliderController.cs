@@ -19,15 +19,6 @@ public class UISliderController : MonoBehaviour, ISelectHandler, IDeselectHandle
         _previousValue = _slider.value;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            _slider.Select();
-        }
-    }
-
     public void HandleValueChange(float newValue)
     {
         if(newValue < _previousValue)
