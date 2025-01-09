@@ -20,4 +20,12 @@ public class DebugLogger : MonoBehaviour
             Debug.LogError(message);
         }
     }
+
+    public void PrintText(string text)
+    {
+        if (_active)
+        {
+            Debug.Log(text);
+        }
+    }
 }
