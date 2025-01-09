@@ -26,6 +26,17 @@ public class ButtonCycle : MonoBehaviour
         _phases[_currentPhase].PhaseFunction?.Invoke();
     }
 
+    public void SetPhase(int phaseNumber)
+    {
+        if(phaseNumber < _phases.Count)
+        {
+            _currentPhase = phaseNumber;
+
+            _buttonText.text = _phases[_currentPhase].PhaseName;
+            _phases[_currentPhase].PhaseFunction?.Invoke();
+        }
+    }
+
     [System.Serializable]
     public class ButtonCyclePhase
     {
