@@ -23,7 +23,7 @@ public class ButtonCycle : MonoBehaviour
         _currentPhase = (_currentPhase + 1) % _phases.Count;
 
         _buttonText.text = _phases[_currentPhase].PhaseName;
-        _phases[_currentPhase].PhaseFunction?.Invoke();
+        _phases[_currentPhase].OnPhaseEntered?.Invoke();
     }
 
     public void SetPhase(int phaseNumber)
@@ -33,7 +33,7 @@ public class ButtonCycle : MonoBehaviour
             _currentPhase = phaseNumber;
 
             _buttonText.text = _phases[_currentPhase].PhaseName;
-            _phases[_currentPhase].PhaseFunction?.Invoke();
+            _phases[_currentPhase].OnPhaseEntered?.Invoke();
         }
     }
 
@@ -41,6 +41,6 @@ public class ButtonCycle : MonoBehaviour
     public class ButtonCyclePhase
     {
         public string PhaseName;
-        public UnityEvent PhaseFunction;
+        public UnityEvent OnPhaseEntered;
     }
 }
