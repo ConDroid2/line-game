@@ -174,8 +174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 860, y: -297.5157}
-  m_SizeDelta: {x: 1720, y: 165.01045}
+  m_AnchoredPosition: {x: 860, y: -310}
+  m_SizeDelta: {x: 1720, y: 173.33333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3967519142141291598
 CanvasRenderer:
@@ -691,6 +691,7 @@ GameObject:
   - component: {fileID: 3967519142246976337}
   - component: {fileID: 3967519142246976342}
   - component: {fileID: 3967519142246976343}
+  - component: {fileID: 2046392570293215109}
   m_Layer: 5
   m_Name: Button On
   m_TagString: Untagged
@@ -800,7 +801,41 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3967519142246976342}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2046392570293215109}
+        m_TargetAssemblyTypeName: ButtonCycle, Assembly-CSharp
+        m_MethodName: CyclePhase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2046392570293215109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967519142246976341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f12d4b07409de24d9c720ba9088c0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonText: {fileID: 3967519141924407590}
+  _phases:
+  - PhaseName: On
+    PhaseFunction:
+      m_PersistentCalls:
+        m_Calls: []
+  - PhaseName: Off
+    PhaseFunction:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &3967519142276257275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,8 +1715,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 860, y: -82.505226}
-  m_SizeDelta: {x: 1720, y: 165.01045}
+  m_AnchoredPosition: {x: 860, y: -86.666664}
+  m_SizeDelta: {x: 1720, y: 173.33333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3967519143023257404
 CanvasRenderer:
@@ -2502,6 +2537,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 860, y: -512.5261}
-  m_SizeDelta: {x: 1720, y: 165.01045}
+  m_AnchoredPosition: {x: 860, y: -533.3333}
+  m_SizeDelta: {x: 1720, y: 173.33333}
   m_Pivot: {x: 0.5, y: 0.5}
