@@ -7499,25 +7499,17 @@
 										<Reference Name="PlaylistRoot">
 											<Custom>
 												<MusicPlaylistItem Name="" ID="{42151C8B-FB26-445B-B65A-6158881629BB}" ShortID="530656459">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+													</PropertyList>
 													<ChildrenList>
-														<MusicPlaylistItem Name="" ID="{17C70FC0-ACFC-4386-A252-905054F1F91C}" ShortID="943951245">
+														<MusicPlaylistItem Name="" ID="{882849C9-8645-4DC5-B9C6-570E29B37D43}" ShortID="740559549">
 															<PropertyList>
 																<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 															</PropertyList>
 															<ReferenceList>
 																<Reference Name="Segment">
-																	<ObjectRef Name="WanderingMusicSegmentStart" ID="{0D75400A-CA54-4BBC-9F3F-F4042E6A449C}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
-																</Reference>
-															</ReferenceList>
-														</MusicPlaylistItem>
-														<MusicPlaylistItem Name="" ID="{1B9C229E-0B0B-490B-9D2E-422C7FADA186}" ShortID="549027988">
-															<PropertyList>
-																<Property Name="LoopCount" Type="int16" Value="0"/>
-																<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Segment">
-																	<ObjectRef Name="WanderingMusicSegmentLoop" ID="{1D45F48C-A5D8-4A8B-B440-914A02D15482}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+																	<ObjectRef Name="WanderingMusicSegmentWithTails" ID="{5A99FAAC-ABF8-4426-A226-411286A6C421}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
 																</Reference>
 															</ReferenceList>
 														</MusicPlaylistItem>
@@ -7542,9 +7534,9 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicSegment Name="WanderingMusicSegmentStart" ID="{0D75400A-CA54-4BBC-9F3F-F4042E6A449C}" ShortID="680181326">
+										<MusicSegment Name="WanderingMusicSegmentWithTails" ID="{5A99FAAC-ABF8-4426-A226-411286A6C421}" ShortID="912045236">
 											<PropertyList>
-												<Property Name="EndPosition" Type="Real64" Value="63924.4547245505"/>
+												<Property Name="EndPosition" Type="Real64" Value="69168.1924019608"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -7555,7 +7547,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<MusicTrack Name="Wandering_base" ID="{39B65E6A-6E7E-43BF-B58E-EA5D3AD0EB7E}" ShortID="885208311">
+												<MusicTrack Name="Wandering_SwitchTrack" ID="{5CBCC006-35C4-4172-A57D-CA8D38D0CE38}" ShortID="981787959">
 													<PropertyList>
 														<Property Name="MusicTrackType" Type="int16" Value="3"/>
 													</PropertyList>
@@ -7574,12 +7566,12 @@
 														</Reference>
 														<Reference Name="TransitionRoot">
 															<Custom>
-																<MusicTransition Name="Root" ID="{E69C85EA-DC73-43ED-A3EA-0522E414F154}">
+																<MusicTransition Name="Root" ID="{F5339C32-9DB4-421E-AED3-D2425B09F1F5}">
 																	<PropertyList>
 																		<Property Name="IsFolder" Type="bool" Value="True"/>
 																	</PropertyList>
 																	<ChildrenList>
-																		<MusicTransition Name="Transition" ID="{45EB5C2A-1541-4F40-85F9-AEFC4CF322CE}">
+																		<MusicTransition Name="Transition" ID="{BE51E9E8-8EAF-4D39-A520-85AC559782F7}">
 																			<PropertyList>
 																				<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
 																				<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
@@ -7587,7 +7579,7 @@
 																			</PropertyList>
 																			<TransitionInfo>
 																				<SourceFadeOut>
-																					<MusicFade Name="Source Fade-out" ID="{D3D273C5-5C2A-4E26-9596-07B2528693CA}">
+																					<MusicFade Name="Source Fade-out" ID="{F711358E-1041-4827-B647-703C33454D5B}">
 																						<PropertyList>
 																							<Property Name="FadeCurve" Type="int16" Value="1"/>
 																							<Property Name="FadeTime" Type="Real64" Value="2.5"/>
@@ -7596,7 +7588,7 @@
 																					</MusicFade>
 																				</SourceFadeOut>
 																				<DestinationFadeIn>
-																					<MusicFade Name="Destination Fade-in" ID="{1A187FA2-1714-4875-AF04-9ABFEFFB6F10}">
+																					<MusicFade Name="Destination Fade-in" ID="{E7C6AACB-0682-4073-9F95-3D06EE96E2A5}">
 																						<PropertyList>
 																							<Property Name="FadeCurve" Type="int16" Value="6"/>
 																							<Property Name="FadeOffset" Type="Real64" Value="-2.5"/>
@@ -7613,32 +7605,74 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="Wandering_base" ID="{188BDF89-5828-4831-8FF4-93050485ED91}">
+														<AudioFileSource Name="Wandering_3 base with tail" ID="{95C7CE6B-E1CA-4D9C-BC51-CDFE5834BB78}">
 															<Language>SFX</Language>
-															<AudioFile>Wandering_base.wav</AudioFile>
+															<AudioFile>Wandering_3 base with tail.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="283700828"/>
+																<MediaID ID="617024166"/>
 															</MediaIDList>
 														</AudioFileSource>
-														<AudioFileSource Name="WanderingDisco" ID="{566825C3-0CEE-4B12-8852-8608FF89F6DB}">
+														<AudioFileSource Name="Wandering_3 v2 arp with tail" ID="{603AE34D-78EA-4CCD-8638-DC1172DC4C73}">
 															<Language>SFX</Language>
-															<AudioFile>WanderingDisco.wav</AudioFile>
+															<AudioFile>Wandering_3 v2 arp with tail.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="954093314"/>
+																<MediaID ID="582627124"/>
 															</MediaIDList>
 														</AudioFileSource>
-														<AudioFileSource Name="WanderingGroove" ID="{3665F661-B3CD-4C32-9643-5438B0F66ED5}">
+														<AudioFileSource Name="Wandering_3 v2 drums and bass with tail" ID="{5A39B4EA-579B-4286-A136-7FC8F02D0DC7}">
 															<Language>SFX</Language>
-															<AudioFile>WanderingGroove.wav</AudioFile>
+															<AudioFile>Wandering_3 v2 drums and bass with tail.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="940974601"/>
+																<MediaID ID="783969170"/>
 															</MediaIDList>
 														</AudioFileSource>
-														<AudioFileSource Name="WanderingMelody" ID="{ECB677E0-D216-4B2F-BBB5-EF0545D2F308}">
+														<AudioFileSource Name="Wandering_3_var3 melody and drums" ID="{43CF087B-3C7B-44D6-97BE-EE5860671E1C}">
 															<Language>SFX</Language>
-															<AudioFile>WanderingMelody.wav</AudioFile>
+															<AudioFile>Wandering_3_var3 melody and drums.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="712590921"/>
+																<MediaID ID="324777926"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="Wandering_3_var4 drums and melody" ID="{B4CC9AD8-1E49-4C67-AA7E-BA65CD3DD016}">
+															<Language>SFX</Language>
+															<AudioFile>Wandering_3_var4 drums and melody.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="626685459"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="Wandering_3_var4 bass and pad_01" ID="{0A2810C6-D11A-459E-BFA4-4A8662E946CC}">
+															<Language>SFX</Language>
+															<AudioFile>Wandering_3_var4 bass and pad.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="234807951"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="Wandering_3_var3 bass and pad" ID="{BC713B45-7BF4-466F-94EF-A6A0A9A6E9C4}">
+															<Language>SFX</Language>
+															<AudioFile>Wandering_3_var3 bass and pad.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="626596787"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="Wandering_3 v7 (duet) with tail" ID="{D24E5E1E-659C-4F26-B4A4-E13BFE0770F3}">
+															<Language>SFX</Language>
+															<AudioFile>Wandering_3 v7 (duet) with tail.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="101045771"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="Wandering_3 disco thesic elements" ID="{93664C6E-F5D1-4027-ABA0-813B3819A2E0}">
+															<Language>SFX</Language>
+															<AudioFile>Wandering_3 disco thesic elements.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1020777575"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="Wandering_3 disco arsic elements" ID="{7EDBE9B4-F169-42E7-8AD4-D942AA94BD4E}">
+															<Language>SFX</Language>
+															<AudioFile>Wandering_3 disco arsic elements.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="724892639"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
@@ -7646,79 +7680,20 @@
 														<ObjectList Name="Sequences">
 															<Reference>
 																<Local>
-																	<MusicTrackSequence Name="" ID="{DA50FE50-4567-450F-A603-344DE1A373D9}">
+																	<MusicTrackSequence Name="" ID="{18998F41-5DCB-4E2F-A47F-54D3EDD06526}">
 																		<ObjectLists>
 																			<ObjectList Name="Clips">
 																				<Reference>
 																					<Local>
-																						<MusicClip Name="Wandering_base" ID="{BBCE69B7-5BA0-4DD0-A4C2-F7F837D15D47}">
+																						<MusicClip Name="Wandering_3 base with tail" ID="{DCDCA69E-4DB9-4791-920A-32BA42C0C071}">
 																							<PropertyList>
-																								<Property Name="BeginTrimOffset" Type="Real64" Value="5.6843418860808E-14"/>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="63529.411764706"/>
+																								<Property Name="BeginTrimOffset" Type="Real64" Value="4.44089209850063E-13"/>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="68538.6041666667"/>
 																								<Property Name="FadeInMode" Type="int16" Value="0"/>
 																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																								<Property Name="PlayAt" Type="Real64" Value="-5.6843418860808E-14"/>
+																								<Property Name="PlayAt" Type="Real64" Value="-4.44089209850063E-13"/>
 																							</PropertyList>
-																							<AudioSourceRef Name="Wandering_base" ID="{188BDF89-5828-4831-8FF4-93050485ED91}"/>
-																							<PropertyCurveList>
-																								<PropertyCurve PropertyName="Highpass">
-																									<Curve Name="" ID="{521BAC4A-E25A-450E-82CA-822E310AAA7B}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="1"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.52941</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																								<PropertyCurve PropertyName="Lowpass">
-																									<Curve Name="" ID="{F26780D5-673D-4A15-B7DA-B349750554F1}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="1"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.52941</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																								<PropertyCurve PropertyName="Volume">
-																									<Curve Name="" ID="{DE23AB0B-2627-41A7-9C2F-3B208CAC3D2D}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="3"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.52941</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																							</PropertyCurveList>
+																							<AudioSourceRef Name="Wandering_3 base with tail" ID="{95C7CE6B-E1CA-4D9C-BC51-CDFE5834BB78}"/>
 																						</MusicClip>
 																					</Local>
 																				</Reference>
@@ -7734,108 +7709,20 @@
 															</Reference>
 															<Reference>
 																<Local>
-																	<MusicTrackSequence Name="" ID="{EA2625A8-BE81-44DD-9773-6A5D9566A144}">
+																	<MusicTrackSequence Name="" ID="{21F32E4C-CD0C-4621-B10E-3C54CA646769}">
 																		<ObjectLists>
 																			<ObjectList Name="Clips">
 																				<Reference>
 																					<Local>
-																						<MusicClip Name="WanderingMelody" ID="{1EF5AF59-0A7C-4606-8DAB-A981FE552518}">
+																						<MusicClip Name="Wandering_3 v2 arp with tail" ID="{1770EA14-F009-4E9C-9F99-2ED61551E970}">
 																							<PropertyList>
-																								<Property Name="BeginTrimOffset" Type="Real64" Value="3.19189119579733E-13"/>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="63529.4166666667"/>
+																								<Property Name="BeginTrimOffset" Type="Real64" Value="1.38777878078145E-13"/>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="65602.0208333333"/>
 																								<Property Name="FadeInMode" Type="int16" Value="0"/>
 																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																								<Property Name="PlayAt" Type="Real64" Value="-3.12638803734444E-13"/>
+																								<Property Name="PlayAt" Type="Real64" Value="-1.11022302462516E-13"/>
 																							</PropertyList>
-																							<AudioSourceRef Name="WanderingMelody" ID="{ECB677E0-D216-4B2F-BBB5-EF0545D2F308}"/>
-																						</MusicClip>
-																					</Local>
-																				</Reference>
-																			</ObjectList>
-																		</ObjectLists>
-																		<ReferenceList>
-																			<Reference Name="TrackSequenceSwitch">
-																				<ObjectRef Name="Melody_Square" ID="{D151578F-1BBB-4D7C-94F5-E31024C190D6}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-																			</Reference>
-																		</ReferenceList>
-																	</MusicTrackSequence>
-																</Local>
-															</Reference>
-															<Reference>
-																<Local>
-																	<MusicTrackSequence Name="" ID="{3C0AEBD3-9B66-41A8-B3A8-79854536B907}">
-																		<ObjectLists>
-																			<ObjectList Name="Clips">
-																				<Reference>
-																					<Local>
-																						<MusicClip Name="WanderingGroove" ID="{1B904394-C76B-4E05-A6A2-B7898BDE1C95}">
-																							<PropertyList>
-																								<Property Name="BeginTrimOffset" Type="Real64" Value="2.8421709430404E-14"/>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="63529.4166666667"/>
-																								<Property Name="FadeInMode" Type="int16" Value="0"/>
-																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																								<Property Name="PlayAt" Type="Real64" Value="-2.8421709430404E-14"/>
-																							</PropertyList>
-																							<AudioSourceRef Name="WanderingGroove" ID="{3665F661-B3CD-4C32-9643-5438B0F66ED5}"/>
-																							<PropertyCurveList>
-																								<PropertyCurve PropertyName="Highpass">
-																									<Curve Name="" ID="{5B7290D5-9BEB-42E2-B3A0-EC48B30D101B}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="1"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.5294166666667</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																								<PropertyCurve PropertyName="Lowpass">
-																									<Curve Name="" ID="{4D8132B7-1D97-4DF5-A24E-70956617C6DC}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="1"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.5294166666667</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																								<PropertyCurve PropertyName="Volume">
-																									<Curve Name="" ID="{1A0B2685-F5E9-45DC-A283-3FAC5081E04B}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="3"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.5294166666667</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																							</PropertyCurveList>
+																							<AudioSourceRef Name="Wandering_3 v2 arp with tail" ID="{603AE34D-78EA-4CCD-8638-DC1172DC4C73}"/>
 																						</MusicClip>
 																					</Local>
 																				</Reference>
@@ -7851,20 +7738,181 @@
 															</Reference>
 															<Reference>
 																<Local>
-																	<MusicTrackSequence Name="" ID="{1CEF9651-95B4-44CD-AA8C-B4A663501743}">
+																	<MusicTrackSequence Name="" ID="{0E492070-8A55-40E6-B9F5-E9D0FCB89F81}">
 																		<ObjectLists>
 																			<ObjectList Name="Clips">
 																				<Reference>
 																					<Local>
-																						<MusicClip Name="WanderingDisco" ID="{4183713A-7BC1-4C37-92EE-B0DA8D9D15B7}">
+																						<MusicClip Name="Wandering_3 v2 drums and bass with tail" ID="{85D8D4F4-A713-4C6F-9E43-14BCAB486189}">
 																							<PropertyList>
-																								<Property Name="BeginTrimOffset" Type="Real64" Value="4.16333634234434E-14"/>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="63529.4166666667"/>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="65183.8333333333"/>
 																								<Property Name="FadeInMode" Type="int16" Value="0"/>
 																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																								<Property Name="PlayAt" Type="Real64" Value="-2.8421709430404E-14"/>
+																								<Property Name="PlayAt" Type="Real64" Value="220.588235294118"/>
 																							</PropertyList>
-																							<AudioSourceRef Name="WanderingDisco" ID="{566825C3-0CEE-4B12-8852-8608FF89F6DB}"/>
+																							<AudioSourceRef Name="Wandering_3 v2 drums and bass with tail" ID="{5A39B4EA-579B-4286-A136-7FC8F02D0DC7}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																		<ReferenceList>
+																			<Reference Name="TrackSequenceSwitch">
+																				<ObjectRef Name="Groove" ID="{40598E9B-71BC-49F3-8B08-E6E98149754C}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{5696F132-97CE-475C-B31D-2B1549A43534}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="Wandering_3_var3 melody and drums" ID="{86499138-1432-4A9A-B4F7-6E069BDFBB2B}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="65252.75"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																								<Property Name="PlayAt" Type="Real64" Value="220.588235294118"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="Wandering_3_var3 melody and drums" ID="{43CF087B-3C7B-44D6-97BE-EE5860671E1C}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																		<ReferenceList>
+																			<Reference Name="TrackSequenceSwitch">
+																				<ObjectRef Name="Melody_Square" ID="{D151578F-1BBB-4D7C-94F5-E31024C190D6}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{315F2E5C-108A-4479-ACBF-8345AB4BBF16}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="Wandering_3_var3 bass and pad" ID="{F41EB33A-2057-44E6-B38A-72C549FD3D56}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="68538.6041666667"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																								<Property Name="PlayAt" Type="Real64" Value="2.77555756156289E-14"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="Wandering_3_var3 bass and pad" ID="{BC713B45-7BF4-466F-94EF-A6A0A9A6E9C4}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																		<ReferenceList>
+																			<Reference Name="TrackSequenceSwitch">
+																				<ObjectRef Name="Melody_Square" ID="{D151578F-1BBB-4D7C-94F5-E31024C190D6}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{1AF7E06B-A14A-4247-BC3D-C94A4B1F4325}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="Wandering_3_var4 drums and melody" ID="{DF0762B1-BDBA-41DD-8B56-10D23253E83F}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="65358.4583333333"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																								<Property Name="PlayAt" Type="Real64" Value="220.588235294118"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="Wandering_3_var4 drums and melody" ID="{B4CC9AD8-1E49-4C67-AA7E-BA65CD3DD016}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																		<ReferenceList>
+																			<Reference Name="TrackSequenceSwitch">
+																				<ObjectRef Name="Melody_Saw" ID="{84306DEC-D8FF-4BB0-A909-4B070205DEB4}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{AA44D580-F14B-4C4F-B141-CEA1202465C6}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="Wandering_3_var4 bass and pad" ID="{639BA992-CB04-45D5-BAB6-0214FCFB88D4}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="68841.9166666667"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																								<Property Name="PlayAt" Type="Real64" Value="2.77555756156289E-14"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="Wandering_3_var4 bass and pad_01" ID="{0A2810C6-D11A-459E-BFA4-4A8662E946CC}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																		<ReferenceList>
+																			<Reference Name="TrackSequenceSwitch">
+																				<ObjectRef Name="Melody_Saw" ID="{84306DEC-D8FF-4BB0-A909-4B070205DEB4}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{64C0270B-E9A3-430A-B43A-A9E9A5F045DB}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="Wandering_3 disco thesic elements" ID="{B05781C9-0924-4070-8B63-87BE17803EA3}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="65353.8541666667"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																								<Property Name="PlayAt" Type="Real64" Value="220.588235294118"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="Wandering_3 disco thesic elements" ID="{93664C6E-F5D1-4027-ABA0-813B3819A2E0}"/>
+																							<PropertyCurveList>
+																								<PropertyCurve PropertyName="Volume">
+																									<Curve Name="" ID="{A14C2BF6-7077-4678-B1CB-2F22037FC6E8}">
+																										<PropertyList>
+																											<Property Name="Flags" Type="int32" Value="3"/>
+																										</PropertyList>
+																										<PointList>
+																											<Point>
+																												<XPos>0</XPos>
+																												<YPos>-2.24182</YPos>
+																												<Flags>5</Flags>
+																												<SegmentShape>Constant</SegmentShape>
+																											</Point>
+																											<Point>
+																												<XPos>65.3538541666667</XPos>
+																												<YPos>0</YPos>
+																												<Flags>37</Flags>
+																											</Point>
+																										</PointList>
+																									</Curve>
+																								</PropertyCurve>
+																							</PropertyCurveList>
 																						</MusicClip>
 																					</Local>
 																				</Reference>
@@ -7878,6 +7926,110 @@
 																	</MusicTrackSequence>
 																</Local>
 															</Reference>
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{C2972AA4-19CD-466B-BF05-80E44A340A07}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="Wandering_3 disco arsic elements" ID="{C59D0334-E8FA-4743-9956-B54BF48EF1A4}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="68658.0833333333"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																								<Property Name="PlayAt" Type="Real64" Value="2.77555756156289E-14"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="Wandering_3 disco arsic elements" ID="{7EDBE9B4-F169-42E7-8AD4-D942AA94BD4E}"/>
+																							<PropertyCurveList>
+																								<PropertyCurve PropertyName="Volume">
+																									<Curve Name="" ID="{EFEB9D95-58D8-424F-8F60-D34330942635}">
+																										<PropertyList>
+																											<Property Name="Flags" Type="int32" Value="3"/>
+																										</PropertyList>
+																										<PointList>
+																											<Point>
+																												<XPos>0</XPos>
+																												<YPos>-1.76338</YPos>
+																												<Flags>5</Flags>
+																												<SegmentShape>Constant</SegmentShape>
+																											</Point>
+																											<Point>
+																												<XPos>68.6580833333334</XPos>
+																												<YPos>0</YPos>
+																												<Flags>37</Flags>
+																											</Point>
+																										</PointList>
+																									</Curve>
+																								</PropertyCurve>
+																							</PropertyCurveList>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																		<ReferenceList>
+																			<Reference Name="TrackSequenceSwitch">
+																				<ObjectRef Name="Disco" ID="{4913E830-0CC2-4A89-A224-C121D170EB6C}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{04D85BD9-535B-467A-8FAD-26DAA7559082}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="Wandering_3 v7 (duet) with tail" ID="{3D2077FA-BC5F-4F8E-9045-AFC48D75E2BD}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="68947.6041666667"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="PlayAt" Type="Real64" Value="220.588235294118"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="Wandering_3 v7 (duet) with tail" ID="{D24E5E1E-659C-4F26-B4A4-E13BFE0770F3}"/>
+																							<PropertyCurveList>
+																								<PropertyCurve PropertyName="Volume">
+																									<Curve Name="" ID="{6111D5B1-0922-4695-9260-8D8253B184F7}">
+																										<PropertyList>
+																											<Property Name="Flags" Type="int32" Value="3"/>
+																										</PropertyList>
+																										<PointList>
+																											<Point>
+																												<XPos>0</XPos>
+																												<YPos>0</YPos>
+																												<Flags>5</Flags>
+																											</Point>
+																											<Point>
+																												<XPos>0.001</XPos>
+																												<YPos>0</YPos>
+																												<Flags>0</Flags>
+																												<SegmentShape>Constant</SegmentShape>
+																											</Point>
+																											<Point>
+																												<XPos>68.9476041666667</XPos>
+																												<YPos>0</YPos>
+																												<Flags>37</Flags>
+																											</Point>
+																										</PointList>
+																									</Curve>
+																								</PropertyCurve>
+																							</PropertyCurveList>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																		<ReferenceList>
+																			<Reference Name="TrackSequenceSwitch">
+																				<ObjectRef Name="Duet" ID="{453F1A2A-02D9-4569-806E-752D7C27FBCD}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
 														</ObjectList>
 													</ObjectLists>
 												</MusicTrack>
@@ -7886,311 +8038,19 @@
 												<ObjectList Name="Cues">
 													<Reference>
 														<Local>
-															<MusicCue Name="Entry Cue" ID="{C735D21C-11E6-4195-AD4D-5DE728EEAFC7}"/>
-														</Local>
-													</Reference>
-													<Reference>
-														<Local>
-															<MusicCue Name="Exit Cue" ID="{4F5CB692-B5A4-4605-92F0-CE5DAEE259D0}">
+															<MusicCue Name="Entry Cue" ID="{CB5D44FC-53D7-4B29-AB44-1103060E51B5}">
 																<PropertyList>
-																	<Property Name="CueType" Type="int16" Value="1"/>
-																	<Property Name="TimeMs" Type="Real64" Value="63529.4117647059"/>
+																	<Property Name="TimeMs" Type="Real64" Value="220.588235294118"/>
 																</PropertyList>
 															</MusicCue>
 														</Local>
 													</Reference>
-												</ObjectList>
-											</ObjectLists>
-										</MusicSegment>
-										<MusicSegment Name="WanderingMusicSegmentLoop" ID="{1D45F48C-A5D8-4A8B-B440-914A02D15482}" ShortID="160748299">
-											<PropertyList>
-												<Property Name="EndPosition" Type="Real64" Value="95514.7058823529"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<MusicTrack Name="WanderingBase_loop" ID="{C0C03E4C-A07D-4516-8B53-B99E05E9A09B}" ShortID="251150196">
-													<PropertyList>
-														<Property Name="MusicTrackType" Type="int16" Value="3"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-														</Reference>
-														<Reference Name="DefaultSwitchOrState">
-															<ObjectRef Name="Base" ID="{28E585B6-4305-43E2-A4D0-A6FEB31B09E9}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-														</Reference>
-														<Reference Name="SwitchGroupOrStateGroup">
-															<ObjectRef Name="WanderingSubtrack" ID="{D16A3EB6-E14A-429D-A1EF-9669B1BDB7DA}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-														</Reference>
-														<Reference Name="TransitionRoot">
-															<Custom>
-																<MusicTransition Name="Root" ID="{ECD946A3-0719-4FB5-B0C1-598012A7C299}">
-																	<PropertyList>
-																		<Property Name="IsFolder" Type="bool" Value="True"/>
-																	</PropertyList>
-																	<ChildrenList>
-																		<MusicTransition Name="Transition" ID="{19AB99CD-671D-4C4A-8D3C-A624557DB43D}">
-																			<PropertyList>
-																				<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
-																				<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-																				<Property Name="ExitSourceAt" Type="int16" Value="0"/>
-																			</PropertyList>
-																			<TransitionInfo>
-																				<SourceFadeOut>
-																					<MusicFade Name="Source Fade-out" ID="{93F9DF4B-BC8C-4C79-A160-FBF80CBA332D}">
-																						<PropertyList>
-																							<Property Name="FadeCurve" Type="int16" Value="1"/>
-																							<Property Name="FadeTime" Type="Real64" Value="2.5"/>
-																							<Property Name="FadeType" Type="int16" Value="1"/>
-																						</PropertyList>
-																					</MusicFade>
-																				</SourceFadeOut>
-																				<DestinationFadeIn>
-																					<MusicFade Name="Destination Fade-in" ID="{95D2446F-9B2F-4FD0-AA3B-5183AD5F19AF}">
-																						<PropertyList>
-																							<Property Name="FadeCurve" Type="int16" Value="6"/>
-																							<Property Name="FadeOffset" Type="Real64" Value="-2.5"/>
-																							<Property Name="FadeTime" Type="Real64" Value="2.5"/>
-																						</PropertyList>
-																					</MusicFade>
-																				</DestinationFadeIn>
-																			</TransitionInfo>
-																		</MusicTransition>
-																	</ChildrenList>
-																	<TransitionInfo/>
-																</MusicTransition>
-															</Custom>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="WanderingBase_loop" ID="{47ACBDC3-05B8-4879-A967-0BB115FD9C5B}">
-															<Language>SFX</Language>
-															<AudioFile>WanderingBase_loop.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="760796751"/>
-															</MediaIDList>
-														</AudioFileSource>
-														<AudioFileSource Name="WanderingGroove_loop" ID="{BE18F31A-EA9D-405A-8037-BB0977E535E5}">
-															<Language>SFX</Language>
-															<AudioFile>WanderingGroove_loop.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="582465378"/>
-															</MediaIDList>
-														</AudioFileSource>
-														<AudioFileSource Name="WanderingDisco_loop" ID="{95CF7F7C-8004-4896-BD5E-BE6BFA5D1D3E}">
-															<Language>SFX</Language>
-															<AudioFile>WanderingDisco_loop.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="455542977"/>
-															</MediaIDList>
-														</AudioFileSource>
-														<AudioFileSource Name="WanderingMelody_loop" ID="{312F738A-F6FC-4CA0-AEAA-7AC33DB740BF}">
-															<Language>SFX</Language>
-															<AudioFile>WanderingMelody_loop.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="186038116"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ObjectLists>
-														<ObjectList Name="Sequences">
-															<Reference>
-																<Local>
-																	<MusicTrackSequence Name="" ID="{EB21FEB2-BD18-4F2D-940D-31FF45C8AE1E}">
-																		<ObjectLists>
-																			<ObjectList Name="Clips">
-																				<Reference>
-																					<Local>
-																						<MusicClip Name="WanderingBase_loop" ID="{D27B733B-541F-4F12-815C-05F709148BD1}">
-																							<PropertyList>
-																								<Property Name="BeginTrimOffset" Type="Real64" Value="2.27373675443232E-13"/>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="63529.4166666667"/>
-																								<Property Name="FadeInMode" Type="int16" Value="0"/>
-																								<Property Name="PlayAt" Type="Real64" Value="-2.27373675443232E-13"/>
-																							</PropertyList>
-																							<AudioSourceRef Name="WanderingBase_loop" ID="{47ACBDC3-05B8-4879-A967-0BB115FD9C5B}"/>
-																							<PropertyCurveList>
-																								<PropertyCurve PropertyName="Highpass">
-																									<Curve Name="" ID="{9A7BC10F-B3C1-401B-859A-6C9D72524660}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="1"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.5294166666667</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																								<PropertyCurve PropertyName="Lowpass">
-																									<Curve Name="" ID="{E17E41C7-ED1A-464A-96F9-EFF51823ED6C}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="1"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.5294166666667</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																								<PropertyCurve PropertyName="Volume">
-																									<Curve Name="" ID="{402AA001-22B3-4B09-AD77-0B1EE2D45CB5}">
-																										<PropertyList>
-																											<Property Name="Flags" Type="int32" Value="3"/>
-																										</PropertyList>
-																										<PointList>
-																											<Point>
-																												<XPos>0</XPos>
-																												<YPos>0</YPos>
-																												<Flags>5</Flags>
-																											</Point>
-																											<Point>
-																												<XPos>63.5294166666667</XPos>
-																												<YPos>0</YPos>
-																												<Flags>37</Flags>
-																											</Point>
-																										</PointList>
-																									</Curve>
-																								</PropertyCurve>
-																							</PropertyCurveList>
-																						</MusicClip>
-																					</Local>
-																				</Reference>
-																			</ObjectList>
-																		</ObjectLists>
-																		<ReferenceList>
-																			<Reference Name="TrackSequenceSwitch">
-																				<ObjectRef Name="Base" ID="{28E585B6-4305-43E2-A4D0-A6FEB31B09E9}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-																			</Reference>
-																		</ReferenceList>
-																	</MusicTrackSequence>
-																</Local>
-															</Reference>
-															<Reference>
-																<Local>
-																	<MusicTrackSequence Name="" ID="{6D6A572E-7AF0-4601-9212-BF3F05FF9A8C}">
-																		<ObjectLists>
-																			<ObjectList Name="Clips">
-																				<Reference>
-																					<Local>
-																						<MusicClip Name="WanderingGroove_loop" ID="{97C8FEA4-45BD-424E-AB49-9069D693ABC5}">
-																							<PropertyList>
-																								<Property Name="BeginTrimOffset" Type="Real64" Value="3.19189119579733E-13"/>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="63529.4166666667"/>
-																								<Property Name="FadeInMode" Type="int16" Value="0"/>
-																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																								<Property Name="PlayAt" Type="Real64" Value="-3.12638803734444E-13"/>
-																							</PropertyList>
-																							<AudioSourceRef Name="WanderingGroove_loop" ID="{BE18F31A-EA9D-405A-8037-BB0977E535E5}"/>
-																						</MusicClip>
-																					</Local>
-																				</Reference>
-																			</ObjectList>
-																		</ObjectLists>
-																		<ReferenceList>
-																			<Reference Name="TrackSequenceSwitch">
-																				<ObjectRef Name="Groove" ID="{40598E9B-71BC-49F3-8B08-E6E98149754C}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-																			</Reference>
-																		</ReferenceList>
-																	</MusicTrackSequence>
-																</Local>
-															</Reference>
-															<Reference>
-																<Local>
-																	<MusicTrackSequence Name="" ID="{26A984E5-C07F-4C5B-98EB-608DEA37FFF2}">
-																		<ObjectLists>
-																			<ObjectList Name="Clips">
-																				<Reference>
-																					<Local>
-																						<MusicClip Name="WanderingMelody_loop" ID="{4613E22F-A263-441E-ACFC-AB57C800B630}">
-																							<PropertyList>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="63529.4166666667"/>
-																								<Property Name="FadeInMode" Type="int16" Value="0"/>
-																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																							</PropertyList>
-																							<AudioSourceRef Name="WanderingMelody_loop" ID="{312F738A-F6FC-4CA0-AEAA-7AC33DB740BF}"/>
-																						</MusicClip>
-																					</Local>
-																				</Reference>
-																			</ObjectList>
-																		</ObjectLists>
-																		<ReferenceList>
-																			<Reference Name="TrackSequenceSwitch">
-																				<ObjectRef Name="Melody_Square" ID="{D151578F-1BBB-4D7C-94F5-E31024C190D6}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-																			</Reference>
-																		</ReferenceList>
-																	</MusicTrackSequence>
-																</Local>
-															</Reference>
-															<Reference>
-																<Local>
-																	<MusicTrackSequence Name="" ID="{E5CD423D-462C-41DF-96CE-88287A8DB3B9}">
-																		<ObjectLists>
-																			<ObjectList Name="Clips">
-																				<Reference>
-																					<Local>
-																						<MusicClip Name="WanderingDisco_loop" ID="{BC0F7751-7243-4946-A491-0F97CE93D837}">
-																							<PropertyList>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="63529.4166666667"/>
-																								<Property Name="FadeInMode" Type="int16" Value="0"/>
-																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																							</PropertyList>
-																							<AudioSourceRef Name="WanderingDisco_loop" ID="{95CF7F7C-8004-4896-BD5E-BE6BFA5D1D3E}"/>
-																						</MusicClip>
-																					</Local>
-																				</Reference>
-																			</ObjectList>
-																		</ObjectLists>
-																		<ReferenceList>
-																			<Reference Name="TrackSequenceSwitch">
-																				<ObjectRef Name="Disco" ID="{4913E830-0CC2-4A89-A224-C121D170EB6C}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-																			</Reference>
-																		</ReferenceList>
-																	</MusicTrackSequence>
-																</Local>
-															</Reference>
-														</ObjectList>
-													</ObjectLists>
-												</MusicTrack>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Cues">
 													<Reference>
 														<Local>
-															<MusicCue Name="Entry Cue" ID="{A23FD4F1-98ED-4ECF-9A12-3800C12BAB4C}"/>
-														</Local>
-													</Reference>
-													<Reference>
-														<Local>
-															<MusicCue Name="Exit Cue" ID="{DE6A781A-8202-4ED0-8E8D-71D831BCEA99}">
+															<MusicCue Name="Exit Cue" ID="{CFAE9444-F6DF-40E1-8D7E-8F305D119560}">
 																<PropertyList>
 																	<Property Name="CueType" Type="int16" Value="1"/>
-																	<Property Name="TimeMs" Type="Real64" Value="63529.4117647059"/>
+																	<Property Name="TimeMs" Type="Real64" Value="63750"/>
 																</PropertyList>
 															</MusicCue>
 														</Local>
