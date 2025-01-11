@@ -148,6 +148,9 @@ GameObject:
   - component: {fileID: 4621641052262283176}
   - component: {fileID: 4621641052262283183}
   - component: {fileID: 4467438825962685672}
+  - component: {fileID: 3253921849005446881}
+  - component: {fileID: 2382123796303579978}
+  - component: {fileID: 5576050819875083543}
   m_Layer: 5
   m_Name: UI Standard Button
   m_TagString: Untagged
@@ -243,9 +246,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 454574f1579262d48a9ae3eeeaf15732, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 3026aca5a6479a94bb9d1bedff749297, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 454574f1579262d48a9ae3eeeaf15732, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 3026aca5a6479a94bb9d1bedff749297, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 454574f1579262d48a9ae3eeeaf15732, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 3026aca5a6479a94bb9d1bedff749297, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -257,7 +260,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4621641052262283176}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3253921849005446881}
+        m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+        m_MethodName: PostEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4467438825962685672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +288,68 @@ MonoBehaviour:
   OnSelected:
     m_PersistentCalls:
       m_Calls: []
+  OnDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3253921849005446881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4621641052262283181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbdca0ce99154d4b86d55d7f5a287de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wwiseEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4e16534652616a043aef5199cadc6798, type: 2}
+--- !u!114 &2382123796303579978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4621641052262283181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbdca0ce99154d4b86d55d7f5a287de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wwiseEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8f87d65932565bb4a8248496c3d5f06c, type: 2}
+--- !u!114 &5576050819875083543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4621641052262283181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6ad60cc75899743aca65155f70a2db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2382123796303579978}
+        m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+        m_MethodName: PostEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeselected:
     m_PersistentCalls:
       m_Calls: []
