@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{528DD21B-1ED4-D437-D37B-68719AED1D9C}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{0388199B-9CE2-3651-9F4E-824DDFCA4762}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -84,6 +84,10 @@
 				<File Id="198392224" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Unauthorized_forWneg1.wav</ShortName>
 					<CachePath>SFX/Unauthorized_forWneg1_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="198602291" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>major chord.wav</ShortName>
+					<CachePath>SFX/major chord_818F3B66.wem</CachePath>
 				</File>
 				<File Id="201830874" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Soon Forgotten_first.wav</ShortName>
@@ -269,6 +273,10 @@
 					<ShortName>ChargeEnemyAttack_5.wav</ShortName>
 					<CachePath>SFX/ChargeEnemyAttack_5_818F3B66.wem</CachePath>
 				</File>
+				<File Id="607114884" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>OpeningADrawer.wav</ShortName>
+					<CachePath>SFX/OpeningADrawer_818F3B66.wem</CachePath>
+				</File>
 				<File Id="617024166" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Wandering_3 base with tail.wav</ShortName>
 					<CachePath>SFX/Wandering_3 base with tail_FBC78EF0.wem</CachePath>
@@ -360,6 +368,10 @@
 				<File Id="783969170" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Wandering_3 v2 drums and bass with tail.wav</ShortName>
 					<CachePath>SFX/Wandering_3 v2 drums and bass with tail_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="788971230" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MaybeGrapple.wav</ShortName>
+					<CachePath>SFX/MaybeGrapple_818F3B66.wem</CachePath>
 				</File>
 				<File Id="823912825" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #26.wav</ShortName>
@@ -1011,10 +1023,70 @@
 								<MediaRef Id="579753392"/>
 							</MediaRefs>
 						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="1491136465"/>
+							<MediaRefs>
+								<MediaRef Id="247792844"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="755231598"/>
+							<MediaRefs>
+								<MediaRef Id="579753392"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="4089353215"/>
+							<MediaRefs>
+								<MediaRef Id="247792844"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="469249852"/>
+							<MediaRefs>
+								<MediaRef Id="133588556"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="2818412452" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="579753392"/>
+							</MediaRefs>
+						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
 				<Event Id="2802534155" Name="Play_ZoomOnLineStartAndLoop" DurationType="Infinite">
 					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="1491136465"/>
+							<MediaRefs>
+								<MediaRef Id="502238746"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="755231598"/>
+							<MediaRefs>
+								<MediaRef Id="842979744"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="4089353215"/>
+							<MediaRefs>
+								<MediaRef Id="502238746"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="469249852"/>
+							<MediaRefs>
+								<MediaRef Id="1014716659"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="2818412452" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="842979744"/>
+							</MediaRefs>
+						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="693291814" Id="1491136465"/>
 							<MediaRefs>
@@ -1825,8 +1897,94 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="1429974361" Name="Stop_Memory_Leak_Foley" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="2486338789" Name="Stop_ZoomOnLineStartAndLoop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1429974361" Name="Stop_Memory_Leak_Foley" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="2388732"/>
+						<MediaRef Id="9323772"/>
+						<MediaRef Id="49286846"/>
+						<MediaRef Id="86577336"/>
+						<MediaRef Id="86933763"/>
+						<MediaRef Id="90653931"/>
+						<MediaRef Id="155156770"/>
+						<MediaRef Id="157156058"/>
+						<MediaRef Id="204318250"/>
+						<MediaRef Id="235003615"/>
+						<MediaRef Id="243082496"/>
+						<MediaRef Id="264134249"/>
+						<MediaRef Id="271724456"/>
+						<MediaRef Id="276680147"/>
+						<MediaRef Id="304090110"/>
+						<MediaRef Id="304735126"/>
+						<MediaRef Id="340263390"/>
+						<MediaRef Id="347146397"/>
+						<MediaRef Id="353915800"/>
+						<MediaRef Id="362869996"/>
+						<MediaRef Id="387195478"/>
+						<MediaRef Id="393726190"/>
+						<MediaRef Id="410367685"/>
+						<MediaRef Id="417040994"/>
+						<MediaRef Id="430239968"/>
+						<MediaRef Id="442792554"/>
+						<MediaRef Id="446571786"/>
+						<MediaRef Id="462569773"/>
+						<MediaRef Id="466236272"/>
+						<MediaRef Id="585629142"/>
+						<MediaRef Id="683424978"/>
+						<MediaRef Id="697163750"/>
+						<MediaRef Id="736125564"/>
+						<MediaRef Id="736250868"/>
+						<MediaRef Id="749399262"/>
+						<MediaRef Id="770349144"/>
+						<MediaRef Id="771937471"/>
+						<MediaRef Id="780872195"/>
+						<MediaRef Id="823912825"/>
+						<MediaRef Id="884872296"/>
+						<MediaRef Id="893290773"/>
+						<MediaRef Id="908241774"/>
+						<MediaRef Id="912575314"/>
+						<MediaRef Id="936197155"/>
+						<MediaRef Id="1002722393"/>
+						<MediaRef Id="1004854673"/>
+						<MediaRef Id="1010904039"/>
+						<MediaRef Id="1019027977"/>
+						<MediaRef Id="1041281801"/>
+						<MediaRef Id="1056317034"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2486338789" Name="Stop_ZoomOnLineStartAndLoop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="1491136465"/>
+							<MediaRefs>
+								<MediaRef Id="502238746"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="755231598"/>
+							<MediaRefs>
+								<MediaRef Id="842979744"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="4089353215"/>
+							<MediaRefs>
+								<MediaRef Id="502238746"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="469249852"/>
+							<MediaRefs>
+								<MediaRef Id="1014716659"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="693291814" Id="2818412452" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="842979744"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
 				<Event Id="1952352785" Name="StruggleBeat1" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="1952352786" Name="StruggleBeat2" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="1952352787" Name="StruggleBeat3" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
@@ -1917,7 +2075,14 @@
 					</SwitchContainers>
 				</Event>
 			</Events>
+			<Busses>
+				<Bus Id="1502772432" Name="SFX Bus"/>
+				<Bus Id="3127962312" Name="Music Bus"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
 			<GameParameters>
+				<GameParameter Id="988953028" Name="SFXVolume"/>
+				<GameParameter Id="1843561328" Name="MainVolume"/>
 				<GameParameter Id="2346531308" Name="MusicVolume"/>
 			</GameParameters>
 			<SwitchGroups>
@@ -1968,7 +2133,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{96BFB7EA-1532-795C-0D3B-5CC60F5B7B05}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{A7399820-272E-0ACF-2E0E-EEB5D7B8DA16}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -1978,10 +2143,13 @@
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="1502772432" Name="SFX Bus"/>
+				<Bus Id="3127962312" Name="Music Bus"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 			<GameParameters>
 				<GameParameter Id="988953028" Name="SFXVolume"/>
+				<GameParameter Id="1843561328" Name="MainVolume"/>
 				<GameParameter Id="2346531308" Name="MusicVolume"/>
 			</GameParameters>
 			<StateGroups>
@@ -2115,5 +2283,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{80DBE000-E44F-C627-9526-F3C1AEF647AE}</FileHash>
+	<FileHash>{C6260FC5-EFEB-F5F9-E368-989B72A40B3A}</FileHash>
 </SoundBanksInfo>
