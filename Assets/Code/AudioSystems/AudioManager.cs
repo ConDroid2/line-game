@@ -55,19 +55,25 @@ public class AudioManager : MonoBehaviour
     public void SetVolume(float newVolume)
     {
         Volume = newVolume;
-        _wwiseMainVolume.SetValue(SoundPlayer, Volume);
+        //Debug.Log($"Volume set to {newVolume}");
+        //_wwiseMainVolume.SetValue(SoundPlayer, Volume);
+        AkSoundEngine.SetRTPCValue(_wwiseMainVolume.Name, newVolume);
     }
 
     public void SetMusicVolume(float newVolume)
     {
         MusicVolume = newVolume;
-        _wwiseMusicVolume.SetValue(SoundPlayer, Volume);
+        //Debug.Log($"MusicVolume set to {newVolume}");
+        //_wwiseMusicVolume.SetValue(SoundPlayer, MusicVolume);
+        AkSoundEngine.SetRTPCValue(_wwiseMusicVolume.Name, newVolume);
     }
 
     public void SetSfxVolume(float newVolume)
     {
         SfxVolume = newVolume;
-        _wwiseSFXVolume.SetValue(SoundPlayer, Volume);
+        //Debug.Log($"Sfx Volume set to {newVolume}");
+        //_wwiseSFXVolume.SetValue(SoundPlayer, SfxVolume);
+        AkSoundEngine.SetRTPCValue(_wwiseSFXVolume.Name, newVolume);
     }
 
 }

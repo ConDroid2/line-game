@@ -42,6 +42,7 @@ public class UISliderController : MonoBehaviour, ISelectHandler, IDeselectHandle
 
     public void OnSelect(BaseEventData eventData)
     {
+        Debug.Log("UI Slider Controller Was Selected");
         _codeBody.gameObject.SetActive(true);
     }
 

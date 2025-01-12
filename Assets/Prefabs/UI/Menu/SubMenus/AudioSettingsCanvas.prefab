@@ -1367,7 +1367,7 @@ PrefabInstance:
     - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7443519599660415272}
     - target: {fileID: 4133139520036011755, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1509,6 +1509,34 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 7396344295523648696}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8363460976773705662}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PostEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: WwiseEventPoster, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4133139520036011755, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1607,12 +1635,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+--- !u!1 &1925570455927752108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4133139520036011752, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+  m_PrefabInstance: {fileID: 2585871434048895812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8363460976773705662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925570455927752108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbdca0ce99154d4b86d55d7f5a287de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wwiseEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 039d9c111f3689f4fa1a887d07abd198, type: 2}
 --- !u!114 &1925570455927752110 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
   m_PrefabInstance: {fileID: 2585871434048895812}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1925570455927752108}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
@@ -1725,7 +1774,7 @@ PrefabInstance:
     - target: {fileID: 4621641052262283183, guid: 85d5b6eaaa17a674eaf82abb6ca04ab9, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1925570455927752110}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85d5b6eaaa17a674eaf82abb6ca04ab9, type: 3}
 --- !u!114 &7396344295523648696 stripped
