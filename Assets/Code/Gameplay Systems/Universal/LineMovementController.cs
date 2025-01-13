@@ -20,7 +20,7 @@ public class LineMovementController : MonoBehaviour
 
 
     // Collision Variabls
-    private Collider2D _collider;
+    public Collider2D Collider { get; private set; }
     private LineMovementController _objectBeingPushed = null;
 
     // Stuff to keep track of
@@ -35,7 +35,7 @@ public class LineMovementController : MonoBehaviour
 
     private void Awake()
     {
-        _collider = GetComponent<Collider2D>();
+        Collider = GetComponent<Collider2D>();
         _logger = GetComponent<DebugLogger>();
     }
 
@@ -73,7 +73,7 @@ public class LineMovementController : MonoBehaviour
         Collider2D[] results = new Collider2D[10];
         ContactFilter2D filter = new ContactFilter2D(); // Can put this in a variable eventually
 
-        int numberOfHits = Physics2D.OverlapBox(attemptedNewPosition, _collider.bounds.size, transform.eulerAngles.z, filter, results);
+        int numberOfHits = Physics2D.OverlapBox(attemptedNewPosition, Collider.bounds.size, transform.eulerAngles.z, filter, results);
 
         // Check if any collisions will stop us
         willMove &= HandleCollisions(results);
