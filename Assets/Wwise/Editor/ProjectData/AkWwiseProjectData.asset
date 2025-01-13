@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 045db57619333645a34795cdaae947d1
     GuidInternal: 
-    m_lastTime: -8584766429363658367
+    m_lastTime: -8584649765793218583
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -54,6 +54,40 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+    - name: Music Bus
+      guid: be8dd7885c61634cbc62ecc5f8370198
+      id: 3127962312
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 045db57619333645a34795cdaae947d1
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Music Bus
+        ObjectType: 2
+        guid: be8dd7885c61634cbc62ecc5f8370198
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Music Bus
+    - name: SFX Bus
+      guid: 34bcbf2d32ef90468c771167dfea5986
+      id: 1502772432
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 045db57619333645a34795cdaae947d1
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX Bus
+        ObjectType: 2
+        guid: 34bcbf2d32ef90468c771167dfea5986
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX Bus
   BankWwu:
   - PhysicalPath: SoundBanks\BackgroundMusicPlaylist.wwu
     PathAndIcons:
@@ -66,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\BackgroundMusicPlaylist
     guid: 1a0962b06261624c95aecf2cc6f314d1
     GuidInternal: 
-    m_lastTime: -8584659909461040195
+    m_lastTime: -8584649764920179578
     List:
     - name: BackgroundMusicSoundBank
       guid: 3f92bb61ec1ae341acbb5e4b03ff3416
@@ -93,7 +127,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 6e98d0b6d0c78640aa584f976699f0be
     GuidInternal: 
-    m_lastTime: -8584730351704967059
+    m_lastTime: -8584731707188266458
     List: []
   EventWwu:
   - PhysicalPath: Events\BackgroundMusicEvents.wwu
@@ -107,7 +141,7 @@ MonoBehaviour:
     ParentPath: Events\BackgroundMusicEvents
     guid: 753e27ae7ba75e4fb3246c92d130ca4e
     GuidInternal: 
-    m_lastTime: -8584749111222761429
+    m_lastTime: -8584649766031106891
     List:
     - name: Break_AllBGsSwitchContainer
       guid: 7bc5c956c84c0a4b9867f977464ec2f6
@@ -558,7 +592,7 @@ MonoBehaviour:
     ParentPath: Events\GameParameters
     guid: b32452b4931a384ab9d293cf5abbf73a
     GuidInternal: 
-    m_lastTime: -8584730351711518480
+    m_lastTime: -8584731705791317017
     List:
     - name: Reset_Game_Parameter_MusicVolume
       guid: 3b74ca02c43212439d5ae2b1e4d63f1e
@@ -605,7 +639,7 @@ MonoBehaviour:
     ParentPath: Events\SoundEffects
     guid: aff8243a4a09ed45bce6a6a6f369f4f4
     GuidInternal: 
-    m_lastTime: -8584659909465490441
+    m_lastTime: -8584649768413263177
     List:
     - name: Play_2_clicks_with_rise
       guid: 64df0ce93ff02e40bacbaf9503d0cdae
@@ -1180,8 +1214,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: be2f0be240b9c849b3be9a3b7f5dbe95
     GuidInternal: 
-    m_lastTime: -8584742458977010336
+    m_lastTime: -8584649795156839170
     List:
+    - name: MainVolume
+      guid: 55636136d477a145b05af65c36ddb5ff
+      id: 1843561328
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: be2f0be240b9c849b3be9a3b7f5dbe95
+      - ElementName: MainVolume
+        ObjectType: 13
+        guid: 55636136d477a145b05af65c36ddb5ff
+      Path: Game Parameters\Default Work Unit\MainVolume
     - name: MusicVolume
       guid: e2025302e6c3c840b6892b5e058e8641
       id: 2346531308
@@ -1402,7 +1450,7 @@ MonoBehaviour:
     ParentPath: Switches\BackgroundMusicSwitches
     guid: d5c8c723645fe04a854ba7a3dd863fd8
     GuidInternal: 
-    m_lastTime: -8584749111213160684
+    m_lastTime: -8584649837120239853
     List:
     - name: BackgroundTrack
       guid: 62952ac7bfe3d0479bcf7e278272b171
@@ -1419,6 +1467,38 @@ MonoBehaviour:
         guid: 62952ac7bfe3d0479bcf7e278272b171
       Path: Switches\BackgroundMusicSwitches\BackgroundTrack
       values:
+      - name: Credits
+        guid: 270b78c2dd7d0a46b531ec357dd803a9
+        id: 2201105581
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: BackgroundMusicSwitches
+          ObjectType: 12
+          guid: d5c8c723645fe04a854ba7a3dd863fd8
+        - ElementName: BackgroundTrack
+          ObjectType: 11
+          guid: 62952ac7bfe3d0479bcf7e278272b171
+        - ElementName: Credits
+          ObjectType: 10
+          guid: 270b78c2dd7d0a46b531ec357dd803a9
+      - name: MainMenu
+        guid: fd1c8e2ec082364aad5ffa98e7c45196
+        id: 3604647259
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: BackgroundMusicSwitches
+          ObjectType: 12
+          guid: d5c8c723645fe04a854ba7a3dd863fd8
+        - ElementName: BackgroundTrack
+          ObjectType: 11
+          guid: 62952ac7bfe3d0479bcf7e278272b171
+        - ElementName: MainMenu
+          ObjectType: 10
+          guid: fd1c8e2ec082364aad5ffa98e7c45196
       - name: Microprocessor_W1
         guid: 9f857230516e654abcada867d60d90d6
         id: 469249852
@@ -1749,6 +1829,22 @@ MonoBehaviour:
         - ElementName: Disco
           ObjectType: 10
           guid: 30e81349c20c894aa224c121d170eb6c
+      - name: Duet
+        guid: 2a1a3f45d9026945806e752d7c27fbcd
+        id: 2516382959
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: BackgroundMusicSwitches
+          ObjectType: 12
+          guid: d5c8c723645fe04a854ba7a3dd863fd8
+        - ElementName: WanderingSubtrack
+          ObjectType: 11
+          guid: b63e6ad14ae19d42a1ef9669b1bdb7da
+        - ElementName: Duet
+          ObjectType: 10
+          guid: 2a1a3f45d9026945806e752d7c27fbcd
       - name: Groove
         guid: 9b8e5940bc71f3498b08e6e98149754c
         id: 2129540867
@@ -1765,6 +1861,22 @@ MonoBehaviour:
         - ElementName: Groove
           ObjectType: 10
           guid: 9b8e5940bc71f3498b08e6e98149754c
+      - name: Melody_Saw
+        guid: ec6d3084ffd8b04ba9094b070205deb4
+        id: 2008261103
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: BackgroundMusicSwitches
+          ObjectType: 12
+          guid: d5c8c723645fe04a854ba7a3dd863fd8
+        - ElementName: WanderingSubtrack
+          ObjectType: 11
+          guid: b63e6ad14ae19d42a1ef9669b1bdb7da
+        - ElementName: Melody_Saw
+          ObjectType: 10
+          guid: ec6d3084ffd8b04ba9094b070205deb4
       - name: Melody_Square
         guid: 8f5751d1bb1b7c4d94f5e31024c190d6
         id: 1643365445
@@ -2433,7 +2545,7 @@ MonoBehaviour:
     m_lastTime: -8584766429282457550
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 4f000000500000005100000056000000
+  ExpandedWaapiItemIds: 050000000600000024000000250000004f00000050000000560000006500000066000000670000004401000045010000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

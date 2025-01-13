@@ -13,9 +13,15 @@ public class AudioManager : MonoBehaviour
 
     private int currentBeat = 0;
 
-    public float Volume { get; private set; } = 0.5f;
-
     public AK.Wwise.RTPC _wwiseMusicVolume;
+    public AK.Wwise.RTPC _wwiseMainVolume;
+    public AK.Wwise.RTPC _wwiseSFXVolume;
+
+    public float Volume {get; private set; } = 50;
+    public float MusicVolume { get; private set; } = 50f;
+    public float SfxVolume { get; private set; } = 50f;
+
+
 
 
     private void Awake()
@@ -49,6 +55,25 @@ public class AudioManager : MonoBehaviour
     public void SetVolume(float newVolume)
     {
         Volume = newVolume;
-        _wwiseMusicVolume.SetValue(SoundPlayer, Volume);
+        //Debug.Log($"Volume set to {newVolume}");
+        //_wwiseMainVolume.SetValue(SoundPlayer, Volume);
+        AkSoundEngine.SetRTPCValue(_wwiseMainVolume.Name, newVolume);
     }
+
+    public void SetMusicVolume(float newVolume)
+    {
+        MusicVolume = newVolume;
+        //Debug.Log($"MusicVolume set to {newVolume}");
+        //_wwiseMusicVolume.SetValue(SoundPlayer, MusicVolume);
+        AkSoundEngine.SetRTPCValue(_wwiseMusicVolume.Name, newVolume);
+    }
+
+    public void SetSfxVolume(float newVolume)
+    {
+        SfxVolume = newVolume;
+        //Debug.Log($"Sfx Volume set to {newVolume}");
+        //_wwiseSFXVolume.SetValue(SoundPlayer, SfxVolume);
+        AkSoundEngine.SetRTPCValue(_wwiseSFXVolume.Name, newVolume);
+    }
+
 }
