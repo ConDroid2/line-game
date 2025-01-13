@@ -9,8 +9,8 @@ public class RedBlueSwitch : MonoBehaviour
     [SerializeField] private SpriteRenderer _sprite;
 
     [Header("Settings")]
-    [SerializeField] private Color _red;
-    [SerializeField] private Color _blue;
+    [SerializeField] private Sprite _redSprite;
+    [SerializeField] private Sprite _blueSprite;
 
     private bool redOnBlueOff = true;
 
@@ -36,7 +36,7 @@ public class RedBlueSwitch : MonoBehaviour
         if(redOnBlueOff == false)
         {
             redOnBlueOff = true;
-            _sprite.color = _red;
+            _sprite.sprite = _redSprite;
             OnActivateRed?.Invoke();
         }
     }
@@ -46,7 +46,7 @@ public class RedBlueSwitch : MonoBehaviour
         if(redOnBlueOff == true)
         {
             redOnBlueOff = false;
-            _sprite.color = _blue;
+            _sprite.sprite = _blueSprite;
             OnActivateBlue?.Invoke();
         }
     }
