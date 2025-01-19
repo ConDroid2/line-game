@@ -9,12 +9,15 @@ public class LineRotator : MonoBehaviour
     [SerializeField] private LineController _lineController;
 
     [Header("Settings")]
-    [SerializeField] private float _timeForRotation = 1f;
+    [SerializeField] private float _timeForFullRotation = 1f;
     [SerializeField] private AnimationCurve _rotationCurve;
+    [SerializeField] private ContactFilter2D _obstructionFilter = new ContactFilter2D();
 
     // Variables for keeping track
     bool _rotating = false;
     float _timeSinceStarting = 0f;
+    float _timeForRotation = 0f;
+    bool _checkCollisions = true;
     float _startRotation;
     float _endRotation;
     Vector3 _startA;
@@ -67,13 +70,22 @@ public class LineRotator : MonoBehaviour
 
             if(_timeSinceStarting >= _timeForRotation)
             {
+                Debug.Log("Done rotating");
                 _lineController.SetLocalEndpoint("A", _calculatedA);
                 _lineController.SetLocalEndpoint("B", _calculatedB);
 
                 _rotating = false;
+                _checkCollisions = true;
                 DoneRotating.Invoke();
 
                 ValidateNewOrientation();
+            }
+            else if (_checkCollisions && CheckCollisions())
+            {
+                _rotating = false;
+                _checkCollisions = false;
+                Debug.Log("Should be reversing after collision");
+                Reverse();
             }
         }
     }
@@ -96,6 +108,7 @@ public class LineRotator : MonoBehaviour
         //Debug.Log($"New A.x is: {_calculatedA.x}");
         //Debug.Log($"New A.y is: {_calculatedA.y}");
 
+        _timeForRotation = _timeForFullRotation;
         _timeSinceStarting = 0;
 
         _lineController.LineType = Enums.LineType.Shifting;
@@ -107,16 +120,26 @@ public class LineRotator : MonoBehaviour
     {
         if (_rotating) return;
         Debug.Log("Start Reversing");
-        
+        // _lineController.FixPointOrientation();
 
         Vector2 nextSlope = Vector2.Perpendicular(_lineController.CalculateSlope());
         float halfLength = _lineController.Length / 2;
 
-        _startA = _lineController.CurrentLocalA;
-        _startB = _lineController.CurrentLocalB;
+        //_startA = _lineController.CurrentLocalA;
+        //_startB = _lineController.CurrentLocalB;
 
-        _calculatedA = -1 * new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
-        _calculatedB = new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
+        //_calculatedA = -1 * new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
+        //_calculatedB = new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
+
+        Vector3 temp = Vector3.zero;
+
+        temp.Set(_startA.x, _startA.y, _startA.z);
+        _startA = _lineController.CurrentLocalA;
+        _calculatedA.Set(temp.x, temp.y, temp.z);
+
+        temp.Set(_startB.x, _startB.y, _startB.z);
+        _startB = _lineController.CurrentLocalB;
+        _calculatedB.Set(temp.x, temp.y, temp.z);
 
         //Debug.Log($"Next slope is: {nextSlope.x}, {nextSlope.y}");
         //Debug.Log($"Half length is: {halfLength}");
@@ -124,6 +147,7 @@ public class LineRotator : MonoBehaviour
         //Debug.Log($"New A.y is: {_calculatedA.y}");
 
         _timeSinceStarting = 0;
+        _timeForRotation = _timeForFullRotation;
 
         _lineController.LineType = Enums.LineType.Shifting;
         _rotating = true;
@@ -134,7 +158,7 @@ public class LineRotator : MonoBehaviour
         Debug.Log("Validating new orientation");
         //_lineController.SetEndpoint("A", FixEndpointPositions(_lineController.CurrentA));
         //_lineController.SetEndpoint("B", FixEndpointPositions(_lineController.CurrentB));
-        _lineController.FixPointOrientation();
+        // _lineController.FixPointOrientation();
 
         Vector3 a = _lineController.CurrentA;
         Vector3 b = _lineController.CurrentB;
@@ -162,6 +186,27 @@ public class LineRotator : MonoBehaviour
                 Reverse();
             }
         }
+    }
+
+    private bool CheckCollisions()
+    {
+        int hits = 0;
+
+        foreach(OnLineController onLine in _lineController.OnLineControllers)
+        {
+            var movementController = onLine.GetComponent<LineMovementController>();
+
+            Collider2D[] results = new Collider2D[10];
+
+            int numberOfHits = Physics2D.OverlapBox(onLine.transform.position, movementController.Collider.bounds.size, transform.eulerAngles.z, _obstructionFilter, results);
+
+            hits += numberOfHits;
+
+            if(hits > 0)
+                Debug.Log($"Number of hits: {hits}");
+        }
+
+        return hits > 0;
     }
 
     private Vector3 FixEndpointPositions(Vector3 endpoint)

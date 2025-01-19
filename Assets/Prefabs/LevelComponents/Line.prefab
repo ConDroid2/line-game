@@ -95,6 +95,12 @@ MonoBehaviour:
   OnObjectRemovedFromLine:
     m_PersistentCalls:
       m_Calls: []
+  OnPlayerAddedToLine:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerRemovedFromLine:
+    m_PersistentCalls:
+      m_Calls: []
   OnActiveChanged:
     m_PersistentCalls:
       m_Calls:
@@ -236,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineController: {fileID: 3755817443664416724}
-  _timeForRotation: 0.5
+  _timeForFullRotation: 0.5
   _rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -261,6 +267,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _obstructionFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 64
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   DoneRotating:
     m_PersistentCalls:
       m_Calls:
