@@ -178,7 +178,7 @@ public class LineMovementController : MonoBehaviour
             {
                 if(_previousSwapData.InputVector == inputVector && _previousSwapData.IntersectionPoints.Contains(intersection.IntersectionWorldSpace))
                 {
-                    _logger.DebugLog("Skipping intersection due to previous check");
+                    // _logger.DebugLog("Skipping intersection due to previous check");
                     continue;
                 }
             }
@@ -217,6 +217,26 @@ public class LineMovementController : MonoBehaviour
         {
             _logger.DebugLog("Moving to a new line");
             SetNewLine(lineToMoveTo, newDistanceAlongLine);
+
+            // Do some physics check in here
+            
+            if(_objectBeingPushed != null)
+            {
+                Vector2 pushDirection = Vector2.zero;
+                // Determine direction to push _objectBeingPushed
+                if(transform.position.y == _objectBeingPushed.transform.position.y)
+                {
+                    _logger.DebugLog("Need to push left or right");
+                    pushDirection = transform.position.x < _objectBeingPushed.transform.position.x ? new Vector2(1, 0) : new Vector2(-1, 0);
+                }
+                else if(transform.position.x == _objectBeingPushed.transform.position.x)
+                {
+                    _logger.DebugLog("Need to push up or down");
+                    pushDirection = transform.position.y < _objectBeingPushed.transform.position.y ? new Vector2(0, 1) : new Vector2(0, -1);
+                }
+
+                HandlePushables(new Collider2D[] { _objectBeingPushed.Collider }, pushDirection, 0.2f);
+            }
 
             _previousSwapData = new LineSwapData(inputVector, intersections);
         }

@@ -84,7 +84,6 @@ public class LineRotator : MonoBehaviour
             {
                 _rotating = false;
                 _checkCollisions = false;
-                Debug.Log("Should be reversing after collision");
                 Reverse();
             }
         }
@@ -119,7 +118,6 @@ public class LineRotator : MonoBehaviour
     public void Reverse()
     {
         if (_rotating) return;
-        Debug.Log("Start Reversing");
         // _lineController.FixPointOrientation();
 
         Vector2 nextSlope = Vector2.Perpendicular(_lineController.CalculateSlope());
@@ -155,7 +153,6 @@ public class LineRotator : MonoBehaviour
 
     public void ValidateNewOrientation()
     {
-        Debug.Log("Validating new orientation");
         //_lineController.SetEndpoint("A", FixEndpointPositions(_lineController.CurrentA));
         //_lineController.SetEndpoint("B", FixEndpointPositions(_lineController.CurrentB));
         // _lineController.FixPointOrientation();
@@ -182,7 +179,6 @@ public class LineRotator : MonoBehaviour
 
             if (intersectionPoint.IsParallel && intersectionPoint.Point.x == Vector3.negativeInfinity.x)
             {
-                Debug.Log("Potential Problem");
                 Reverse();
             }
         }
@@ -201,9 +197,6 @@ public class LineRotator : MonoBehaviour
             int numberOfHits = Physics2D.OverlapBox(onLine.transform.position, movementController.Collider.bounds.size, transform.eulerAngles.z, _obstructionFilter, results);
 
             hits += numberOfHits;
-
-            if(hits > 0)
-                Debug.Log($"Number of hits: {hits}");
         }
 
         return hits > 0;
