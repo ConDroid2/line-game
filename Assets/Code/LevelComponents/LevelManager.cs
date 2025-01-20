@@ -156,15 +156,18 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PlayerDeathCoroutine()
     {
-        List<ExplodeOnDeath> thingsToExplode = FindObjectsOfType<ExplodeOnDeath>().OrderBy(x => x.Priority).ToList();
+        List<ExplodeEffect> thingsToExplode = FindObjectsOfType<ExplodeEffect>().OrderBy(x => x.Priority).ToList();
 
-        foreach(ExplodeOnDeath exploder in thingsToExplode)
+        foreach(ExplodeEffect exploder in thingsToExplode)
         {
-            exploder.TriggerEffect();
-
-            while (exploder.IsPlaying())
+            if (exploder.ExplodeOnDeath)
             {
-                yield return null;
+                exploder.TriggerEffect();
+
+                while (exploder.IsPlaying())
+                {
+                    yield return null;
+                }
             }
         }
 

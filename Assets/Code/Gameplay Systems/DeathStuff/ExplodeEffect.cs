@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ExplodeOnDeath : MonoBehaviour
+public class ExplodeEffect : MonoBehaviour
 {
     [SerializeField] private GameObject _turnOff;
     [SerializeField] private ParticleSystem _particleSystem;
     public int Priority = 0;
+    public bool ExplodeOnDeath = false;
 
     private bool _playing = false;
 
