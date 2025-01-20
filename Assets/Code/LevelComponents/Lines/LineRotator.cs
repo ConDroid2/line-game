@@ -30,6 +30,7 @@ public class LineRotator : MonoBehaviour
 
     // Events
     public UnityEvent DoneRotating;
+    public UnityEvent OnInvalidRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +85,7 @@ public class LineRotator : MonoBehaviour
             {
                 _rotating = false;
                 _checkCollisions = false;
+                OnInvalidRotation?.Invoke();
                 Reverse();
             }
         }
@@ -179,6 +181,7 @@ public class LineRotator : MonoBehaviour
 
             if (intersectionPoint.IsParallel && intersectionPoint.Point.x == Vector3.negativeInfinity.x)
             {
+                OnInvalidRotation?.Invoke();
                 Reverse();
             }
         }
