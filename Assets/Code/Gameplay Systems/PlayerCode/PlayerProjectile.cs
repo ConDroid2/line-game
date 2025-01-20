@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerProjectile : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerProjectile : MonoBehaviour
     [Header("Pushable Force Data")]
     [SerializeField] private float _pushableForce;
     [SerializeField] private float _drag;
+
+    [Header("Events")]
+    public UnityEvent OnProjectileHit;
     
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -33,6 +37,7 @@ public class PlayerProjectile : MonoBehaviour
             movementController.AddForce(new Force(_pushableForce, forceDirection, _drag, gameObject));
 
             PlayHitEffect(collision);
+            OnProjectileHit?.Invoke();
             Destroy(gameObject);
 
         }
@@ -43,6 +48,7 @@ public class PlayerProjectile : MonoBehaviour
             if (switchHit.SwitchType != Enums.SwitchType.Continuous)
             {
                 switchHit.Activate();
+                PlayHitEffect(collision);
                 Destroy(gameObject);
             }
         }
@@ -50,6 +56,7 @@ public class PlayerProjectile : MonoBehaviour
         else if (collision.collider.TryGetComponent(out RedBlueSwitch redBlueSwitchHit))
         {
             redBlueSwitchHit.Toggle();
+            PlayHitEffect(collision);
             Destroy(gameObject);
         }
     }
