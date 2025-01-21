@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: -8302570056326570106}
   - component: {fileID: 1322044666806083503}
   - component: {fileID: 2832387575261798982}
+  - component: {fileID: 5996853584928720373}
   m_Layer: 12
   m_Name: BasicPlayerProjectile
   m_TagString: Untagged
@@ -146,6 +147,21 @@ MonoBehaviour:
   _hitExplosionEffectPrefab: {fileID: 777450971503308833, guid: cd22f3c6c8109b34a8047617b8ec63ce, type: 3}
   _pushableForce: 7
   _drag: 0.8
+  OnProjectileHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5996853584928720373}
+        m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+        m_MethodName: PostEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &2832387575261798982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +188,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.97, y: 2.1}
   m_EdgeRadius: 0
+--- !u!114 &5996853584928720373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492061878224234488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbdca0ce99154d4b86d55d7f5a287de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wwiseEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c1c23507977ad0c4f8ad948f0a875311, type: 2}
