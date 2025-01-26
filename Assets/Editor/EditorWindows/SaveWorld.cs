@@ -54,13 +54,92 @@ public class SaveWorld : EditorWindow
             bool hasBottomConnection = false;
             bool hasTopConnection = false;
 
+            int roomUnitHeight = roomHeight / Consts.MapRoomInfo.PreviewRoomHeight;
+            int roomUnitWidth = roomWidth / Consts.MapRoomInfo.PreviewRoomWidth;
+
+            List<float> rightMapConnectionYValues = new List<float>();
+            List<float> leftMapConnectionYValues = new List<float>();
+            List<float> bottomMapConnectionXValues = new List<float>();
+            List<float> topMapConnectionXValues = new List<float>();
+
+            float[] heightSections = new float[roomUnitHeight + 1];
+            float[] widthSections = new float[roomUnitWidth + 1];
+
+            float mapRoomConnectionX = Consts.MapRoomInfo.MapRoomConnectionDefaultX * roomUnitWidth;
+            float mapRoomConnectionY = Consts.MapRoomInfo.MapRoomConnectionDefaultY * roomUnitHeight;
+
+            for(int i = 0; i < roomUnitHeight; i++)
+            {
+                heightSections[i] = room.RoomData.Bottom + (Consts.MapRoomInfo.PreviewRoomHeight * i);
+            }
+
+            Debug.Log($"Height sections are: {heightSections[0]}");
+
+            for(int i = 0; i < roomUnitWidth; i++)
+            {
+                widthSections[i] = room.RoomData.Left + (Consts.MapRoomInfo.PreviewRoomWidth * i);
+            }
+
+            Debug.Log($"Width sections are: {widthSections[0]}");
+
             Debug.Log($"Room bounds are: {room.WorldSpaceRight}, {room.WorldSpaceLeft}, {room.WorldSpaceBottom}, {room.WorldSpaceTop}");
             foreach (RoomConnection roomConnection in connectionsForRoom)
             {
                 Vector3 connectionWorldSpace = room.transform.position + (roomConnection.FromPort.RelativePosition.ConvertToVector3() * room.GetScale());
 
                 Debug.Log($"Connection world space is: {connectionWorldSpace}");
+
                 
+                if(room.WorldSpaceRight == connectionWorldSpace.x)
+                {
+                    for(int i = 0; i < heightSections.Length; i++)
+                    {
+                        if (i == 0) continue;
+
+                        if(roomConnection.FromPort.RelativePosition.y > heightSections[i - 1] && roomConnection.FromPort.RelativePosition.y < heightSections[i])
+                        {
+                            rightMapConnectionYValues.Add((heightSections[i - 1] + heightSections[i]) / 2);
+                            break;
+                        }
+                    }
+                }
+                else if(room.WorldSpaceLeft == connectionWorldSpace.x)
+                {
+                    for(int i = 0; i < heightSections.Length; i++)
+                    {
+                        if (i == 0) continue;
+                        
+                        if(roomConnection.FromPort.RelativePosition.y > heightSections[i - 1] && roomConnection.FromPort.RelativePosition.y < heightSections[i])
+                        {
+                            leftMapConnectionYValues.Add((heightSections[i - 1] + heightSections[i]) / 2);
+                            break;
+                        }
+                    }
+                }
+                else if(room.WorldSpaceBottom == connectionWorldSpace.y)
+                {
+                    for(int i = 0; i < widthSections.Length; i++)
+                    {
+                        if (i == 0) continue;
+
+                        if(roomConnection.FromPort.RelativePosition.x > widthSections[i - 1] && roomConnection.FromPort.RelativePosition.x < widthSections[i])
+                        {
+                            bottomMapConnectionXValues.Add((widthSections[i - 1] + widthSections[i]) / 2);
+                        }
+                    }
+                }
+                else if(room.WorldSpaceTop == connectionWorldSpace.y)
+                {
+                    for(int i = 0; i < widthSections.Length; i++)
+                    {
+                        if (i == 0) continue;
+
+                        if(roomConnection.FromPort.RelativePosition.x > widthSections[i - 1] && roomConnection.FromPort.RelativePosition.x < widthSections[i])
+                        {
+                            topMapConnectionXValues.Add((widthSections[i - 1] + widthSections[i]) / 2);
+                        }
+                    }
+                }
 
                 hasRightConnection |= room.WorldSpaceRight == connectionWorldSpace.x;
                 hasLeftConnection |= room.WorldSpaceLeft == connectionWorldSpace.x;
@@ -68,7 +147,8 @@ public class SaveWorld : EditorWindow
                 hasTopConnection |= room.WorldSpaceTop == connectionWorldSpace.y;
             }
 
-            WorldRoomData worldRoomData = new WorldRoomData(connectionsForRoom, roomPreviewPosition, roomName, isStartRoom, roomWidth, roomHeight, hasRightConnection, hasLeftConnection, hasBottomConnection, hasTopConnection);
+            WorldRoomData worldRoomData = new WorldRoomData(connectionsForRoom, roomPreviewPosition, roomName, isStartRoom, roomWidth, roomHeight,
+                mapRoomConnectionX, mapRoomConnectionY, rightMapConnectionYValues, leftMapConnectionYValues, topMapConnectionXValues, bottomMapConnectionXValues);
             worldData.AddWorldRoomData(roomName, worldRoomData);
         }
 

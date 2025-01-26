@@ -326,8 +326,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: 0}
-  m_SizeDelta: {x: 400, y: 0}
+  m_AnchoredPosition: {x: 860, y: -52.434494}
+  m_SizeDelta: {x: 1720, y: 104.86899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3895369631828749149
 CanvasRenderer:
@@ -718,8 +718,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -175}
-  m_SizeDelta: {x: 400, y: 50}
+  m_AnchoredPosition: {x: 860, y: -542.04144}
+  m_SizeDelta: {x: 1720, y: 154.86899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3895369632278221208
 MonoBehaviour:
@@ -1008,8 +1008,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -100}
-  m_SizeDelta: {x: 400, y: 0}
+  m_AnchoredPosition: {x: 860, y: -362.1725}
+  m_SizeDelta: {x: 1720, y: 104.86899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3895369632840286247
 CanvasRenderer:
@@ -1345,8 +1345,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -50}
-  m_SizeDelta: {x: 400, y: 0}
+  m_AnchoredPosition: {x: 860, y: -207.30348}
+  m_SizeDelta: {x: 1720, y: 104.86899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3895369633077485615
 CanvasRenderer:
@@ -1455,6 +1455,7 @@ GameObject:
   - component: {fileID: 3895369633220924605}
   - component: {fileID: 3895369633220924604}
   - component: {fileID: 3895369633220924600}
+  - component: {fileID: 5442020127640433157}
   m_Layer: 5
   m_Name: VisualSettingsCanvas
   m_TagString: Untagged
@@ -1526,7 +1527,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3895369633220924604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,6 +1558,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectOnEnable: {fileID: 1130506168839987630}
+--- !u!114 &5442020127640433157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895369633220924607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34bc613af2c9fb94ea21377ebb891600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3895369633282804614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,6 +1667,14 @@ PrefabInstance:
       value: Brighness Slider
       objectReference: {fileID: 0}
     - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_Value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 2370878972715904182}
@@ -1661,6 +1682,34 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1815001357945457690}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5442020127640433157}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetBrightness
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VisualSettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133139520036011754, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4133139520036011755, guid: d087fa577d72e6c4ba673ca3a339f18e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

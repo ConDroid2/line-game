@@ -8,6 +8,8 @@ public class MapController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private MapRoom _roomPrefab;
+    [SerializeField] private RectTransform _verticalConnectionPrefab;
+    [SerializeField] private RectTransform _horizontalConnectionPrefab;
     [SerializeField] private RectTransform _mapParent;
 
     [Header("Settings")]
@@ -46,7 +48,31 @@ public class MapController : MonoBehaviour
 
                 _rooms.Add(room.RoomName, mapRoom);
 
-                mapRoom.SetConnectionImages(room.HasRightConnection, room.HasLeftConnection, room.HasBottomConnection, room.HasTopConnection);
+                foreach(float y in room.RightMapConnectionYValues)
+                {
+                    RectTransform newConnection = Instantiate(_verticalConnectionPrefab, mapRoom.RectTransform);
+                    newConnection.anchoredPosition = new Vector2(room.MapRoomConnectionXValue, y);
+                }
+
+                foreach (float y in room.LeftMapConnectionYValues)
+                {
+                    RectTransform newConnection = Instantiate(_verticalConnectionPrefab, mapRoom.RectTransform);
+                    newConnection.anchoredPosition = new Vector2(room.MapRoomConnectionXValue * -1, y);
+                }
+
+                foreach (float x in room.TopMapConnectionXValues)
+                {
+                    RectTransform newConnection = Instantiate(_horizontalConnectionPrefab, mapRoom.RectTransform);
+                    newConnection.anchoredPosition = new Vector2(x, room.MapRoomConnectionYValue);
+                }
+
+                foreach (float x in room.BottomMapConnectionXValues)
+                {
+                    RectTransform newConnection = Instantiate(_horizontalConnectionPrefab, mapRoom.RectTransform);
+                    newConnection.anchoredPosition = new Vector2(x, room.MapRoomConnectionYValue * -1);
+                }
+
+                // mapRoom.SetConnectionImages(room.HasRightConnection, room.HasLeftConnection, room.HasBottomConnection, room.HasTopConnection);
                 mapRoom.gameObject.SetActive(false);
             }
         }

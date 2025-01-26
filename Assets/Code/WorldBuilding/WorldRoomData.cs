@@ -15,8 +15,19 @@ public class WorldRoomData
     public bool HasBottomConnection;
     public bool HasTopConnection;
 
+    public float MapRoomConnectionYValue;
+    public float MapRoomConnectionXValue;
+    public List<float> RightMapConnectionYValues;
+    public List<float> LeftMapConnectionYValues;
+    public List<float> TopMapConnectionXValues;
+    public List<float> BottomMapConnectionXValues;
+
     [Newtonsoft.Json.JsonConstructor]
-    public WorldRoomData(List<RoomConnection> roomConnections, SerializeableVector3 previewRoomPosition, string roomName, bool startRoom, int roomWidth, int roomHeight, bool hasRightConnection, bool hasLeftConnection, bool hasBottomConnection, bool hasTopConnection)
+    public WorldRoomData(List<RoomConnection> roomConnections, SerializeableVector3 previewRoomPosition, string roomName, bool startRoom, 
+        int roomWidth, int roomHeight, 
+        float mapRoomConnectionXValue, float mapRoomConnectionYValue,
+        List<float> rightMapConnectionYValues, List<float> leftMapConnectionYValues,
+        List<float> topMapConnectionXValues, List<float> bottomMapConnectionXValues)
     {
         RoomConnections = roomConnections;
         PreviewRoomPosition = previewRoomPosition;
@@ -24,10 +35,12 @@ public class WorldRoomData
         StartRoom = startRoom;
         RoomWidth = roomWidth;
         RoomHeight = roomHeight;
-        HasRightConnection = hasRightConnection;
-        HasLeftConnection = hasLeftConnection;
-        HasBottomConnection = hasBottomConnection;
-        HasTopConnection = hasTopConnection;
+        MapRoomConnectionXValue = mapRoomConnectionXValue;
+        MapRoomConnectionYValue = mapRoomConnectionYValue;
+        RightMapConnectionYValues = rightMapConnectionYValues;
+        LeftMapConnectionYValues = leftMapConnectionYValues;
+        TopMapConnectionXValues = topMapConnectionXValues;
+        BottomMapConnectionXValues = bottomMapConnectionXValues;
     }
 
     public WorldRoomData(SerializeableVector3 previewRoomPosition, string roomName)
