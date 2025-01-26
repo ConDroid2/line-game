@@ -165,6 +165,7 @@ public class LineRotator : MonoBehaviour
         // Check if either point is outside level bounds
         if(CheckIfPointIsOutsideLevel(a) || CheckIfPointIsOutsideLevel(b))
         {
+            OnInvalidRotation?.Invoke();
             Reverse();
             return;
         }
