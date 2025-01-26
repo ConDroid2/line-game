@@ -2352,6 +2352,28 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<Sound Name="Invalid Rotate" ID="{F3605DB4-E1FF-458F-AD12-49599AF2B8CD}" ShortID="944026227">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="InvalidRotate" ID="{3C127D7D-7250-4426-9247-0481E0EEA673}">
+									<Language>SFX</Language>
+									<AudioFile>InvalidRotate.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="480702420"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="InvalidRotate" ID="{3C127D7D-7250-4426-9247-0481E0EEA673}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
