@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MapRoom : MonoBehaviour
 {
     public RectTransform RectTransform;
+    public RectTransform BackgroundVisualsTransform;
     [SerializeField] private Image _basicRoomImage;
     [SerializeField] private Image _rightConnection;
     [SerializeField] private Image _leftConnection;

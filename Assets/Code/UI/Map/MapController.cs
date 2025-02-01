@@ -44,32 +44,33 @@ public class MapController : MonoBehaviour
                 mapRoom.RectTransform.anchoredPosition = new Vector2(room.PreviewRoomPosition.x / 10f * Consts.RoomInfo.RoomWidth, room.PreviewRoomPosition.y / 5.5f * Consts.RoomInfo.RoomHeight);
                 mapRoom.gameObject.name = room.RoomName;
 
-                mapRoom.RectTransform.sizeDelta = new Vector2(room.RoomWidth / 20 * Consts.RoomInfo.RoomWidth, room.RoomHeight / 11 * Consts.RoomInfo.RoomHeight);
+                mapRoom.BackgroundVisualsTransform.sizeDelta = new Vector2(room.RoomWidth / 20 * Consts.RoomInfo.RoomWidth, room.RoomHeight / 11 * Consts.RoomInfo.RoomHeight);
 
                 _rooms.Add(room.RoomName, mapRoom);
 
-                foreach(float y in room.RightMapConnectionYValues)
+                foreach (float y in room.RightMapConnectionYValues)
                 {
                     RectTransform newConnection = Instantiate(_verticalConnectionPrefab, mapRoom.RectTransform);
-                    newConnection.anchoredPosition = new Vector2(room.MapRoomConnectionXValue, y);
+                    newConnection.anchoredPosition = new Vector2(room.MapRoomConnectionXValue, y * 10);
                 }
 
                 foreach (float y in room.LeftMapConnectionYValues)
                 {
+                    if (room.RoomName == "W1Tower") Debug.Log($"Adding left connection visual at {room.MapRoomConnectionXValue * -1}, {y}");
                     RectTransform newConnection = Instantiate(_verticalConnectionPrefab, mapRoom.RectTransform);
-                    newConnection.anchoredPosition = new Vector2(room.MapRoomConnectionXValue * -1, y);
+                    newConnection.anchoredPosition = new Vector2(room.MapRoomConnectionXValue * -1, y * 10);
                 }
 
                 foreach (float x in room.TopMapConnectionXValues)
                 {
                     RectTransform newConnection = Instantiate(_horizontalConnectionPrefab, mapRoom.RectTransform);
-                    newConnection.anchoredPosition = new Vector2(x, room.MapRoomConnectionYValue);
+                    newConnection.anchoredPosition = new Vector2(x * 10, room.MapRoomConnectionYValue);
                 }
 
                 foreach (float x in room.BottomMapConnectionXValues)
                 {
                     RectTransform newConnection = Instantiate(_horizontalConnectionPrefab, mapRoom.RectTransform);
-                    newConnection.anchoredPosition = new Vector2(x, room.MapRoomConnectionYValue * -1);
+                    newConnection.anchoredPosition = new Vector2(x * 10, room.MapRoomConnectionYValue * -1);
                 }
 
                 // mapRoom.SetConnectionImages(room.HasRightConnection, room.HasLeftConnection, room.HasBottomConnection, room.HasTopConnection);
