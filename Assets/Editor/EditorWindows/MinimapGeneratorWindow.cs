@@ -37,7 +37,8 @@ public class MinimapGeneratorWindow : EditorWindow
 
         // Create GameObjects
         GameObject canvas = new GameObject("Minimap Canvas", typeof(Canvas));
-        GameObject mapParent = new GameObject($"{worldName}_MiniMap", typeof(RectTransform));
+        GameObject mapParent = new GameObject($"{worldName}_MiniMap", typeof(RectTransform), typeof(Minimap));
+        Minimap minimapScript = mapParent.GetComponent<Minimap>();
         mapParent.transform.parent = canvas.transform;
 
         foreach (WorldRoomData room in worldData.RoomNameToData.Values)
@@ -75,7 +76,7 @@ public class MinimapGeneratorWindow : EditorWindow
             }
 
             // mapRoom.SetConnectionImages(room.HasRightConnection, room.HasLeftConnection, room.HasBottomConnection, room.HasTopConnection);
-            mapRoom.gameObject.SetActive(false);
+            minimapScript.MapRooms.Add(mapRoom);
         }
 
         PrefabUtility.SaveAsPrefabAsset(mapParent, $"Assets/Prefabs/UI/Map/ActualMaps/{mapParent.name}.prefab", out bool success);
