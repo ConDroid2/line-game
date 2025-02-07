@@ -17,10 +17,10 @@ public class MapRoom : MonoBehaviour
     public void SetColor(Color color)
     {
         _basicRoomImage.color = color;
-        _rightConnection.color = color;
-        _leftConnection.color = color;
-        _bottomConnection.color = color;
-        _topConnection.color = color;
+        //_rightConnection.color = color;
+        //_leftConnection.color = color;
+        //_bottomConnection.color = color;
+        //_topConnection.color = color;
     }
 
     public void SetConnectionImages(bool hasRightConnection, bool hasLeftConnection, bool hasBottomConnection, bool hasTopConnection)
