@@ -26,6 +26,7 @@ public class MinimapGeneratorWindow : EditorWindow
         string worldName = System.IO.Path.GetFileName(path).Replace(".txt", "");
 
         JsonUtilities worldUtils = new JsonUtilities("");
+        JsonUtilities levelMetadataUtils = new JsonUtilities(Application.dataPath + "/Resources/LevelMetadata");
         WorldData worldData = worldUtils.LoadData<WorldData>(path);
 
         // Grab map room prefab
@@ -75,6 +76,10 @@ public class MinimapGeneratorWindow : EditorWindow
                 newConnection.anchoredPosition = new Vector2(x * 10, room.MapRoomConnectionYValue * -1);
             }
 
+            Debug.Log($"Loading metadata for : {room.RoomName}");
+            RoomData roomMetadata = levelMetadataUtils.LoadData<RoomData>($"/{room.RoomName}-metadata.txt");
+            LoadPointsOfInterest(mapRoom.PointOfInterestParent, roomMetadata);
+
             // mapRoom.SetConnectionImages(room.HasRightConnection, room.HasLeftConnection, room.HasBottomConnection, room.HasTopConnection);
             minimapScript.MapRooms.Add(mapRoom);
         }
@@ -86,5 +91,52 @@ public class MinimapGeneratorWindow : EditorWindow
             EditorUtility.DisplayDialog("Success", "Minimap generated successfully!", "Ok");
             DestroyImmediate(canvas);
         }  
+    }
+
+    private void LoadPointsOfInterest(RectTransform parent, RoomData metadata)
+    {
+        if (metadata.PointsOfInterest == null) return;
+
+        RectTransform keyPOI = AssetDatabase.LoadAssetAtPath<RectTransform>($"Assets/Prefabs/UI/Map/PointsOfInterest/{Consts.MapRoomInfo.PointOfInterest.Key}.prefab");
+        RectTransform lockPOI = AssetDatabase.LoadAssetAtPath<RectTransform>($"Assets/Prefabs/UI/Map/PointsOfInterest/{Consts.MapRoomInfo.PointOfInterest.Lock}.prefab");
+        RectTransform shootPOI = AssetDatabase.LoadAssetAtPath<RectTransform>($"Assets/Prefabs/UI/Map/PointsOfInterest/{Consts.MapRoomInfo.PointOfInterest.Shoot}.prefab");
+        RectTransform grapplePOI = AssetDatabase.LoadAssetAtPath<RectTransform>($"Assets/Prefabs/UI/Map/PointsOfInterest/{Consts.MapRoomInfo.PointOfInterest.Grapple}.prefab");
+        RectTransform rotatePOI = AssetDatabase.LoadAssetAtPath<RectTransform>($"Assets/Prefabs/UI/Map/PointsOfInterest/{Consts.MapRoomInfo.PointOfInterest.Rotate}.prefab");
+        RectTransform firewallPOI = AssetDatabase.LoadAssetAtPath<RectTransform>($"Assets/Prefabs/UI/Map/PointsOfInterest/{Consts.MapRoomInfo.PointOfInterest.Firewall}.prefab");
+        RectTransform mcGuffinPOI = AssetDatabase.LoadAssetAtPath<RectTransform>($"Assets/Prefabs/UI/Map/PointsOfInterest/{Consts.MapRoomInfo.PointOfInterest.McGuffin}.prefab");
+
+        foreach (PointOfInterestData pointOfInterest in metadata.PointsOfInterest)
+        {
+            RectTransform newPOI = null;
+
+            switch (pointOfInterest.Type)
+            {
+                case 0:
+                    newPOI = Instantiate(lockPOI, parent);
+                    break;
+                case 1:
+                    newPOI = Instantiate(keyPOI, parent);
+                    break;
+                case 2:
+                    newPOI = Instantiate(shootPOI, parent);
+                    break;
+                case 3:
+                    newPOI = Instantiate(grapplePOI, parent);
+                    break;
+                case 4:
+                    newPOI = Instantiate(rotatePOI, parent);
+                    break;
+                case 5:
+                    newPOI = Instantiate(firewallPOI, parent);
+                    break;
+                case 6:
+                    newPOI = Instantiate(mcGuffinPOI, parent);
+                    break;
+                default:
+                    break;
+            }
+
+            // Set flag stuff on newPOI
+        }
     }
 }

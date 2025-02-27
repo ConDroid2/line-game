@@ -16,5 +16,16 @@ public static class Consts
         public const int PreviewRoomWidth = 20;
         public const int MapRoomConnectionDefaultX = 95;
         public const int MapRoomConnectionDefaultY = 50;
+
+        public static class PointOfInterest
+        {
+            public const string Key = "POI_Key Variant";
+            public const string Lock = "POI_Lock Variant";
+            public const string Shoot = "POI_Shoot Variant";
+            public const string Grapple = "POI_Grapple Variant";
+            public const string Rotate = "POI_Rotate Variant";
+            public const string Firewall = "POI_Firewall Variant";
+            public const string McGuffin = "POI_McGuffin Variant";
+        }
     }
 }

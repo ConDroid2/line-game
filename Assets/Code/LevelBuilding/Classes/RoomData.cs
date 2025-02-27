@@ -11,10 +11,12 @@ public class RoomData
     public float Top;
     public float Right;
     public float Bottom;
+    public PointOfInterestData[] PointsOfInterest;
 
     [Newtonsoft.Json.JsonConstructor]
-    public RoomData(LineData[] Lines, RoomPort[] Ports, float Left, float Top, float Right, float Bottom)
+    public RoomData(LineData[] Lines, RoomPort[] Ports, float Left, float Top, float Right, float Bottom, PointOfInterestData[] PointsOfInterest)
     {
+        Debug.Log("Calling RoomData Constructor");
         this.Lines = Lines;
         this.Ports = Ports;
 
@@ -22,6 +24,8 @@ public class RoomData
         this.Top = Top;
         this.Right = Right;
         this.Bottom = Bottom;
+
+        this.PointsOfInterest = PointsOfInterest;
     }
 
     public RoomData(LineController[] lineControllers, LevelManager levelManager)
@@ -54,6 +58,8 @@ public class RoomData
         Top = roomData.Top;
         Right = roomData.Right;
         Bottom = roomData.Bottom;
+
+        PointsOfInterest = roomData.PointsOfInterest;
     }
 
     private RoomPort[] CalculatePorts(LevelManager levelManager)

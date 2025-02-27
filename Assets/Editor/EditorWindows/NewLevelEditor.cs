@@ -162,6 +162,7 @@ public class NewLevelEditor : EditorWindow
         if (CheckForLevelPrefab())
         {
             RoomData roomData = _levelManager.CreateRoomData();
+            roomData.PointsOfInterest = GetPointsOfInterest();
 
             utils.SaveData("/" + scene.name + "-metadata.txt", roomData);
         }
@@ -207,5 +208,18 @@ public class NewLevelEditor : EditorWindow
         {
             return true;
         }
+    }
+
+    private PointOfInterestData[] GetPointsOfInterest()
+    {
+        PointOfInterest[] pointsOfInterestInLevel = FindObjectsOfType<PointOfInterest>();
+
+        PointOfInterestData[] data = new PointOfInterestData[pointsOfInterestInLevel.Length];
+        for(int i = 0; i < pointsOfInterestInLevel.Length; i++)
+        {
+            data[i] = new PointOfInterestData(pointsOfInterestInLevel[i]);
+        }
+
+        return data;
     }
 }
