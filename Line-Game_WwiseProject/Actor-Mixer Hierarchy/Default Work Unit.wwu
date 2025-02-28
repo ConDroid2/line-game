@@ -2374,6 +2374,28 @@
 								<ActiveSource Name="InvalidRotate" ID="{3C127D7D-7250-4426-9247-0481E0EEA673}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="startGame" ID="{E1973C79-5203-474D-B2B8-7F66D192E1A1}" ShortID="319384012">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="startGame01" ID="{B87B7D5D-95D9-42FE-923C-C740FE127377}">
+									<Language>SFX</Language>
+									<AudioFile>startGame01.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="862950768"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="startGame01" ID="{B87B7D5D-95D9-42FE-923C-C740FE127377}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

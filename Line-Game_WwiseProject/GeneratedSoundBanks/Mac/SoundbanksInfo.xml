@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{4645F8EB-260B-FFF8-366F-B1D972175C87}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{D919FC27-8981-F89B-9E33-45E027C68909}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -384,6 +384,10 @@
 				<File Id="842979744" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ZoomOnConveyorLine1_eflat.wav</ShortName>
 					<CachePath>SFX/ZoomOnConveyorLine1_eflat_1F1092F4.wem</CachePath>
+				</File>
+				<File Id="862950768" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>startGame01.wav</ShortName>
+					<CachePath>SFX/startGame01_818F3B66.wem</CachePath>
 				</File>
 				<File Id="884872296" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bubble noises #7.wav</ShortName>
@@ -978,6 +982,11 @@
 				<Event Id="1748532871" Name="Play_ShootABlock" DurationType="OneShot" DurationMin="1.0020833" DurationMax="1.0020833">
 					<MediaRefs>
 						<MediaRef Id="496890736"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1444205428" Name="Play_startGame" DurationType="OneShot" DurationMin="2.0020833" DurationMax="2.0020833">
+					<MediaRefs>
+						<MediaRef Id="862950768"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1593182173" Name="Play_TargetShot" DurationType="OneShot" DurationMin="2.0041666" DurationMax="2.0041666">
@@ -2292,5 +2301,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{8A0D3B1A-F148-34D2-4C9F-AA030C168C12}</FileHash>
+	<FileHash>{DF904AD4-7C6E-C7EF-5849-7164069E89C4}</FileHash>
 </SoundBanksInfo>
