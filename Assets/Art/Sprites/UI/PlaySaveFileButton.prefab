@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: -1231436407898098391}
   - component: {fileID: 3811415296118449919}
   - component: {fileID: 8885922987080585185}
+  - component: {fileID: 2603256444138407903}
   m_Layer: 5
   m_Name: PlaySaveFileButton
   m_TagString: Untagged
@@ -499,6 +500,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnSelected:
     m_PersistentCalls:
+      m_Calls: []
+  OnDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2603256444138407903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129129428450640291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b2c3421a4aebc449736042052cf9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnMoveValideDirection:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5327860940594906416}
         m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
@@ -512,9 +531,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeselected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &7129129429839835663
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +543,7 @@ GameObject:
   - component: {fileID: 7129129429839835656}
   - component: {fileID: 7129129429839835657}
   m_Layer: 5
-  m_Name: Save File 1 Text
+  m_Name: Save File Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
