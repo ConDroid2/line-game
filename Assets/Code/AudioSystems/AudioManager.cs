@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.RTPC _wwiseMainVolume;
     public AK.Wwise.RTPC _wwiseSFXVolume;
 
-    public float Volume {get; private set; } = 100f;
+    public float Volume {get; private set; } = 75f;
     public float MusicVolume { get; private set; } = 50f;
     public float SfxVolume { get; private set; } = 50f;
 
