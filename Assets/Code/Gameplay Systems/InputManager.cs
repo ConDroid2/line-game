@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class InputManager : MonoBehaviour
 
     public void HandlePausePerformed(InputAction.CallbackContext context)
     {
-        if (GameManager.Instance != null)
+        if (GameManager.Instance != null && SceneManager.GetActiveScene().name != "JPMenu_Main")
         {
             GameManager.Instance.HandlePause();
             Controls.PlayerMap.Disable();
