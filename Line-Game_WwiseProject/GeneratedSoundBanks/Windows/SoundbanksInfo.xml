@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{4645F8EB-260B-FFF8-366F-B1D972175C87}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{FD4EA181-70C5-C3F3-43EC-FB17BBE01FDD}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -96,10 +96,6 @@
 				<File Id="204318250" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #9.wav</ShortName>
 					<CachePath>SFX/Bleeps #9_818F3B66.wem</CachePath>
-				</File>
-				<File Id="210471982" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Shoot6.wav</ShortName>
-					<CachePath>SFX/Shoot6_818F3B66.wem</CachePath>
 				</File>
 				<File Id="225601339" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>EnemyDeath1.wav</ShortName>
@@ -261,6 +257,10 @@
 					<ShortName>TargetShot1.wav</ShortName>
 					<CachePath>SFX/TargetShot1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="571841297" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LightOn.1wav.wav</ShortName>
+					<CachePath>SFX/LightOn.1wav_818F3B66.wem</CachePath>
+				</File>
 				<File Id="579753392" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ZoomOnConveyorLine1_eflat.wav</ShortName>
 					<CachePath>SFX/ZoomOnConveyorLine1_eflat_A0BB15EF.wem</CachePath>
@@ -384,6 +384,10 @@
 				<File Id="842979744" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ZoomOnConveyorLine1_eflat.wav</ShortName>
 					<CachePath>SFX/ZoomOnConveyorLine1_eflat_1F1092F4.wem</CachePath>
+				</File>
+				<File Id="862950768" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>startGame01.wav</ShortName>
+					<CachePath>SFX/startGame01_818F3B66.wem</CachePath>
 				</File>
 				<File Id="884872296" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bubble noises #7.wav</ShortName>
@@ -866,9 +870,9 @@
 						<MediaRef Id="558752065"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1668802621" Name="Play_LightOn_1wav" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+				<Event Id="1668802621" Name="Play_LightOn_1wav" DurationType="OneShot" DurationMin="3.9604166" DurationMax="3.9604166">
 					<MediaRefs>
-						<MediaRef Id="210471982"/>
+						<MediaRef Id="571841297"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1785566041" Name="Play_LightPressurePlatePressed" DurationType="OneShot" DurationMin="2.0041666" DurationMax="2.0041666">
@@ -978,6 +982,11 @@
 				<Event Id="1748532871" Name="Play_ShootABlock" DurationType="OneShot" DurationMin="1.0020833" DurationMax="1.0020833">
 					<MediaRefs>
 						<MediaRef Id="496890736"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1444205428" Name="Play_startGame" DurationType="OneShot" DurationMin="2.0020833" DurationMax="2.0020833">
+					<MediaRefs>
+						<MediaRef Id="862950768"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1593182173" Name="Play_TargetShot" DurationType="OneShot" DurationMin="2.0041666" DurationMax="2.0041666">
@@ -2292,5 +2301,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0FCB440A-A5D9-D2B4-AE92-69C5EC64D235}</FileHash>
+	<FileHash>{D1F99321-B8CE-31CF-F53F-D2D0607D6BF2}</FileHash>
 </SoundBanksInfo>

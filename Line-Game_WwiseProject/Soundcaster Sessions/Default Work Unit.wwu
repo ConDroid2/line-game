@@ -9,6 +9,34 @@
 							<ObjectRef Name="Unauthorized" ID="{F5A17773-DBFE-495D-A1CC-41109E384F9B}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
 							<Position X="0" Y="0"/>
 						</Module>
+						<Module>
+							<ObjectRef Name="Main Menu Music" ID="{283444B7-AA32-45AB-8562-BCA924082493}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SoonForgotten" ID="{FC90314D-6173-4D0A-B26E-B77522907DAA}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Microprocessor" ID="{9058E28A-A1D6-433E-AFD5-CF420C3EDB81}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UnauthorizedSwitchContainer" ID="{DAFE11BA-3992-412A-A6D8-75A1A769FE9B}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Struggle" ID="{C8FE3CA7-1E0B-4A90-BFCA-6A8162AAF5AF}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Credits Music" ID="{565C5E6C-22F9-4E24-B305-0F67C38BB08B}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="WanderingPlaylistContainer" ID="{11D7A72A-F0F5-4214-A63B-8B012A031E11}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="3" Y="1"/>
+						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
@@ -21,7 +49,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="MainVolume" ID="{36616355-77D4-45A1-B05A-F65C36DDB5FF}"/>
-							<Value>49.9370400654129</Value>
+							<Value>50</Value>
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
@@ -36,7 +64,7 @@
 						<CurrentSwitchRef Name="a" ID="{5BD1760A-3EDD-4535-8BC8-63259B6B7B37}"/>
 						<CurrentSwitchRef Name="a" ID="{39FB9642-50BB-4B59-9404-324AA63C3018}"/>
 						<CurrentSwitchRef Name="discoMelody" ID="{CE931436-7D16-4713-8BD7-D1242AA8DCF4}"/>
-						<CurrentSwitchRef Name="Credits" ID="{C2780B27-7DDD-460A-B531-EC357DD803A9}"/>
+						<CurrentSwitchRef Name="Microprocessor_W1" ID="{3072859F-6E51-4A65-BCAD-A867D60D90D6}"/>
 						<CurrentSwitchRef Name="off" ID="{B30887A7-C37C-451F-B03C-482248AC34ED}"/>
 						<CurrentSwitchRef Name="BeepsOff" ID="{31B667A3-9783-4E32-886C-6CB06E306AF6}"/>
 						<CurrentSwitchRef Name="Depths" ID="{F9C8AEAB-FE93-4BA8-9330-B47F27E46AD4}"/>
@@ -83,85 +111,223 @@
 				<SoundcasterSession Name="sfx" ID="{42CA8D23-23E6-4999-895D-5640DB53D7E0}">
 					<ModuleList>
 						<Module>
-							<ObjectRef Name="Play_2_clicks_with_rise" ID="{E90CDF64-F03F-402E-BACB-AF9503D0CDAE}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="Memory Leak Foley" ID="{F15742EC-4D42-4B76-9C88-4AE16FC4B16F}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_GetItem1" ID="{9089A263-6EE9-4C6D-A8D8-814AF84721F6}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="Blip(MaybeMenus)" ID="{87AC7FA4-CFBC-45CE-962C-A4895D7ABB4F}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="0" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_MaybeGrappleTry2" ID="{C6E6C255-B5B6-47B8-B90B-81A459CD52BD}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="GetItem1" ID="{23931523-F67E-4256-AC0B-D747DCB6A8F5}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="0" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_RotateTry2" ID="{C4C28F3B-B5FD-4905-93AA-7084A687F3E1}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="HeavyPressurePlatePressed" ID="{C4596608-8AB7-45D2-AFC6-4885616608D8}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="0" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_3_clicks" ID="{559414D1-6EE5-4058-91CF-D552B2B76EA7}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="major chord" ID="{02E96070-86FC-443F-907A-A378E0F6B7E8}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="0" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="OpeningADrawer" ID="{4AFA7D70-AE09-473E-89EF-291557BA6060}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="0" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Shoot6" ID="{87C4D3F3-1C80-4FE8-8A8D-E969B90968B2}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="0" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Thunk" ID="{772EAB99-84BD-4CF7-931F-27596DA1C1D2}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="0" Y="7"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="ZoomOnLineEndPart" ID="{E96B6614-389F-4067-9771-045904F342D4}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="1" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_GetKey1" ID="{F91EF6A8-86ED-4C49-BF78-8BBCC382C81E}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="ChargeEnemyAttack2" ID="{BD28E93E-D472-407F-B7EC-7C9A10E27BAD}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="1" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_MaybeGrappleWithNoise" ID="{FE44A7E2-2029-4D67-B66A-294432AA51D6}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="GetKey1" ID="{DDF4D8BA-2E57-4EE8-8FB0-A134222DD1C6}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="1" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_Shoot_effect" ID="{9EB13629-1200-4E4A-8505-3675A2B59947}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="Invalid Rotate" ID="{F3605DB4-E1FF-458F-AD12-49599AF2B8CD}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="1" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_Blip_MaybeMenus_" ID="{CC149207-46F3-45D3-A625-735C006DA346}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="MaybeGrapple" ID="{ADB3EA17-70D9-43F6-9E83-64E751CDABDD}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="PlayerShoot2_2" ID="{7A7986B4-39D2-415B-92F2-089C3A6F0C4D}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="1" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Shoot effect" ID="{85DAE2BB-97D6-4D4B-88AE-A5D331A0C54B}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="1" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Unlocking" ID="{FA791B2F-5E72-4AE1-9210-0A1110A9E25C}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="1" Y="7"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="ZoomOnLineStartAndLoop" ID="{FD7DB1D8-E537-47A0-BA29-4BECF0C9F5C9}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="2" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_GrappleTry4" ID="{77CF8AFC-D5B8-40CC-BDB1-EE79594DD1FA}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="EnemyDeath1" ID="{CCE13D95-351B-4FF4-96EB-8BEFF92D9FF7}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="2" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_maybePlayerDeath" ID="{AC768DCB-B4F9-45DD-9DCD-8D9E5A72DB74}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="GetUpgradeEflatMajor" ID="{48A01247-71F7-44C0-A7C7-D4B608D7C7D8}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="2" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_Thunk" ID="{A27C159C-3A16-431D-A83A-9F443D66D725}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="KeyBreaks" ID="{239A4EF0-FEFA-4BAE-8E1C-F7946E5467AC}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="2" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_EnemyShoot2_2" ID="{90890B28-6C11-47BB-8B35-3A2A0FE3380B}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="MaybeGrappleTry2" ID="{686767BA-067F-4A57-BC1F-D9CADCCDD7A2}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="2" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="PressurePlateReleased" ID="{98F2DB98-5E81-413E-8DD5-298536024995}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="2" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="ShootABlock" ID="{68D73977-B54C-4FEA-BD1B-A529680019AE}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="2" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Wamp" ID="{7C69C11C-556C-4A13-90AB-758D5FE5C2DB}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="2" Y="7"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="2 clicks with rise" ID="{0E3879FA-A993-41AF-B746-1F2B93EA6704}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="3" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_PlayerShoot2_2" ID="{43A3BA9E-AB6A-4FD3-BA09-B2DC5A0D8F52}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="EnemyShoot2_2" ID="{3E922028-1C42-4491-BC98-8ACDCD608120}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GrappleTry4" ID="{52A779EF-1232-4CDC-8E7E-65F3C82693D0}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="3" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_Unlocking" ID="{51E3F48D-5711-4410-9F82-373C60393FF2}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="LightOn_1wav" ID="{6CAA2055-9367-4D09-B553-6C791088A64F}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="3" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_EnemyShoot3_2" ID="{7A125DE7-03C4-491A-A035-26571C5EAD8A}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="MaybeGrappleWithNoise" ID="{8254A79F-F961-47A5-A423-1C60D7CE5C57}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="3" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Rotate1" ID="{07A60D63-71B9-47BB-9C2D-91C36BDABED5}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="3" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="startGame" ID="{E1973C79-5203-474D-B2B8-7F66D192E1A1}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="3" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="3 clicks" ID="{BC2C858A-11F6-44EA-BC19-974FBE45AE37}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="4" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_LightOn_1wav" ID="{30EDA9E5-81D1-47E1-A666-976A36CF54B2}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="EnemyShoot3_2" ID="{F0EECA66-9E8D-4967-87E0-85E9F73E52F1}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="4" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_Rotate1" ID="{E8F71DC7-A4CA-4872-80D0-25B74ADE366C}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="GrappleTry5" ID="{3A36C426-790B-4F4F-B32A-D9AC8578EDD6}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="4" Y="2"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Play_Wamp" ID="{8ABD7A18-FDE2-4B23-828B-3920673F9FB0}" WorkUnitID="{3A24F8AF-094A-45ED-BCE6-A6A6F369F4F4}"/>
+							<ObjectRef Name="LightPressurePlatePressed" ID="{F63EF6FC-E49A-4C74-9025-94D9BD64FEAB}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
 							<Position X="4" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="maybePlayerDeath" ID="{0A4CEA7F-0DC8-4A18-BE99-3D1C80E5D63E}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="4" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="RotateTry2" ID="{6F6AFCDC-DB64-4308-81DE-BA160565A3C5}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="4" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="TargetShot" ID="{5A2FF7A2-5215-4C9C-BCFE-2F7EDFCB7C5B}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="4" Y="6"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true"/>
 					<CurrentStateList ShowAll="true"/>
-					<CurrentSwitchList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Base" ID="{28E585B6-4305-43E2-A4D0-A6FEB31B09E9}"/>
+						<CurrentSwitchRef Name="Microprocessor_W1" ID="{3072859F-6E51-4A65-BCAD-A867D60D90D6}"/>
+						<CurrentSwitchRef Name="BeepsOff" ID="{31B667A3-9783-4E32-886C-6CB06E306AF6}"/>
+						<CurrentSwitchRef Name="Depths" ID="{F9C8AEAB-FE93-4BA8-9330-B47F27E46AD4}"/>
+						<CurrentSwitchRef Name="Default" ID="{F72F5C90-59F2-47E5-96D4-B44253C3FD52}"/>
+						<CurrentSwitchRef Name="DangerVortexOff" ID="{4442E45F-0D00-4165-9F5C-00D5C9837A88}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+				<SoundcasterSession Name="Music Volume test" ID="{3476C151-2AA6-4ABD-A885-03DA1EB03BC5}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="SoonForgotten" ID="{FC90314D-6173-4D0A-B26E-B77522907DAA}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Struggle" ID="{C8FE3CA7-1E0B-4A90-BFCA-6A8162AAF5AF}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UnauthorizedSwitchContainer" ID="{DAFE11BA-3992-412A-A6D8-75A1A769FE9B}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="WanderingPlaylistContainer" ID="{11D7A72A-F0F5-4214-A63B-8B012A031E11}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Credits Music" ID="{565C5E6C-22F9-4E24-B305-0F67C38BB08B}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Main Menu Music" ID="{283444B7-AA32-45AB-8562-BCA924082493}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Microprocessor" ID="{9058E28A-A1D6-433E-AFD5-CF420C3EDB81}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="4" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="MainVolume" ID="{36616355-77D4-45A1-B05A-F65C36DDB5FF}"/>
+							<Value>50</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="off" ID="{0925125D-C16C-4147-8755-2AD0C5DF7C5D}"/>
+						<CurrentSwitchRef Name="Base" ID="{28E585B6-4305-43E2-A4D0-A6FEB31B09E9}"/>
+						<CurrentSwitchRef Name="disco" ID="{D515C94B-E117-45F7-A28C-8AE11D03CC31}"/>
+						<CurrentSwitchRef Name="a" ID="{5BD1760A-3EDD-4535-8BC8-63259B6B7B37}"/>
+						<CurrentSwitchRef Name="a" ID="{39FB9642-50BB-4B59-9404-324AA63C3018}"/>
+						<CurrentSwitchRef Name="discoMelody" ID="{CE931436-7D16-4713-8BD7-D1242AA8DCF4}"/>
+						<CurrentSwitchRef Name="Microprocessor_W1" ID="{3072859F-6E51-4A65-BCAD-A867D60D90D6}"/>
+						<CurrentSwitchRef Name="off" ID="{B30887A7-C37C-451F-B03C-482248AC34ED}"/>
+						<CurrentSwitchRef Name="BeepsOff" ID="{31B667A3-9783-4E32-886C-6CB06E306AF6}"/>
+						<CurrentSwitchRef Name="Depths" ID="{F9C8AEAB-FE93-4BA8-9330-B47F27E46AD4}"/>
+						<CurrentSwitchRef Name="off" ID="{4B04865B-93D3-4BCB-9034-F4B4E289F17D}"/>
+						<CurrentSwitchRef Name="arpInBass" ID="{E22D6292-7732-4BF1-98F9-BB4DE6CE031C}"/>
+						<CurrentSwitchRef Name="Default" ID="{F72F5C90-59F2-47E5-96D4-B44253C3FD52}"/>
+						<CurrentSwitchRef Name="DangerVortexOff" ID="{4442E45F-0D00-4165-9F5C-00D5C9837A88}"/>
+					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>

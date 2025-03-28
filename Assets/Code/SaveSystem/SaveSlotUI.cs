@@ -4,15 +4,25 @@ using UnityEngine;
 using Newtonsoft.Json;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using System;
 
 public class SaveSlotUI : MonoBehaviour
 {
     public string SlotName = "";
     [SerializeField] private TextAsset _worldAsset;
-    [SerializeField] private TextMeshProUGUI _buttonText;
+    //[SerializeField] private TextMeshProUGUI _buttonText;
+    public UnityEvent OnFileFound;
+    public UnityEvent OnFileEmpty;
 
     private SaveSlot _saveData = null;
     private WorldData _worldData = null;
+
+    public Image ShootIcon;
+    public Image GrappleIcon;
+    public Image RotateIcon;
+    public Image FireshieldIcon;
 
     private void Awake()
     {
@@ -26,12 +36,16 @@ public class SaveSlotUI : MonoBehaviour
 
                 _saveData = utils.LoadData<SaveSlot>(SlotName + ".txt");
 
-                _buttonText.text = "I have data";
-                Debug.Log("Got data");
+                CheckFlagsAndSetIcons(_saveData);
+
+                //_buttonText.text = "I have data";
+                this.OnFileFound?.Invoke();
+                //Debug.Log("Got data");
             }
             catch
             {
-                _buttonText.text = "No Data";
+                    this.OnFileEmpty?.Invoke();
+                //_buttonText.text = "Empty";
                 _saveData = new SaveSlot(SlotName, new Dictionary<string, bool>(), new HashSet<string>(), "", null);
             }
         }
@@ -66,5 +80,11 @@ public class SaveSlotUI : MonoBehaviour
         SceneManager.LoadScene(startingRoomName);
     }
 
-    
+    public void CheckFlagsAndSetIcons(SaveSlot saveData)
+    {
+        this.ShootIcon.gameObject.SetActive(saveData.Flags["ShootUnlocked"]);
+        this.GrappleIcon.gameObject.SetActive(saveData.Flags["GrappleUnlocked"]);
+        this.RotateIcon.gameObject.SetActive(saveData.Flags["RotateUnlocked"]);
+        this.FireshieldIcon.gameObject.SetActive(saveData.Flags["GotMcGuffin"]);
+    }
 }
