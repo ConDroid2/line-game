@@ -106,6 +106,12 @@ public class GameManager : MonoBehaviour
     // Trigger Handlers
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log($"Scene loaded: {scene.name}");
+        if(scene.name == "JPMenu_Main" || scene.name == "Scrolling Credits Scene")
+        {
+            if (_player != null) Destroy(_player.gameObject);
+            return;
+        }
         // Debug.Log($"Scene name: {scene.name}");
         // Get Level Manager if it exists
         LevelManager levelManager = FindObjectOfType<LevelManager>();
