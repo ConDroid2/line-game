@@ -62,6 +62,7 @@ public class KeyHole : MonoBehaviour
 
     public void KeyholeUnlocked()
     {
+        OnUnlocked.Invoke();
         _animator.SetTrigger("KeyholeUnlocked");
         _unlocked = true;
         _unlockRadius.SetActive(false);
