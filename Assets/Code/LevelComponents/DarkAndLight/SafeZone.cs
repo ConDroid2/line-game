@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SafeZone : MonoBehaviour
 {
@@ -8,10 +9,25 @@ public class SafeZone : MonoBehaviour
 
     public List<Collider2D> AffectedDarknesses = new List<Collider2D>();
 
+    public static System.Action<SafeZone> OnEnabled;
+    public static System.Action<SafeZone> OnDisabled;
+
     private void Awake()
     {
         Collider = GetComponent<CircleCollider2D>();
     }
+
+    private void OnEnable()
+    {
+        OnEnabled?.Invoke(this);
+    }
+
+    private void OnDisable()
+    {
+        OnDisabled?.Invoke(this);
+    }
+
+
 
     //private void OnTriggerExit2D(Collider2D collision)
     //{
@@ -39,7 +55,7 @@ public class SafeZone : MonoBehaviour
     //                    }
     //                }
     //            }    
-                
+
     //            if(!darknessAffectedByOtherSafeZone)
     //            {
     //                darkness.GetComponent<KillOnTouch>().Active = true;

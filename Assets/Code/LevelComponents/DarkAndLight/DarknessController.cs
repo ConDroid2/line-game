@@ -9,7 +9,7 @@ public class DarknessController : MonoBehaviour
     [SerializeField] private float _darknessKillTime = 0f;
 
 
-    private SafeZone[] _safeZones = { };
+    private List<SafeZone> _safeZones;
     private Collider2D _playerCollider = null;
 
     // Player stuff
@@ -20,12 +20,21 @@ public class DarknessController : MonoBehaviour
     private void Start()
     {
         Debug.Log(Player.Instance == null);
-        _safeZones = FindObjectsOfType<SafeZone>();
+        _safeZones = new List<SafeZone>(FindObjectsOfType<SafeZone>());
 
         if (Player.Instance != null)
         {
             _playerCollider = Player.Instance.GetComponent<Collider2D>();
         }
+
+        SafeZone.OnEnabled += AddSafeZone;
+        SafeZone.OnDisabled += AddSafeZone;
+    }
+
+    private void OnDisable()
+    {
+        SafeZone.OnEnabled -= AddSafeZone;
+        SafeZone.OnDisabled -= AddSafeZone;
     }
 
     // Update is called once per frame
@@ -89,10 +98,20 @@ public class DarknessController : MonoBehaviour
             
         }
 
-        Debug.Log("All corners in safeZone");
-
         return false;
     }
 
-    
+    public void AddSafeZone(SafeZone newZone)
+    {
+        if (_safeZones.Contains(newZone)) return;
+
+        _safeZones.Add(newZone);
+    }
+
+    public void RemoveSafeZone(SafeZone zone)
+    {
+        if (_safeZones.Contains(zone) == false) return;
+
+        _safeZones.Remove(zone);
+    }
 }
