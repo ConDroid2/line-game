@@ -29,6 +29,7 @@ public class LineRotator : MonoBehaviour
     Quaternion _endQuaternion;
 
     // Events
+    public UnityEvent OnStartRotating;
     public UnityEvent DoneRotating;
     public UnityEvent OnInvalidRotation;
 
@@ -71,7 +72,6 @@ public class LineRotator : MonoBehaviour
 
             if(_timeSinceStarting >= _timeForRotation)
             {
-                Debug.Log("Done rotating");
                 _lineController.SetLocalEndpoint("A", _calculatedA);
                 _lineController.SetLocalEndpoint("B", _calculatedB);
 
@@ -115,6 +115,7 @@ public class LineRotator : MonoBehaviour
         _lineController.LineType = Enums.LineType.Shifting;
         // stop player input
         _rotating = true;
+        OnStartRotating?.Invoke();
     }
 
     public void Reverse()
@@ -151,6 +152,7 @@ public class LineRotator : MonoBehaviour
 
         _lineController.LineType = Enums.LineType.Shifting;
         _rotating = true;
+        OnStartRotating?.Invoke();
     }
 
     public void ValidateNewOrientation()

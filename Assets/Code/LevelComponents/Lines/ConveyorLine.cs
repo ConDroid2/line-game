@@ -11,26 +11,34 @@ public class ConveyorLine : MonoBehaviour
 
     [SerializeField] private GameObject _directionVisualsPrefab;
 
-    private List<Transform> _directionVisuals;
+    private List<Transform> _directionVisuals = new List<Transform>();
+    private int _numberOfVisuals;
+    private float _distanceBetweenVisuals;
+
+    private bool _lineIsRotating = false;
     
 
     private void Start()
     {
         //_lineController = GetComponent<LineController>();
 
-        int numberOfVisuals = (int)Mathf.Floor(_lineController.Length / _visualsFrequency);
+        _numberOfVisuals = (int)Mathf.Floor(_lineController.Length / _visualsFrequency);
 
-        float distanceBetweenVisuals = _lineController.Length / numberOfVisuals;
+        _distanceBetweenVisuals = _lineController.Length / _numberOfVisuals;
 
-        for(int i = 0; i < numberOfVisuals; i++)
+        for(int i = 0; i < _numberOfVisuals; i++)
         {
             GameObject newVisual = Instantiate(_directionVisualsPrefab, transform);
 
-            Vector3 position = _lineController.CurrentA + ( (Vector3)(_lineController.Slope) * (distanceBetweenVisuals * i));
+            _directionVisuals.Add(newVisual.transform);
 
-            newVisual.transform.position = position;
-            newVisual.transform.up = _lineController.Slope * _direction;
+            //Vector3 position = _lineController.CurrentA + ( (Vector3)(_lineController.Slope) * (_distanceBetweenVisuals * i));
+
+            //newVisual.transform.position = position;
+            //newVisual.transform.up = _lineController.Slope * _direction;
         }
+
+        CalculateVisualPositionsAndPlace();
     }
 
     private void Update()
@@ -42,5 +50,36 @@ public class ConveyorLine : MonoBehaviour
                 movementController.AddForce(new Force(_magnitude, _lineController.Slope * _direction, 0f, gameObject), true);
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        if (_lineIsRotating)
+        {
+            CalculateVisualPositionsAndPlace();
+        }
+    }
+
+    private void CalculateVisualPositionsAndPlace()
+    {
+        for(int i = 0; i <  _directionVisuals.Count; i++)
+        {
+            Transform visual = _directionVisuals[i];
+            Vector3 position = _lineController.CurrentA + ((Vector3)(_lineController.Slope) * (_distanceBetweenVisuals * i));
+
+            visual.transform.position = position;
+            visual.transform.up = _lineController.Slope * _direction;
+        }
+    }
+
+    public void HandleLineStartRotating()
+    {
+        _lineIsRotating = true;
+    }
+
+    public void HandleLineDoneRotating()
+    {
+        _lineIsRotating = false;
+        CalculateVisualPositionsAndPlace();
     }
 }
