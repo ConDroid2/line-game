@@ -82,6 +82,7 @@ public class SaveSlotUI : MonoBehaviour
 
     public void CheckFlagsAndSetIcons(SaveSlot saveData)
     {
+        Debug.Log($"Shoot: {saveData.Flags["ShootUnlocked"]}");
         this.ShootIcon.gameObject.SetActive(saveData.Flags["ShootUnlocked"]);
         this.GrappleIcon.gameObject.SetActive(saveData.Flags["GrappleUnlocked"]);
         this.RotateIcon.gameObject.SetActive(saveData.Flags["RotateUnlocked"]);
