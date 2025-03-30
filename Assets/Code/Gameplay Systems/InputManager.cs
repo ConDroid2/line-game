@@ -79,6 +79,16 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void HandleCloseMenuFromButton()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.HandlePause();
+            Controls.PauseMap.Disable();
+            Controls.PlayerMap.Enable();
+        }
+    }
+
     public void HandleMapClosed(InputAction.CallbackContext context)
     {
         if(GameManager.Instance != null)
