@@ -83,6 +83,7 @@ public class LineRotator : MonoBehaviour
             }
             else if (_checkCollisions && CheckCollisions())
             {
+                Debug.Log("Found collision, can't rotate");
                 _rotating = false;
                 _checkCollisions = false;
                 OnInvalidRotation?.Invoke();
@@ -202,7 +203,13 @@ public class LineRotator : MonoBehaviour
 
             int numberOfHits = Physics2D.OverlapBox(onLine.transform.position, movementController.Collider.bounds.size, transform.eulerAngles.z, _obstructionFilter, results);
 
-            hits += numberOfHits;
+            for(int i = 0; i < numberOfHits; i++)
+            {   
+                if (results[i] != null && results[i].gameObject != onLine.gameObject) 
+                {
+                    hits++; 
+                }
+            }
         }
 
         return hits > 0;
