@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Utilities
 {
-    public static IntersectionPoint FindIntersectionPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
+    public static IntersectionPoint FindIntersectionPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 d, bool debug = false)
     {
         // NOTE: IF ANY INTERSECTION PROBLEMS, CHECK HERE FIRST, IT MIGHT BE BECAUSE OF ROUNDING TO 2 DECIMAL PLACES
         decimal ax = System.Math.Round((decimal)a.x, 2);
@@ -47,11 +47,25 @@ public static class Utilities
             //Debug.Log($"{lineLength} vs {Vector3.Distance(a, c) + Vector3.Distance(a, d)}");
             //Debug.Log($"{lineLength} vs {Vector3.Distance(b, c) + Vector3.Distance(b, d)}");
 
+            if (debug)
+            {
+                Debug.Log($"isAOnLine: {Vector3.Distance(a, c)} + {Vector3.Distance(a, d)} == {CDLineLength} - {isAOnLine}");
+                Debug.Log($"isBOnLine: {Vector3.Distance(b, c)} + {Vector3.Distance(b, d)} == {CDLineLength} - {isBOnLine}");
+                Debug.Log($"isCOnLine: {Vector3.Distance(c, a)} + {Vector3.Distance(c, b)} == {ABLineLength} - {isCOnLine}");
+                Debug.Log($"isDOnLine: {Vector3.Distance(d, a)} + {Vector3.Distance(d, b)} == {ABLineLength} - {isDOnLine}");
+
+                Debug.Log($"A and D distance < tolerance: {Vector3.Distance(a, d)} < {tolerance}");
+                Debug.Log($"B and C distance > tolerance: {Vector3.Distance(b, c)} > {tolerance}");
+                Debug.Log($"B and C distance < tolerance: {Vector3.Distance(b, c)} < {tolerance}");
+                Debug.Log($"A and D distance > tolerance: {Vector3.Distance(a, d)} > {tolerance}");
+            }
+
 
             // Taking advantage of the fact that all lines go A -> B, meaning we only want this if D and A are the same or C and B are the same
             if (Vector3.Distance(a, d) < tolerance && Vector3.Distance(b, c) > tolerance) point = a;
             else if (Vector3.Distance(b, c) < tolerance && Vector3.Distance(a, d) > tolerance) point = b;
-            else if (isAOnLine || isBOnLine || isCOnLine || isDOnLine) { 
+            else if (isAOnLine || isBOnLine || isCOnLine || isDOnLine) {
+                
                 point = Vector3.negativeInfinity; 
             }
             else point = Vector3.positiveInfinity;

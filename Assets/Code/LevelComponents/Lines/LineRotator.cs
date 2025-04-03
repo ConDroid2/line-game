@@ -70,7 +70,7 @@ public class LineRotator : MonoBehaviour
 
             // _lineController.FixPointOrientation();
 
-            if(_timeSinceStarting >= _timeForRotation)
+            if (_timeSinceStarting >= _timeForRotation)
             {
                 _lineController.SetLocalEndpoint("A", _calculatedA);
                 _lineController.SetLocalEndpoint("B", _calculatedB);
@@ -160,7 +160,7 @@ public class LineRotator : MonoBehaviour
     {
         //_lineController.SetEndpoint("A", FixEndpointPositions(_lineController.CurrentA));
         //_lineController.SetEndpoint("B", FixEndpointPositions(_lineController.CurrentB));
-        // _lineController.FixPointOrientation();
+        _lineController.FixPointOrientation();
 
         Vector3 a = _lineController.CurrentA;
         Vector3 b = _lineController.CurrentB;
@@ -180,13 +180,14 @@ public class LineRotator : MonoBehaviour
         {
             if (line == _lineController || line.Active == false) continue;
             // Debug.Log("Checking line");
-            Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(a, b, line.CurrentA, line.CurrentB);
+            Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(a, b, line.CurrentA, line.CurrentB, true);
             // Debug.Log($"{intersectionPoint.Point}, {intersectionPoint.IsParallel}");
 
             if (intersectionPoint.IsParallel && intersectionPoint.Point.x == Vector3.negativeInfinity.x)
             {
                 OnInvalidRotation?.Invoke();
                 Reverse();
+                return;
             }
         }
     }
