@@ -105,11 +105,6 @@ public class LineRotator : MonoBehaviour
         _calculatedA = -1* new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
         _calculatedB = new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
 
-        //Debug.Log($"Next slope is: {nextSlope.x}, {nextSlope.y}");
-        //Debug.Log($"Half length is: {halfLength}");
-        //Debug.Log($"New A.x is: {_calculatedA.x}");
-        //Debug.Log($"New A.y is: {_calculatedA.y}");
-
         _timeForRotation = _timeForFullRotation;
         _timeSinceStarting = 0;
 
@@ -124,15 +119,6 @@ public class LineRotator : MonoBehaviour
         if (_rotating) return;
         // _lineController.FixPointOrientation();
 
-        Vector2 nextSlope = Vector2.Perpendicular(_lineController.CalculateSlope());
-        float halfLength = _lineController.Length / 2;
-
-        //_startA = _lineController.CurrentLocalA;
-        //_startB = _lineController.CurrentLocalB;
-
-        //_calculatedA = -1 * new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
-        //_calculatedB = new Vector3((nextSlope.normalized * halfLength).x, (nextSlope.normalized * halfLength).y);
-
         Vector3 temp = Vector3.zero;
 
         temp.Set(_startA.x, _startA.y, _startA.z);
@@ -142,11 +128,6 @@ public class LineRotator : MonoBehaviour
         temp.Set(_startB.x, _startB.y, _startB.z);
         _startB = _lineController.CurrentLocalB;
         _calculatedB.Set(temp.x, temp.y, temp.z);
-
-        //Debug.Log($"Next slope is: {nextSlope.x}, {nextSlope.y}");
-        //Debug.Log($"Half length is: {halfLength}");
-        //Debug.Log($"New A.x is: {_calculatedA.x}");
-        //Debug.Log($"New A.y is: {_calculatedA.y}");
 
         _timeSinceStarting = 0;
         _timeForRotation = _timeForFullRotation;
@@ -158,8 +139,6 @@ public class LineRotator : MonoBehaviour
 
     public void ValidateNewOrientation()
     {
-        //_lineController.SetEndpoint("A", FixEndpointPositions(_lineController.CurrentA));
-        //_lineController.SetEndpoint("B", FixEndpointPositions(_lineController.CurrentB));
         _lineController.FixPointOrientation();
 
         Vector3 a = _lineController.CurrentA;
@@ -180,7 +159,7 @@ public class LineRotator : MonoBehaviour
         {
             if (line == _lineController || line.Active == false) continue;
             // Debug.Log("Checking line");
-            Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(a, b, line.CurrentA, line.CurrentB, true);
+            Utilities.IntersectionPoint intersectionPoint = Utilities.FindIntersectionPoint(a, b, line.CurrentA, line.CurrentB);
             // Debug.Log($"{intersectionPoint.Point}, {intersectionPoint.IsParallel}");
 
             if (intersectionPoint.IsParallel && intersectionPoint.Point.x == Vector3.negativeInfinity.x)
@@ -199,6 +178,7 @@ public class LineRotator : MonoBehaviour
         foreach(OnLineController onLine in _lineController.OnLineControllers)
         {
             var movementController = onLine.GetComponent<LineMovementController>();
+            if (movementController == null) continue;
 
             Collider2D[] results = new Collider2D[10];
 
