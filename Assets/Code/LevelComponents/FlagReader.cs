@@ -57,4 +57,9 @@ public class FlagReader : MonoBehaviour
     {
         return _flagName;
     }
+
+    public void SetFlagName(string name)
+    {
+        _flagName = name;
+    }
 }

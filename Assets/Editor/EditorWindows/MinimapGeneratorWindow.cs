@@ -137,6 +137,7 @@ public class MinimapGeneratorWindow : EditorWindow
             }
 
             // Set flag stuff on newPOI
+            newPOI.GetComponent<FlagReader>().SetFlagName(pointOfInterest.FlagName);
         }
     }
 }
