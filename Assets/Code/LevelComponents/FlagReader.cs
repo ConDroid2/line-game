@@ -17,6 +17,12 @@ public class FlagReader : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
+        if(GameManager.Instance.Flags.ContainsKey(_flagName) == false)
+        {
+            Debug.LogError($"Flag {_flagName} not found");
+            return;
+        }
+
         HandleFlagChange(_flagName, GameManager.Instance.Flags[_flagName]);
     }
 
@@ -26,6 +32,11 @@ public class FlagReader : MonoBehaviour
 
         if (_readFlagOnEnable)
         {
+            if (GameManager.Instance.Flags.ContainsKey(_flagName) == false)
+            {
+                Debug.LogError($"Flag {_flagName} not found");
+                return;
+            }
             HandleFlagChange(_flagName, GameManager.Instance.Flags[_flagName]);
         }
 
