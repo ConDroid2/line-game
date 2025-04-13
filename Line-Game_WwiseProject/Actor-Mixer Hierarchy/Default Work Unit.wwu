@@ -2466,6 +2466,133 @@
 								<ActiveSource Name="startGame01" ID="{B87B7D5D-95D9-42FE-923C-C740FE127377}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="TimeStretchTest" ID="{8C1A170F-E4F5-4692-8BED-E2D5FB2D9B92}" ShortID="763938312">
+							<PropertyList>
+								<Property Name="IsLoopingInfinite" Type="bool" Value="False"/>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="GetItem1-e flat major" ID="{9D6DF253-C2C4-40F5-99BD-36D5DEC84C30}">
+									<Language>SFX</Language>
+									<AudioFile>GetItem1-e flat major.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="333428194"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<Reference>
+										<Local>
+											<EffectSlot Name="" ID="{700D884D-33E7-4BDF-9B24-E318A6DD5ACE}" ShortID="474325789">
+												<PropertyList>
+													<Property Name="Bypass" Type="bool" Value="True"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Time Stretch (Custom)" ID="{F3AB7107-6C29-4A11-8B6F-FA854126417E}" ShortID="938645504" PluginName="Wwise Time Stretch" CompanyID="0" PluginID="130" PluginType="3">
+																<PropertyList>
+																	<Property Name="QualityEnable" Type="int16" Value="1"/>
+																	<Property Name="WindowSize" Type="int32" Value="5632"/>
+																</PropertyList>
+																<ObjectLists>
+																	<ObjectList Name="RTPC">
+																		<Reference>
+																			<Local>
+																				<RTPC Name="" ID="{51D8D309-1322-4059-BED7-9B5C27E6EC01}" ShortID="823687967">
+																					<PropertyList>
+																						<Property Name="PropertyName" Type="string" Value="TimeStretch"/>
+																					</PropertyList>
+																					<ReferenceList>
+																						<Reference Name="ControlInput">
+																							<ObjectRef Name="DisintegrationLineSpeed" ID="{39CB204D-88B1-40E6-AA3F-13F195812E97}" WorkUnitID="{E20B2FBE-B940-49C8-B3BE-9A3B7F5DBE95}"/>
+																						</Reference>
+																						<Reference Name="Curve">
+																							<Custom>
+																								<Curve Name="" ID="{F8F57C84-89F1-4EA1-BEF8-96CFDFB6951A}">
+																									<PropertyList>
+																										<Property Name="Flags" Type="int32" Value="1"/>
+																									</PropertyList>
+																									<PointList>
+																										<Point>
+																											<XPos>0</XPos>
+																											<YPos>25</YPos>
+																											<Flags>5</Flags>
+																										</Point>
+																										<Point>
+																											<XPos>100</XPos>
+																											<YPos>376.36792</YPos>
+																											<Flags>37</Flags>
+																										</Point>
+																									</PointList>
+																								</Curve>
+																							</Custom>
+																						</Reference>
+																					</ReferenceList>
+																				</RTPC>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</Local>
+									</Reference>
+								</ObjectList>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{15DA7D41-795D-48EB-9E7A-2023BF689428}" ShortID="15694460">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Pitch"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="DisintegrationLineSpeed" ID="{39CB204D-88B1-40E6-AA3F-13F195812E97}" WorkUnitID="{E20B2FBE-B940-49C8-B3BE-9A3B7F5DBE95}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{95913439-1522-4228-8756-255CE514AC5E}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-1021</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>554</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+							<ActiveSourceList>
+								<ActiveSource Name="GetItem1-e flat major" ID="{9D6DF253-C2C4-40F5-99BD-36D5DEC84C30}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
