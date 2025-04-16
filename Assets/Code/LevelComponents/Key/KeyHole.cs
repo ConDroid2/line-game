@@ -62,7 +62,8 @@ public class KeyHole : MonoBehaviour
 
     public void KeyholeUnlocked()
     {
-        OnUnlocked.Invoke();
+        //OnUnlocked.Invoke(); // JP commented this line out 2025/04/15 so that the event is only triggered once; a flag reader now sets the events on room re-entry, so it is no longer necessary here.
+        // Having this uncommented prevents the sound effect from being called upon room re-load.
         _animator.SetTrigger("KeyholeUnlocked");
         _unlocked = true;
         _unlockRadius.SetActive(false);
