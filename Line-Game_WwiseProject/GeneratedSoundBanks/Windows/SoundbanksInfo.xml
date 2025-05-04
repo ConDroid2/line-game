@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{FD4EA181-70C5-C3F3-43EC-FB17BBE01FDD}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{3F062894-0E67-AF31-E974-AE6D92B34031}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -28,6 +28,10 @@
 				<File Id="9323772" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #19.wav</ShortName>
 					<CachePath>SFX/Bleeps #19_818F3B66.wem</CachePath>
+				</File>
+				<File Id="21188983" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DisintegrationLine_3.5sec.wav</ShortName>
+					<CachePath>SFX/DisintegrationLine_3.5sec_818F3B66.wem</CachePath>
 				</File>
 				<File Id="28467453" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Rotate1.wav</ShortName>
@@ -309,6 +313,10 @@
 					<ShortName>LightsOut.wav</ShortName>
 					<CachePath>SFX/LightsOut_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="689286521" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DisintegrationLine_3sec.wav</ShortName>
+					<CachePath>SFX/DisintegrationLine_3sec_818F3B66.wem</CachePath>
+				</File>
 				<File Id="697163750" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps.wav</ShortName>
 					<CachePath>SFX/Bleeps_818F3B66.wem</CachePath>
@@ -437,6 +445,10 @@
 					<ShortName>Bleeps #6.wav</ShortName>
 					<CachePath>SFX/Bleeps #6_818F3B66.wem</CachePath>
 				</File>
+				<File Id="1012922053" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DisintegrationLine_2sec.wav</ShortName>
+					<CachePath>SFX/DisintegrationLine_2sec_818F3B66.wem</CachePath>
+				</File>
 				<File Id="1014716659" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ZoomOnConveyorLine1_bFlat.wav</ShortName>
 					<CachePath>SFX/ZoomOnConveyorLine1_bFlat_1F1092F4.wem</CachePath>
@@ -453,11 +465,20 @@
 					<ShortName>Bubble noises #11.wav</ShortName>
 					<CachePath>SFX/Bubble noises #11_818F3B66.wem</CachePath>
 				</File>
+				<File Id="1045656605" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DisintegrationLine_1Sec.wav</ShortName>
+					<CachePath>SFX/DisintegrationLine_1Sec_818F3B66.wem</CachePath>
+				</File>
 				<File Id="1056317034" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #17.wav</ShortName>
 					<CachePath>SFX/Bleeps #17_818F3B66.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="938645504" Name="Time Stretch (Custom)" LibName="Wwise Time Stretch" LibId="8519683"/>
+				</Custom>
+			</Plugins>
 			<Events>
 				<Event Id="2929608979" Name="Break_AllBGsSwitchContainer" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<SwitchContainers>
@@ -815,6 +836,31 @@
 						<MediaRef Id="606720707"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="4186154228" Name="Play_disintegration_1_5second" DurationType="OneShot" DurationMin="6.085417" DurationMax="6.085417">
+					<MediaRefs>
+						<MediaRef Id="1045656605"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1792826540" Name="Play_disintegration_1second" DurationType="OneShot" DurationMin="6.085417" DurationMax="6.085417">
+					<MediaRefs>
+						<MediaRef Id="1045656605"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="88832602" Name="Play_disintegration_2seconds" DurationType="OneShot" DurationMin="6.085417" DurationMax="6.085417">
+					<MediaRefs>
+						<MediaRef Id="1012922053"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="86481533" Name="Play_disintegration_3_5seconds" DurationType="OneShot" DurationMin="6.085417" DurationMax="6.085417">
+					<MediaRefs>
+						<MediaRef Id="21188983"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1426862025" Name="Play_disintegration_3seconds" DurationType="OneShot" DurationMin="6.085417" DurationMax="6.085417">
+					<MediaRefs>
+						<MediaRef Id="689286521"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="481951945" Name="Play_EnemyDeath1" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
 					<MediaRefs>
 						<MediaRef Id="225601339"/>
@@ -998,6 +1044,16 @@
 					<MediaRefs>
 						<MediaRef Id="763990132"/>
 					</MediaRefs>
+				</Event>
+				<Event Id="1326057080" Name="Play_TimeStretchTest" DurationType="OneShot" DurationMin="2.0020833" DurationMax="2.0020833">
+					<MediaRefs>
+						<MediaRef Id="333428194"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="938645504"/>
+						</Custom>
+					</PluginRefs>
 				</Event>
 				<Event Id="3959296026" Name="Play_Unlocking" DurationType="OneShot" DurationMin="1.50625" DurationMax="1.50625">
 					<MediaRefs>
@@ -2101,6 +2157,7 @@
 			<GameParameters>
 				<GameParameter Id="988953028" Name="SFXVolume"/>
 				<GameParameter Id="1843561328" Name="MainVolume"/>
+				<GameParameter Id="1923720810" Name="DisintegrationLineSpeed"/>
 				<GameParameter Id="2346531308" Name="MusicVolume"/>
 			</GameParameters>
 			<SwitchGroups>
@@ -2151,7 +2208,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{A7399820-272E-0ACF-2E0E-EEB5D7B8DA16}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{ED43C17F-2579-DA9C-4781-9848D806C219}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -2168,6 +2225,7 @@
 			<GameParameters>
 				<GameParameter Id="988953028" Name="SFXVolume"/>
 				<GameParameter Id="1843561328" Name="MainVolume"/>
+				<GameParameter Id="1923720810" Name="DisintegrationLineSpeed"/>
 				<GameParameter Id="2346531308" Name="MusicVolume"/>
 			</GameParameters>
 			<StateGroups>
@@ -2301,5 +2359,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D1F99321-B8CE-31CF-F53F-D2D0607D6BF2}</FileHash>
+	<FileHash>{756681F9-FB38-A27D-882A-24709DA6F51A}</FileHash>
 </SoundBanksInfo>
