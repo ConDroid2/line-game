@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{3F062894-0E67-AF31-E974-AE6D92B34031}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{2E37BA49-D231-9079-0D79-6C32EEB859F9}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -60,6 +60,10 @@
 				<File Id="90653931" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bubble noises #22.wav</ShortName>
 					<CachePath>SFX/Bubble noises #22_818F3B66.wem</CachePath>
+				</File>
+				<File Id="98530203" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>DisintegrationLine_1.5sec.wav</ShortName>
+					<CachePath>SFX/DisintegrationLine_1.5sec_818F3B66.wem</CachePath>
 				</File>
 				<File Id="98945054" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MemoryLeak.wav</ShortName>
@@ -838,7 +842,7 @@
 				</Event>
 				<Event Id="4186154228" Name="Play_disintegration_1_5second" DurationType="OneShot" DurationMin="6.085417" DurationMax="6.085417">
 					<MediaRefs>
-						<MediaRef Id="1045656605"/>
+						<MediaRef Id="98530203"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1792826540" Name="Play_disintegration_1second" DurationType="OneShot" DurationMin="6.085417" DurationMax="6.085417">
@@ -2359,5 +2363,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{448178ED-61F9-18C7-96A8-F6C457CDCDCD}</FileHash>
+	<FileHash>{C738522A-2DCB-B5DA-4D59-595D4CC671EC}</FileHash>
 </SoundBanksInfo>
