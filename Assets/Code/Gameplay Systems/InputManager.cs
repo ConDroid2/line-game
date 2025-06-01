@@ -11,6 +11,21 @@ public class InputManager : MonoBehaviour
 
     public BaseControls Controls { get; private set; }
 
+    public enum Binding
+    {
+        Accept,
+        Cancel,
+        SlowMovement,
+        Shoot,
+        Grapple,
+        Rotate,
+        Move_Up,
+        Move_Down,
+        Move_Left,
+        Move_Right
+    }
+
+
     private void Awake()
     {
         if(Instance == null)
@@ -30,6 +45,8 @@ public class InputManager : MonoBehaviour
         Controls.PlayerMap.OpenMap.performed += HandleMapPerformed;
         Controls.PauseMap.CloseMenu.performed += HandleCloseMenuPerformed;
         Controls.MapMap.CloseMap.performed += HandleMapClosed;
+
+        Debug.Log(GetBinding(Binding.SlowMovement));
     }
 
     private void OnDisable()
@@ -97,6 +114,68 @@ public class InputManager : MonoBehaviour
             Controls.MapMap.Disable();
             Controls.PlayerMap.Enable();
         }
+    }
+
+    public string GetBinding(Binding binding)
+    {
+        switch (binding)
+        {
+            default:
+            case Binding.SlowMovement:
+                return Controls.PlayerMap.Sprint.bindings[1].ToDisplayString();
+            case Binding.Shoot:
+                return Controls.PlayerMap.FireProjectile.bindings[0].ToDisplayString();
+            case Binding.Grapple:
+                return Controls.PlayerMap.Grapple.bindings[0].ToDisplayString();
+            case Binding.Rotate:
+                return Controls.PlayerMap.Rotate.bindings[0].ToDisplayString();
+            case Binding.Move_Up:
+                return Controls.PlayerMap.Move.bindings[1].ToDisplayString();
+            case Binding.Move_Down:
+                return Controls.PlayerMap.Move.bindings[2].ToDisplayString();
+            case Binding.Move_Left:
+                return Controls.PlayerMap.Move.bindings[3].ToDisplayString();
+            case Binding.Move_Right:
+                return Controls.PlayerMap.Move.bindings[4].ToDisplayString();
+        }
+    }
+
+    public void RebindAction(Binding binding, System.Action onBindingComplete)
+    {
+        Controls.PlayerMap.Disable();
+
+        InputAction action;
+        int bindingIndex;
+
+        switch (binding)
+        {
+            default:
+            case Binding.SlowMovement:
+                action = Controls.PlayerMap.Sprint;
+                bindingIndex = 1;
+                break;
+            case Binding.Shoot:
+                action = Controls.PlayerMap.FireProjectile;
+                bindingIndex = 0;
+                break;
+            case Binding.Grapple:
+                action = Controls.PlayerMap.Grapple;
+                bindingIndex = 0;
+                break;
+            case Binding.Rotate:
+                action = Controls.PlayerMap.Rotate;
+                bindingIndex = 0;
+                break;
+        }
+
+        action.PerformInteractiveRebinding(bindingIndex)
+            .OnComplete(callback =>
+            {
+                callback.Dispose();
+                Controls.PlayerMap.Enable();
+                onBindingComplete();
+            })
+            .Start();
     }
 
 }
