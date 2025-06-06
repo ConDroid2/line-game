@@ -28,4 +28,11 @@ public static class Consts
             public const string McGuffin = "POI_McGuffin Variant";
         }
     }
+
+    public static class VolumeSettings
+    {
+        public const string VolumePref = "Master_Volume";
+        public const string MusicPref = "Music_Volume";
+        public const string SfxPref = "Sfx_Volume";
+    }
 }

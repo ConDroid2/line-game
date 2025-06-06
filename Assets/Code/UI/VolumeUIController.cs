@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VolumeController : MonoBehaviour
+public class VolumeUIController : MonoBehaviour
 {
     [SerializeField] private Slider _volumeSlider;
+    [SerializeField] private Slider _musicSlider;
+    [SerializeField] private Slider _sfxSlider;
 
 
     private void OnEnable()
@@ -13,6 +15,8 @@ public class VolumeController : MonoBehaviour
         if(AudioManager.Instance != null)
         {
             _volumeSlider.value = AudioManager.Instance.Volume;
+            _musicSlider.value = AudioManager.Instance.MusicVolume;
+            _sfxSlider.value = AudioManager.Instance.SfxVolume;
         }
     }
 }
