@@ -19,4 +19,11 @@ public class SaveSlot
         CurrentRoomName = currentRoomName;
         CurrentPort = currentPort;
     }
+
+    public class VolumeSettings
+    {
+        public int MainVolume;
+        public int MusicVolume;
+        public int SoundEffectVolume;
+    }
 }

@@ -186,7 +186,9 @@ public class LineRotator : MonoBehaviour
 
             for(int i = 0; i < numberOfHits; i++)
             {   
-                if (results[i] != null && results[i].gameObject != onLine.gameObject) 
+                if (results[i] != null &&
+                    results[i].gameObject != onLine.gameObject && // Ignore self
+                    results[i].GetComponent<OnLineController>().CurrentLine != _lineController) // Ignore objects on this same line
                 {
                     hits++; 
                 }
