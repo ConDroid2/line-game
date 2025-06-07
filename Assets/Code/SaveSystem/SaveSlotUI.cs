@@ -80,11 +80,30 @@ public class SaveSlotUI : MonoBehaviour
         SceneManager.LoadScene(startingRoomName);
     }
 
+    public void HandleSlotDeleted()
+    {
+        if(_saveData != null)
+        {
+            JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
+
+            utils.DeleteDataAt(SlotName + ".txt");
+
+            _saveData = null;
+
+            CheckFlagsAndSetIcons(_saveData);
+        }
+    }
+
     public void CheckFlagsAndSetIcons(SaveSlot saveData)
     {
-        this.ShootIcon.gameObject.SetActive(saveData.Flags["ShootUnlocked"]);
-        this.GrappleIcon.gameObject.SetActive(saveData.Flags["GrappleUnlocked"]);
-        this.RotateIcon.gameObject.SetActive(saveData.Flags["RotateUnlocked"]);
-        this.FireshieldIcon.gameObject.SetActive(saveData.Flags["GotMcGuffin"]);
+        bool shootUnlocked = saveData == null ? false : saveData.Flags["ShootUnlocked"];
+        bool grappleUnlocked = saveData == null ? false : saveData.Flags["GrappleUnlocked"];
+        bool rotateUnlocked = saveData == null ? false : saveData.Flags["RotateUnlocked"];
+        bool gotMcguffin = saveData == null ? false : saveData.Flags["GotMcGuffin"];
+
+        this.ShootIcon.gameObject.SetActive(shootUnlocked);
+        this.GrappleIcon.gameObject.SetActive(grappleUnlocked);
+        this.RotateIcon.gameObject.SetActive(rotateUnlocked);
+        this.FireshieldIcon.gameObject.SetActive(gotMcguffin);
     }
 }

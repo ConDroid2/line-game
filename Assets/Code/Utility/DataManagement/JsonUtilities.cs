@@ -60,6 +60,23 @@ public class JsonUtilities
         }
     }
 
+    public void DeleteDataAt(string relativePath)
+    {
+        string path = _pathRoot + relativePath;
+
+        if (File.Exists(path) == true)
+        {
+            try
+            {
+                File.Delete(path);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Failed to delete save data: {e.Message} {e.StackTrace}");
+            }
+        }
+    }
+
     public T LoadFromResources<T>(string relativePath)
     {
         TextAsset textAsset = Resources.Load<TextAsset>(relativePath);
