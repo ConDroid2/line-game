@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(LineController))]
 public class LineDrawer : MonoBehaviour
 {
+    [SerializeField] private Shapes.Line _shapesLine;
     [SerializeField] private LineRenderer _renderer;
     [SerializeField] private LineController _controller;
 
@@ -16,6 +17,7 @@ public class LineDrawer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _shapesLine.gameObject.SetActive(true);
         if (_renderer != null)
         {
             UpdateLinePositions();
@@ -46,6 +48,11 @@ public class LineDrawer : MonoBehaviour
 
         _renderer.SetPosition(0, _visualA);
         _renderer.SetPosition(1, _visualB);
+
+        Debug.Log($"Setting Shapes start to: {_visualA}");
+        Debug.Log($"Setting Shapes end to: {_visualB}");
+        _shapesLine.Start = _visualA;
+        _shapesLine.End = _visualB;
     }
 
     // When passing in, 0 means opaque, 1 means transparent
@@ -62,8 +69,8 @@ public class LineDrawer : MonoBehaviour
         Vector3 slope = _controller.Slope;
         float halfWidth = _renderer.startWidth / 2;
 
-        _visualA = _controller.CurrentA - (slope.normalized * halfWidth);
-        _visualB = _controller.CurrentB + (slope.normalized * halfWidth);
+        _visualA = _controller.CurrentLocalA - (slope.normalized * halfWidth);
+        _visualB = _controller.CurrentLocalB + (slope.normalized * halfWidth);
     }
 
     public void HandleLineActiveChanged(bool active)

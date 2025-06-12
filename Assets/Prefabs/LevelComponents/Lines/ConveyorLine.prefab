@@ -289,8 +289,55 @@ PrefabInstance:
       propertyPath: OnStartRotating.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6024694907121709917, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: end.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: thickness
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashStyle.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashStyle.type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashStyle.space
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashStyle.offset
+      value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashStyle.spacing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+--- !u!114 &521871531185033178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+  m_PrefabInstance: {fileID: 7084931189662235220}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad38a8f0c6def84899724d5320b316a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6218876739153720704 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3755817443664416724, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
@@ -322,8 +369,7 @@ MonoBehaviour:
   _lineController: {fileID: 6218876739153720704}
   _magnitude: 0
   _direction: 0
-  _visualsFrequency: 2
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 521871531185033178}
 --- !u!4 &6218876739153720719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3755817443664416731, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}

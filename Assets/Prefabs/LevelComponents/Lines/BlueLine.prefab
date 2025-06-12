@@ -83,8 +83,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: color.b
+      value: 9.734288
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: color.g
+      value: 4.7906966
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: color.r
+      value: 1.1212269
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashStyle.size
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashStyle.type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308414231622940046, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+      propertyPath: dashStyle.spacing
+      value: 0.89
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+--- !u!1 &7905959547451747553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4015843244482325658, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+  m_PrefabInstance: {fileID: 6488763977118335099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7931930095636713390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3755817443664416725, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
@@ -103,6 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flagName: RedOnBlueOff
+  _onlyCheckOnStart: 0
+  _readFlagOnEnable: 0
   OnIfTrue:
     m_PersistentCalls:
       m_Calls:
@@ -118,11 +153,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7905959547451747553}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnIfFalse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7931930095636713391}
         m_TargetAssemblyTypeName: LineController, Assembly-CSharp
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7905959547451747553}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
