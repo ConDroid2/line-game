@@ -78,7 +78,11 @@ public class MinimapGeneratorWindow : EditorWindow
 
             Debug.Log($"Loading metadata for : {room.RoomName}");
             RoomData roomMetadata = levelMetadataUtils.LoadData<RoomData>($"/{room.RoomName}-metadata.txt");
-            LoadPointsOfInterest(mapRoom.PointOfInterestParent, roomMetadata);
+
+            PointOfInterestVisualsController visualsController = mapRoom.GetComponent<PointOfInterestVisualsController>();
+
+            LoadPointsOfInterest(mapRoom.PointOfInterestParent, visualsController, roomMetadata);
+            visualsController.CalculateAndSetPositions();
 
             // mapRoom.SetConnectionImages(room.HasRightConnection, room.HasLeftConnection, room.HasBottomConnection, room.HasTopConnection);
             minimapScript.MapRooms.Add(mapRoom);
@@ -93,7 +97,7 @@ public class MinimapGeneratorWindow : EditorWindow
         }  
     }
 
-    private void LoadPointsOfInterest(RectTransform parent, RoomData metadata)
+    private void LoadPointsOfInterest(RectTransform parent, PointOfInterestVisualsController visualsController, RoomData metadata)
     {
         if (metadata.PointsOfInterest == null) return;
 
@@ -138,6 +142,8 @@ public class MinimapGeneratorWindow : EditorWindow
 
             // Set flag stuff on newPOI
             newPOI.GetComponent<FlagReader>().SetFlagName(pointOfInterest.FlagName);
+
+            visualsController.AddPOI(newPOI);
         }
     }
 }

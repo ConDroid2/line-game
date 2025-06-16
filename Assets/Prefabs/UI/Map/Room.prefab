@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1003805385745825585}
-  - component: {fileID: 1632648549750055243}
   m_Layer: 5
   m_Name: Points of Interest
   m_TagString: Untagged
@@ -37,32 +36,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1632648549750055243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2347749640634929874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 1
 --- !u!1 &6620836573944720605
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +123,7 @@ GameObject:
   - component: {fileID: 6620836574914061627}
   - component: {fileID: 6620836574914061625}
   - component: {fileID: 7958824250762303348}
+  - component: {fileID: 1663448716587407197}
   m_Layer: 5
   m_Name: Room
   m_TagString: Untagged
@@ -207,6 +181,20 @@ MonoBehaviour:
   _leftConnection: {fileID: 0}
   _bottomConnection: {fileID: 0}
   _topConnection: {fileID: 0}
+--- !u!114 &1663448716587407197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620836574914061620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf823d8600d0b04284e2c661a6ee12d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointOfInterestParent: {fileID: 0}
+  _pointsOfInterest: []
 --- !u!1 &7509718590761021081
 GameObject:
   m_ObjectHideFlags: 0
