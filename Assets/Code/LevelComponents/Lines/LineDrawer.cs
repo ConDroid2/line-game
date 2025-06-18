@@ -49,8 +49,8 @@ public class LineDrawer : MonoBehaviour
         _renderer.SetPosition(0, _visualA);
         _renderer.SetPosition(1, _visualB);
 
-        Debug.Log($"Setting Shapes start to: {_visualA}");
-        Debug.Log($"Setting Shapes end to: {_visualB}");
+        //Debug.Log($"Setting Shapes start to: {_visualA}");
+        //Debug.Log($"Setting Shapes end to: {_visualB}");
         _shapesLine.Start = _visualA;
         _shapesLine.End = _visualB;
     }
