@@ -198,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 7129129428450640303, guid: 40c4b9d21ec005c4892fc717501970ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7237302542807977751}
+      objectReference: {fileID: 8490008695601884689}
     - target: {fileID: 7129129428450640303, guid: 40c4b9d21ec005c4892fc717501970ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129129428450640303, guid: 40c4b9d21ec005c4892fc717501970ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartTimer
+      value: SetTransitionerToLoadWorld
       objectReference: {fileID: 0}
     - target: {fileID: 7129129428450640303, guid: 40c4b9d21ec005c4892fc717501970ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129129428450640303, guid: 40c4b9d21ec005c4892fc717501970ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Timer, Assembly-CSharp
+      value: SceneTransitionLoadWorldSetter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7129129428450640303, guid: 40c4b9d21ec005c4892fc717501970ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -319,11 +319,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldName: WorldNegativeOne
---- !u!224 &5019428069051930891 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7129129428450640290, guid: 40c4b9d21ec005c4892fc717501970ec, type: 3}
-  m_PrefabInstance: {fileID: 2830325782019217577}
+--- !u!114 &8490008695601884689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5019428069051930890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878b51e836df1114c9758f2568c67ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneTransitioner: {fileID: 0}
+  loadWorld: {fileID: 7778421507515584597}
 --- !u!114 &5562126180322670422 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7671866603032211455, guid: 40c4b9d21ec005c4892fc717501970ec, type: 3}
@@ -333,101 +342,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbdca0ce99154d4b86d55d7f5a287de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &3469625374500141612
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 5019428069051930891}
-    m_Modifications:
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 493.56158
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 254.58884
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.7226133
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969132, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191756942969134, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: m_Name
-      value: SimpleFadeToBlackv2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191757250622779, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191757250622779, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191757250622779, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 7778421507515584597}
-    - target: {fileID: 6077191757250622779, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191757250622779, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: LoadWorld
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191757250622779, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: LoadWorldButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077191757250622779, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
---- !u!114 &7237302542807977751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6077191757250622779, guid: 1d3c09934a4663a4f8a2d5c828bddd0e, type: 3}
-  m_PrefabInstance: {fileID: 3469625374500141612}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f63f7b0c4ac47428c14826b518d6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

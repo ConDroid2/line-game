@@ -8,6 +8,13 @@ public class CanvasGroupAlphaSetter : MonoBehaviour
 
     public CanvasGroup canvasGroup;
 
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    DontDestroyOnLoad(gameObject); // This is to prevent this object from getting destroyed when fading to one thing or another.
+    //    firstHalfTransitionTimer.OnTimerEnd.AddListener(sceneChanger.ChangeScene(sceneName));
+    //}
+
     public void SetCanvasGroupAlpha(float alpha)
     {
         this.canvasGroup.alpha = alpha;
@@ -25,11 +32,6 @@ public class CanvasGroupAlphaSetter : MonoBehaviour
         this.SetCanvasGroupAlpha(fractionDone);
     }
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
 
     //// Update is called once per frame
     //void Update()
