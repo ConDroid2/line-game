@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{8B5042C0-0DF8-46AF-BBC4-504B91FD18A7}" SchemaVersion="119">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{8B5042C0-0DF8-46AF-BBC4-504B91FD18A7}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{8B5042C0-0DF8-46AF-BBC4-504B91FD18A7}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_BigLaser" ID="{384B139A-FC32-4567-AE42-1860E2F5BA25}">
+					<ChildrenList>
+						<Action Name="" ID="{13D025ED-F3A7-4E5F-B1AA-1D6C7466DE0E}" ShortID="207765340">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BigLaser" ID="{7A39B9B4-65DD-45EF-B8B1-5437485AD5A7}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_BigLaser" ID="{63827DC8-44E7-4F4B-9B37-DFE8624A451D}">
+					<ChildrenList>
+						<Action Name="" ID="{CCBC2E13-848C-4055-A7B5-273240F1C9BA}" ShortID="274435588">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BigLaser" ID="{7A39B9B4-65DD-45EF-B8B1-5437485AD5A7}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>
