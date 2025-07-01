@@ -279,6 +279,36 @@ MonoBehaviour:
   OnTriggerStay:
     m_PersistentCalls:
       m_Calls: []
+  OnEnabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1692560174784212548}
+        m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+        m_MethodName: PostEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDisabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2160778484453104663}
+        m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+        m_MethodName: PostEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3176255148311361191
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +708,7 @@ MonoBehaviour:
   _wwiseEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 7c4a48e204d79154ba1370ccda41d73c, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 1a9b4373b04033444aa984eefdbd1e0a, type: 2}
 --- !u!114 &899433759990028669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +724,7 @@ MonoBehaviour:
   _wwiseEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 1a9b4373b04033444aa984eefdbd1e0a, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 7c4a48e204d79154ba1370ccda41d73c, type: 2}
 --- !u!114 &7003784399226000996
 MonoBehaviour:
   m_ObjectHideFlags: 0
