@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{EA312918-B880-7EF9-13DF-AB155C3DF90C}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{95C5943D-1BC3-1BC4-B705-02A15EFEFFCA}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -412,6 +412,10 @@
 				<File Id="936197155" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #15.wav</ShortName>
 					<CachePath>SFX/Bleeps #15_818F3B66.wem</CachePath>
+				</File>
+				<File Id="976694783" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BigLaserHittingBlock.wav</ShortName>
+					<CachePath>SFX/BigLaserHittingBlock_1D83B22B.wem</CachePath>
 				</File>
 				<File Id="982241922" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BigLaser2.wav</ShortName>
@@ -816,6 +820,11 @@
 				<Event Id="1141879209" Name="Play_BigLaser" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="982241922"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1031146745" Name="Play_BigLaserHitObject" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="976694783"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1867580273" Name="Play_Blip_MaybeMenus_" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
@@ -1986,6 +1995,11 @@
 						<MediaRef Id="982241922"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1851236115" Name="Stop_BigLaserHitObject" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="976694783"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1429974361" Name="Stop_Memory_Leak_Foley" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
 						<MediaRef Id="2388732"/>
@@ -2297,5 +2311,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{2B75BC6B-4B68-8D96-41C3-49A34BA23C25}</FileHash>
+	<FileHash>{E94E5DC3-5E8B-B09D-0236-F5174D1ED0B1}</FileHash>
 </SoundBanksInfo>
