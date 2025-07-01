@@ -71,50 +71,6 @@
 								<ActiveSource Name="3 clicks" ID="{166A7E6A-9995-4325-BBB8-1125A92F203E}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="MaybeGrapple" ID="{ADB3EA17-70D9-43F6-9E83-64E751CDABDD}" ShortID="547787150">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="MaybeGrapple" ID="{3F78EE13-D961-4CF4-B5CC-4FC0DCDC1299}">
-									<Language>SFX</Language>
-									<AudioFile>MaybeGrapple.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="788971230"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="MaybeGrapple" ID="{3F78EE13-D961-4CF4-B5CC-4FC0DCDC1299}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="MaybeGrappleWithNoise" ID="{8254A79F-F961-47A5-A423-1C60D7CE5C57}" ShortID="203525694">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="MaybeGrappleWithNoise" ID="{0D07C2BC-3D97-4541-9F7D-655EC120BBB4}">
-									<Language>SFX</Language>
-									<AudioFile>MaybeGrappleWithNoise.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="686341057"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="MaybeGrappleWithNoise" ID="{0D07C2BC-3D97-4541-9F7D-655EC120BBB4}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 						<Sound Name="maybePlayerDeath" ID="{0A4CEA7F-0DC8-4A18-BE99-3D1C80E5D63E}" ShortID="83463700">
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
@@ -392,6 +348,12 @@
 								</GroupingBehaviorList>
 								<GroupingList>
 									<Grouping>
+										<SwitchRef Name="Credits" ID="{C2780B27-7DDD-460A-B531-EC357DD803A9}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnLineEFlat" ID="{E2ED64AD-CD95-4BD8-8618-369C555DA215}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
 										<SwitchRef Name="Unauthorized_W2" ID="{8EC6B328-8210-40CC-8137-001B80BB3A81}"/>
 										<ItemList>
 											<ItemRef Name="ZoomOnConveyorLine1_all_Dmajor" ID="{280662E0-F689-4C3D-8DE7-2C0D3C8DECE8}"/>
@@ -417,6 +379,12 @@
 									</Grouping>
 									<Grouping>
 										<SwitchRef Name="Wandering_W0" ID="{65201AFD-1F8B-4383-932E-2A9B283070F7}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnLineEFlat" ID="{E2ED64AD-CD95-4BD8-8618-369C555DA215}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="MainMenu" ID="{2E8E1CFD-82C0-4A36-AD5F-FA98E7C45196}"/>
 										<ItemList>
 											<ItemRef Name="ZoomOnLineEFlat" ID="{E2ED64AD-CD95-4BD8-8618-369C555DA215}"/>
 										</ItemList>
@@ -619,6 +587,12 @@
 								</GroupingBehaviorList>
 								<GroupingList>
 									<Grouping>
+										<SwitchRef Name="Credits" ID="{C2780B27-7DDD-460A-B531-EC357DD803A9}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnLineEFlat" ID="{84FB8AED-696C-470D-9480-70B12D471782}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
 										<SwitchRef Name="Unauthorized_W2" ID="{8EC6B328-8210-40CC-8137-001B80BB3A81}"/>
 										<ItemList>
 											<ItemRef Name="ZoomOnConveyorLine1_all_Dmajor" ID="{3484FE3B-A8D4-45E7-A609-704184E5331F}"/>
@@ -644,6 +618,12 @@
 									</Grouping>
 									<Grouping>
 										<SwitchRef Name="Wandering_W0" ID="{65201AFD-1F8B-4383-932E-2A9B283070F7}"/>
+										<ItemList>
+											<ItemRef Name="ZoomOnLineEFlat" ID="{84FB8AED-696C-470D-9480-70B12D471782}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="MainMenu" ID="{2E8E1CFD-82C0-4A36-AD5F-FA98E7C45196}"/>
 										<ItemList>
 											<ItemRef Name="ZoomOnLineEFlat" ID="{84FB8AED-696C-470D-9480-70B12D471782}"/>
 										</ItemList>
@@ -1041,86 +1021,6 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="Shoot6" ID="{EDC08799-E1B0-40E5-BE70-99435DDB8D83}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Rotate1" ID="{07A60D63-71B9-47BB-9C2D-91C36BDABED5}" ShortID="186562625">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>5</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Rotate1" ID="{035E8CCF-1FAD-477E-8F1C-23D6C7F620CC}">
-									<Language>SFX</Language>
-									<AudioFile>Rotate1.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="28467453"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Rotate1" ID="{035E8CCF-1FAD-477E-8F1C-23D6C7F620CC}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="GrappleTry4" ID="{52A779EF-1232-4CDC-8E7E-65F3C82693D0}" ShortID="516631168">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>5</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="KeyBreak1" ID="{ED0E3F5C-31A0-4087-ADE4-CCCE671F7944}">
-									<Language>SFX</Language>
-									<AudioFile>KeyBreak1.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="558752065"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="KeyBreak1" ID="{ED0E3F5C-31A0-4087-ADE4-CCCE671F7944}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="MaybeGrappleTry2" ID="{686767BA-067F-4A57-BC1F-D9CADCCDD7A2}" ShortID="341059210">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="MaybeGrappleTry2" ID="{FF6C7579-6450-429A-9F3D-F12C51F6C0A3}">
-									<Language>SFX</Language>
-									<AudioFile>MaybeGrappleTry2.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="673348975"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="MaybeGrappleTry2" ID="{FF6C7579-6450-429A-9F3D-F12C51F6C0A3}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="GetUpgradeEflatMajor" ID="{48A01247-71F7-44C0-A7C7-D4B608D7C7D8}" ShortID="755460778">
@@ -2466,133 +2366,6 @@
 								<ActiveSource Name="startGame01" ID="{B87B7D5D-95D9-42FE-923C-C740FE127377}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="TimeStretchTest" ID="{8C1A170F-E4F5-4692-8BED-E2D5FB2D9B92}" ShortID="763938312">
-							<PropertyList>
-								<Property Name="IsLoopingInfinite" Type="bool" Value="False"/>
-								<Property Name="OverrideEffect" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="GetItem1-e flat major" ID="{9D6DF253-C2C4-40F5-99BD-36D5DEC84C30}">
-									<Language>SFX</Language>
-									<AudioFile>GetItem1-e flat major.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="333428194"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists>
-								<ObjectList Name="Effects">
-									<Reference>
-										<Local>
-											<EffectSlot Name="" ID="{700D884D-33E7-4BDF-9B24-E318A6DD5ACE}" ShortID="474325789">
-												<PropertyList>
-													<Property Name="Bypass" Type="bool" Value="True"/>
-												</PropertyList>
-												<ReferenceList>
-													<Reference Name="Effect">
-														<Custom>
-															<Effect Name="Time Stretch (Custom)" ID="{F3AB7107-6C29-4A11-8B6F-FA854126417E}" ShortID="938645504" PluginName="Wwise Time Stretch" CompanyID="0" PluginID="130" PluginType="3">
-																<PropertyList>
-																	<Property Name="QualityEnable" Type="int16" Value="1"/>
-																	<Property Name="WindowSize" Type="int32" Value="5632"/>
-																</PropertyList>
-																<ObjectLists>
-																	<ObjectList Name="RTPC">
-																		<Reference>
-																			<Local>
-																				<RTPC Name="" ID="{51D8D309-1322-4059-BED7-9B5C27E6EC01}" ShortID="823687967">
-																					<PropertyList>
-																						<Property Name="PropertyName" Type="string" Value="TimeStretch"/>
-																					</PropertyList>
-																					<ReferenceList>
-																						<Reference Name="ControlInput">
-																							<ObjectRef Name="DisintegrationLineSpeed" ID="{39CB204D-88B1-40E6-AA3F-13F195812E97}" WorkUnitID="{E20B2FBE-B940-49C8-B3BE-9A3B7F5DBE95}"/>
-																						</Reference>
-																						<Reference Name="Curve">
-																							<Custom>
-																								<Curve Name="" ID="{F8F57C84-89F1-4EA1-BEF8-96CFDFB6951A}">
-																									<PropertyList>
-																										<Property Name="Flags" Type="int32" Value="1"/>
-																									</PropertyList>
-																									<PointList>
-																										<Point>
-																											<XPos>0</XPos>
-																											<YPos>25</YPos>
-																											<Flags>5</Flags>
-																										</Point>
-																										<Point>
-																											<XPos>100</XPos>
-																											<YPos>376.36792</YPos>
-																											<Flags>37</Flags>
-																										</Point>
-																									</PointList>
-																								</Curve>
-																							</Custom>
-																						</Reference>
-																					</ReferenceList>
-																				</RTPC>
-																			</Local>
-																		</Reference>
-																	</ObjectList>
-																</ObjectLists>
-															</Effect>
-														</Custom>
-													</Reference>
-												</ReferenceList>
-											</EffectSlot>
-										</Local>
-									</Reference>
-								</ObjectList>
-								<ObjectList Name="RTPC">
-									<Reference>
-										<Local>
-											<RTPC Name="" ID="{15DA7D41-795D-48EB-9E7A-2023BF689428}" ShortID="15694460">
-												<PropertyList>
-													<Property Name="PropertyName" Type="string" Value="Pitch"/>
-												</PropertyList>
-												<ReferenceList>
-													<Reference Name="ControlInput">
-														<ObjectRef Name="DisintegrationLineSpeed" ID="{39CB204D-88B1-40E6-AA3F-13F195812E97}" WorkUnitID="{E20B2FBE-B940-49C8-B3BE-9A3B7F5DBE95}"/>
-													</Reference>
-													<Reference Name="Curve">
-														<Custom>
-															<Curve Name="" ID="{95913439-1522-4228-8756-255CE514AC5E}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="65537"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>-1021</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>100</XPos>
-																		<YPos>554</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</Custom>
-													</Reference>
-												</ReferenceList>
-											</RTPC>
-										</Local>
-									</Reference>
-								</ObjectList>
-							</ObjectLists>
-							<ActiveSourceList>
-								<ActiveSource Name="GetItem1-e flat major" ID="{9D6DF253-C2C4-40F5-99BD-36D5DEC84C30}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 						<Sound Name="disintegration_1second" ID="{B1EB8F11-1723-4341-8543-089A0BA34CF5}" ShortID="931957837">
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
@@ -2611,6 +2384,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="DisintegrationLine_1Sec" ID="{B041610B-18E2-40D0-A202-31E015C70EF1}">
+									<PropertyList>
+										<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DisintegrationLine_1Sec.wav</AudioFile>
 									<MediaIDList>
@@ -2640,6 +2416,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="DisintegrationLine_1_5sec" ID="{5BA58412-7E9D-4293-B5F9-4429F18EF69B}">
+									<PropertyList>
+										<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DisintegrationLine_1.5sec.wav</AudioFile>
 									<MediaIDList>
@@ -2669,6 +2448,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="DisintegrationLine_2sec" ID="{A857DDB2-58C4-48A8-812D-15CD2C4D2F58}">
+									<PropertyList>
+										<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DisintegrationLine_2sec.wav</AudioFile>
 									<MediaIDList>
@@ -2698,6 +2480,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="DisintegrationLine_3sec" ID="{31D209FA-0727-46EA-A104-98A33E69A8CF}">
+									<PropertyList>
+										<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DisintegrationLine_3sec.wav</AudioFile>
 									<MediaIDList>
@@ -2727,6 +2512,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="DisintegrationLine_3_5sec" ID="{C5123DB9-A3A6-429B-A9FB-782B8A919853}">
+									<PropertyList>
+										<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DisintegrationLine_3.5sec.wav</AudioFile>
 									<MediaIDList>
