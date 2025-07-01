@@ -10,6 +10,8 @@ public class SaveSlot
     public string CurrentRoomName;
     public RoomPort CurrentPort;
     public string version;
+    public AK.Wwise.Switch TrackPrimary;
+    public AK.Wwise.Switch TrackSecondary;
 
     public SaveSlot(string name, Dictionary<string, bool> flags, HashSet<string> rooms, string currentRoomName, RoomPort currentPort)
     {

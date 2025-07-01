@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BigAssLaser : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class BigAssLaser : MonoBehaviour
 
     [SerializeField] private bool _active = true;
 
+    private bool _hittingSomething = false;
+
+    // Events
+    public UnityEvent IsColliding;
+    public UnityEvent NotColliding;
+
 
     private void Start()
     {
@@ -35,12 +42,15 @@ public class BigAssLaser : MonoBehaviour
         _laserLine.SetPosition(1, _maxDistance);
 
         Activate(_active);
+
+        NotColliding?.Invoke();
     }
 
     private void FixedUpdate()
     {
 
         if (_active == false) return;
+
 
         // Adjust laser in case it's moving
         // Debug.Log(transform.up);
@@ -79,6 +89,12 @@ public class BigAssLaser : MonoBehaviour
             _laserEndVisual.transform.position = newEnd;
 
             _laserEndVisual.SetActive(true);
+
+            if(_hittingSomething == false)
+            {
+                _hittingSomething = true;
+                IsColliding?.Invoke();
+            }
         }
         else
         {
@@ -93,6 +109,12 @@ public class BigAssLaser : MonoBehaviour
             {
                 _affectedSwitch.Deactivate();
                 _affectedSwitch = null;
+            }
+
+            if(_hittingSomething == true)
+            {
+                _hittingSomething = false;
+                NotColliding?.Invoke();
             }
         }
     }

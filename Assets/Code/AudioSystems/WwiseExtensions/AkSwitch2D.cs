@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class AkSwitch2D : MonoBehaviour
         Debug.Log(Switch.Name);
         if (_onStart && AudioManager.Instance != null)
         {
+            Debug.Log(JsonConvert.SerializeObject(Switch));
             Switch.SetValue(AudioManager.Instance.SoundPlayer);
 
             if (SecondarySwitch.Name != "") SecondarySwitch.SetValue(AudioManager.Instance.SoundPlayer);
