@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TriggerEvents : MonoBehaviour
+public class UnityEventsExposer : MonoBehaviour
 {
 
-    public bool JustPlayer = false;
+    
 
+    [Header("Physics Trigger Events")]
+    public bool JustPlayer = false;
     public UnityEvent<Collider2D> OnTriggerEnter;
     public UnityEvent<Collider2D> OnTriggerExit;
     public UnityEvent<Collider2D> OnTriggerStay;
+
+    [Header("Game Time Events")]
+    public UnityEvent OnEnabled;
+    public UnityEvent OnDisabled;
+
+    private void OnEnable()
+    {
+        OnEnabled?.Invoke();
+    }
+
+    private void OnDisable()
+    {
+        OnDisabled?.Invoke();
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
