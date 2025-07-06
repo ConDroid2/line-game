@@ -2534,9 +2534,9 @@
 										<Value>22</Value>
 									</ValueList>
 								</Property>
-								<Property Name="Volume" Type="Real64">
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
-										<Value>10</Value>
+										<Value>True</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2573,6 +2573,11 @@
 						<Sound Name="BigLaserHitObject" ID="{404745E3-86D1-4209-90E6-23F152059422}" ShortID="155848936">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">

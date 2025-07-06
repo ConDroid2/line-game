@@ -20,7 +20,7 @@ public class WwiseEventPoster : MonoBehaviour
     {
         if(AudioManager.Instance != null)
         {
-            _wwiseEvent.Post(AudioManager.Instance.gameObject);
+            _wwiseEvent.Post(gameObject);
         }
     }
 }
