@@ -21,9 +21,14 @@ public class GameManager : MonoBehaviour
     private bool _gamePaused = false;
 
     private HashSet<string> _visitedRooms = new HashSet<string>();
+
+    private bool _firstSceneLoad = true;
+    public SaveSlot.WwiseSwitchData PrimaryTrackData;
+    public SaveSlot.WwiseSwitchData SecondaryTrackData;
     private SaveSlot _saveSlot;
 
     public System.Action<string, bool> OnSetFlag;
+    public UnityEngine.Events.UnityEvent OnFirstSceneLoad;
 
     private void Awake()
     {
@@ -63,6 +68,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        //if(_saveSlot.TrackPrimary != null && AudioManager.Instance != null)
+        //{
+        //    Debug.Log("Setting primary track from save");
+        //    _saveSlot.TrackPrimary.SetValue(AudioManager.Instance.SoundPlayer);
+        //}
+
+        //if(_saveSlot.TrackSecondary != null && AudioManager.Instance != null)
+        //{
+        //    Debug.Log("Setting secondary track from save");
+        //    _saveSlot.TrackSecondary.SetValue(AudioManager.Instance.SoundPlayer);
+        //}
     }
 
     private void OnDisable()
@@ -158,6 +178,8 @@ public class GameManager : MonoBehaviour
             levelManager.SetStartingDistance(startingDistance);
 
             // _toPort = null;
+
+            
         }
         else if (levelManager != null && _toPort == null)
         {
@@ -197,6 +219,18 @@ public class GameManager : MonoBehaviour
         _visitedRooms.Add(_currentRoom.RoomName);
 
         SaveData();
+
+        // Handle loading the correct music
+        if (_firstSceneLoad)
+        {
+            if (_saveSlot.TrackPrimary != null)
+                AkSoundEngine.SetSwitch(_saveSlot.TrackPrimary.SwitchGroup, _saveSlot.TrackPrimary.SwitchState, AudioManager.Instance.SoundPlayer);
+
+            if(_saveSlot.TrackSecondary != null) 
+                AkSoundEngine.SetSwitch(_saveSlot.TrackSecondary.SwitchGroup, _saveSlot.TrackSecondary.SwitchState, AudioManager.Instance.SoundPlayer);
+            // OnFirstSceneLoad?.Invoke();
+            _firstSceneLoad = false;  
+        }
     }
 
     public void HandlePlayerReachedEdgeOfLine(Vector3 playerPosition)
@@ -282,7 +316,7 @@ public class GameManager : MonoBehaviour
     {
         if (_saveSlot == null) return;
 
-        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoom.RoomName, _toPort);
+        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoom.RoomName, _toPort, PrimaryTrackData, SecondaryTrackData);
 
         JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
 

@@ -2375,6 +2375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3544947069569649705}
   - component: {fileID: 3544947069569649702}
+  - component: {fileID: 61345229577242095}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2420,6 +2421,37 @@ MonoBehaviour:
   _pauseMenu: {fileID: 2726621452195761680}
   _devMenu: {fileID: 398425455780725732}
   _map: {fileID: 5647432299041261294}
+  OnFirstSceneLoad:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 61345229577242095}
+        m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+        m_MethodName: PostEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &61345229577242095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544947069569649703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbdca0ce99154d4b86d55d7f5a287de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wwiseEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 245019001641f114b8d9aa4becdcac6f, type: 2}
 --- !u!1 &3806330771861620308
 GameObject:
   m_ObjectHideFlags: 0

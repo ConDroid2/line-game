@@ -10,16 +10,18 @@ public class SaveSlot
     public string CurrentRoomName;
     public RoomPort CurrentPort;
     public string version;
-    public AK.Wwise.Switch TrackPrimary;
-    public AK.Wwise.Switch TrackSecondary;
+    public WwiseSwitchData TrackPrimary;
+    public WwiseSwitchData TrackSecondary;
 
-    public SaveSlot(string name, Dictionary<string, bool> flags, HashSet<string> rooms, string currentRoomName, RoomPort currentPort)
+    public SaveSlot(string name, Dictionary<string, bool> flags, HashSet<string> rooms, string currentRoomName, RoomPort currentPort, WwiseSwitchData trackPrimary, WwiseSwitchData trackSecondary)
     {
         Name = name;
         Flags = flags;
         RoomsVisited = rooms;
         CurrentRoomName = currentRoomName;
         CurrentPort = currentPort;
+        TrackPrimary = trackPrimary;
+        TrackSecondary = trackSecondary;
     }
 
     public class VolumeSettings
@@ -27,5 +29,11 @@ public class SaveSlot
         public int MainVolume;
         public int MusicVolume;
         public int SoundEffectVolume;
+    }
+
+    public class WwiseSwitchData
+    {
+        public string SwitchGroup;
+        public string SwitchState;
     }
 }

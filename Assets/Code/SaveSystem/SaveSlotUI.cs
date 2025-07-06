@@ -46,7 +46,7 @@ public class SaveSlotUI : MonoBehaviour
             {
                     this.OnFileEmpty?.Invoke();
                 //_buttonText.text = "Empty";
-                _saveData = new SaveSlot(SlotName, new Dictionary<string, bool>(), new HashSet<string>(), "", null);
+                _saveData = new SaveSlot(SlotName, new Dictionary<string, bool>(), new HashSet<string>(), "", null, null, null);
             }
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AkSwitch2D : MonoBehaviour
 {
+    [SerializeField] private bool _saveTrackToSaveFile;
     public AK.Wwise.Switch Switch;
     public AK.Wwise.Switch SecondarySwitch;
 
@@ -17,9 +18,7 @@ public class AkSwitch2D : MonoBehaviour
         if (_onStart && AudioManager.Instance != null)
         {
             Debug.Log(JsonConvert.SerializeObject(Switch));
-            Switch.SetValue(AudioManager.Instance.SoundPlayer);
-
-            if (SecondarySwitch.Name != "") SecondarySwitch.SetValue(AudioManager.Instance.SoundPlayer);
+            SetSwitchesValue();
         }
     }
 
@@ -27,9 +26,7 @@ public class AkSwitch2D : MonoBehaviour
     {
         if (_onTriggerEnter && AudioManager.Instance != null)
         {
-            Switch.SetValue(AudioManager.Instance.SoundPlayer);
-
-            if (SecondarySwitch.Name != "") SecondarySwitch.SetValue(AudioManager.Instance.SoundPlayer);
+            SetSwitchesValue();
         }
     }
 
@@ -37,9 +34,29 @@ public class AkSwitch2D : MonoBehaviour
     {
         if (AudioManager.Instance != null)
         {
-            Switch.SetValue(AudioManager.Instance.SoundPlayer);
+            SetSwitchesValue();
+        }
+    }
 
-            if (SecondarySwitch.Name != "") SecondarySwitch.SetValue(AudioManager.Instance.SoundPlayer);
+    public void SetSwitchesValue()
+    {
+        Switch.SetValue(AudioManager.Instance.SoundPlayer);
+
+        if (SecondarySwitch.Name != "") SecondarySwitch.SetValue(AudioManager.Instance.SoundPlayer);
+
+        if (_saveTrackToSaveFile && GameManager.Instance != null)
+        {
+            GameManager.Instance.PrimaryTrackData = new SaveSlot.WwiseSwitchData
+            {
+                SwitchGroup = Switch.WwiseObjectReference.GroupObjectReference.ObjectName,
+                SwitchState = Switch.WwiseObjectReference.ObjectName
+            };
+
+            GameManager.Instance.SecondaryTrackData = new SaveSlot.WwiseSwitchData
+            {
+                SwitchGroup = SecondarySwitch.WwiseObjectReference.GroupObjectReference.ObjectName,
+                SwitchState = SecondarySwitch.WwiseObjectReference.ObjectName
+            };
         }
     }
 }
