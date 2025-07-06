@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{6652EA11-6F2E-2726-F260-7765AFFA78EC}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{11203E1C-11F2-297F-2B6F-5109534DECAB}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -36,6 +36,10 @@
 				<File Id="49286846" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bleeps #11.wav</ShortName>
 					<CachePath>SFX/Bleeps #11_818F3B66.wem</CachePath>
+				</File>
+				<File Id="66190099" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FinalExplosion.wav</ShortName>
+					<CachePath>SFX/FinalExplosion_818F3B66.wem</CachePath>
 				</File>
 				<File Id="83571169" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>GetItem1.wav</ShortName>
@@ -875,6 +879,11 @@
 				<Event Id="2717799377" Name="Play_EnemyShoot3_2" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
 					<MediaRefs>
 						<MediaRef Id="532061112"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3727277690" Name="Play_Final_Explosion" DurationType="OneShot" DurationMin="3.1083333" DurationMax="3.1083333">
+					<MediaRefs>
+						<MediaRef Id="66190099"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="799384824" Name="Play_GetItem1" DurationType="OneShot" DurationMin="2.0020833" DurationMax="2.0020833">
@@ -2311,5 +2320,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{1C5A2D6D-08FC-D00C-E6B2-D0EDB437933B}</FileHash>
+	<FileHash>{ACE91EED-29D3-CC27-D53F-F9E8F114BD2A}</FileHash>
 </SoundBanksInfo>
