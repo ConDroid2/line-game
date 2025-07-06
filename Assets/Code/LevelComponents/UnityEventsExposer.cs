@@ -15,8 +15,20 @@ public class UnityEventsExposer : MonoBehaviour
     public UnityEvent<Collider2D> OnTriggerStay;
 
     [Header("Game Time Events")]
+    public UnityEvent OnStart;
+    public UnityEvent OnAwake;
     public UnityEvent OnEnabled;
     public UnityEvent OnDisabled;
+
+    private void Start()
+    {
+        OnStart?.Invoke();
+    }
+
+    private void Awake()
+    {
+        OnAwake?.Invoke();
+    }
 
     private void OnEnable()
     {
