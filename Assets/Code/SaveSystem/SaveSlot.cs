@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 public class SaveSlot
@@ -12,8 +13,10 @@ public class SaveSlot
     public string version;
     public WwiseSwitchData TrackPrimary;
     public WwiseSwitchData TrackSecondary;
+    public JObject ControlOverridesJson;
 
-    public SaveSlot(string name, Dictionary<string, bool> flags, HashSet<string> rooms, string currentRoomName, RoomPort currentPort, WwiseSwitchData trackPrimary, WwiseSwitchData trackSecondary)
+    public SaveSlot(string name, Dictionary<string, bool> flags, HashSet<string> rooms, string currentRoomName, RoomPort currentPort, 
+        WwiseSwitchData trackPrimary, WwiseSwitchData trackSecondary, JObject controlOverridesJson)
     {
         Name = name;
         Flags = flags;
@@ -22,6 +25,7 @@ public class SaveSlot
         CurrentPort = currentPort;
         TrackPrimary = trackPrimary;
         TrackSecondary = trackSecondary;
+        ControlOverridesJson = controlOverridesJson;
     }
 
     public class VolumeSettings

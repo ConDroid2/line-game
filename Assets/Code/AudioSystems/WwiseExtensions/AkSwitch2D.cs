@@ -17,7 +17,6 @@ public class AkSwitch2D : MonoBehaviour
         Debug.Log(Switch.Name);
         if (_onStart && AudioManager.Instance != null)
         {
-            Debug.Log(JsonConvert.SerializeObject(Switch));
             SetSwitchesValue();
         }
     }

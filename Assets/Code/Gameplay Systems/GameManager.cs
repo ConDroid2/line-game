@@ -1,4 +1,4 @@
-using System.Collections;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     private bool _firstSceneLoad = true;
     public SaveSlot.WwiseSwitchData PrimaryTrackData;
     public SaveSlot.WwiseSwitchData SecondaryTrackData;
+    public string ControlOverridesJson = "";
+    // Should this just be public? Lots of other classes want to mess with it
     private SaveSlot _saveSlot;
 
     public System.Action<string, bool> OnSetFlag;
@@ -316,7 +318,8 @@ public class GameManager : MonoBehaviour
     {
         if (_saveSlot == null) return;
 
-        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoom.RoomName, _toPort, PrimaryTrackData, SecondaryTrackData);
+        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoom.RoomName, _toPort, PrimaryTrackData, SecondaryTrackData, JObject.Parse(ControlOverridesJson) ?? null);
+        Debug.Log(newSlot.ControlOverridesJson);
 
         JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
 
@@ -328,6 +331,8 @@ public class GameManager : MonoBehaviour
         _saveSlot = saveData;
         _toPort = saveData.CurrentPort;
         _visitedRooms = saveData.RoomsVisited;
+        InputManager.Instance?.LoadControlOverrides(_saveSlot.ControlOverridesJson.ToString());
+        Debug.Log(_saveSlot.ControlOverridesJson?.ToString());
 
         // Doing it this way allows us to add keys without breaking the save system
         foreach(string key in saveData.Flags.Keys)

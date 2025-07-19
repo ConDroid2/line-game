@@ -38,6 +38,7 @@ public class InputManager : MonoBehaviour
         }
 
         Controls = new BaseControls();
+
         Controls.PlayerMap.Enable();
 
         Controls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
@@ -56,6 +57,13 @@ public class InputManager : MonoBehaviour
         Controls.PlayerMap.OpenMap.performed -= HandleMapPerformed;
         Controls.PauseMap.CloseMenu.performed -= HandleCloseMenuPerformed;
         Controls.MapMap.CloseMap.performed -= HandleMapClosed;
+    }
+
+    public void LoadControlOverrides(string overridesJson)
+    {
+        Controls.Disable();
+        Controls.LoadBindingOverridesFromJson(overridesJson);
+        Controls.Enable();
     }
 
     public void HandlePausePerformed(InputAction.CallbackContext context)
@@ -174,6 +182,14 @@ public class InputManager : MonoBehaviour
                 callback.Dispose();
                 Controls.PlayerMap.Enable();
                 onBindingComplete();
+
+                string controlOverrides = Controls.SaveBindingOverridesAsJson();
+                if(GameManager.Instance != null)
+                {
+                    Debug.Log("Overriding controls");
+                    Debug.Log(controlOverrides);
+                    GameManager.Instance.ControlOverridesJson = controlOverrides;
+                }
             })
             .Start();
     }

@@ -7,6 +7,7 @@ using TMPro;
 public class ControlBindingsController : MonoBehaviour
 {
     [SerializeField] private GameObject _rebindingDisplay;
+
     [Header("KeyBoardBindings")]
     [SerializeField] private TextMeshProUGUI _slowMovementKeyText;
     [SerializeField] private TextMeshProUGUI _shootKeyText;
@@ -17,13 +18,26 @@ public class ControlBindingsController : MonoBehaviour
     [SerializeField] private Button _grappleKeyButton;
     [SerializeField] private Button _rotateKeyButton;
 
+    [Header("ControllerBindings")]
+    [SerializeField] private TextMeshProUGUI _slowMovementButtonText;
+    [SerializeField] private TextMeshProUGUI _shootButtonText;
+    [SerializeField] private TextMeshProUGUI _grappleButtonText;
+    [SerializeField] private TextMeshProUGUI _rotateButtonText;
+    [SerializeField] private Button _slowMovementButtonButton;
+    [SerializeField] private Button _shootButtonButton;
+    [SerializeField] private Button _grappleButtonButton;
+    [SerializeField] private Button _rotateButtonButton;
+
     private void Start()
     {
         UpdateUIText();
     }
 
+    
+
     private void UpdateUIText()
     {
+        Debug.Log("Updating UI Text");
         _slowMovementKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.SlowMovement);
         _shootKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Shoot);
         _grappleKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Grapple);

@@ -41,7 +41,7 @@ public class Timer : MonoBehaviour
             if(_timeSinceStart >= _time)
             {  
                 _running = false;
-                OnTimerEnd.Invoke();
+                OnTimerEnd?.Invoke();
             }
         }
     }
