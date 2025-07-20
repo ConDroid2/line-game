@@ -412,6 +412,10 @@ PrefabInstance:
       propertyPath: StartingLine
       value: 
       objectReference: {fileID: 672758647}
+    - target: {fileID: 5204255655711899628, guid: d12b9972462337a4fb6e1c3e0f7df748, type: 3}
+      propertyPath: DoNotAllowPlayerToLoadIntoThisRoom
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5204255656126032180, guid: d12b9972462337a4fb6e1c3e0f7df748, type: 3}
       propertyPath: m_Name
       value: Level Prefab
@@ -1120,8 +1124,7 @@ MonoBehaviour:
   _lineController: {fileID: 164157363}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!1001 &166772404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1283,8 +1286,7 @@ MonoBehaviour:
   _lineController: {fileID: 181035738}
   _magnitude: 8
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!1 &207449869 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7931930095636713390, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -1305,8 +1307,7 @@ MonoBehaviour:
   _lineController: {fileID: 207449876}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &207449876 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -1338,8 +1339,7 @@ MonoBehaviour:
   _lineController: {fileID: 277992300}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &277992300 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -1586,8 +1586,7 @@ MonoBehaviour:
   _lineController: {fileID: 326063716}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &326063716 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -1781,8 +1780,7 @@ MonoBehaviour:
   _lineController: {fileID: 373687324}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &373687324 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -2553,8 +2551,7 @@ MonoBehaviour:
   _lineController: {fileID: 593983683}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &593983683 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -3022,8 +3019,7 @@ MonoBehaviour:
   _lineController: {fileID: 710416184}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &710416184 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -3453,8 +3449,7 @@ MonoBehaviour:
   _lineController: {fileID: 846938465}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &846938465 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -3559,8 +3554,7 @@ MonoBehaviour:
   _lineController: {fileID: 882340782}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &882340782 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -4234,8 +4228,7 @@ MonoBehaviour:
   _lineController: {fileID: 956556378}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &956556378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -4267,8 +4260,7 @@ MonoBehaviour:
   _lineController: {fileID: 971093292}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &971093292 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -4705,8 +4697,7 @@ MonoBehaviour:
   _lineController: {fileID: 1058229692}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1058229692 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -4738,8 +4729,7 @@ MonoBehaviour:
   _lineController: {fileID: 1072925044}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1072925044 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -4855,8 +4845,7 @@ MonoBehaviour:
   _lineController: {fileID: 1073441529}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!1001 &1085794606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4934,8 +4923,7 @@ MonoBehaviour:
   _lineController: {fileID: 1092014354}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1092014354 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -5108,8 +5096,7 @@ MonoBehaviour:
   _lineController: {fileID: 1147048956}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!1001 &1155762455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5284,8 +5271,7 @@ MonoBehaviour:
   _lineController: {fileID: 1166171701}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1166171701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -5683,8 +5669,7 @@ MonoBehaviour:
   _lineController: {fileID: 1281215270}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1281215270 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -5976,8 +5961,7 @@ MonoBehaviour:
   _lineController: {fileID: 1387248097}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!1001 &1407702225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6339,8 +6323,7 @@ MonoBehaviour:
   _lineController: {fileID: 1567275592}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1567275592 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -6502,8 +6485,7 @@ MonoBehaviour:
   _lineController: {fileID: 1634499445}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1634499445 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -6730,8 +6712,7 @@ MonoBehaviour:
   _lineController: {fileID: 1708268478}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1708268478 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -6928,8 +6909,7 @@ MonoBehaviour:
   _lineController: {fileID: 1733351647}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!1001 &1736227426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7148,8 +7128,7 @@ MonoBehaviour:
   _lineController: {fileID: 1753609605}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!1001 &1763250841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7389,8 +7368,7 @@ MonoBehaviour:
   _lineController: {fileID: 1812232379}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1812232379 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -7479,8 +7457,7 @@ MonoBehaviour:
   _lineController: {fileID: 1838542258}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &1838542258 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7931930095636713391, guid: 7306e3f99e5624a47ab55c798d24ab8e, type: 3}
@@ -8062,8 +8039,7 @@ MonoBehaviour:
   _lineController: {fileID: 1918786441}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!1001 &1951604074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8436,8 +8412,7 @@ MonoBehaviour:
   _lineController: {fileID: 1990980012}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!4 &1994554503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5204255656231690853, guid: d12b9972462337a4fb6e1c3e0f7df748, type: 3}
@@ -8544,8 +8519,7 @@ MonoBehaviour:
   _lineController: {fileID: 2092192336}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}
 --- !u!114 &2092192336 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1387910571374025303, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
@@ -8848,5 +8822,4 @@ MonoBehaviour:
   _lineController: {fileID: 2144986085}
   _magnitude: 7
   _direction: 1
-  _visualsFrequency: 10
-  _directionVisualsPrefab: {fileID: 2453418427060303331, guid: 8673d2d087ca6e34b9b22f160e3f3888, type: 3}
+  _lineVisual: {fileID: 0}

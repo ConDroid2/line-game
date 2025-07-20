@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private WorldData _currentWorld;
     private WorldRoomData _currentRoom;
+    private string _currentRoomNameForSaveFile;
     private RoomPort _toPort;
     private Player _player;
     private bool _gamePaused = false;
@@ -215,8 +216,18 @@ public class GameManager : MonoBehaviour
 
         
         if (_currentWorld == null) return;
-
         _currentRoom = _currentWorld.RoomNameToData[scene.name];
+
+        // If we're not adding this room to the, reset the save files Current Port to whatever it was before this room
+        if (levelManager.DoNotAllowPlayerToLoadIntoThisRoom) 
+        {
+            _toPort = _saveSlot.CurrentPort;
+        }
+        // Else, leave the _toPort as is and set the _currentRoom to this room
+        else
+        {
+            _currentRoomNameForSaveFile = _currentRoom.RoomName;
+        }
 
         _visitedRooms.Add(_currentRoom.RoomName);
 
@@ -318,7 +329,13 @@ public class GameManager : MonoBehaviour
     {
         if (_saveSlot == null) return;
 
-        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoom.RoomName, _toPort, PrimaryTrackData, SecondaryTrackData, JObject.Parse(ControlOverridesJson) ?? null);
+        JObject controlOverrides = null;
+        if(ControlOverridesJson != null && ControlOverridesJson != "")
+        {
+            controlOverrides = JObject.Parse(ControlOverridesJson);
+        }
+
+        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoomNameForSaveFile, _toPort, PrimaryTrackData, SecondaryTrackData, controlOverrides);
         Debug.Log(newSlot.ControlOverridesJson);
 
         JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
@@ -331,8 +348,10 @@ public class GameManager : MonoBehaviour
         _saveSlot = saveData;
         _toPort = saveData.CurrentPort;
         _visitedRooms = saveData.RoomsVisited;
-        InputManager.Instance?.LoadControlOverrides(_saveSlot.ControlOverridesJson.ToString());
-        Debug.Log(_saveSlot.ControlOverridesJson?.ToString());
+
+        if(_saveSlot.ControlOverridesJson != null)
+            InputManager.Instance?.LoadControlOverrides(_saveSlot.ControlOverridesJson.ToString());
+
 
         // Doing it this way allows us to add keys without breaking the save system
         foreach(string key in saveData.Flags.Keys)
