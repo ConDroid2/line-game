@@ -30,6 +30,16 @@ public class ControlBindingsController : MonoBehaviour
 
     private void Start()
     {
+        _slowMovementKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.SlowMovement); });
+        _shootKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Shoot); });
+        _grappleKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Grapple); });
+        _rotateKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Rotate); });
+
+        _slowMovementButtonButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.SlowMovement_Gamepad); });
+        _shootButtonButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Shoot_Gamepad); });
+        _grappleButtonButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Grapple_Gamepad); });
+        _rotateButtonButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Rotate_Gamepad); });
+
         UpdateUIText();
     }
 
@@ -43,10 +53,10 @@ public class ControlBindingsController : MonoBehaviour
         _grappleKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Grapple);
         _rotateKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Rotate);
 
-        _slowMovementKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.SlowMovement); });
-        _shootKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Shoot); });
-        _grappleKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Grapple); });
-        _rotateKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Rotate); });
+        _slowMovementButtonText.text = $"<sprite name=\"{InputManager.Instance.GetBinding(InputManager.Binding.SlowMovement_Gamepad)}\">";
+        _shootButtonText.text = $"<sprite name=\"{InputManager.Instance.GetBinding(InputManager.Binding.Shoot_Gamepad)}\">";
+        _grappleButtonText.text = $"<sprite name=\"{InputManager.Instance.GetBinding(InputManager.Binding.Grapple_Gamepad)}\">";
+        _rotateButtonText.text = $"<sprite name=\"{InputManager.Instance.GetBinding(InputManager.Binding.Rotate_Gamepad)}\">";
     }
 
     private void HandleRebinding(InputManager.Binding binding)
