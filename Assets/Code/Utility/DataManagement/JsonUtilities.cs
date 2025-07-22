@@ -7,10 +7,15 @@ using Newtonsoft.Json;
 public class JsonUtilities
 {
     private string _pathRoot;
+    private JsonSerializerSettings _serializerSettings;
+    private Newtonsoft.Json.Serialization.DiagnosticsTraceWriter _traceWriter;
 
     public JsonUtilities(string root)
     {
         _pathRoot = root;
+
+        _traceWriter = new Newtonsoft.Json.Serialization.DiagnosticsTraceWriter();
+        _serializerSettings = new JsonSerializerSettings { TraceWriter = _traceWriter };
     }
     public bool SaveData<T>(string relativePath, T data)
     {
@@ -26,7 +31,7 @@ public class JsonUtilities
             using FileStream stream = File.Create(path);
             stream.Close();
 
-            File.WriteAllText(path, JsonConvert.SerializeObject(data));
+            File.WriteAllText(path, JsonConvert.SerializeObject(data, _serializerSettings));
             Debug.Log("Successfully saved data");
 
             return true;
@@ -50,7 +55,9 @@ public class JsonUtilities
 
         try
         {
-            T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+            Debug.Log("Deserializing data");
+            T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(path), _serializerSettings);
+            Debug.Log(data);
             return data;
         }
         catch(System.Exception e)

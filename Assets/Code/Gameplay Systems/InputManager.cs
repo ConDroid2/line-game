@@ -22,7 +22,11 @@ public class InputManager : MonoBehaviour
         Move_Up,
         Move_Down,
         Move_Left,
-        Move_Right
+        Move_Right,
+        SlowMovement_Gamepad,
+        Shoot_Gamepad,
+        Grapple_Gamepad,
+        Rotate_Gamepad
     }
 
 
@@ -38,6 +42,7 @@ public class InputManager : MonoBehaviour
         }
 
         Controls = new BaseControls();
+
         Controls.PlayerMap.Enable();
 
         Controls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
@@ -46,7 +51,9 @@ public class InputManager : MonoBehaviour
         Controls.PauseMap.CloseMenu.performed += HandleCloseMenuPerformed;
         Controls.MapMap.CloseMap.performed += HandleMapClosed;
 
-        Debug.Log(GetBinding(Binding.SlowMovement));
+        Debug.Log(Controls.PlayerMap.Sprint.bindings[0]);
+        Debug.Log(Controls.PlayerMap.Sprint.bindings[0]);
+        Debug.Log(GetBinding(Binding.SlowMovement_Gamepad));
     }
 
     private void OnDisable()
@@ -56,6 +63,13 @@ public class InputManager : MonoBehaviour
         Controls.PlayerMap.OpenMap.performed -= HandleMapPerformed;
         Controls.PauseMap.CloseMenu.performed -= HandleCloseMenuPerformed;
         Controls.MapMap.CloseMap.performed -= HandleMapClosed;
+    }
+
+    public void LoadControlOverrides(string overridesJson)
+    {
+        Controls.Disable();
+        Controls.LoadBindingOverridesFromJson(overridesJson);
+        Controls.Enable();
     }
 
     public void HandlePausePerformed(InputAction.CallbackContext context)
@@ -137,6 +151,14 @@ public class InputManager : MonoBehaviour
                 return Controls.PlayerMap.Move.bindings[3].ToDisplayString();
             case Binding.Move_Right:
                 return Controls.PlayerMap.Move.bindings[4].ToDisplayString();
+            case Binding.SlowMovement_Gamepad:
+                return Controls.PlayerMap.Sprint.bindings[0].ToDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
+            case Binding.Shoot_Gamepad:
+                return Controls.PlayerMap.FireProjectile.bindings[1].ToDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
+            case Binding.Grapple_Gamepad:
+                return Controls.PlayerMap.Grapple.bindings[1].ToDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
+            case Binding.Rotate_Gamepad:
+                return Controls.PlayerMap.Rotate.bindings[1].ToDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
         }
     }
 
@@ -166,16 +188,61 @@ public class InputManager : MonoBehaviour
                 action = Controls.PlayerMap.Rotate;
                 bindingIndex = 0;
                 break;
+            case Binding.SlowMovement_Gamepad:
+                action = Controls.PlayerMap.Sprint;
+                bindingIndex = 0;
+                break;
+            case Binding.Shoot_Gamepad:
+                action = Controls.PlayerMap.FireProjectile;
+                bindingIndex = 1;
+                break;
+            case Binding.Grapple_Gamepad:
+                action = Controls.PlayerMap.Grapple;
+                bindingIndex = 1;
+                break;
+            case Binding.Rotate_Gamepad:
+                action = Controls.PlayerMap.Rotate;
+                bindingIndex = 1;
+                break;
         }
 
         action.PerformInteractiveRebinding(bindingIndex)
             .OnComplete(callback =>
             {
                 callback.Dispose();
+
+                if(CheckForDuplicateBinding(action, bindingIndex))
+                {
+                    action.RemoveBindingOverride(bindingIndex);
+                }
+
                 Controls.PlayerMap.Enable();
                 onBindingComplete();
+
+                string controlOverrides = Controls.SaveBindingOverridesAsJson();
+                if(GameManager.Instance != null)
+                {
+                    GameManager.Instance.ControlOverridesJson = controlOverrides;
+                }
             })
             .Start();
+    }
+
+    private bool CheckForDuplicateBinding(InputAction action, int bindingIndex)
+    {
+        InputBinding newInputBinding = action.bindings[bindingIndex];
+
+        foreach(InputBinding binding in Controls.bindings)
+        {
+            if (binding == newInputBinding) continue;
+
+            if(binding.effectivePath == newInputBinding.effectivePath)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

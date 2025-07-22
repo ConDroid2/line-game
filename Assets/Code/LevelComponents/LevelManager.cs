@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     public GameObject MiscLevelComponentsParent;
 
     [Header("Room Settings")]
+    [Tooltip("Check this if you DO NOT want the player to be able to load their save into this room")] 
+    public bool DoNotAllowPlayerToLoadIntoThisRoom = false;
     [Tooltip("Height of room in Room Units")] public int RoomHeight = 1;
     [Tooltip("Width of Room in Room Units")] public int RoomWidth = 1;
     

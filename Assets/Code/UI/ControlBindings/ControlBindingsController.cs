@@ -7,6 +7,7 @@ using TMPro;
 public class ControlBindingsController : MonoBehaviour
 {
     [SerializeField] private GameObject _rebindingDisplay;
+
     [Header("KeyBoardBindings")]
     [SerializeField] private TextMeshProUGUI _slowMovementKeyText;
     [SerializeField] private TextMeshProUGUI _shootKeyText;
@@ -17,22 +18,45 @@ public class ControlBindingsController : MonoBehaviour
     [SerializeField] private Button _grappleKeyButton;
     [SerializeField] private Button _rotateKeyButton;
 
+    [Header("ControllerBindings")]
+    [SerializeField] private TextMeshProUGUI _slowMovementButtonText;
+    [SerializeField] private TextMeshProUGUI _shootButtonText;
+    [SerializeField] private TextMeshProUGUI _grappleButtonText;
+    [SerializeField] private TextMeshProUGUI _rotateButtonText;
+    [SerializeField] private Button _slowMovementButtonButton;
+    [SerializeField] private Button _shootButtonButton;
+    [SerializeField] private Button _grappleButtonButton;
+    [SerializeField] private Button _rotateButtonButton;
+
     private void Start()
     {
+        _slowMovementKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.SlowMovement); });
+        _shootKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Shoot); });
+        _grappleKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Grapple); });
+        _rotateKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Rotate); });
+
+        _slowMovementButtonButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.SlowMovement_Gamepad); });
+        _shootButtonButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Shoot_Gamepad); });
+        _grappleButtonButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Grapple_Gamepad); });
+        _rotateButtonButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Rotate_Gamepad); });
+
         UpdateUIText();
     }
 
+    
+
     private void UpdateUIText()
     {
+        Debug.Log("Updating UI Text");
         _slowMovementKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.SlowMovement);
         _shootKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Shoot);
         _grappleKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Grapple);
         _rotateKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Rotate);
 
-        _slowMovementKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.SlowMovement); });
-        _shootKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Shoot); });
-        _grappleKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Grapple); });
-        _rotateKeyButton.onClick.AddListener(() => { HandleRebinding(InputManager.Binding.Rotate); });
+        _slowMovementButtonText.text = $"<sprite name=\"{InputManager.Instance.GetBinding(InputManager.Binding.SlowMovement_Gamepad)}\">";
+        _shootButtonText.text = $"<sprite name=\"{InputManager.Instance.GetBinding(InputManager.Binding.Shoot_Gamepad)}\">";
+        _grappleButtonText.text = $"<sprite name=\"{InputManager.Instance.GetBinding(InputManager.Binding.Grapple_Gamepad)}\">";
+        _rotateButtonText.text = $"<sprite name=\"{InputManager.Instance.GetBinding(InputManager.Binding.Rotate_Gamepad)}\">";
     }
 
     private void HandleRebinding(InputManager.Binding binding)
