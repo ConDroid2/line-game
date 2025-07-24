@@ -62,6 +62,8 @@ public class LineDrawer : MonoBehaviour
 
         _renderer.startColor = new Color(_renderer.startColor.r, _renderer.startColor.g, _renderer.startColor.b, newAlpha);
         _renderer.endColor = new Color(_renderer.endColor.r, _renderer.endColor.g, _renderer.endColor.b, newAlpha);
+
+        _shapesLine.Color = new Color(_shapesLine.Color.r, _shapesLine.Color.g, _shapesLine.Color.b, newAlpha);
     }
 
     private void SetVisualEndpoints()
