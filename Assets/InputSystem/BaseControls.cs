@@ -375,7 +375,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b590b470-e0f5-4e9c-9c96-a6c296db087d"",
-                    ""path"": """",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

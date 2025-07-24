@@ -23,10 +23,12 @@ public class InputManager : MonoBehaviour
         Move_Down,
         Move_Left,
         Move_Right,
+        SelfDestruct,
         SlowMovement_Gamepad,
         Shoot_Gamepad,
         Grapple_Gamepad,
-        Rotate_Gamepad
+        Rotate_Gamepad,
+        SelfDestruct_Gamepad
     }
 
 
@@ -143,14 +145,8 @@ public class InputManager : MonoBehaviour
                 return Controls.PlayerMap.Grapple.bindings[0].ToDisplayString();
             case Binding.Rotate:
                 return Controls.PlayerMap.Rotate.bindings[0].ToDisplayString();
-            case Binding.Move_Up:
-                return Controls.PlayerMap.Move.bindings[1].ToDisplayString();
-            case Binding.Move_Down:
-                return Controls.PlayerMap.Move.bindings[2].ToDisplayString();
-            case Binding.Move_Left:
-                return Controls.PlayerMap.Move.bindings[3].ToDisplayString();
-            case Binding.Move_Right:
-                return Controls.PlayerMap.Move.bindings[4].ToDisplayString();
+            case Binding.SelfDestruct:
+                return Controls.PlayerMap.SelfDestruct.bindings[0].ToDisplayString();
             case Binding.SlowMovement_Gamepad:
                 return Controls.PlayerMap.Sprint.bindings[0].ToDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
             case Binding.Shoot_Gamepad:
@@ -159,6 +155,8 @@ public class InputManager : MonoBehaviour
                 return Controls.PlayerMap.Grapple.bindings[1].ToDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
             case Binding.Rotate_Gamepad:
                 return Controls.PlayerMap.Rotate.bindings[1].ToDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
+            case Binding.SelfDestruct_Gamepad:
+                return Controls.PlayerMap.SelfDestruct.bindings[1].ToDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
         }
     }
 
@@ -188,6 +186,10 @@ public class InputManager : MonoBehaviour
                 action = Controls.PlayerMap.Rotate;
                 bindingIndex = 0;
                 break;
+            case Binding.SelfDestruct:
+                action = Controls.PlayerMap.SelfDestruct;
+                bindingIndex = 0;
+                break;
             case Binding.SlowMovement_Gamepad:
                 action = Controls.PlayerMap.Sprint;
                 bindingIndex = 0;
@@ -202,6 +204,10 @@ public class InputManager : MonoBehaviour
                 break;
             case Binding.Rotate_Gamepad:
                 action = Controls.PlayerMap.Rotate;
+                bindingIndex = 1;
+                break;
+            case Binding.SelfDestruct_Gamepad:
+                action = Controls.PlayerMap.SelfDestruct;
                 bindingIndex = 1;
                 break;
         }
