@@ -52,10 +52,6 @@ public class InputManager : MonoBehaviour
         Controls.PlayerMap.OpenMap.performed += HandleMapPerformed;
         Controls.PauseMap.CloseMenu.performed += HandleCloseMenuPerformed;
         Controls.MapMap.CloseMap.performed += HandleMapClosed;
-
-        Debug.Log(Controls.PlayerMap.Sprint.bindings[0]);
-        Debug.Log(Controls.PlayerMap.Sprint.bindings[0]);
-        Debug.Log(GetBinding(Binding.SlowMovement_Gamepad));
     }
 
     private void OnDisable()

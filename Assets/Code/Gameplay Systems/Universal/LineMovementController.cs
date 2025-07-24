@@ -406,8 +406,6 @@ public class LineMovementController : MonoBehaviour
             float speed = force.Magnitude / OnLineController.CurrentLine.Length;
             float distanceDelta = speed * Time.deltaTime;
 
-            
-
             if (angleBetweenForceAndSlope < 90f)
             {
                 distanceToMove += distanceDelta;

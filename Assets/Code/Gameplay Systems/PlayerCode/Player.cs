@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -374,7 +375,6 @@ public class Player : MonoBehaviour
 
     public void SetNoFailMode(bool noFailMode)
     {
-        Debug.Log("Setting no fail mode to: " + noFailMode);
         NoFailMode = noFailMode;
     }
 
