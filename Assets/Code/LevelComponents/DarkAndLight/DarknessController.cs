@@ -44,7 +44,7 @@ public class DarknessController : MonoBehaviour
         {
             if(_timeSincePlayerEnteredDarkness >= _darknessKillTime)
             {
-                Player.Instance.GetKilled(Enums.KillType.Default);
+                Player.Instance.GetKilled(Enums.KillType.Darkness);
             }
             else
             {

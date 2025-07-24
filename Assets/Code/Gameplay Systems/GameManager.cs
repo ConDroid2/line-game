@@ -236,10 +236,10 @@ public class GameManager : MonoBehaviour
         // Handle loading the correct music
         if (_firstSceneLoad)
         {
-            if (_saveSlot.TrackPrimary != null)
+            if (_saveSlot?.TrackPrimary != null)
                 AkSoundEngine.SetSwitch(_saveSlot.TrackPrimary.SwitchGroup, _saveSlot.TrackPrimary.SwitchState, AudioManager.Instance.SoundPlayer);
 
-            if(_saveSlot.TrackSecondary != null) 
+            if(_saveSlot?.TrackSecondary != null) 
                 AkSoundEngine.SetSwitch(_saveSlot.TrackSecondary.SwitchGroup, _saveSlot.TrackSecondary.SwitchState, AudioManager.Instance.SoundPlayer);
             // OnFirstSceneLoad?.Invoke();
             _firstSceneLoad = false;  

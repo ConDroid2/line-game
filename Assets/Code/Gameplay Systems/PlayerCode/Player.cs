@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float Speed;
     public float SprintingSpeed;
     public float RoomStartInvulnerability;
+    public bool NoFailMode = false;
     public float DelayAfterShoot = 0.5f;
 
     private bool _allowMoving = true;
@@ -257,7 +258,7 @@ public class Player : MonoBehaviour
         else if(context.phase == InputActionPhase.Performed)
         {
             _visualsController.HandleSelfDestructCompleted();
-            GetKilled(Enums.KillType.Default);
+            GetKilled(Enums.KillType.SelfDestruct);
         }
     }
 
@@ -296,7 +297,10 @@ public class Player : MonoBehaviour
 
     public void GetKilled(Enums.KillType killType)
     {
-        if (_invulnerable == true) return; 
+        if (_invulnerable == true) return;
+
+        Debug.Log($"No Fail Mode: {NoFailMode} -- KillType: {killType}");
+        if (NoFailMode && killType != Enums.KillType.SelfDestruct) return;
         // Need to send event so level manager can spawn properly
         OnPlayerDeath.Invoke();
         _grapplingHook.FinishGrapple();
@@ -366,6 +370,12 @@ public class Player : MonoBehaviour
             _aimController.Deactivate();
             _currentAbilityInUse = AbilityEnum.Default;
         }
+    }
+
+    public void SetNoFailMode(bool noFailMode)
+    {
+        Debug.Log("Setting no fail mode to: " + noFailMode);
+        NoFailMode = noFailMode;
     }
 
     private void OnDrawGizmos()
