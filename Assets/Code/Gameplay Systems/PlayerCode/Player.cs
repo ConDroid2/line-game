@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
 
+    [SerializeField] private PlayerVisualsController _visualsController;
     public LineMovementController MovementController;
     [SerializeField] private AimController _aimController;
     [SerializeField] private ProjectileLauncher _projectileLauncher;
@@ -99,6 +100,11 @@ public class Player : MonoBehaviour
         // Rotate Ability Events
         _baseControls.PlayerMap.Rotate.performed += HandleRotatePerformed;
 
+        // Self Destruct Events
+        _baseControls.PlayerMap.SelfDestruct.started += HandleSelfDestructPerformed;
+        _baseControls.PlayerMap.SelfDestruct.canceled += HandleSelfDestructPerformed;
+        _baseControls.PlayerMap.SelfDestruct.performed += HandleSelfDestructPerformed;
+
         _grapplingHook.OnGrappleFinished += HandleGrappleFinished;
 
         MovementController.OnTryToMoveInDirection += HandleTryToMoveInDirection;
@@ -106,6 +112,7 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
+        Debug.Log("Player disabled");
         SceneManager.sceneLoaded -= HandleSceneLoaded;
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
         _baseControls.PlayerMap.Rotate.performed -= HandleRotatePerformed;
@@ -113,6 +120,9 @@ public class Player : MonoBehaviour
         _baseControls.PlayerMap.Grapple.canceled -= HandleGrapplePerformed;
         _baseControls.PlayerMap.FireProjectile.performed -= HandleFirePerformed;
         _baseControls.PlayerMap.FireProjectile.canceled -= HandleFirePerformed;
+        _baseControls.PlayerMap.SelfDestruct.started -= HandleSelfDestructPerformed;
+        _baseControls.PlayerMap.SelfDestruct.canceled -= HandleSelfDestructPerformed;
+        _baseControls.PlayerMap.SelfDestruct.performed -= HandleSelfDestructPerformed;
         _grapplingHook.OnGrappleFinished -= HandleGrappleFinished;
     }
 
@@ -122,16 +132,15 @@ public class Player : MonoBehaviour
     {
         _inputVector = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log("Hitting k");
-            GetKilled(Enums.KillType.Default);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _eyeAnimator.SetTrigger("Left_Right_Blink");
-        }
-
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    Debug.Log("Hitting k");
+        //    GetKilled(Enums.KillType.Default);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    _eyeAnimator.SetTrigger("Left_Right_Blink");
+        //}
 
         if (_allowMoving && !_aimingMode)
         {
@@ -149,8 +158,8 @@ public class Player : MonoBehaviour
 
             // Move player
             // MovementController.MoveAlongLine(_inputVector, distanceThisFrame);
-
-            MovementController.AddForce(new Force(currentSpeed, _inputVector, 0f, gameObject));
+            float movementDrag = 0f;
+            MovementController.AddForce(new Force(currentSpeed, _inputVector, movementDrag, gameObject));
         }
         else if (_aimingMode)
         {
@@ -233,6 +242,23 @@ public class Player : MonoBehaviour
         // Debug.Log("Rotating");
         MovementController.OnLineController.CurrentLine.GetComponent<LineRotator>().Rotate();
         OnRotate?.Invoke();
+    }
+
+    public void HandleSelfDestructPerformed(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            _visualsController.HandleSelfDestructStarted(_baseControls);
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            _visualsController.HandleSelfDestructCompleted();
+        }
+        else if(context.phase == InputActionPhase.Performed)
+        {
+            _visualsController.HandleSelfDestructCompleted();
+            GetKilled(Enums.KillType.Default);
+        }
     }
 
 

@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour
     // Events
     public UnityEvent OnTimerEnd;
     public UnityEvent<float> OnPercentDoneChange;
+    public UnityEvent<float> OnPercentDoneChange2;
 
     // properties
     public float PercentDone => _timeSinceStart / _time;
@@ -36,6 +37,7 @@ public class Timer : MonoBehaviour
             _timeSinceStart += Time.deltaTime;
 
             OnPercentDoneChange.Invoke(PercentDone);
+            OnPercentDoneChange2.Invoke(PercentDone);
 
             // If timer done, send event
             if(_timeSinceStart >= _time)

@@ -107,6 +107,15 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelfDestruct"",
+                    ""type"": ""Button"",
+                    ""id"": ""29469270-78f6-4fb3-8c79-b437fa8cf756"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -351,6 +360,28 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""action"": ""OpenMap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a571447-355a-4090-91bc-3759e9965c1d"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelfDestruct"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b590b470-e0f5-4e9c-9c96-a6c296db087d"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelfDestruct"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -549,6 +580,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         m_PlayerMap_OpenMenu = m_PlayerMap.FindAction("OpenMenu", throwIfNotFound: true);
         m_PlayerMap_OpenDevMenu = m_PlayerMap.FindAction("OpenDevMenu", throwIfNotFound: true);
         m_PlayerMap_OpenMap = m_PlayerMap.FindAction("OpenMap", throwIfNotFound: true);
+        m_PlayerMap_SelfDestruct = m_PlayerMap.FindAction("SelfDestruct", throwIfNotFound: true);
         // TestMap
         m_TestMap = asset.FindActionMap("TestMap", throwIfNotFound: true);
         m_TestMap_Vector2 = m_TestMap.FindAction("Vector2", throwIfNotFound: true);
@@ -627,6 +659,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_OpenMenu;
     private readonly InputAction m_PlayerMap_OpenDevMenu;
     private readonly InputAction m_PlayerMap_OpenMap;
+    private readonly InputAction m_PlayerMap_SelfDestruct;
     public struct PlayerMapActions
     {
         private @BaseControls m_Wrapper;
@@ -640,6 +673,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         public InputAction @OpenMenu => m_Wrapper.m_PlayerMap_OpenMenu;
         public InputAction @OpenDevMenu => m_Wrapper.m_PlayerMap_OpenDevMenu;
         public InputAction @OpenMap => m_Wrapper.m_PlayerMap_OpenMap;
+        public InputAction @SelfDestruct => m_Wrapper.m_PlayerMap_SelfDestruct;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -676,6 +710,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @OpenMap.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMap;
                 @OpenMap.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMap;
                 @OpenMap.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnOpenMap;
+                @SelfDestruct.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSelfDestruct;
+                @SelfDestruct.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSelfDestruct;
+                @SelfDestruct.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSelfDestruct;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -707,6 +744,9 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @OpenMap.started += instance.OnOpenMap;
                 @OpenMap.performed += instance.OnOpenMap;
                 @OpenMap.canceled += instance.OnOpenMap;
+                @SelfDestruct.started += instance.OnSelfDestruct;
+                @SelfDestruct.performed += instance.OnSelfDestruct;
+                @SelfDestruct.canceled += instance.OnSelfDestruct;
             }
         }
     }
@@ -829,6 +869,7 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         void OnOpenMenu(InputAction.CallbackContext context);
         void OnOpenDevMenu(InputAction.CallbackContext context);
         void OnOpenMap(InputAction.CallbackContext context);
+        void OnSelfDestruct(InputAction.CallbackContext context);
     }
     public interface ITestMapActions
     {

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine;
 using UnityEngine.Events;
 using Shapes;
 
@@ -10,38 +9,37 @@ public class TimerVisual : MonoBehaviour
 
     // Objects that this script needs
 
-    public Timer timer;
-    [SerializeField]
-    Disc disc;
+    [SerializeField] private Timer _timer;
+    [SerializeField] private Disc _disc;
+
+    [Header("Settings")]
+    [SerializeField] private bool _startFromFull;
 
     //public UnityEvent onTimerStart; //
 
     //Start is called before the first frame update
     void Start()
     {
-        this.disc.gameObject.SetActive(false);
-        this.timer.OnPercentDoneChange.AddListener((percentDone) => this.UpdateEndAngle(1-percentDone));
-        this.timer.OnTimerEnd.AddListener(()=>this.TurnOffDisc());
+        _disc.gameObject.SetActive(false);
+
+        // Have the timer call a certain function based on if we want to start full or empty
+        if (_startFromFull)
+        {
+            _timer.OnPercentDoneChange.AddListener(UpdateEndAngle_FromFull);
+        }
+        else
+        {
+            _timer.OnPercentDoneChange.AddListener(UpdateEndAngle_FromEmpty);
+        }
+
+        _timer.OnTimerEnd.AddListener(TurnOffDisc);
     }
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-
-
-
-
-    //}
-
-
-    // override the start method to make the disc pop up.
 
     public void StartTimerWithVisual()
     {
-        timer.StartTimer();
+        _timer.StartTimer();
         //this.disc.aNM = 2.0f * 3.14159f;
-        this.disc.gameObject.SetActive(true);
+        _disc.gameObject.SetActive(true);
     }
 
     public void UpdateEndAngle(float fractionFilled)
@@ -55,12 +53,32 @@ public class TimerVisual : MonoBehaviour
         // The start end is at 90 degrees, and the circle is "filled" counterclockwise through negative angles up to -270 degrees.
         // The math is the same for the circle becoming smaller; during the event, fraction filled decreases from 1 to zero, so the end point
         // of the disk will approach the start (90 degrees) and become smaller and smaller.
-        disc.AngRadiansEnd = 3.14159f/2f - radiansFilled;
+        _disc.AngRadiansEnd = 3.14159f/2f - radiansFilled;
+    }
+
+    public void UpdateEndAngle_FromFull(float fractionFilled)
+    {
+        fractionFilled = 1 - fractionFilled;
+
+        float radiansFilled = fractionFilled * 2.0f * 3.14159f; // convert from fraction to radians
+        _disc.AngRadiansEnd = 3.14159f / 2f - radiansFilled;
+    }
+
+    public void UpdateEndAngle_FromEmpty(float fractionFilled)
+    {
+        float radiansFilled = fractionFilled * 2.0f * 3.14159f; // convert from fraction to radians
+
+        _disc.AngRadiansEnd = 3.14159f / 2f + radiansFilled;
     }
 
     public void TurnOffDisc()
     {
-        this.disc.gameObject.SetActive(false);
+        _disc.gameObject.SetActive(false);
+    }
+
+    public void TurnOnDisc()
+    {
+        _disc.gameObject.SetActive(true);
     }
 
     // What should this do
