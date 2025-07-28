@@ -176,9 +176,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6977629593852638500}
-  - component: {fileID: 6977629593852638498}
+  - component: {fileID: 6855302974139894731}
   - component: {fileID: 8895741822111284615}
   - component: {fileID: 6977629593852638499}
+  - component: {fileID: 1007705233331647618}
   - component: {fileID: 6977629593852638497}
   m_Layer: 0
   m_Name: DangerZone
@@ -204,7 +205,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6977629593852638498
+--- !u!114 &6855302974139894731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,10 +214,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6977629593852638501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33998cfef6f8881439e7f626231306c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e1266c8884e57849828c5e5a30d237c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Trigger: {fileID: 6977629593852638499}
+  BoxTrigger: {fileID: 6977629593852638499}
+  PolygonCollider: {fileID: 1007705233331647618}
   _boarderRenderer: {fileID: 6977629593852638497}
   _gridRenderer: {fileID: 8909400502378586904}
   _gridMask: {fileID: 4900835683689711747}
@@ -262,6 +264,43 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!60 &1007705233331647618
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6977629593852638501}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.46, y: 0.46, z: 0.46, w: 0.46}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.632, y: 1.612}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.39, y: 0.4}
+      - {x: -0.49, y: 0.25}
+      - {x: -0.49, y: -0.25}
+      - {x: -0.4, y: -0.39}
+      - {x: -0.25, y: -0.49}
+      - {x: 0.25, y: -0.49}
+      - {x: 0.4, y: -0.39}
+      - {x: 0.49, y: -0.25}
+      - {x: 0.49, y: 0.25}
+      - {x: 0.39, y: 0.4}
+      - {x: 0.25, y: 0.49}
+      - {x: -0.25, y: 0.49}
 --- !u!212 &6977629593852638497
 SpriteRenderer:
   m_ObjectHideFlags: 0
