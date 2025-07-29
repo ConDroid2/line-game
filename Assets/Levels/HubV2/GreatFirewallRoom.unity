@@ -440,17 +440,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3476374822565648072, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476374822565648072, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476374822565648072, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 297.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476374822565648072, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 116.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476374822565648072, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.9601135
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 3476374822565648072, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 94.08351
+      value: -58.395
       objectReference: {fileID: 0}
     - target: {fileID: 3476374822565648073, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
       propertyPath: m_text
-      value: "Find the McGuffin to turn off \nThe Great Firewall"
+      value: "Find <sprite name=\"mcguffin\"> to turn off \n\nThe Great Firewall"
       objectReference: {fileID: 0}
+    - target: {fileID: 3476374822565648073, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: efb1673c9c97e4e4eb2f6cdab7dfe4bc, type: 2}
     - target: {fileID: 3476374822565648073, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -554,6 +574,34 @@ PrefabInstance:
     - target: {fileID: 3476374824417874868, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133968455966401158, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677159691933412665, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -87.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677159691933412665, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -34.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677159692527028492, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677159692527028492, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677159692527028492, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677159692527028492, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -255.89499
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bbcf71ae2086314891f2dfd9f24c60a, type: 3}
@@ -5502,6 +5550,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAwake:
     m_PersistentCalls:
       m_Calls: []
   OnEnabled:
