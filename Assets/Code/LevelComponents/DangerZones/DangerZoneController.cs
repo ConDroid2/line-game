@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DangerZoneVisuals : MonoBehaviour
+public class DangerZoneController : MonoBehaviour
 {
     [Header("References")]
-    public BoxCollider2D Trigger;
+    public BoxCollider2D BoxTrigger;
+    public PolygonCollider2D PolygonCollider;
     [SerializeField] private SpriteRenderer _boarderRenderer;
     [SerializeField] private SpriteRenderer _gridRenderer;
     [SerializeField] private GameObject _gridMask;
@@ -15,9 +16,9 @@ public class DangerZoneVisuals : MonoBehaviour
 
     private void Awake()
     {
-        if(Trigger == null)
+        if(BoxTrigger == null)
         {
-            Trigger = GetComponent<BoxCollider2D>();
+            BoxTrigger = GetComponent<BoxCollider2D>();
         }
 
         SetUpSprite();
@@ -25,15 +26,17 @@ public class DangerZoneVisuals : MonoBehaviour
 
     private void SetUpSprite()
     {
-        if(Trigger.size.x <= 1 && Trigger.size.y <= 1)
+        if(BoxTrigger.size.x <= 1 && BoxTrigger.size.y <= 1)
         {
             _boarderRenderer.sprite = _noCornersBoarder;
             _gridMask.SetActive(true);
+            BoxTrigger.enabled = false;
+            PolygonCollider.enabled = true;
         }
         _boarderRenderer.enabled = true;
-        _boarderRenderer.size = Trigger.size;
+        _boarderRenderer.size = BoxTrigger.size;
 
         _gridRenderer.enabled = true;
-        _gridRenderer.size = Trigger.size;
+        _gridRenderer.size = BoxTrigger.size;
     }
 }
