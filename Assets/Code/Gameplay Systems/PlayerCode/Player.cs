@@ -300,7 +300,6 @@ public class Player : MonoBehaviour
     {
         if (_invulnerable == true) return;
 
-        Debug.Log($"No Fail Mode: {NoFailMode} -- KillType: {killType}");
         if (NoFailMode && killType != Enums.KillType.SelfDestruct) return;
         // Need to send event so level manager can spawn properly
         OnPlayerDeath.Invoke();
