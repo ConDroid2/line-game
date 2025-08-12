@@ -101,6 +101,9 @@ MonoBehaviour:
   ObjectType: 0
   _fixDistanceOnAwake: 0
   _logger: {fileID: 0}
+  OnMovedToNewLine:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &941417119361983291
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +188,7 @@ Transform:
   - {fileID: 2618151933149958452}
   - {fileID: 3697403068245177892}
   - {fileID: 8708334978111571906}
+  - {fileID: 5863741436416263439}
   m_Father: {fileID: 2851276334494299682}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -336,7 +340,6 @@ MonoBehaviour:
   _projectileLauncher: {fileID: 8863722294546724570}
   _grapplingHook: {fileID: 3224782062748459162}
   FollowPoint: {fileID: 7257538034878413529}
-  DebugText: {fileID: 0}
   Speed: 4.5
   SprintingSpeed: 2.5
   RoomStartInvulnerability: 0.1
@@ -356,6 +359,30 @@ MonoBehaviour:
       - m_Target: {fileID: 8236361670451117962}
         m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
         m_MethodName: PostEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5848412895979465594}
+        m_TargetAssemblyTypeName: PlayerFootstepsAudioController, Assembly-CSharp
+        m_MethodName: TurnOffLineMaterialSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5848412895979465594}
+        m_TargetAssemblyTypeName: PlayerFootstepsAudioController, Assembly-CSharp
+        m_MethodName: ClearCurrentLineMaterial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -416,6 +443,21 @@ MonoBehaviour:
   ObjectType: 0
   _fixDistanceOnAwake: 0
   _logger: {fileID: 0}
+  OnMovedToNewLine:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5848412895979465594}
+        m_TargetAssemblyTypeName: PlayerFootstepsAudioController, Assembly-CSharp
+        m_MethodName: HandleMovedToNewLine
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &1830234548
 Rigidbody2D:
   serializedVersion: 4
@@ -1815,6 +1857,51 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &8318077924167967588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5863741436416263439}
+  - component: {fileID: 5848412895979465594}
+  m_Layer: 3
+  m_Name: FootstepsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5863741436416263439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8318077924167967588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6355160072861958520}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5848412895979465594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8318077924167967588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf90783c350326479c4886bb0ed4f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentMaterial: {fileID: 0}
 --- !u!1 &8367333630618424153
 GameObject:
   m_ObjectHideFlags: 0

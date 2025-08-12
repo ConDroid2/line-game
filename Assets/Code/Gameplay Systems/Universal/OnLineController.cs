@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OnLineController : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class OnLineController : MonoBehaviour
     private bool _useCurrentLineData = false;
 
     [SerializeField] private DebugLogger _logger;
+
+    public UnityEvent<LineController> OnMovedToNewLine;
 
     private void Awake()
     {
@@ -79,6 +82,7 @@ public class OnLineController : MonoBehaviour
         {
             CurrentLine.AddOnLine(this);
             SetDistanceOnLine(distanceOnLine);
+            OnMovedToNewLine?.Invoke(CurrentLine);
         }
     }
 
