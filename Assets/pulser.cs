@@ -9,11 +9,15 @@ public class pulser : MonoBehaviour
     private float remainingTime = 0;
     public float pulseTime;
     public float scaleChangeAmount;
+    [SerializeField] private AnimationCurve _animationCurve = AnimationCurve.Constant(0, 1, 0);
 
-    // Start is called before the first frame update
-    void Start()
+    private float _initialScale;
+    private float _targetScale;
+
+    private void Awake()
     {
-
+        _initialScale = transform.localScale.x;
+        _targetScale = _initialScale + scaleChangeAmount;
     }
 
     // Update is called once per frame
@@ -22,7 +26,7 @@ public class pulser : MonoBehaviour
         
         if(pulseStart)
         {
-            transform.localScale += new Vector3(scaleChangeAmount, scaleChangeAmount, scaleChangeAmount);
+            transform.localScale = new Vector3(_targetScale, _targetScale, _targetScale);
             remainingTime = pulseTime;
             pulseHappening = true;
             pulseStart = false;
@@ -31,10 +35,14 @@ public class pulser : MonoBehaviour
         if(pulseHappening)
         {
             remainingTime -= Time.deltaTime;
+
+            float currentScale = Mathf.Lerp(_initialScale, _targetScale, _animationCurve.Evaluate(remainingTime / pulseTime));
+
+            transform.localScale = new Vector3(currentScale, currentScale, currentScale);
             // Debug.Log(remainingTime);
             if(remainingTime <= 0)
             {
-                transform.localScale -= new Vector3(scaleChangeAmount, scaleChangeAmount, scaleChangeAmount);
+                transform.localScale = new Vector3(_initialScale, _initialScale, _initialScale);
                 pulseHappening = false;
             }
         }

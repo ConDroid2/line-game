@@ -9,6 +9,7 @@ public class FreeObjectRotator : MonoBehaviour
     public float TimeForFullRotation = 1;
     public float TimeToWait = 0f;
     public bool WaitAtStart = false;
+    public bool Automatic = true;
     [SerializeField] private AnimationCurve _timingCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
     private float _startRotation;
