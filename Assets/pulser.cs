@@ -31,7 +31,7 @@ public class pulser : MonoBehaviour
         if(pulseHappening)
         {
             remainingTime -= Time.deltaTime;
-            Debug.Log(remainingTime);
+            // Debug.Log(remainingTime);
             if(remainingTime <= 0)
             {
                 transform.localScale -= new Vector3(scaleChangeAmount, scaleChangeAmount, scaleChangeAmount);
