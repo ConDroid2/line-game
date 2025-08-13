@@ -18,20 +18,20 @@ public class LineDrawer : MonoBehaviour
     void Start()
     {
         _shapesLine.gameObject.SetActive(true);
-        if (_renderer != null)
-        {
-            UpdateLinePositions();
+        //if (_renderer != null)
+        //{
+        //    UpdateLinePositions();
 
-            float currentAlpha = _renderer.startColor.a;
-            Color lineColor = new Color(_controller.LineColor.r, _controller.LineColor.g, _controller.LineColor.b, currentAlpha);
+        //    float currentAlpha = _renderer.startColor.a;
+        //    Color lineColor = new Color(_controller.LineColor.r, _controller.LineColor.g, _controller.LineColor.b, currentAlpha);
 
-            _renderer.startColor = lineColor;
-            _renderer.endColor = lineColor;
-        }
-        else
-        {
-            Debug.LogWarning("No line renderer");
-        }
+        //    _renderer.startColor = lineColor;
+        //    _renderer.endColor = lineColor;
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("No line renderer");
+        //}
     }
 
     private void Update()
@@ -46,8 +46,8 @@ public class LineDrawer : MonoBehaviour
     {
         SetVisualEndpoints();
 
-        _renderer.SetPosition(0, _visualA);
-        _renderer.SetPosition(1, _visualB);
+        //_renderer.SetPosition(0, _visualA);
+        //_renderer.SetPosition(1, _visualB);
 
         //Debug.Log($"Setting Shapes start to: {_visualA}");
         //Debug.Log($"Setting Shapes end to: {_visualB}");
@@ -60,8 +60,8 @@ public class LineDrawer : MonoBehaviour
     {
         float newAlpha = 1f - alphaPercentage;
 
-        _renderer.startColor = new Color(_renderer.startColor.r, _renderer.startColor.g, _renderer.startColor.b, newAlpha);
-        _renderer.endColor = new Color(_renderer.endColor.r, _renderer.endColor.g, _renderer.endColor.b, newAlpha);
+        //_renderer.startColor = new Color(_renderer.startColor.r, _renderer.startColor.g, _renderer.startColor.b, newAlpha);
+        //_renderer.endColor = new Color(_renderer.endColor.r, _renderer.endColor.g, _renderer.endColor.b, newAlpha);
 
         _shapesLine.Color = new Color(_shapesLine.Color.r, _shapesLine.Color.g, _shapesLine.Color.b, newAlpha);
     }
@@ -69,7 +69,8 @@ public class LineDrawer : MonoBehaviour
     private void SetVisualEndpoints()
     {
         Vector3 slope = _controller.Slope;
-        float halfWidth = _renderer.startWidth / 2;
+        float halfWidth = _shapesLine.Thickness / 2;
+
 
         _visualA = _controller.CurrentLocalA - (slope.normalized * halfWidth);
         _visualB = _controller.CurrentLocalB + (slope.normalized * halfWidth);
