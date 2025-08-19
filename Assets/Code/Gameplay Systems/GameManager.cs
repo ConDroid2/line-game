@@ -143,6 +143,8 @@ public class GameManager : MonoBehaviour
         {
             Transform lineTransform = levelManager.LineParent.transform.GetChild(_toPort.SiblingIndex);
             LineController newStartLine = lineTransform.GetComponent<LineController>();
+            Debug.Log("Port Sibling Index: " + _toPort.SiblingIndex);
+            Debug.Log("Start Line: " + newStartLine.name);
 
             levelManager.StartingLine = newStartLine;
 
@@ -218,20 +220,15 @@ public class GameManager : MonoBehaviour
         if (_currentWorld == null) return;
         _currentRoom = _currentWorld.RoomNameToData[scene.name];
 
-        // If we're not adding this room to the, reset the save files Current Port to whatever it was before this room
-        if (levelManager.DoNotAllowPlayerToLoadIntoThisRoom) 
-        {
-            _toPort = _saveSlot.CurrentPort;
-        }
         // Else, leave the _toPort as is and set the _currentRoom to this room
-        else
+        if (levelManager.DoNotAllowPlayerToLoadIntoThisRoom == false)   
         {
             _currentRoomNameForSaveFile = _currentRoom.RoomName;
         }
 
         _visitedRooms.Add(_currentRoom.RoomName);
 
-        SaveData();
+        SaveData(levelManager);
 
         // Handle loading the correct music
         if (_firstSceneLoad)
@@ -325,7 +322,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SaveData()
+    public void SaveData(LevelManager levelManager)
     {
         if (_saveSlot == null) return;
 
@@ -335,7 +332,9 @@ public class GameManager : MonoBehaviour
             controlOverrides = JObject.Parse(ControlOverridesJson);
         }
 
-        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoomNameForSaveFile, _toPort, PrimaryTrackData, SecondaryTrackData, controlOverrides);
+        RoomPort portToSave = levelManager.DoNotAllowPlayerToLoadIntoThisRoom ? _saveSlot.CurrentPort : _toPort;
+
+        SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoomNameForSaveFile, portToSave, PrimaryTrackData, SecondaryTrackData, controlOverrides);
         Debug.Log(newSlot.ControlOverridesJson);
 
         JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
