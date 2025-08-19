@@ -143,8 +143,6 @@ public class GameManager : MonoBehaviour
         {
             Transform lineTransform = levelManager.LineParent.transform.GetChild(_toPort.SiblingIndex);
             LineController newStartLine = lineTransform.GetComponent<LineController>();
-            Debug.Log("Port Sibling Index: " + _toPort.SiblingIndex);
-            Debug.Log("Start Line: " + newStartLine.name);
 
             levelManager.StartingLine = newStartLine;
 
@@ -279,6 +277,8 @@ public class GameManager : MonoBehaviour
 
     public void HandlePause()
     {
+        Debug.Log("Handling Pause. Game Paused: " + _gamePaused);
+
         if (_devMenu.activeInHierarchy == true) return;
 
         if(_gamePaused == false)
