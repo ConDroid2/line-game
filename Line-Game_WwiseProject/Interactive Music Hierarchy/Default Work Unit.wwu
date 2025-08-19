@@ -333,7 +333,6 @@
 													<PropertyList>
 														<Property Name="SourceContextType" Type="int16" Value="1"/>
 													</PropertyList>
-													<ReferenceList/>
 													<TransitionInfo/>
 												</MusicTransition>
 											</ChildrenList>
@@ -806,99 +805,6 @@
 																				</Reference>
 																			</ObjectList>
 																		</ObjectLists>
-																	</MusicTrackSequence>
-																</Local>
-															</Reference>
-														</ObjectList>
-													</ObjectLists>
-												</MusicTrack>
-												<MusicTrack Name="ComputerBeeps" ID="{2E8F9713-B783-4E89-B8AE-8CE8291ADB89}" ShortID="215938613">
-													<PropertyList>
-														<Property Name="MusicTrackType" Type="int16" Value="3"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="DefaultSwitchOrState">
-															<ObjectRef Name="BeepsOff" ID="{31B667A3-9783-4E32-886C-6CB06E306AF6}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
-														</Reference>
-														<Reference Name="SwitchGroupOrStateGroup">
-															<ObjectRef Name="ComputerFoleyForDepths" ID="{7C0B344E-C951-4952-8D53-86944BD11BB0}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-														</Reference>
-														<Reference Name="TransitionRoot">
-															<Custom>
-																<MusicTransition Name="Root" ID="{1E92227B-CF0A-4EF7-9A9A-596D6101CCCE}">
-																	<PropertyList>
-																		<Property Name="IsFolder" Type="bool" Value="True"/>
-																	</PropertyList>
-																	<ChildrenList>
-																		<MusicTransition Name="Transition" ID="{049A3116-781B-42AF-A5DC-E4CBA541E01A}">
-																			<PropertyList>
-																				<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
-																				<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-																				<Property Name="ExitSourceAt" Type="int16" Value="0"/>
-																			</PropertyList>
-																			<TransitionInfo>
-																				<SourceFadeOut>
-																					<MusicFade Name="Source Fade-out" ID="{0A4893CB-8757-481B-A098-95F7811182E9}">
-																						<PropertyList>
-																							<Property Name="FadeOffset" Type="Real64" Value="2"/>
-																							<Property Name="FadeTime" Type="Real64" Value="2"/>
-																							<Property Name="FadeType" Type="int16" Value="1"/>
-																						</PropertyList>
-																					</MusicFade>
-																				</SourceFadeOut>
-																				<DestinationFadeIn>
-																					<MusicFade Name="Destination Fade-in" ID="{D937910C-90D6-4F1A-9049-ABBBCCBCA5BC}">
-																						<PropertyList>
-																							<Property Name="FadeTime" Type="Real64" Value="2"/>
-																						</PropertyList>
-																					</MusicFade>
-																				</DestinationFadeIn>
-																			</TransitionInfo>
-																		</MusicTransition>
-																	</ChildrenList>
-																	<TransitionInfo/>
-																</MusicTransition>
-															</Custom>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="ComputerBeeps" ID="{B0FBA0D6-AC86-4D34-B7D3-D8B11D1A21CB}">
-															<Language>SFX</Language>
-															<AudioFile>ComputerBeeps.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="151734646"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ObjectLists>
-														<ObjectList Name="Sequences">
-															<Reference>
-																<Local>
-																	<MusicTrackSequence Name="" ID="{A01ABD35-1C89-46A8-8D42-E0EF24A9ACA2}">
-																		<ObjectLists>
-																			<ObjectList Name="Clips">
-																				<Reference>
-																					<Local>
-																						<MusicClip Name="ComputerBeeps" ID="{9519CED9-3CB5-4FC5-B402-BBA696B536FA}">
-																							<PropertyList>
-																								<Property Name="EndTrimOffset" Type="Real64" Value="114545.458333333"/>
-																								<Property Name="FadeInMode" Type="int16" Value="0"/>
-																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																							</PropertyList>
-																							<AudioSourceRef Name="ComputerBeeps" ID="{B0FBA0D6-AC86-4D34-B7D3-D8B11D1A21CB}"/>
-																						</MusicClip>
-																					</Local>
-																				</Reference>
-																			</ObjectList>
-																		</ObjectLists>
-																		<ReferenceList>
-																			<Reference Name="TrackSequenceSwitch">
-																				<ObjectRef Name="BeepsOn" ID="{01422E09-110D-4AE2-9C0C-0AF77CA5C37F}" WorkUnitID="{23C7C8D5-5F64-4AE0-854B-A7A3DD863FD8}"/>
-																			</Reference>
-																		</ReferenceList>
 																	</MusicTrackSequence>
 																</Local>
 															</Reference>
