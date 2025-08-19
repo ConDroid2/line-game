@@ -37,21 +37,21 @@ public class InputManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+
+            Controls = new BaseControls();
+
+            Controls.PlayerMap.Enable();
+
+            Controls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
+            Controls.PlayerMap.OpenDevMenu.performed += HandleDevMenuPerformed;
+            Controls.PlayerMap.OpenMap.performed += HandleMapPerformed;
+            Controls.PauseMap.CloseMenu.performed += HandleCloseMenuPerformed;
+            Controls.MapMap.CloseMap.performed += HandleMapClosed;          
         }
         else
         {
             Destroy(gameObject);
-        }
-
-        Controls = new BaseControls();
-
-        Controls.PlayerMap.Enable();
-
-        Controls.PlayerMap.OpenMenu.performed += HandlePausePerformed;
-        Controls.PlayerMap.OpenDevMenu.performed += HandleDevMenuPerformed;
-        Controls.PlayerMap.OpenMap.performed += HandleMapPerformed;
-        Controls.PauseMap.CloseMenu.performed += HandleCloseMenuPerformed;
-        Controls.MapMap.CloseMap.performed += HandleMapClosed;
+        }     
     }
 
     private void OnDisable()
@@ -102,6 +102,7 @@ public class InputManager : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
+            
             GameManager.Instance.HandlePause();
             Controls.PauseMap.Disable();
             Controls.PlayerMap.Enable();
