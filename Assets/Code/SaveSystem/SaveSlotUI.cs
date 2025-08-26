@@ -24,9 +24,36 @@ public class SaveSlotUI : MonoBehaviour
     public Image RotateIcon;
     public Image FireshieldIcon;
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //    if(SlotName != "")
+    //    {
+    //        _worldData = JsonConvert.DeserializeObject<WorldData>(_worldAsset.text);
+
+    //        try
+    //        {
+    //            JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
+
+    //            _saveData = utils.LoadData<SaveSlot>(SlotName + ".txt");
+
+    //            CheckFlagsAndSetIcons(_saveData);
+
+    //            //_buttonText.text = "I have data";
+    //            this.OnFileFound?.Invoke();
+    //            //Debug.Log("Got data");
+    //        }
+    //        catch
+    //        {
+    //                this.OnFileEmpty?.Invoke();
+    //            //_buttonText.text = "Empty";
+    //            _saveData = new SaveSlot(SlotName, new Dictionary<string, bool>(), new HashSet<string>(), "", null, null, null, null);
+    //        }
+    //    }
+    //}
+
+    private void OnEnable()
     {
-        if(SlotName != "")
+        if (SlotName != "")
         {
             _worldData = JsonConvert.DeserializeObject<WorldData>(_worldAsset.text);
 
@@ -44,7 +71,7 @@ public class SaveSlotUI : MonoBehaviour
             }
             catch
             {
-                    this.OnFileEmpty?.Invoke();
+                this.OnFileEmpty?.Invoke();
                 //_buttonText.text = "Empty";
                 _saveData = new SaveSlot(SlotName, new Dictionary<string, bool>(), new HashSet<string>(), "", null, null, null, null);
             }
