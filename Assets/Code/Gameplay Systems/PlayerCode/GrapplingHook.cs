@@ -10,6 +10,7 @@ public class GrapplingHook : MonoBehaviour
     [SerializeField] private OnLineController _playerPreview;
     [SerializeField] private Collider2D _playerCollider;
     [SerializeField] private LayerMask _collisionMask;
+    [SerializeField] private ProjectileExplosion _projectileExplosionPrefab;
 
     [SerializeField] private float _grappleDistance;
     [SerializeField] private float _maxGrapplePullTime;
@@ -112,6 +113,8 @@ public class GrapplingHook : MonoBehaviour
 
     public void FinishGrapple(bool triggerEvent = false)
     {
+
+        Vector3 grappleEndPoint = _moveTo?.IntersectionWorldSpace != null ? _moveTo.IntersectionWorldSpace : Vector3.zero;
         _moveTo = null;
         _timeMovingPlayer = 0f;
         _movingPlayer = false;
@@ -127,6 +130,11 @@ public class GrapplingHook : MonoBehaviour
         if (triggerEvent)
         {
             OnGrappleDone?.Invoke();
+
+            Vector3 grappleDirection = (grappleEndPoint - _startPosition).normalized;
+
+            ProjectileExplosion explosion = Instantiate(_projectileExplosionPrefab);
+            explosion.PlayEffect(grappleEndPoint, new Vector3(0f, grappleDirection.y));
         }
     }
 
