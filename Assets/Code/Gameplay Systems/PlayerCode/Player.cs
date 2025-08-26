@@ -377,6 +377,12 @@ public class Player : MonoBehaviour
         NoFailMode = noFailMode;
     }
 
+    public void SetAllowMove(bool allowMoving)
+    {
+        Debug.Log($"Setting Player allow moving: {allowMoving}");
+        _allowMoving = allowMoving;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
