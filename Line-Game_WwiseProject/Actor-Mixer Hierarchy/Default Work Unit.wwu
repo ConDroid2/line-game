@@ -1396,6 +1396,8 @@
 						</Sound>
 						<Sound Name="BigLaser" ID="{7A39B9B4-65DD-45EF-B8B1-5437485AD5A7}" ShortID="717919778">
 							<PropertyList>
+								<Property Name="BelowThresholdBehavior" Type="int16" Value="3"/>
+								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Lowpass" Type="int16">
 									<ValueList>
@@ -1404,9 +1406,17 @@
 								</Property>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>5</Value>
+										<Value>2</Value>
 									</ValueList>
 								</Property>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverLimitBehavior" Type="int16" Value="1"/>
+								<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
