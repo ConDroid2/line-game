@@ -31,23 +31,41 @@ public class RedBlueSwitch : MonoBehaviour
         }
     }
 
-    public void ActivateRed()
+    public void ActivateRed(bool sendEvent = true)
     {
         if(redOnBlueOff == false)
         {
             redOnBlueOff = true;
             _sprite.sprite = _redSprite;
-            OnActivateRed?.Invoke();
+
+            if (sendEvent)
+            {
+                OnActivateRed?.Invoke();
+            }          
         }
     }
 
-    public void ActivateBlue()
+    public void ActivateBlue(bool sendEvent = true)
     {
         if(redOnBlueOff == true)
         {
             redOnBlueOff = false;
             _sprite.sprite = _blueSprite;
-            OnActivateBlue?.Invoke();
+
+            if (sendEvent)
+            {
+                OnActivateBlue?.Invoke();
+            }
         }
+    }
+
+    public void SetVisualsRed()
+    {
+        _sprite.sprite = _redSprite;
+    }
+
+    public void SetVisualsBlue()
+    {
+        _sprite.sprite = _blueSprite;
     }
 }
