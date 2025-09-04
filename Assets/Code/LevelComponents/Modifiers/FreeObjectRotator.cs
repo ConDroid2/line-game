@@ -8,6 +8,8 @@ public class FreeObjectRotator : MonoBehaviour
     public int direction;
     public float TimeForFullRotation = 1;
     public float TimeToWait = 0f;
+    [Range(1, 360)]
+    public int RotationIncrement = 360;
     public bool WaitAtStart = false;
     public bool Automatic = true;
     [SerializeField] private AnimationCurve _timingCurve = AnimationCurve.Linear(0, 0, 1, 1);
@@ -17,11 +19,16 @@ public class FreeObjectRotator : MonoBehaviour
     private float _timeMoving = 0f;
     private float _timeWaiting = 0f;
     private bool _waiting = false;
+    private float _rotationPercentage;
 
     private void Awake()
     {
+        _rotationPercentage = RotationIncrement / 360f;
+        Debug.Log("Rotation percentage: " + _rotationPercentage);
         _startRotation = transform.eulerAngles.z;
-        _endRotation = _startRotation + (direction * 360f);
+        _endRotation = _startRotation + (direction * 360f * _rotationPercentage);
+
+        Debug.Log($"Start Rotation: {_startRotation} -- End Rotation: {_endRotation}");
 
         if (WaitAtStart)
         {
@@ -39,18 +46,20 @@ public class FreeObjectRotator : MonoBehaviour
     {
         if (_waiting == false)
         {
-            float movementPercentage = _timeMoving / TimeForFullRotation;
+            float movementPercentage = _timeMoving / (TimeForFullRotation * _rotationPercentage);
 
             float adjustedTime = _timingCurve.Evaluate(movementPercentage);
             float newZRotation = Mathf.Lerp(_startRotation, _endRotation, adjustedTime);
 
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, newZRotation);
 
-            if (_timeMoving >= TimeForFullRotation)
+            if (_timeMoving >= (TimeForFullRotation * _rotationPercentage))
             {
                 _timeMoving = 0;
+                _startRotation = transform.eulerAngles.z;
+                _endRotation = _startRotation + (direction * 360f * _rotationPercentage);
 
-                if(TimeToWait > 0)
+                if (TimeToWait > 0)
                 {
                     _waiting = true;
                     _timeWaiting = 0f;
