@@ -1923,6 +1923,54 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1253865983}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1955777819}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1081693153}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 289533160}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &230513417
 Transform:
   m_ObjectHideFlags: 0
@@ -2025,8 +2073,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2135331709}
-  m_Father: {fileID: 50890928}
-  m_RootOrder: 12
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &289533160
 MonoBehaviour:
@@ -2041,12 +2089,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 3, y: 0, z: -0.069171846}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
-  TimeToWait: 1
-  WaitAtStart: 1
-  StartWaitTime: 1
+  TimeToMove: 0.2
+  TimeToWait: 0
+  WaitAtStart: 0
+  StartWaitTime: 0
   StartingPointAlongPath: 0
   _timingCurve:
     serializedVersion: 2
@@ -3362,10 +3410,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: -3, y: 0.00000023841858, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
-  TimeToWait: 1
+  TimeToMove: 0.2
+  TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0
   StartingPointAlongPath: 0
@@ -5431,8 +5479,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1589748286}
-  m_Father: {fileID: 50890928}
-  m_RootOrder: 11
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1081693153
 MonoBehaviour:
@@ -5447,12 +5495,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 0, y: -2.5, z: -0.069171846}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
-  TimeToWait: 1
-  WaitAtStart: 1
-  StartWaitTime: 1
+  TimeToMove: 0.2
+  TimeToWait: 0
+  WaitAtStart: 0
+  StartWaitTime: 0
   StartingPointAlongPath: 0
   _timingCurve:
     serializedVersion: 2
@@ -5844,8 +5892,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 673485798}
-  m_Father: {fileID: 50890928}
-  m_RootOrder: 9
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1253865983
 MonoBehaviour:
@@ -5860,12 +5908,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 0, y: 2, z: -0.069171846}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
-  TimeToWait: 1
-  WaitAtStart: 1
-  StartWaitTime: 1
+  TimeToMove: 0.2
+  TimeToWait: 0
+  WaitAtStart: 0
+  StartWaitTime: 0
   StartingPointAlongPath: 0
   _timingCurve:
     serializedVersion: 2
@@ -7189,7 +7237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenOnBeat: 1
   _listenOnBar: 0
-  _beatsToListenTo: 0200000003000000
+  _beatsToListenTo: 0200000004000000
   OnAudioEvent:
     m_PersistentCalls:
       m_Calls:
@@ -7250,6 +7298,54 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 673485799}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2122292900}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1589748287}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2135331710}
+        m_TargetAssemblyTypeName: FreeObjectShifter, Assembly-CSharp
+        m_MethodName: DoOneShift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -7887,10 +7983,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 3, y: 0, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
-  TimeToWait: 1
+  TimeToMove: 0.2
+  TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0
   StartingPointAlongPath: 0
@@ -9493,8 +9589,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2122292899}
-  m_Father: {fileID: 50890928}
-  m_RootOrder: 10
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1955777819
 MonoBehaviour:
@@ -9509,12 +9605,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: -3, y: 0, z: -0.069171846}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
-  TimeToWait: 1
-  WaitAtStart: 1
-  StartWaitTime: 1
+  TimeToMove: 0.2
+  TimeToWait: 0
+  WaitAtStart: 0
+  StartWaitTime: 0
   StartingPointAlongPath: 0
   _timingCurve:
     serializedVersion: 2
@@ -9945,10 +10041,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 0, y: -2.5, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
-  TimeToWait: 1
+  TimeToMove: 0.2
+  TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0
   StartingPointAlongPath: 0
@@ -10124,10 +10220,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementVector: {x: 0, y: 2, z: 0}
-  ContinuousMove: 1
+  ContinuousMove: 0
   Mode: 0
-  TimeToMove: 1
-  TimeToWait: 1
+  TimeToMove: 0.2
+  TimeToWait: 0
   WaitAtStart: 0
   StartWaitTime: 0
   StartingPointAlongPath: 0
