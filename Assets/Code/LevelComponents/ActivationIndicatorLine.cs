@@ -5,8 +5,8 @@ using UnityEngine;
 public class ActivationIndicatorLine : MonoBehaviour
 {
     public LineRenderer LineRenderer;
-    public Color NotActivatedColor;
-    public Color ActivatedColor;
+    [ColorUsage(true, true)] public Color NotActivatedColor;
+    [ColorUsage(true, true)] public Color ActivatedColor;
 
     [SerializeField] Shapes.Polyline _innerLineShape;
     [SerializeField] Shapes.Polyline _outerLineShape;
