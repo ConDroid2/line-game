@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public float DelayAfterShoot = 0.5f;
 
     private bool _allowMoving = true;
+    private bool _dying = false;
     [SerializeField] private bool _aimingMode = false;
     private bool _sprinting = false;
 
@@ -181,6 +182,7 @@ public class Player : MonoBehaviour
     {
         _visuals.gameObject.SetActive(true);
         _allowMoving = true;
+        _dying = false;
     }
 
     public void SprintingStatusChanged(InputAction.CallbackContext context)
@@ -218,6 +220,7 @@ public class Player : MonoBehaviour
     {
         if (_grappleUnlocked == false && GameManager.Instance != null) return;
         if (_aimingMode && _currentAbilityInUse != AbilityEnum.Grapple) return;
+        if (_dying == true) return;
 
         if (context.phase == InputActionPhase.Performed)
         {
@@ -307,6 +310,7 @@ public class Player : MonoBehaviour
         _aimingMode = false;
         _invulnerable = true;
         _allowMoving = false;
+        _dying = true;
 
         MovementController.ClearLineSwapData();
     }
