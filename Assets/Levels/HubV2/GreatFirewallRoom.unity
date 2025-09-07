@@ -899,9 +899,8 @@ Transform:
   - {fileID: 984393444}
   - {fileID: 544156337}
   - {fileID: 985548754}
-  - {fileID: 459886289}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &146950900
 BoxCollider2D:
@@ -1523,7 +1522,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &314462806
 GameObject:
@@ -2034,6 +2033,8 @@ GameObject:
   m_Component:
   - component: {fileID: 459886289}
   - component: {fileID: 459886290}
+  - component: {fileID: 459886292}
+  - component: {fileID: 459886291}
   m_Layer: 0
   m_Name: FirewallFlagStuff
   m_TagString: Untagged
@@ -2048,13 +2049,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459886288}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.09, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 146950899}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &459886290
 MonoBehaviour:
@@ -2089,6 +2090,49 @@ MonoBehaviour:
   OnIfFalse:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &459886291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459886288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 3b14e1feb92960d4c8ee9ad3eeeaacb6, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 459886292}
+          m_TargetAssemblyTypeName: FlagSetter, Assembly-CSharp
+          m_MethodName: SetFlag
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+--- !u!114 &459886292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459886288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308ac6ca520ec324ca78b53229b5f3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flagName: FirewallDestroyed
 --- !u!1001 &468742417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8017,6 +8061,8 @@ PlayableDirector:
     value: {fileID: 146950904}
   - key: {fileID: 8900209698469827019, guid: 3ff726211c8358b45bdbe77b9e03c178, type: 2}
     value: {fileID: 592360114}
+  - key: {fileID: -7006351188076155469, guid: 3ff726211c8358b45bdbe77b9e03c178, type: 2}
+    value: {fileID: 459886291}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &756468336 stripped
@@ -8339,7 +8385,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &936962745
 PrefabInstance:
@@ -8443,7 +8489,7 @@ Transform:
   - {fileID: 592360115}
   - {fileID: 1745228940}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &962260343 stripped
 GameObject:
@@ -10561,7 +10607,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1738117272
 PrefabInstance:
@@ -10630,7 +10676,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1745228940}
   - component: {fileID: 1745228941}
-  - component: {fileID: 1745228942}
   m_Layer: 0
   m_Name: CutsceneFlagReader
   m_TagString: Untagged
@@ -10662,28 +10707,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 1745228939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 646442bde03b1d146b04e56d0dd56d3e, type: 3}
+  m_Script: {fileID: 11500000, guid: b2855d894a636c94b8b3e15d93f7765c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flagName: GotMcGuffin
-  _onlyCheckOnStart: 0
-  _readFlagOnEnable: 0
-  OnIfTrue:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 296461318}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnIfFalse:
+  IfTrueReaders:
+  - FlagName: FirewallDestroyed
+    IfFlagTrue:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 296461318}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - FlagName: GotMcGuffin
+    IfFlagTrue:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 296461318}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  IfAllFalse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 296461318}
@@ -10698,39 +10758,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1745228942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745228939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 646442bde03b1d146b04e56d0dd56d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _flagName: FirewallDestroyed
-  _onlyCheckOnStart: 0
-  _readFlagOnEnable: 0
-  OnIfTrue:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 77508906}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnIfFalse:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1793796333
 GameObject:
   m_ObjectHideFlags: 0

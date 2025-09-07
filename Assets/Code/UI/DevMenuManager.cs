@@ -25,6 +25,14 @@ public class DevMenuManager : MonoBehaviour
             flagNames.Add(flagReader.GetFlagName());
         }
 
+        foreach(OrderedFlagReader orderedFlagReader in FindObjectsOfType<OrderedFlagReader>())
+        {
+            foreach(OrderedFlagReader.Reader reader in orderedFlagReader.IfTrueReaders)
+            {
+                flagNames.Add(reader.FlagName);
+            }
+        }
+
         foreach(string flagName in flagNames)
         {
             if (flagName == "ShootUnlocked" || flagName == "GrappleUnlocked" || flagName == "RotateUnlocked") continue;
