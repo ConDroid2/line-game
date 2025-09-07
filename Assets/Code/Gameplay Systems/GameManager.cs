@@ -133,6 +133,8 @@ public class GameManager : MonoBehaviour
         if(scene.name == "JPMenu_Main" || scene.name == "Scrolling Credits Scene")
         {
             if (_player != null) Destroy(_player.gameObject);
+
+            _firstSceneLoad = true;
             return;
         }
         // Debug.Log($"Scene name: {scene.name}");
@@ -231,6 +233,7 @@ public class GameManager : MonoBehaviour
         // Handle loading the correct music
         if (_firstSceneLoad)
         {
+            Debug.Log($"Loading in correct track: {_saveSlot.TrackPrimary.SwitchGroup} -- {_saveSlot.TrackSecondary.SwitchGroup}");
             if (_saveSlot?.TrackPrimary != null)
                 AkSoundEngine.SetSwitch(_saveSlot.TrackPrimary.SwitchGroup, _saveSlot.TrackPrimary.SwitchState, AudioManager.Instance.SoundPlayer);
 
@@ -347,6 +350,8 @@ public class GameManager : MonoBehaviour
         _saveSlot = saveData;
         _toPort = saveData.CurrentPort;
         _visitedRooms = saveData.RoomsVisited;
+        PrimaryTrackData = saveData.TrackPrimary;
+        SecondaryTrackData = saveData.TrackSecondary;
 
         if(_saveSlot.ControlOverridesJson != null)
             InputManager.Instance?.LoadControlOverrides(_saveSlot.ControlOverridesJson.ToString());
