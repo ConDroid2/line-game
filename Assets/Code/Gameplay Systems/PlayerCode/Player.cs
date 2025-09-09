@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
             {
                 return;
             }
-            // Debug.Log(_inputSlope);
+            Debug.Log(_inputVector);
 
             float currentSpeed = _sprinting ? SprintingSpeed : Speed;
 

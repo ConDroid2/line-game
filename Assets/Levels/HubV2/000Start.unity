@@ -520,7 +520,9 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 0.5
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -622,7 +624,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 0.5
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -667,7 +671,9 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 0.5
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -2262,7 +2268,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 0.5
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -2379,6 +2387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicTrackSetter
       objectReference: {fileID: 0}
+    - target: {fileID: 23908200709812013, guid: f61b32456f5274242a124cf43dc7d5ad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4901302114994837986, guid: f61b32456f5274242a124cf43dc7d5ad, type: 3}
       propertyPath: isEnvironmentAware
       value: 0
@@ -2490,6 +2502,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+--- !u!1001 &1896629851
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3540529198527179855, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_Name
+      value: WanderingTrackSetter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296466693266982370, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19efc77c2049f514984b359c60e47a01, type: 3}
 --- !u!1001 &1969758726
 PrefabInstance:
   m_ObjectHideFlags: 0
