@@ -14,6 +14,8 @@ public class PressurePlateScript : MonoBehaviour
 
     [Header("Setting")]
     [SerializeField] private bool _isHeavy = false;
+    [Tooltip("Check if the deactivation of the pressure plate is dependant on something else")]
+    [SerializeField] private bool _manualDeactivate = false;
 
     [Header("References")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -48,7 +50,7 @@ public class PressurePlateScript : MonoBehaviour
             Activate();
         }
         // If active but shouldn't be, deactivate
-        else if(_isActivated == true && shouldBeActive == false)
+        else if(_isActivated == true && shouldBeActive == false && _manualDeactivate == false)
         {
             Deactivate();
         }
@@ -76,7 +78,7 @@ public class PressurePlateScript : MonoBehaviour
         return thisCollider.bounds.Contains(other.bounds.max) && thisCollider.bounds.Contains(other.bounds.min);
     }
 
-    private void Activate()
+    public void Activate()
     {
         OnPressed.Invoke();
         _isActivated = true;
@@ -92,7 +94,7 @@ public class PressurePlateScript : MonoBehaviour
         }
     }
 
-    private void Deactivate()
+    public void Deactivate()
     {
         OnDeactivated.Invoke();
         _isActivated = false;

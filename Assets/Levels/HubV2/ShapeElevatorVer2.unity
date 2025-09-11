@@ -172,6 +172,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &51309014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -493,6 +496,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &382135541 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6977629593852638501, guid: fb29a3bd831358c4295721fbec2dfbe2, type: 3}
@@ -542,6 +548,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &382135548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +566,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -602,7 +613,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 5
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -790,6 +803,33 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 907626788}
+        m_TargetAssemblyTypeName: PressurePlateScript, Assembly-CSharp
+        m_MethodName: Deactivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1308094817}
+        m_TargetAssemblyTypeName: PressurePlateScript, Assembly-CSharp
+        m_MethodName: Deactivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &798743172 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6977629593852638501, guid: fb29a3bd831358c4295721fbec2dfbe2, type: 3}
@@ -810,7 +850,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 5
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -884,6 +926,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &895371447 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3755817443664416725, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
@@ -933,6 +978,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &907626788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
+  m_PrefabInstance: {fileID: 1725670399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a5f4708d96add4f90dc539817848c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &912271623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1035,7 +1094,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 5
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -1080,7 +1141,9 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 3
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -1332,7 +1395,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 5
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -1491,7 +1556,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 5
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:
@@ -1573,6 +1640,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb29a3bd831358c4295721fbec2dfbe2, type: 3}
+--- !u!114 &1308094817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
+  m_PrefabInstance: {fileID: 1335097006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a5f4708d96add4f90dc539817848c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1335097006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1627,6 +1705,10 @@ PrefabInstance:
     - target: {fileID: 3794228386561992683, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: m_Name
       value: PressurePlate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
+      propertyPath: _manualDeactivate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.size
@@ -1929,6 +2011,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1351510463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2404,6 +2489,10 @@ PrefabInstance:
       value: PressurePlate
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
+      propertyPath: _manualDeactivate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.size
       value: 7
       objectReference: {fileID: 0}
@@ -2675,7 +2764,9 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 5
+  RotationIncrement: 360
   WaitAtStart: 0
+  Automatic: 1
   _timingCurve:
     serializedVersion: 2
     m_Curve:

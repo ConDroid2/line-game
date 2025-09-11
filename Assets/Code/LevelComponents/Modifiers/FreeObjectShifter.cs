@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FreeObjectShifter : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class FreeObjectShifter : MonoBehaviour
     private float _timeWaiting = 0f;
     private bool _waiting = false;
     private float _currentTimeToWait = 0f;
+
+    /** Events **/
+    public UnityEvent OnShiftComplete;
 
     private void Awake()
     {
@@ -90,6 +94,8 @@ public class FreeObjectShifter : MonoBehaviour
                     _waiting = true;
                     _currentTimeToWait = TimeToWait;
                 }
+
+                OnShiftComplete?.Invoke();
             }
             // Advance time moving
             else
