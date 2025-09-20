@@ -27,6 +27,14 @@ public class BigAssLaser : MonoBehaviour
     public UnityEvent IsColliding;
     public UnityEvent NotColliding;
 
+    //public AK.Wwise.Event stopLaserSfx;
+    //public AK.Wwise.Event reactivateLaserSfx;
+
+    //public WwiseEventPoster stopLaserSfx;
+    //public WwiseEventPoster reactivateLaserSfx;
+
+    public UnityEvent stopLaserSfx;
+    public UnityEvent reactivateLaserSfx;
 
     private void Start()
     {
@@ -121,10 +129,27 @@ public class BigAssLaser : MonoBehaviour
 
     public void Activate(bool activate)
     {
+        bool previousActiveState = _active;
         _active = activate;
 
         _laserLine.enabled = _active;
         _laserEndVisual.SetActive(_active);
+
+        Debug.Log("activate event triggered");
+        Debug.Log($"_active = {_active}, and activate = {activate}");
+
+        if (previousActiveState && !_active) // if was active, and is being set to inactive, turn of sfx
+        {
+            Debug.Log("entered deactivate if statement");
+            //this.stopLaserSfx.Post(gameObject);
+            this.stopLaserSfx.Invoke();
+        }
+        else if(!previousActiveState && _active) // if was not currently active, but is becoming active, turn it on
+        {
+            Debug.Log("entered reactivate if statement");
+            //this.reactivateLaserSfx.Post(gameObject);
+            this.reactivateLaserSfx.Invoke();
+        }
     }
 
     private void OnDrawGizmosSelected()

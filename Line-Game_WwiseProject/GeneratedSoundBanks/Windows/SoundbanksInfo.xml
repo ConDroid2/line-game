@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{981C6101-D1B8-2494-4AA5-0065512BC56E}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{88C141AA-306E-9588-B00B-9AFDFAAEC79E}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -205,6 +205,10 @@
 					<ShortName>Thunk.wav</ShortName>
 					<CachePath>SFX/Thunk_818F3B66.wem</CachePath>
 				</File>
+				<File Id="764761165" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BigLaser3.wav</ShortName>
+					<CachePath>SFX/BigLaser3_81BF6B75.wem</CachePath>
+				</File>
 				<File Id="771467704" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>TheTower.wav</ShortName>
 					<CachePath>SFX/TheTower_FBC78EF0.wem</CachePath>
@@ -236,10 +240,6 @@
 				<File Id="976694783" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BigLaserHittingBlock.wav</ShortName>
 					<CachePath>SFX/BigLaserHittingBlock_EB016F28.wem</CachePath>
-				</File>
-				<File Id="982241922" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>BigLaser2.wav</ShortName>
-					<CachePath>SFX/BigLaser2_0DC4F58A.wem</CachePath>
 				</File>
 				<File Id="993600486" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PressurePlateHeavyPressed2.wav</ShortName>
@@ -607,7 +607,7 @@
 				</Event>
 				<Event Id="1141879209" Name="Play_BigLaser" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="982241922"/>
+						<MediaRef Id="764761165"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1031146745" Name="Play_BigLaserHitObject" DurationType="Infinite">
@@ -1713,7 +1713,7 @@
 				</Event>
 				<Event Id="88236687" Name="Stop_BigLaser" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
-						<MediaRef Id="982241922"/>
+						<MediaRef Id="764761165"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1851236115" Name="Stop_BigLaserHitObject" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
@@ -1976,5 +1976,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{FFFAC612-578D-F8EA-CE84-8E5E6A3260AA}</FileHash>
+	<FileHash>{46CDEDF8-A4F3-F782-1030-039FB7CFFDAC}</FileHash>
 </SoundBanksInfo>
