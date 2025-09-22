@@ -162,7 +162,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>10</Value>
+										<Value>13</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -191,7 +191,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>6</Value>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -425,7 +425,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>6</Value>
+										<Value>5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -635,7 +635,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>9</Value>
+										<Value>11</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -664,7 +664,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>4</Value>
+										<Value>3</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -690,6 +690,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="EnemyDeath1" ID="{CCE13D95-351B-4FF4-96EB-8BEFF92D9FF7}" ShortID="888397439">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -715,7 +722,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>6</Value>
+										<Value>5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -744,7 +751,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>9</Value>
+										<Value>6</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -994,7 +1001,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-2</Value>
+										<Value>-3</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1079,7 +1086,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>5</Value>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1108,7 +1115,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>2</Value>
+										<Value>-1</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1137,7 +1144,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>3</Value>
+										<Value>1</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1163,6 +1170,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="TargetShot" ID="{5A2FF7A2-5215-4C9C-BCFE-2F7EDFCB7C5B}" ShortID="286310655">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
@@ -1188,7 +1202,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>4</Value>
+										<Value>3</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1400,16 +1414,6 @@
 								<Property Name="BelowThresholdBehavior" Type="int16" Value="3"/>
 								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="Lowpass" Type="int16">
-									<ValueList>
-										<Value>15</Value>
-									</ValueList>
-								</Property>
-								<Property Name="MakeUpGain" Type="Real64">
-									<ValueList>
-										<Value>2</Value>
-									</ValueList>
-								</Property>
 								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
@@ -1425,7 +1429,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>6</Value>
+										<Value>-5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1438,25 +1442,22 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="BigLaser2" ID="{351D1DEC-E7C9-4A93-B83E-F465A9A66727}">
+								<AudioFileSource Name="BigLaser3" ID="{DDB54BFE-D977-4531-A003-0718EB53C382}">
 									<PropertyList>
-										<Property Name="CrossfadeDuration" Type="Real64" Value="2"/>
-										<Property Name="CrossfadeShape" Type="int16" Value="4"/>
-										<Property Name="FadeOutDuration" Type="Real64" Value="0.1"/>
-										<Property Name="LoopBegin" Type="Real64" Value="1"/>
-										<Property Name="LoopEnd" Type="Real64" Value="3"/>
+										<Property Name="CrossfadeDuration" Type="Real64" Value="3000"/>
+										<Property Name="LoopBegin" Type="Real64" Value="4"/>
+										<Property Name="LoopEnd" Type="Real64" Value="12"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="3.1"/>
 									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>BigLaser2.wav</AudioFile>
+									<AudioFile>BigLaser3.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="982241922"/>
+										<MediaID ID="764761165"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="BigLaser2" ID="{351D1DEC-E7C9-4A93-B83E-F465A9A66727}" Platform="Linked"/>
+								<ActiveSource Name="BigLaser3" ID="{DDB54BFE-D977-4531-A003-0718EB53C382}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="BigLaserHitObject" ID="{404745E3-86D1-4209-90E6-23F152059422}" ShortID="155848936">

@@ -27,6 +27,8 @@ public class BigAssLaser : MonoBehaviour
     public UnityEvent IsColliding;
     public UnityEvent NotColliding;
 
+    public UnityEvent stopLaserSfx;
+    public UnityEvent reactivateLaserSfx;
 
     private void Start()
     {
@@ -121,10 +123,20 @@ public class BigAssLaser : MonoBehaviour
 
     public void Activate(bool activate)
     {
+        bool previousActiveState = _active;
         _active = activate;
 
         _laserLine.enabled = _active;
         _laserEndVisual.SetActive(_active);
+
+        if (previousActiveState && !_active) // if was active, and is being set to inactive, turn of sfx
+        {
+            this.stopLaserSfx.Invoke();
+        }
+        else if(!previousActiveState && _active) // if was not currently active, but is becoming active, turn it on
+        {
+            this.reactivateLaserSfx.Invoke();
+        }
     }
 
     private void OnDrawGizmosSelected()
