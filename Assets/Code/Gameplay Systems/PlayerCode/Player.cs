@@ -144,6 +144,7 @@ public class Player : MonoBehaviour
         //{
         //    _eyeAnimator.SetTrigger("Left_Right_Blink");
         //}
+        // if(_allowMoving == false) return;
 
         if (_allowMoving && !_aimingMode)
         {
