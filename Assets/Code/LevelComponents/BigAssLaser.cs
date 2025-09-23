@@ -8,7 +8,7 @@ public class BigAssLaser : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform _laserStartPoint;
     [SerializeField] private LineRenderer _laserLine;
-    [SerializeField] private GameObject _laserEndVisual;
+    [SerializeField] private ParticleSystem _hitParticles;
 
     [Header("Settings")]
     [SerializeField] private float _range;
@@ -36,9 +36,6 @@ public class BigAssLaser : MonoBehaviour
         _laserLine.endWidth = _width;
 
         _maxDistance = _laserStartPoint.position + (transform.up * _range);
-
-        _laserEndVisual.transform.position = _maxDistance;
-        _laserEndVisual.transform.up = transform.up;
 
         _laserLine.SetPosition(0, _laserStartPoint.position);
         _laserLine.SetPosition(1, _maxDistance);
@@ -88,23 +85,27 @@ public class BigAssLaser : MonoBehaviour
             Vector3 newEnd = _laserStartPoint.position + projection;
 
             _laserLine.SetPosition(1, newEnd);
-            _laserEndVisual.transform.position = newEnd;
 
-            _laserEndVisual.SetActive(true);
+            _hitParticles.transform.position = newEnd;
+
+            
+
+           //  _laserEndVisual.SetActive(true);
 
             if(_hittingSomething == false)
             {
                 _hittingSomething = true;
                 IsColliding?.Invoke();
+                _hitParticles.Play();
             }
         }
         else
         {
             // Draw laser to hit point
             _laserLine.SetPosition(1, _maxDistance);
-            _laserEndVisual.transform.position = _maxDistance;
 
-            _laserEndVisual.SetActive(false);
+            // _laserEndVisual.SetActive(false);
+            _hitParticles.Stop();
 
             // Deactivate any switches
             if (_affectedSwitch != null)
@@ -127,7 +128,6 @@ public class BigAssLaser : MonoBehaviour
         _active = activate;
 
         _laserLine.enabled = _active;
-        _laserEndVisual.SetActive(_active);
 
         if (previousActiveState && !_active) // if was active, and is being set to inactive, turn of sfx
         {
