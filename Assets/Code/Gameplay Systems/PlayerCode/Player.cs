@@ -152,6 +152,7 @@ public class Player : MonoBehaviour
             {
                 return;
             }
+            
             Debug.Log(_inputVector);
 
             float currentSpeed = _sprinting ? SprintingSpeed : Speed;
@@ -166,6 +167,7 @@ public class Player : MonoBehaviour
         }
         else if (_aimingMode)
         {
+            _inputVector = new Vector2(LimitDirectionalAxis(_inputVector.x), LimitDirectionalAxis(_inputVector.y));
             if (_inputVector != Vector2.zero)
             {
                 _aimController.SetAim(_inputVector);
@@ -176,6 +178,13 @@ public class Player : MonoBehaviour
         }
 
         
+    }
+
+    public float LimitDirectionalAxis(float axisValue)
+    {
+        if (axisValue < -0.5) return -1;
+        else if (axisValue > 0.5) return 1;
+        return 0;
     }
 
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
