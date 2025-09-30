@@ -20,6 +20,9 @@ public class FreeObjectRotator : MonoBehaviour
     private float _timeWaiting = 0f;
     private bool _waiting = false;
     private float _rotationPercentage;
+    private State _currentState = State.Stopped;
+
+    private enum State { Waiting, Rotating, Stopped }
 
     private void Awake()
     {
@@ -32,14 +35,30 @@ public class FreeObjectRotator : MonoBehaviour
 
         if (WaitAtStart)
         {
-            _waiting = true;
+            _currentState = State.Waiting;
+        }
+        else if(Automatic)
+        {
+            _currentState = State.Rotating;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Rotate(Time.deltaTime);
+        switch (_currentState)
+        {
+            case State.Rotating:
+                Rotate(Time.deltaTime);
+                break;
+            case State.Waiting:
+                Wait(Time.deltaTime);
+                break;
+            case State.Stopped:
+                break;
+            default:
+                break;
+        }
     }
 
     public void Rotate(float timeSinceLastCall)
@@ -61,8 +80,11 @@ public class FreeObjectRotator : MonoBehaviour
 
                 if (TimeToWait > 0)
                 {
-                    _waiting = true;
-                    _timeWaiting = 0f;
+                    _currentState = State.Waiting;
+                }
+                else
+                {
+                    _currentState = Automatic ? State.Rotating : State.Stopped;
                 }
             }
             else
@@ -75,16 +97,26 @@ public class FreeObjectRotator : MonoBehaviour
                 _timeMoving += timeSinceLastCall;
             }
         }
+    }
+
+    public void Wait(float timeSinceLastCall)
+    {
+        if (_timeWaiting >= TimeToWait)
+        {
+            _currentState = Automatic ? State.Rotating : State.Stopped;
+            _timeWaiting = 0f;
+        }
         else
         {
-            if(_timeWaiting >= TimeToWait)
-            {
-                _waiting = false;
-            }
-            else
-            {
-                _timeWaiting = Mathf.Clamp(_timeWaiting + timeSinceLastCall, 0f, TimeToWait);
-            }
+            _timeWaiting = Mathf.Clamp(_timeWaiting + timeSinceLastCall, 0f, TimeToWait);
+        }
+    }
+
+    public void DoRotation()
+    {
+        if(_currentState != State.Rotating && Automatic == false)
+        {
+            _currentState = State.Rotating;
         }
     }
 }
