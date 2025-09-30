@@ -131,11 +131,16 @@ public class BigAssLaser : MonoBehaviour
 
         if (previousActiveState && !_active) // if was active, and is being set to inactive, turn of sfx
         {
-            this.stopLaserSfx.Invoke();
+            _hitParticles.Stop(); // This has to be called before the command set _hittingSomething to false. It works, but I don't know why JPP 2025/09/29
+            this.stopLaserSfx?.Invoke();
+            this.NotColliding?.Invoke();
+            this._hittingSomething = false;
+            // Looking at this code, I think that calling activate will end up bypassing the calls to turn off any switches activated by the laser.
+            // I think this is fine, since we didn't end up ever activating switches with a laser ever. JPP 2025/09/29
         }
         else if(!previousActiveState && _active) // if was not currently active, but is becoming active, turn it on
         {
-            this.reactivateLaserSfx.Invoke();
+            this.reactivateLaserSfx?.Invoke();
         }
     }
 
