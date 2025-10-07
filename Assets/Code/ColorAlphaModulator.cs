@@ -37,7 +37,7 @@ public class ColorAlphaModulator : MonoBehaviour
 
         //timer.OnPercentDoneChange.AddListener(timerAction); // add this dynamic action to the timer
         timer.OnTimerEnd.AddListener(ChangeIncreaseDecreaseAction); // add this action to the timer on completion which changes the action done onPercent Change.
-        timer.OnTimerEnd.AddListener(() => Debug.Log("Timer completed\n"));
+        // timer.OnTimerEnd.AddListener(() => Debug.Log("Timer completed\n"));
         timer.OnTimerEnd.AddListener(() => this.modulationInProgress = false); ;
 
         trueIncreaseFalseDecrease = firstCallIsIncrease;
@@ -89,30 +89,30 @@ public class ColorAlphaModulator : MonoBehaviour
 
     public void ModulateAlpha()
     {
-        Debug.Log("ModulateAlpha invoked\n");
-        Debug.Log($"CurrentCallNumber = {this.currentCallNumber}\n");
+        //Debug.Log("ModulateAlpha invoked\n");
+        //Debug.Log($"CurrentCallNumber = {this.currentCallNumber}\n");
         
         if (this.currentCallNumber == 0 && !this.modulationInProgress) // only do the alpha setting and stuff when the call is set to zero.
         {
             // When this is called, do the work in the timer, which will call the action set to the OnPercentDoneChange action
             timer.StartTimer();
             this.modulationInProgress = true;
-            Debug.Log($"Timer Started\n");
+            // Debug.Log($"Timer Started\n");
             // When the timer finishes, it has to swtich the increase/decrease action to use the other function than currently stored
 
         }
 
         this.currentCallNumber = this.currentCallNumber + 1 > this.callsToIgnore ? 0 : this.currentCallNumber + 1;
-        Debug.Log($"NewCallNumber = {this.currentCallNumber}\n");
+        // Debug.Log($"NewCallNumber = {this.currentCallNumber}\n");
     }
 
     private void ChangeIncreaseDecreaseAction()
     {
-        Debug.Log("ChangeIncreaseDecreaseAction called\n");
+        // Debug.Log("ChangeIncreaseDecreaseAction called\n");
 
         if (this.trueIncreaseFalseDecrease) // if true, this means the last operation that was called (and just completed) was an increase in alpha
         {
-            Debug.Log("trueIncreaseFalseDecrease is true\n");
+            // Debug.Log("trueIncreaseFalseDecrease is true\n");
             // therefore set the action to reduce, and set trueIncreaseFalseDecrease to false
             //this.timerAction = this.ReduceAlpha;
             timer.OnPercentDoneChange.RemoveListener(IncreaseAlpha);
@@ -120,7 +120,7 @@ public class ColorAlphaModulator : MonoBehaviour
         }
         else // trueIncreaseFalseDecrease is false, therefore the last operation that occured was a reduction in intensity.
         {
-            Debug.Log("trueIncreaseFalseDecrease is false\n");
+            // Debug.Log("trueIncreaseFalseDecrease is false\n");
             // therefore set the action to increase alpha.
             //this.timerAction = this.IncreaseAlpha;
             timer.OnPercentDoneChange.RemoveListener(ReduceAlpha);

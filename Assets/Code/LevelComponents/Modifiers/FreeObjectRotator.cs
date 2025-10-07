@@ -61,7 +61,7 @@ public class FreeObjectRotator : MonoBehaviour
         }
     }
 
-    public void Rotate(float timeSinceLastCall)
+    private void Rotate(float timeSinceLastCall)
     {
         if (_waiting == false)
         {
@@ -99,7 +99,7 @@ public class FreeObjectRotator : MonoBehaviour
         }
     }
 
-    public void Wait(float timeSinceLastCall)
+    private void Wait(float timeSinceLastCall)
     {
         if (_timeWaiting >= TimeToWait)
         {
@@ -112,6 +112,11 @@ public class FreeObjectRotator : MonoBehaviour
         }
     }
 
+    private void SwitchState(State newState)
+    {
+        if (_currentState == newState) return;
+    }
+
     public void DoRotation()
     {
         if(_currentState != State.Rotating && Automatic == false)
@@ -119,4 +124,6 @@ public class FreeObjectRotator : MonoBehaviour
             _currentState = State.Rotating;
         }
     }
+
+    
 }
