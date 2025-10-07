@@ -55,15 +55,15 @@ public class OrderedFlagReader : MonoBehaviour
 
     private void HandleFlagChange(string changedFlagName, bool newFlagValue)
     {
-        foreach(Reader reader in IfTrueReaders)
-        {
-            if(changedFlagName == reader.FlagName && newFlagValue == true)
-            {
-                reader.IfFlagTrue?.Invoke();
-                return;
-            }
-        }
+        //foreach(Reader reader in IfTrueReaders)
+        //{
+        //    if(changedFlagName == reader.FlagName && newFlagValue == true)
+        //    {
+        //        reader.IfFlagTrue?.Invoke();
+        //        return;
+        //    }
+        //}
 
-        IfAllFalse?.Invoke();
+        CheckAllFlags();
     }
 }
