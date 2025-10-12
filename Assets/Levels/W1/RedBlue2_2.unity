@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[1].x
@@ -148,15 +148,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[2].x
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[2].y
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[3].x
@@ -216,20 +216,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
---- !u!1 &47407146 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3953720575135897105, guid: 1f2dd8a8a8e793b43a027a8cb89b3c12, type: 3}
-  m_PrefabInstance: {fileID: 1330217677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &47407147 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3953720575135897107, guid: 1f2dd8a8a8e793b43a027a8cb89b3c12, type: 3}
   m_PrefabInstance: {fileID: 1330217677}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47407146}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2b5a82f08a718c47978f886077ca4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &47407148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1174298849279255290, guid: 1f2dd8a8a8e793b43a027a8cb89b3c12, type: 3}
+  m_PrefabInstance: {fileID: 1330217677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd36a56f99a4eca4d8cf1fc36ca75f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &127087317
@@ -343,6 +349,43 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!21 &140711188
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (IS_JOIN_MESH)(JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -2
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!114 &172803346 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2036272058754593910, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
@@ -504,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -517,7 +560,7 @@ PrefabInstance:
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 47407146}
+      objectReference: {fileID: 47407148}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -528,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 286353902}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -553,7 +596,7 @@ PrefabInstance:
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 47407146}
+      objectReference: {fileID: 47407148}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -564,7 +607,7 @@ PrefabInstance:
       objectReference: {fileID: 286353901}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: DeactivateFromTop
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -588,7 +631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: Activate
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -600,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UniversalObstical, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -620,7 +663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UniversalObstical, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -870,6 +913,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3be8188389cc3941906aa58057e6fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &466525071
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (IS_JOIN_MESH)(JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -3
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!114 &468418255 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6575725528622679641, guid: 7d0081b2d75b0d64c91eda829e5d85b2, type: 3}
@@ -942,6 +1019,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &594510721
 Transform:
   m_ObjectHideFlags: 0
@@ -1397,6 +1477,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
+--- !u!21 &922940649
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -3
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &924047046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1570,6 +1684,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8bd6c0555df36440a35b32dc7bdfc6c, type: 3}
+--- !u!21 &1003196835
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -3
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1018012799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1681,6 +1829,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1020088138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2128,6 +2279,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1261379249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2185,6 +2339,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab02384365cab5945a65131716d3d6e0, type: 3}
+--- !u!21 &1281226592
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -2
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1330217677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2338,6 +2526,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68948d3dee054a94ba2e2c247ec9fc08, type: 3}
+--- !u!21 &1591584982
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (IS_JOIN_MESH)(JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -2
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1 &1715085186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,6 +2621,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1715085188
 Transform:
   m_ObjectHideFlags: 0
@@ -2415,6 +2640,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1760924129
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -2
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1784367921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2772,7 +3031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -2785,7 +3044,7 @@ PrefabInstance:
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2072584117}
+      objectReference: {fileID: 2072584119}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2796,7 +3055,7 @@ PrefabInstance:
       objectReference: {fileID: 1999025175}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -2821,7 +3080,7 @@ PrefabInstance:
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2072584117}
+      objectReference: {fileID: 2072584119}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2832,7 +3091,7 @@ PrefabInstance:
       objectReference: {fileID: 1999025174}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: DeactivateFromTop
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -2856,7 +3115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: Activate
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -2868,7 +3127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UniversalObstical, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -2888,7 +3147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UniversalObstical, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -3015,6 +3274,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &2015468556
 Transform:
   m_ObjectHideFlags: 0
@@ -3088,20 +3350,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2072584117 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3953720575135897105, guid: 1f2dd8a8a8e793b43a027a8cb89b3c12, type: 3}
-  m_PrefabInstance: {fileID: 1966916826}
+--- !u!21 &2054235951
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (IS_JOIN_MESH)(JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -3
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!114 &2072584118 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3953720575135897107, guid: 1f2dd8a8a8e793b43a027a8cb89b3c12, type: 3}
   m_PrefabInstance: {fileID: 1966916826}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072584117}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2b5a82f08a718c47978f886077ca4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2072584119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1174298849279255290, guid: 1f2dd8a8a8e793b43a027a8cb89b3c12, type: 3}
+  m_PrefabInstance: {fileID: 1966916826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd36a56f99a4eca4d8cf1fc36ca75f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2091777613
@@ -3271,7 +3573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: -1.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[1].x
@@ -3279,7 +3581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: -1
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[2].x
@@ -3287,7 +3589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[2].y
-      value: -1
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[3].x

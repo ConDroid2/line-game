@@ -128,6 +128,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3953720575135897105, guid: 1f2dd8a8a8e793b43a027a8cb89b3c12, type: 3}
   m_PrefabInstance: {fileID: 967779504}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2908334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1174298849279255290, guid: 1f2dd8a8a8e793b43a027a8cb89b3c12, type: 3}
+  m_PrefabInstance: {fileID: 967779504}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd36a56f99a4eca4d8cf1fc36ca75f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &53299784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: -1.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2036272058754593904, guid: 0a21836f01fc5d74d85d2df2ea8b612a, type: 3}
       propertyPath: m_Positions.Array.data[1].x
@@ -375,6 +386,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &267569659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +404,7 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -750,6 +765,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+--- !u!21 &493502092
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -2
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &503065519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -831,7 +880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -848,7 +897,7 @@ PrefabInstance:
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2908333}
+      objectReference: {fileID: 2908334}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -863,7 +912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -896,7 +945,7 @@ PrefabInstance:
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2908333}
+      objectReference: {fileID: 2908334}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -911,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: DeactivateFromTop
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -943,7 +992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: Activate
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -959,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UniversalObstical, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnPressed.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -991,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UniversalObstical, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3794228386561992686, guid: b9968cad4fd6f9d4da188811db2590e8, type: 3}
       propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -1422,6 +1471,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &932417121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,6 +1489,7 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -2287,6 +2340,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+--- !u!21 &1789682591
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -3
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1806647112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2654,6 +2741,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1905624851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2669,6 +2759,7 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -2695,6 +2786,40 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!21 &1935137885
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (IS_JOIN_MESH)(JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -3
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1946703760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2947,6 +3072,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &2014409158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6977629593852638500, guid: fb29a3bd831358c4295721fbec2dfbe2, type: 3}
@@ -3036,3 +3164,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f08ac503e2a8b45bb6b66127be055f, type: 3}
+--- !u!21 &2085144742
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Polyline 2D Transparent (IS_JOIN_MESH)(JOIN_ROUND) (instance)
+  m_Shader: {fileID: 4800000, guid: 99a1df08fb8c6bc4b985a2eb44648277, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -2
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
+  m_BuildTextureStacks: []
