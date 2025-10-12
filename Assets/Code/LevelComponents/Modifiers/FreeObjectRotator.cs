@@ -27,11 +27,11 @@ public class FreeObjectRotator : MonoBehaviour
     private void Awake()
     {
         _rotationPercentage = RotationIncrement / 360f;
-        Debug.Log("Rotation percentage: " + _rotationPercentage);
+        // Debug.Log("Rotation percentage: " + _rotationPercentage);
         _startRotation = transform.eulerAngles.z;
         _endRotation = _startRotation + (direction * 360f * _rotationPercentage);
 
-        Debug.Log($"Start Rotation: {_startRotation} -- End Rotation: {_endRotation}");
+        // Debug.Log($"Start Rotation: {_startRotation} -- End Rotation: {_endRotation}");
 
         if (WaitAtStart)
         {

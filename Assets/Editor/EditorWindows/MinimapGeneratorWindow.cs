@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class MinimapGeneratorWindow : EditorWindow
 {
@@ -56,24 +57,32 @@ public class MinimapGeneratorWindow : EditorWindow
             {
                 RectTransform newConnection = Instantiate(verticalConnectionPrefab, mapRoom.RectTransform);
                 newConnection.anchoredPosition = new Vector2(room.MapRoomConnectionXValue, y * 10);
+
+                mapRoom.AddRoomConnectionImages(newConnection.GetComponent<Image>());
             }
 
             foreach (float y in room.LeftMapConnectionYValues)
             {
                 RectTransform newConnection = Instantiate(verticalConnectionPrefab, mapRoom.RectTransform);
                 newConnection.anchoredPosition = new Vector2(room.MapRoomConnectionXValue * -1, y * 10);
+
+                mapRoom.AddRoomConnectionImages(newConnection.GetComponent<Image>());
             }
 
             foreach (float x in room.TopMapConnectionXValues)
             {
                 RectTransform newConnection = Instantiate(horizontalConnectionPrefab, mapRoom.RectTransform);
                 newConnection.anchoredPosition = new Vector2(x * 10, room.MapRoomConnectionYValue);
+
+                mapRoom.AddRoomConnectionImages(newConnection.GetComponent<Image>());
             }
 
             foreach (float x in room.BottomMapConnectionXValues)
             {
                 RectTransform newConnection = Instantiate(horizontalConnectionPrefab, mapRoom.RectTransform);
                 newConnection.anchoredPosition = new Vector2(x * 10, room.MapRoomConnectionYValue * -1);
+
+                mapRoom.AddRoomConnectionImages(newConnection.GetComponent<Image>());
             }
 
             Debug.Log($"Loading metadata for : {room.RoomName}");

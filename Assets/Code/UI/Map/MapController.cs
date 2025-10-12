@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class MapController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private MapRoom _roomPrefab;
+    [SerializeField] private RectTransform _cursorTransform;
     [SerializeField] private RectTransform _verticalConnectionPrefab;
     [SerializeField] private RectTransform _horizontalConnectionPrefab;
     [SerializeField] private RectTransform _mapParent;
@@ -43,6 +43,7 @@ public class MapController : MonoBehaviour
             {
                 _rooms.Add(room.name, room);
                 room.gameObject.SetActive(false);
+                room.SetToDefaultColor();
             }
         }
 
@@ -67,6 +68,7 @@ public class MapController : MonoBehaviour
                 if (_rooms.ContainsKey(roomName))
                 {
                     _rooms[roomName].gameObject.SetActive(true);
+                    _rooms[roomName].SetToDefaultColor();
                 }
             }
 
@@ -84,6 +86,8 @@ public class MapController : MonoBehaviour
             Vector2 moveAmount = inputVector * _scrollSpeed * Time.unscaledDeltaTime;
 
             _mapParent.anchoredPosition += moveAmount;
+
+            _cursorTransform.pivot = new Vector2(0.5f, 0.5f) + (inputVector * 0.5f);
         }
     }
 
@@ -91,7 +95,7 @@ public class MapController : MonoBehaviour
     {
         if(_currentRoom != null)
         {
-            _currentRoom.SetColor(_regularRoomColor);
+            _currentRoom.SetToDefaultColor();
         }
 
         if (_rooms.ContainsKey(roomName))

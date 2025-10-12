@@ -24,4 +24,6 @@ public class Enums : MonoBehaviour
     public enum ShiftMode { Rebound, Restart };
     public enum KillType { DangerZone, Projectile, Darkness, SelfDestruct, Default };
     public enum SwitchType { Continuous, Toggle, Default };
+
+    public enum RoomArea { Hub, W1, W2, W3, Depths, W4 }
 }
