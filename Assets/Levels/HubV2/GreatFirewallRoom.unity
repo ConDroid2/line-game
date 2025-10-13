@@ -5395,6 +5395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 88945183}
   - component: {fileID: 88945184}
+  - component: {fileID: 88945185}
   m_Layer: 0
   m_Name: Firewall Explosion SFX
   m_TagString: Untagged
@@ -5433,6 +5434,36 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 2d6ab532d4ab7344aaf443fee869faf0, type: 2}
+--- !u!114 &88945185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88945182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 19cda58383756a14fa43ddc687f07d6b, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 88945184}
+          m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+          m_MethodName: PostEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &106848584
 GameObject:
   m_ObjectHideFlags: 0
@@ -42573,6 +42604,12 @@ PlayableDirector:
     value: {fileID: 638298815}
   - key: {fileID: -5002335829872603709, guid: 3ff726211c8358b45bdbe77b9e03c178, type: 2}
     value: {fileID: 1035741127}
+  - key: {fileID: 8323589197486641976, guid: 3ff726211c8358b45bdbe77b9e03c178, type: 2}
+    value: {fileID: 946045239}
+  - key: {fileID: 5560989391700646148, guid: 3ff726211c8358b45bdbe77b9e03c178, type: 2}
+    value: {fileID: 993760831}
+  - key: {fileID: -8431495688693924952, guid: 3ff726211c8358b45bdbe77b9e03c178, type: 2}
+    value: {fileID: 88945185}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &703930018
@@ -57659,6 +57696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946045237}
   - component: {fileID: 946045238}
+  - component: {fileID: 946045239}
   m_Layer: 0
   m_Name: Shield Appears SFX
   m_TagString: Untagged
@@ -57697,6 +57735,36 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ff105678430e5434e9c02b8d346ef24c, type: 2}
+--- !u!114 &946045239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946045236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 19cda58383756a14fa43ddc687f07d6b, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 946045238}
+          m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+          m_MethodName: PostEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &954506555
 GameObject:
   m_ObjectHideFlags: 0
@@ -58123,6 +58191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993760829}
   - component: {fileID: 993760830}
+  - component: {fileID: 993760831}
   m_Layer: 0
   m_Name: Shield Moves into Place SFX
   m_TagString: Untagged
@@ -58161,6 +58230,36 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 5dba9ea41269aa841b0cc8864432ce23, type: 2}
+--- !u!114 &993760831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993760828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 19cda58383756a14fa43ddc687f07d6b, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 993760830}
+          m_TargetAssemblyTypeName: WwiseEventPoster, Assembly-CSharp
+          m_MethodName: PostEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1005357470
 GameObject:
   m_ObjectHideFlags: 0

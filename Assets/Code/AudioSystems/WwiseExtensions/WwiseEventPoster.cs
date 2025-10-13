@@ -10,10 +10,10 @@ public class WwiseEventPoster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PostEvent();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    PostEvent();
+        //}
     }
 
     public void PostEvent()
