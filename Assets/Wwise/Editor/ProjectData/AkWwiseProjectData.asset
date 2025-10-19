@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\BackgroundMusicPlaylist
     guid: 1a0962b06261624c95aecf2cc6f314d1
     GuidInternal: 
-    m_lastTime: -8584455311110570181
+    m_lastTime: -8584407661183114128
     List:
     - name: BackgroundMusicSoundBank
       guid: 3f92bb61ec1ae341acbb5e4b03ff3416
@@ -473,8 +473,42 @@ MonoBehaviour:
     ParentPath: Events\GameParameters
     guid: b32452b4931a384ab9d293cf5abbf73a
     GuidInternal: 
-    m_lastTime: -8584730351711518480
+    m_lastTime: -8584407709896039990
     List:
+    - name: increaseMusicVolume
+      guid: 341fe0e8d2468149ad36f3b960d70249
+      id: 3076166012
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: GameParameters
+        ObjectType: 12
+        guid: b32452b4931a384ab9d293cf5abbf73a
+      - ElementName: increaseMusicVolume
+        ObjectType: 3
+        guid: 341fe0e8d2468149ad36f3b960d70249
+      Path: Events\GameParameters\increaseMusicVolume
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: reduceMusicVolume
+      guid: a37971a8b4abc04695603353192f3b09
+      id: 3562129630
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: GameParameters
+        ObjectType: 12
+        guid: b32452b4931a384ab9d293cf5abbf73a
+      - ElementName: reduceMusicVolume
+        ObjectType: 3
+        guid: a37971a8b4abc04695603353192f3b09
+      Path: Events\GameParameters\reduceMusicVolume
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Reset_Game_Parameter_MusicVolume
       guid: 3b74ca02c43212439d5ae2b1e4d63f1e
       id: 2122702989
@@ -492,23 +526,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: Set_Game_Parameter_MusicVolume
-      guid: 9958bcaec95489479e133bcd571bb4d7
-      id: 3291076718
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: GameParameters
-        ObjectType: 12
-        guid: b32452b4931a384ab9d293cf5abbf73a
-      - ElementName: Set_Game_Parameter_MusicVolume
-        ObjectType: 3
-        guid: 9958bcaec95489479e133bcd571bb4d7
-      Path: Events\GameParameters\Set_Game_Parameter_MusicVolume
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
   - PhysicalPath: Events\SoundEffects.wwu
     PathAndIcons:
     - ElementName: Events
@@ -520,7 +537,7 @@ MonoBehaviour:
     ParentPath: Events\SoundEffects
     guid: aff8243a4a09ed45bce6a6a6f369f4f4
     GuidInternal: 
-    m_lastTime: -8584412270547196805
+    m_lastTime: -8584407710444698253
     List:
     - name: Play_2_clicks_with_rise
       guid: 64df0ce93ff02e40bacbaf9503d0cdae
@@ -1839,7 +1856,7 @@ MonoBehaviour:
     m_lastTime: -8584766429282457550
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 05000000060000001a0000001d000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

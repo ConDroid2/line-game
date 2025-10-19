@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{1FA4C4DF-5B52-0F2E-804E-9338AE57BD42}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{63E5969B-9B9C-20C4-B457-26D76DEB2B9D}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -361,6 +361,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="3076166012" Name="increaseMusicVolume" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="2649641287" Name="Mute_AllBGsSwitchContainer" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<SwitchContainers>
 						<SwitchContainer>
@@ -978,6 +979,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="3562129630" Name="reduceMusicVolume" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="2122702989" Name="Reset_Game_Parameter_MusicVolume" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="2238057352" Name="Reset_Voice_High_pass_Filter_AllBGsSwitchContainer" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<SwitchContainers>
@@ -1389,7 +1391,6 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="3291076718" Name="Set_Game_Parameter_MusicVolume" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="1745318411" Name="Set_Switch_BeepsOff" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<ActionSetSwitch>
 						<ActionSetSwitchEntry GroupId="1800164242" Id="3163588159" Name="BeepsOff"/>
@@ -2003,5 +2004,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{A20B9D98-19E5-7AC6-3948-D1104F1F43CA}</FileHash>
+	<FileHash>{CAA24CEE-63C9-3F15-C118-D7F809BF0F1F}</FileHash>
 </SoundBanksInfo>

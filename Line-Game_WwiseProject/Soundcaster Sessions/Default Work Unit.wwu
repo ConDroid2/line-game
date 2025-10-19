@@ -3,11 +3,37 @@
 	<SoundcasterSessions>
 		<WorkUnit Name="Default Work Unit" ID="{B47BA8A8-6270-43D3-B3A2-B8897C29FADA}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundcasterSession Name="Unauthorized Soundacaster Test" ID="{AD545390-DADC-4D11-ABAE-C63A31EB71C9}">
+				<SoundcasterSession Name="Firewall SFX with music test" ID="{AD545390-DADC-4D11-ABAE-C63A31EB71C9}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="AllBGsSwitchContainer" ID="{496675C6-91BF-4066-B163-E73DAF582BCE}" WorkUnitID="{9DE36296-68A3-4B39-82A2-3B243CDEF42F}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="FireShieldAppears" ID="{BED03DA3-1E49-4DD0-8D76-A9F571A70B3F}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="reduceMusicVolume" ID="{A87179A3-ABB4-46C0-9560-3353192F3B09}" WorkUnitID="{B45224B3-1A93-4A38-B9D2-93CF5ABBF73A}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="FireShieldSwirlsIntoPlace" ID="{A9313672-B9B2-4D8B-8DFF-0CD30ED42920}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="FirewallExplosion" ID="{D5C7641A-4BCA-4668-A656-7EAD8CFBFD14}" WorkUnitID="{9DFE3EAA-3D42-42A3-BF38-94F8FC560F90}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="increaseMusicVolume" ID="{E8E01F34-46D2-4981-AD36-F3B960D70249}" WorkUnitID="{B45224B3-1A93-4A38-B9D2-93CF5ABBF73A}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="MusicVolume" ID="{025302E2-C3E6-40C8-B689-2B5E058E8641}"/>
-							<Value>49</Value>
+							<Value>50</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SFXVolume" ID="{8A021F3D-21C7-4586-B7A0-D75A5E7AD643}"/>
