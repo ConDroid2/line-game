@@ -90,6 +90,8 @@ public class DarknessController : MonoBehaviour
 
             foreach(SafeZone safeZone in _safeZones)
             {
+                if (safeZone.IsActive == false) continue;
+
                 cornerInSafeZone |= safeZone.Collider.OverlapPoint(corner);
             }
 
