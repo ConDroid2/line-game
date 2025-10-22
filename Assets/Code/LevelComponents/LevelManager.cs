@@ -81,7 +81,7 @@ public class LevelManager : MonoBehaviour
 
         _intersections = CalculateIntersections();
 
-        if(StartingLine == null)
+        if(StartingLine == null || StartingLine.Active == false)
         {
             Debug.Log("No start line, picking first line");
             StartingLine = Lines[0];
