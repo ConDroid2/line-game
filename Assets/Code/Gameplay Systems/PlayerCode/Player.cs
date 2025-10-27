@@ -75,7 +75,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Player start");
         if(InputManager.Instance != null)
         {
             _baseControls = InputManager.Instance.Controls;
@@ -115,7 +114,6 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("Player disabled");
         SceneManager.sceneLoaded -= HandleSceneLoaded;
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
         _baseControls.PlayerMap.Rotate.performed -= HandleRotatePerformed;
@@ -352,10 +350,8 @@ public class Player : MonoBehaviour
 
     public void HandleGrappleFinished()
     {
-        Debug.Log("Handle Grapple Finished");
         _allowInput = true;
         TurnOffAimMode();
-        Debug.Log($"Allow Input: {_allowInput}");
 
         //if(_bufferTurnOffAimMode == true)
         //{
@@ -388,7 +384,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("Turning off aim mode");
             _aimingMode = false;
             _allowMoving = true;
             _aimController.Deactivate();
@@ -403,7 +398,6 @@ public class Player : MonoBehaviour
 
     public void SetAllowMove(bool allowMoving)
     {
-        Debug.Log($"Setting Player allow moving: {allowMoving}");
         _allowMoving = allowMoving;
     }
 
