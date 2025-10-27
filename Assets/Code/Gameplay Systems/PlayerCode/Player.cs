@@ -134,6 +134,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         _inputVector = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
+        // Debug.Log($"Allow Input: {_allowInput} -- Allow Moving: {_allowMoving}");
+
+        if (_allowInput == false) return;
 
         //if (Input.GetKeyDown(KeyCode.K))
         //{
@@ -145,6 +148,8 @@ public class Player : MonoBehaviour
         //    _eyeAnimator.SetTrigger("Left_Right_Blink");
         //}
         // if(_allowMoving == false) return;
+
+        
 
         if (_allowMoving && !_aimingMode)
         {
@@ -241,9 +246,9 @@ public class Player : MonoBehaviour
             if (_aimingMode)
             {
                 _grapplingHook.AttemptGrapple();
-                _allowInput = false;
+                //_allowInput = false;
                 OnGrapple?.Invoke();
-                TurnOffAimMode();
+                //TurnOffAimMode();
             }
         }
     }
@@ -347,8 +352,10 @@ public class Player : MonoBehaviour
 
     public void HandleGrappleFinished()
     {
+        Debug.Log("Handle Grapple Finished");
         _allowInput = true;
         TurnOffAimMode();
+        Debug.Log($"Allow Input: {_allowInput}");
 
         //if(_bufferTurnOffAimMode == true)
         //{
@@ -360,6 +367,8 @@ public class Player : MonoBehaviour
 
     public void TurnOnAimMode(AbilityEnum abilityUsed)
     {
+        if (_allowInput == false) return;
+
         _aimingMode = true;
         _allowMoving = false;
         _aimController.Activate(abilityUsed);
@@ -379,6 +388,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            Debug.Log("Turning off aim mode");
             _aimingMode = false;
             _allowMoving = true;
             _aimController.Deactivate();
@@ -395,6 +405,11 @@ public class Player : MonoBehaviour
     {
         Debug.Log($"Setting Player allow moving: {allowMoving}");
         _allowMoving = allowMoving;
+    }
+
+    public void SetAllowInput(bool allowInput)
+    {
+        _allowInput = allowInput;
     }
 
     private void OnDrawGizmos()

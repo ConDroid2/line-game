@@ -8,7 +8,7 @@ public class CutsceneUtilities : MonoBehaviour
     {
         if (Player.Instance != null)
         {
-            Player.Instance.SetAllowMove(false);
+            Player.Instance.SetAllowInput(false);
         }
     }
 
@@ -16,7 +16,7 @@ public class CutsceneUtilities : MonoBehaviour
     {
         if (Player.Instance != null)
         {
-            Player.Instance.SetAllowMove(true);
+            Player.Instance.SetAllowInput(true);
         }
     }
 }
