@@ -79,6 +79,7 @@ public class ControlBindingsController : MonoBehaviour
 
     private void ShowRebindingDisplay()
     {
+        InputManager.Instance.Controls.UI.Disable();
         _rebindingDisplay.SetActive(true);
     }
 

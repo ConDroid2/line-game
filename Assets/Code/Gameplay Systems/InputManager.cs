@@ -76,7 +76,7 @@ public class InputManager : MonoBehaviour
         {
             GameManager.Instance.HandlePause();
             Controls.PlayerMap.Disable();
-            Controls.PauseMap.Enable();
+            // Controls.PauseMap.Enable();
         }
     }
 
@@ -104,7 +104,7 @@ public class InputManager : MonoBehaviour
         {
             
             GameManager.Instance.HandlePause();
-            Controls.PauseMap.Disable();
+            // Controls.PauseMap.Disable();
             Controls.PlayerMap.Enable();
         }
     }

@@ -75,7 +75,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Player start");
         if(InputManager.Instance != null)
         {
             _baseControls = InputManager.Instance.Controls;
@@ -115,7 +114,6 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("Player disabled");
         SceneManager.sceneLoaded -= HandleSceneLoaded;
         MovementController.OnTryToMoveInDirection -= HandleTryToMoveInDirection;
         _baseControls.PlayerMap.Rotate.performed -= HandleRotatePerformed;
@@ -134,6 +132,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         _inputVector = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
+        // Debug.Log($"Allow Input: {_allowInput} -- Allow Moving: {_allowMoving}");
+
+        if (_allowInput == false) return;
 
         //if (Input.GetKeyDown(KeyCode.K))
         //{
@@ -145,6 +146,8 @@ public class Player : MonoBehaviour
         //    _eyeAnimator.SetTrigger("Left_Right_Blink");
         //}
         // if(_allowMoving == false) return;
+
+        
 
         if (_allowMoving && !_aimingMode)
         {
@@ -241,9 +244,9 @@ public class Player : MonoBehaviour
             if (_aimingMode)
             {
                 _grapplingHook.AttemptGrapple();
-                _allowInput = false;
+                //_allowInput = false;
                 OnGrapple?.Invoke();
-                TurnOffAimMode();
+                //TurnOffAimMode();
             }
         }
     }
@@ -360,6 +363,8 @@ public class Player : MonoBehaviour
 
     public void TurnOnAimMode(AbilityEnum abilityUsed)
     {
+        if (_allowInput == false) return;
+
         _aimingMode = true;
         _allowMoving = false;
         _aimController.Activate(abilityUsed);
@@ -393,8 +398,12 @@ public class Player : MonoBehaviour
 
     public void SetAllowMove(bool allowMoving)
     {
-        Debug.Log($"Setting Player allow moving: {allowMoving}");
         _allowMoving = allowMoving;
+    }
+
+    public void SetAllowInput(bool allowInput)
+    {
+        _allowInput = allowInput;
     }
 
     private void OnDrawGizmos()

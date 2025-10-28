@@ -338,7 +338,6 @@ public class GameManager : MonoBehaviour
         RoomPort portToSave = levelManager.DoNotAllowPlayerToLoadIntoThisRoom ? _saveSlot.CurrentPort : _toPort;
 
         SaveSlot newSlot = new SaveSlot(_saveSlot.Name, Flags, _visitedRooms, _currentRoomNameForSaveFile, portToSave, PrimaryTrackData, SecondaryTrackData, controlOverrides);
-        Debug.Log(newSlot.ControlOverridesJson);
 
         JsonUtilities utils = new JsonUtilities(Application.persistentDataPath + "/");
 
