@@ -46,15 +46,6 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""AimMode"",
-                    ""type"": ""Button"",
-                    ""id"": ""0256b432-7b75-44df-9c31-628e8bdecf33"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""FireProjectile"",
                     ""type"": ""Button"",
                     ""id"": ""3f878c0f-e1b7-49fd-80ab-4e8948c707ea"",
@@ -204,28 +195,6 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c3f91004-fc5d-4395-8c99-adda1bed039f"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AimMode"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0e78e9ce-8c4d-4a3d-8b0d-cea9d472e63d"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AimMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1100,7 +1069,6 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         m_PlayerMap = asset.FindActionMap("PlayerMap", throwIfNotFound: true);
         m_PlayerMap_Move = m_PlayerMap.FindAction("Move", throwIfNotFound: true);
         m_PlayerMap_Sprint = m_PlayerMap.FindAction("Sprint", throwIfNotFound: true);
-        m_PlayerMap_AimMode = m_PlayerMap.FindAction("AimMode", throwIfNotFound: true);
         m_PlayerMap_FireProjectile = m_PlayerMap.FindAction("FireProjectile", throwIfNotFound: true);
         m_PlayerMap_Grapple = m_PlayerMap.FindAction("Grapple", throwIfNotFound: true);
         m_PlayerMap_Rotate = m_PlayerMap.FindAction("Rotate", throwIfNotFound: true);
@@ -1191,7 +1159,6 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     private IPlayerMapActions m_PlayerMapActionsCallbackInterface;
     private readonly InputAction m_PlayerMap_Move;
     private readonly InputAction m_PlayerMap_Sprint;
-    private readonly InputAction m_PlayerMap_AimMode;
     private readonly InputAction m_PlayerMap_FireProjectile;
     private readonly InputAction m_PlayerMap_Grapple;
     private readonly InputAction m_PlayerMap_Rotate;
@@ -1205,7 +1172,6 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
         public PlayerMapActions(@BaseControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMap_Move;
         public InputAction @Sprint => m_Wrapper.m_PlayerMap_Sprint;
-        public InputAction @AimMode => m_Wrapper.m_PlayerMap_AimMode;
         public InputAction @FireProjectile => m_Wrapper.m_PlayerMap_FireProjectile;
         public InputAction @Grapple => m_Wrapper.m_PlayerMap_Grapple;
         public InputAction @Rotate => m_Wrapper.m_PlayerMap_Rotate;
@@ -1228,9 +1194,6 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
-                @AimMode.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAimMode;
-                @AimMode.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAimMode;
-                @AimMode.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAimMode;
                 @FireProjectile.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFireProjectile;
                 @FireProjectile.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFireProjectile;
                 @FireProjectile.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFireProjectile;
@@ -1262,9 +1225,6 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
-                @AimMode.started += instance.OnAimMode;
-                @AimMode.performed += instance.OnAimMode;
-                @AimMode.canceled += instance.OnAimMode;
                 @FireProjectile.started += instance.OnFireProjectile;
                 @FireProjectile.performed += instance.OnFireProjectile;
                 @FireProjectile.canceled += instance.OnFireProjectile;
@@ -1506,7 +1466,6 @@ public partial class @BaseControls : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnAimMode(InputAction.CallbackContext context);
         void OnFireProjectile(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
