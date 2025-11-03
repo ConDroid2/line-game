@@ -280,7 +280,7 @@ public class GameManager : MonoBehaviour
 
     public void HandlePause()
     {
-        Debug.Log("Handling Pause. Game Paused: " + _gamePaused);
+        // Debug.Log("Handling Pause. Game Paused: " + _gamePaused);
 
         if (_devMenu.activeInHierarchy == true) return;
 

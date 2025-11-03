@@ -14,7 +14,7 @@ public class AkSwitch2D : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(Switch.Name);
+        // Debug.Log(Switch.Name);
         if (_onStart && AudioManager.Instance != null)
         {
             SetSwitchesValue();

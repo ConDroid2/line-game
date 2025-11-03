@@ -53,7 +53,6 @@ public class ControlBindingsController : MonoBehaviour
 
     private void UpdateUIText()
     {
-        Debug.Log("Updating UI Text");
         _slowMovementKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.SlowMovement);
         _shootKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Shoot);
         _grappleKeyText.text = InputManager.Instance.GetBinding(InputManager.Binding.Grapple);

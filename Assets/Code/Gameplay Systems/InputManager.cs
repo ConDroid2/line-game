@@ -209,6 +209,9 @@ public class InputManager : MonoBehaviour
                 break;
         }
 
+        // Keep track of previous binding incase invalid binding selected
+        string previousBinding = action.bindings[bindingIndex].effectivePath;
+
         action.PerformInteractiveRebinding(bindingIndex)
             .OnComplete(callback =>
             {
@@ -216,7 +219,8 @@ public class InputManager : MonoBehaviour
 
                 if(CheckForDuplicateBinding(action, bindingIndex))
                 {
-                    action.RemoveBindingOverride(bindingIndex);
+                    // action.RemoveBindingOverride(bindingIndex);
+                    action.ApplyBindingOverride(bindingIndex, previousBinding);
                 }
 
                 Controls.PlayerMap.Enable();
