@@ -132,6 +132,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         _inputVector = _baseControls.PlayerMap.Move.ReadValue<Vector2>();
+        _inputVector = new Vector2(LimitDirectionalAxis(_inputVector.x), LimitDirectionalAxis(_inputVector.y));
         // Debug.Log($"Allow Input: {_allowInput} -- Allow Moving: {_allowMoving}");
 
         if (_allowInput == false) return;
@@ -171,7 +172,7 @@ public class Player : MonoBehaviour
         }
         else if (_aimingMode)
         {
-            _inputVector = new Vector2(LimitDirectionalAxis(_inputVector.x), LimitDirectionalAxis(_inputVector.y));
+            
             if (_inputVector != Vector2.zero)
             {
                 _aimController.SetAim(_inputVector);

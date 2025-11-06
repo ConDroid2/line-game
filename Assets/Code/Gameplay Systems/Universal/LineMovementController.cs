@@ -400,6 +400,7 @@ public class LineMovementController : MonoBehaviour
             // Apply to newDistanceOnLine
             float angleBetweenForceAndSlope = Vector3.Angle(force.Direction, currentLine.Slope * currentLine.DirectionModifier);
             // _logger.DebugLog($"Current line slope: {currentLine.Slope}");
+            _logger.DebugLog($"Direction: {force.Direction} -- Slope: {currentLine.Slope * currentLine.DirectionModifier} -- Angle: {angleBetweenForceAndSlope}");
 
 
             // Speed modified based on current line length
