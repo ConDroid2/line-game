@@ -213,6 +213,7 @@ public class Player : MonoBehaviour
 
     public void HandleFirePerformed(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance != null && GameManager.Instance.GamePaused) return;
         if (_shootUnlocked == false && GameManager.Instance != null) return;
         if (_aimingMode && _currentAbilityInUse != AbilityEnum.Shoot) return;
 
@@ -232,6 +233,7 @@ public class Player : MonoBehaviour
 
     public void HandleGrapplePerformed(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance != null && GameManager.Instance.GamePaused) return;
         if (_grappleUnlocked == false && GameManager.Instance != null) return;
         if (_aimingMode && _currentAbilityInUse != AbilityEnum.Grapple) return;
         if (_dying == true) return;
@@ -254,6 +256,7 @@ public class Player : MonoBehaviour
 
     public void HandleRotatePerformed(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance != null && GameManager.Instance.GamePaused) return;
         if (_rotateUnlocked == false && GameManager.Instance != null) return;
         if (_currentAbilityInUse != AbilityEnum.Default) return;
 

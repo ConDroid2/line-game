@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, bool> Flags;
 
     public static GameManager Instance;
+    public bool GamePaused => _gamePaused;
     private WorldData _currentWorld;
     private WorldRoomData _currentRoom;
     private string _currentRoomNameForSaveFile;
