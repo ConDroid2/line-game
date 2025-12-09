@@ -15,6 +15,8 @@ public class SafeZone : MonoBehaviour
 
     public static System.Action<SafeZone> OnEnabled;
     public static System.Action<SafeZone> OnDisabled;
+    public UnityEvent OnActivated;
+    public UnityEvent OnDeactivated;
 
     private void Awake()
     {
@@ -36,7 +38,8 @@ public class SafeZone : MonoBehaviour
 
         _maskObject.SetActive(true);
         IsActive = true;
-        _spriteSwapper.SwapSprite(0);
+        OnActivated?.Invoke();
+        // _spriteSwapper.SwapSprite(0);
     }
 
     public void Deactivate()
@@ -45,7 +48,8 @@ public class SafeZone : MonoBehaviour
 
         _maskObject.SetActive(false);
         IsActive = false;
-        _spriteSwapper.SwapSprite(1);
+        OnDeactivated?.Invoke();
+        // _spriteSwapper.SwapSprite(1);
     }
 
     private void OnEnable()
