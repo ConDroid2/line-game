@@ -334,6 +334,13 @@ public class GameManager : MonoBehaviour
         {
             objectToFireEventOn.FireEvent();
         }
+
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+
+        if (levelManager != null)
+        {
+            SaveData(levelManager);
+        }
     }
 
     public void SaveData(LevelManager levelManager)
