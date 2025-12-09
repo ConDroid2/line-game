@@ -326,6 +326,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void HandleGameQuit()
+    {
+        OnGameQuit[] onGameQuitObjects = FindObjectsOfType<OnGameQuit>();
+
+        foreach(OnGameQuit objectToFireEventOn in onGameQuitObjects)
+        {
+            objectToFireEventOn.FireEvent();
+        }
+    }
+
     public void SaveData(LevelManager levelManager)
     {
         if (_saveSlot == null) return;
