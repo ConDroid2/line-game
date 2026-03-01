@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private ProjectileLauncher _projectileLauncher;
     [SerializeField] private GrapplingHook _grapplingHook;
     public Rigidbody2D FollowPoint;
+    [SerializeField] private ParticleSystem _movingParticles;
 
     public float Speed;
     public float SprintingSpeed;

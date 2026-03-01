@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LineMovementController : MonoBehaviour
 {
@@ -14,12 +15,15 @@ public class LineMovementController : MonoBehaviour
     [SerializeField] private float _lineSwapAngleTolerance = 45f;
     [SerializeField] private float _edgeOfLineTolerance = 0.000005f;
 
-    // Force Variabls
+    // Private Variables
+    private bool _isMoving = false;
+
+    // Force Variables
     private List<Force> _activeForces = new List<Force>();
     private bool _ignoreForces = false;
 
 
-    // Collision Variabls
+    // Collision Variables
     public Collider2D Collider { get; private set; }
     private LineMovementController _objectBeingPushed = null;
 
@@ -33,6 +37,9 @@ public class LineMovementController : MonoBehaviour
     public System.Action<Vector3> OnReachedEdgeOfLine;
     public System.Action<int> OnTryToMoveInDirection;
 
+    public UnityEvent OnStartMoving;
+    public UnityEvent OnStopMoving;
+
     private void Awake()
     {
         Collider = GetComponent<Collider2D>();
@@ -44,6 +51,26 @@ public class LineMovementController : MonoBehaviour
         if(_activeForces.Count != 0 && _ignoreForces == false)
         {
             MoveFromActiveForces();
+        }
+        else
+        {
+            SetMovingState(false);
+        }
+    }
+
+    public void SetMovingState(bool newState)
+    {
+        if (newState == _isMoving) return;
+
+        _isMoving = newState;
+
+        if (_isMoving)
+        {
+            OnStartMoving?.Invoke();
+        }
+        else
+        {
+            OnStopMoving?.Invoke();
         }
     }
 
@@ -98,7 +125,9 @@ public class LineMovementController : MonoBehaviour
             }
         }
 
-       //  _logger.DebugLog($"{gameObject.name} returning {willMove}");
+        //  _logger.DebugLog($"{gameObject.name} returning {willMove}");
+        SetMovingState(willMove);
+
         return willMove;
     }
 
