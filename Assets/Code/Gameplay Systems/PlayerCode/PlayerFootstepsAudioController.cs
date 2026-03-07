@@ -12,13 +12,12 @@ public class PlayerFootstepsAudioController : MonoBehaviour
         {
             TurnOffLineMaterialSound();
 
-            if(newLine.MaterialType.StartSoundEvent != null)
-            {
-                newLine.MaterialType.StartSoundEvent.Post(gameObject);
-            }
+            CurrentMaterial = newLine.MaterialType;
+
+            TurnOnLineMaterialSound();
         }
 
-        CurrentMaterial = newLine.MaterialType;
+        
     }
 
     public void TurnOffLineMaterialSound()
@@ -26,6 +25,14 @@ public class PlayerFootstepsAudioController : MonoBehaviour
         if(CurrentMaterial?.EndSoundEvent != null)
         {
             CurrentMaterial.EndSoundEvent.Post(gameObject);
+        }
+    }
+
+    public void TurnOnLineMaterialSound()
+    {
+        if (CurrentMaterial.StartSoundEvent != null)
+        {
+            CurrentMaterial.StartSoundEvent.Post(gameObject);
         }
     }
 

@@ -304,6 +304,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5204255656231690853, guid: d12b9972462337a4fb6e1c3e0f7df748, type: 3}
   m_PrefabInstance: {fileID: 285023762}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &221143363
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8210943321953521452, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_Name
+      value: W2_BackgroundParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210943321953521455, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3c1da6ffa73de4048a2c0edb69655384, type: 3}
 --- !u!1001 &285023762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +487,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &301472033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +505,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -593,6 +654,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &346877711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,6 +672,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -683,6 +748,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &382814060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,6 +766,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -830,6 +899,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &447429376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +917,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -920,6 +993,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &457792928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,6 +1011,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -1197,6 +1274,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &598968734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,6 +1292,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -1344,6 +1425,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &633919120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1359,6 +1443,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -1756,6 +1841,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 1
   TimeToWait: 2
+  RotationIncrement: 360
   WaitAtStart: 1
   Automatic: 1
   _timingCurve:
@@ -1914,6 +2000,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &930015262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1929,6 +2018,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -2004,6 +2094,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &932853771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,6 +2112,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -2452,6 +2546,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1181300813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2467,6 +2564,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -2599,6 +2697,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1254174384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2614,6 +2715,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -2689,6 +2791,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1266155824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2704,6 +2809,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -2914,6 +3020,7 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 2
+  RotationIncrement: 360
   WaitAtStart: 1
   Automatic: 1
   _timingCurve:
@@ -3130,6 +3237,7 @@ MonoBehaviour:
   direction: -1
   TimeForFullRotation: 1
   TimeToWait: 2
+  RotationIncrement: 360
   WaitAtStart: 1
   Automatic: 1
   _timingCurve:
@@ -3310,6 +3418,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -3380,6 +3489,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1683076011
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,6 +3807,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
@@ -3765,6 +3878,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2118040859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6977629593852638501, guid: fb29a3bd831358c4295721fbec2dfbe2, type: 3}
@@ -3814,6 +3930,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnShiftComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2118040863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3829,6 +3948,7 @@ MonoBehaviour:
   direction: 1
   TimeForFullRotation: 2
   TimeToWait: 0
+  RotationIncrement: 360
   WaitAtStart: 0
   Automatic: 1
   _timingCurve:
