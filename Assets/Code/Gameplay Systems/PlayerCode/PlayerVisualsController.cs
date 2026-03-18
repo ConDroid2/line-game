@@ -6,6 +6,7 @@ public class PlayerVisualsController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TimerVisual _timerVisual;
+    [SerializeField] private ParticleSystem _playerMovementParticles;
 
     // Tracking variables
     private bool _selfDestructHeld = false;
@@ -29,5 +30,11 @@ public class PlayerVisualsController : MonoBehaviour
         {
             _timerVisual.UpdateEndAngle_FromEmpty(_baseControls.PlayerMap.SelfDestruct.GetTimeoutCompletionPercentage());
         }
+    }
+
+    public void HandleLineMaterialChanged(LineMaterial newLineMaterial)
+    {
+        ParticleSystem.MainModule main = _playerMovementParticles.main;
+        main.startColor = newLineMaterial.PlayerMovementParticleColor;
     }
 }

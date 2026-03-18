@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerFootstepsAudioController : MonoBehaviour
 {
     public LineMaterial CurrentMaterial;
+    public UnityEvent<LineMaterial> OnLineMaterialChanged;
     
     public void HandleMovedToNewLine(LineController newLine)
     {
@@ -15,6 +17,8 @@ public class PlayerFootstepsAudioController : MonoBehaviour
             CurrentMaterial = newLine.MaterialType;
 
             TurnOnLineMaterialSound();
+
+            OnLineMaterialChanged?.Invoke(CurrentMaterial);
         }
 
         

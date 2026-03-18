@@ -13,7 +13,7 @@ public class Enums : MonoBehaviour
 
     public enum LineType { Static, Shifting, Rotating };
 
-    public enum LineMaterial { Default, Conveyor }
+    public enum LineMaterial { Default, Conveyor, Blue, Red, Disintegrate, BlueConveyor, RedConveyor }
 
     public enum LinePoints { A, B, Default };
 

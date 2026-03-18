@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timerVisual: {fileID: 7323945928984049648}
+  _playerMovementParticles: {fileID: 7344987649965649728}
 --- !u!1 &1538318022582259948
 GameObject:
   m_ObjectHideFlags: 0
@@ -11608,6 +11609,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentMaterial: {fileID: 0}
+  OnLineMaterialChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6561630773632962996}
+        m_TargetAssemblyTypeName: PlayerVisualsController, Assembly-CSharp
+        m_MethodName: HandleLineMaterialChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8367333630618424153
 GameObject:
   m_ObjectHideFlags: 0
