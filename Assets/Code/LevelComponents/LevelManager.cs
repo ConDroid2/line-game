@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
     public LineController[] Lines;
 
     [Header("Camera Stuff")]
+    public LevelTransitionController LevelTransition;
     [SerializeField] CinemachineVirtualCamera _staticVirtualCamera;
     [SerializeField] CinemachineVirtualCamera _dynamicVirtualCamera;
     private CinemachineVirtualCamera _inUseCamera;
@@ -123,6 +124,11 @@ public class LevelManager : MonoBehaviour
 
         // TODO: Revisit this, not sure if there's a better way to do this
         new List<LineMovementController>(FindObjectsOfType<LineMovementController>()).ForEach(controller => controller.SetLevelManager(this));
+
+        if(LevelTransition != null)
+        {
+            LevelTransition.TriggerEffectWithOption(true);
+        }
     }
 
     private void Update()
@@ -158,18 +164,20 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PlayerDeathCoroutine()
     {
-        List<ExplodeEffect> thingsToExplode = FindObjectsOfType<ExplodeEffect>().OrderBy(x => x.Priority).ToList();
+        List<OnDeathEffect> onDeathEffectList = FindObjectsOfType<OnDeathEffect>().OrderBy(x => x.Priority).ToList();
 
-        foreach(ExplodeEffect exploder in thingsToExplode)
+        foreach(OnDeathEffect onDeathEffect in onDeathEffectList)
         {
-            if (exploder.ExplodeOnDeath)
+            if(onDeathEffect is ExplodeEffect)
             {
-                exploder.TriggerEffect();
+                if (((ExplodeEffect)onDeathEffect).ExplodeOnDeath == false) continue;
+            }
 
-                while (exploder.IsPlaying())
-                {
-                    yield return null;
-                }
+            onDeathEffect.TriggerEffect();
+
+            while (onDeathEffect.IsPlaying())
+            {
+                yield return null;
             }
         }
 

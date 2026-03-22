@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ExplodeEffect : MonoBehaviour
+public class ExplodeEffect : OnDeathEffect
 {
     [SerializeField] private GameObject _turnOff;
     [SerializeField] private ParticleSystem _particleSystem;
-    public int Priority = 0;
     public bool ExplodeOnDeath = false;
 
     private bool _playing = false;
@@ -34,7 +33,7 @@ public class ExplodeEffect : MonoBehaviour
         }
     }
 
-    public void TriggerEffect()
+    public override void TriggerEffect()
     {
         if(_turnOff != null)
         {
@@ -47,7 +46,7 @@ public class ExplodeEffect : MonoBehaviour
         OnExplodeTriggered?.Invoke();
     }
 
-    public bool IsPlaying()
+    public override bool IsPlaying()
     {
         return _playing;
     }

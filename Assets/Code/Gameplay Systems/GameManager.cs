@@ -1,4 +1,5 @@
 using Newtonsoft.Json.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -253,10 +254,24 @@ public class GameManager : MonoBehaviour
         {
             if(roomConnection.FromPort.RelativePosition.ConvertToVector3() == playerPosition)
             {
-                _toPort = roomConnection.ToPort;
-                SceneManager.LoadScene(roomConnection.ToLevelName);
+                StartCoroutine(LoadNewLevelCoroutine(roomConnection));
             }
         }    
+    }
+
+    private IEnumerator LoadNewLevelCoroutine(RoomConnection roomConnection)
+    {
+        LevelTransitionController levelTransition = LevelManager.Instance.LevelTransition;
+
+        levelTransition.TriggerEffect();
+
+        while (levelTransition.IsPlaying())
+        {
+            yield return null;
+        }
+
+        _toPort = roomConnection.ToPort;
+        SceneManager.LoadScene(roomConnection.ToLevelName);
     }
 
     public void MoveToRoomBasedOnPort(string roomName, RoomPort port)
