@@ -1603,6 +1603,35 @@
 								<ActiveSource Name="FirewallShieldAppears1" ID="{48BE3CC3-7D52-4F86-A3CA-63851BE371D6}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="ShurikenGuySwirl_2" ID="{91E6464F-68DD-455E-864C-40906F5B9AAA}" ShortID="633332705">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{31479701-D89D-4725-BDDC-8641A75CE920}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{76B55D04-3319-4536-A347-95CDAAE947D1}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ShurikenGuySwirl_2" ID="{5803D501-D9CC-4311-B109-2DC931ED6344}">
+									<Language>SFX</Language>
+									<AudioFile>ShurikenGuySwirl_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="141319126"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ShurikenGuySwirl_2" ID="{5803D501-D9CC-4311-B109-2DC931ED6344}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
