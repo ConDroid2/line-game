@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{63E5969B-9B9C-20C4-B457-26D76DEB2B9D}">
+		<SoundBank Id="3618373" Type="User" Language="SFX" Hash="{B923B222-4324-E73E-6456-C94B03B76C2A}">
 			<ShortName>BackgroundMusicSoundBank</ShortName>
 			<Path>BackgroundMusicSoundBank.bnk</Path>
 			<Media>
@@ -52,6 +52,10 @@
 				<File Id="133588556" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ZoomOnConveyorLine1_bFlat.wav</ShortName>
 					<CachePath>SFX/ZoomOnConveyorLine1_bFlat_A0BB15EF.wem</CachePath>
+				</File>
+				<File Id="141319126" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ShurikenGuySwirl_2.wav</ShortName>
+					<CachePath>SFX/ShurikenGuySwirl_2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="198392224" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Unauthorized_forWneg1.wav</ShortName>
@@ -776,6 +780,11 @@
 				<Event Id="1748532871" Name="Play_ShootABlock" DurationType="OneShot" DurationMin="1.0020833" DurationMax="1.0020833">
 					<MediaRefs>
 						<MediaRef Id="496890736"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="381649654" Name="Play_ShurikenGuySwirl_2" DurationType="OneShot" DurationMin="3.0020833" DurationMax="3.0020833">
+					<MediaRefs>
+						<MediaRef Id="141319126"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1444205428" Name="Play_startGame" DurationType="OneShot" DurationMin="2.0020833" DurationMax="2.0020833">
@@ -2004,5 +2013,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{CAA24CEE-63C9-3F15-C118-D7F809BF0F1F}</FileHash>
+	<FileHash>{2ECD7ED9-AE63-9954-4688-DEA3D94025E9}</FileHash>
 </SoundBanksInfo>
