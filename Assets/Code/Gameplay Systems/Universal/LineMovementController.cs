@@ -523,6 +523,11 @@ public class LineMovementController : MonoBehaviour
         _ignoreForces = ignore;
     }
 
+    public void ClearForces()
+    {
+        _activeForces.Clear();
+    }
+
 
     // Set new Line
     public void SetNewLine(LineController newLine, float distanceOnLine = 0)

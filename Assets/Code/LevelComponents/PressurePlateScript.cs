@@ -90,6 +90,7 @@ public class PressurePlateScript : MonoBehaviour
             if (collider.CompareTag("Pushable"))
             {
                 collider.GetComponentInChildren<SpriteSwapper>().SwapSprite(1);
+                collider.GetComponent<LineMovementController>()?.ClearForces();
             }
         }
     }
