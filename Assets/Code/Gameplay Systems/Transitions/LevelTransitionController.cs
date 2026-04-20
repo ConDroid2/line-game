@@ -51,6 +51,20 @@ public class LevelTransitionController : OnDeathEffect
         }
     }
 
+    public void InitializeEffect()
+    {
+        Vector3 playerPosition = Player.Instance.transform.position;
+        Vector3 cameraPosition = _cameraTransform.position;
+
+        _transitionSprite.position = new Vector3(cameraPosition.x, cameraPosition.y);
+        _maskTransform.position = playerPosition;
+    }
+
+    public void InitializeEffectSize(int widthScale, int heightScale)
+    {
+        _transitionSprite.localScale = new Vector2((widthScale * 20) + 1, (heightScale * 11) +1);
+    }
+
     public override void TriggerEffect()
     {
         TriggerEffectWithOption(false);
@@ -64,7 +78,7 @@ public class LevelTransitionController : OnDeathEffect
         Vector3 playerPosition = Player.Instance.transform.position;
         Vector3 cameraPosition = _cameraTransform.position;
 
-        _transitionSprite.position = new Vector3(cameraPosition.x, cameraPosition.y);
+        // _transitionSprite.position = new Vector3(cameraPosition.x, cameraPosition.y);
         _maskTransform.position = playerPosition;
 
         Vector3 topLeftCorner = new Vector3(cameraPosition.x - 10, cameraPosition.y + 5.5f);

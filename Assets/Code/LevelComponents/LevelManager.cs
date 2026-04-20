@@ -67,6 +67,8 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
+        LevelTransition = FindObjectOfType<LevelTransitionController>();
+        LevelTransition.InitializeEffectSize(RoomWidth, RoomHeight);
         Lines = LineParent.GetComponentsInChildren<LineController>();
         // Eventually everything in this function will be in something like "On Player Enter" or something and will be called by the world manager
         if (Lines.Length == 0)
@@ -125,11 +127,21 @@ public class LevelManager : MonoBehaviour
         // TODO: Revisit this, not sure if there's a better way to do this
         new List<LineMovementController>(FindObjectsOfType<LineMovementController>()).ForEach(controller => controller.SetLevelManager(this));
 
-        if(LevelTransition != null)
-        {
-            LevelTransition.TriggerEffectWithOption(true);
-        }
+        // StartCoroutine(LevelLoadedTransitionEffect());
+
+        LevelTransition.TriggerEffectWithOption(true);
     }
+
+    //private IEnumerator LevelLoadedTransitionEffect()
+    //{
+    //    if (LevelTransition == null) yield return null;
+
+    //    LevelTransition.InitializeEffect();
+
+    //    yield return new WaitForSeconds(0.5f);
+
+    //    LevelTransition.TriggerEffectWithOption(true);
+    //}
 
     private void Update()
     {
